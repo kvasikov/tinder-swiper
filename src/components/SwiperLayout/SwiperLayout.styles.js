@@ -32,6 +32,19 @@ export const Container = styled.div`
   }
 `;
 
+export const SideWrapper = styled.div`
+  @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 375px;
+    height: 100%;
+    max-height: 678px;
+    border-radius: 16px;
+    background-color: white;
+  }
+`;
+
 export const Content = styled.div`
   height: 100%;
 
@@ -45,18 +58,13 @@ export const Content = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
-  }
-`;
 
-export const SideWrapper = styled.div`
-  @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 375px;
-    height: 100%;
-    max-height: 678px;
-    border-radius: 16px;
-    background-color: white;
+    ${SideWrapper}:first-child {
+      margin-right: 4px;
+    }
+
+    ${SideWrapper}:last-child {
+      margin-left: 4px;
+    }
   }
 `;
