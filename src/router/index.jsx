@@ -1,5 +1,5 @@
 import { Route, createBrowserRouter, createRoutesFromElements, Outlet } from 'react-router-dom';
-import { GlobalStyle } from '../globalStyles';
+import { GlobalStyle } from '../assets/globalStyles';
 import { StartPage } from '../pages/StartPage';
 
 export const URL_DATA = {

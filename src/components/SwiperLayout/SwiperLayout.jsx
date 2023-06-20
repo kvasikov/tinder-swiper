@@ -1,11 +1,19 @@
 import React from 'react';
-import { Box } from './SwiperLayout.styles';
+import { ProfilePreivew } from '../ProfilePreivew';
+import { ProfileInfo } from '../ProfileInfo';
+import { Box, ProfileWrapper, SideWrapper } from './SwiperLayout.styles';
 
 export const SwiperLayout = () => {
   return (
     <Box>
-      <div>Profile preview</div>
-      <div>Profile info</div>
+      <ProfileWrapper>
+        <SideWrapper>
+          <ProfilePreivew />
+        </SideWrapper>
+        <SideWrapper>
+          <ProfileInfo />
+        </SideWrapper>
+      </ProfileWrapper>
     </Box>
   );
 };
