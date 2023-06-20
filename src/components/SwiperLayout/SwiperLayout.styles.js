@@ -5,8 +5,7 @@ export const Box = styled.div`
   position: fixed;
   inset: 0px;
   display: flex;
-  background-color: #c2b4d0;
-  background-blend-mode: darken;
+  background: radial-gradient(50% 50% at 120% 15%, #230efc 0%, #1f0c33 100%);
   justify-content: center;
 `;
 
