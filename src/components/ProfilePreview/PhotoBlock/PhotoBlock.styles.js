@@ -3,6 +3,16 @@ import { breakpoints } from '../../../assets/breakpoints';
 
 export const Box = styled.div`
   height: 100%;
+
+  // фоновая загрузка всех фото текущего профиля
+  &::after {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    z-index: -1;
+    content: ${(props) => props.$photoList.reduce((str, photo) => `${str}url('${photo}') `, '')};
+  }
 `;
 
 export const PhotoWrapper = styled.div`
@@ -25,19 +35,18 @@ export const PhotoImg = styled.div`
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: cover;
+`;
 
-  @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
-    border-bottom-left-radius: 16px;
-    border-bottom-right-radius: 16px;
-  }
+export const TopBlock = styled.div`
+  position: absolute;
+  top: 8px;
+  left: 0;
+  right: 0;
+  padding: 0 16px;
 `;
 
 export const BulletListWrapper = styled.div`
   display: flex;
-  position: absolute;
-  top: 8px;
-  left: 16px;
-  right: 16px;
 `;
 
 export const Bullet = styled.div`
@@ -66,4 +75,5 @@ export const HandlerPhoto = styled.button`
   background-color: transparent;
   width: 50%;
   height: 100%;
+  cursor: pointer;
 `;

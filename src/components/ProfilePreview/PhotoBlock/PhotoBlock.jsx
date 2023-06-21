@@ -7,6 +7,7 @@ import {
   Box,
   PhotoImg,
   PhotoWrapper,
+  TopBlock,
   BulletListWrapper,
   Bullet,
   HandlerWrapper,
@@ -40,18 +41,20 @@ export const PhotoBlock = () => {
   };
 
   return (
-    <Box>
+    <Box $photoList={photoList}>
       <PhotoWrapper>
         <HandlerWrapper>
           <HandlerPhoto onClick={onChangePhoto(-1)} />
           <HandlerPhoto onClick={onChangePhoto(1)} />
         </HandlerWrapper>
-        <BulletListWrapper>
-          {photoList.map((_, index) => (
-            // TODO: сделать надежный reactKey
-            <Bullet key={index} $isActive={index <= activePhotoIndex} />
-          ))}
-        </BulletListWrapper>
+        <TopBlock>
+          <BulletListWrapper>
+            {photoList.map((_, index) => (
+              // TODO: сделать надежный reactKey
+              <Bullet key={index} $isActive={index <= activePhotoIndex} />
+            ))}
+          </BulletListWrapper>
+        </TopBlock>
         <PhotoImg $imgPath={activePhotoPath} />
       </PhotoWrapper>
     </Box>

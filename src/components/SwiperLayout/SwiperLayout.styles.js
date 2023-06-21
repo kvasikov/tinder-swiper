@@ -43,6 +43,7 @@ export const SideWrapper = styled.div`
     max-height: 678px;
     border-radius: 16px;
     background-color: white;
+    overflow: hidden;
   }
 `;
 
