@@ -35,6 +35,7 @@ export const PhotoImg = styled.div`
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: cover;
+  transition: background-image 0.08s ease-in-out;
 `;
 
 export const TopBlock = styled.div`

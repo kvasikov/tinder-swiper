@@ -6,7 +6,6 @@ module.exports = {
     jest: true,
   },
   extends: ['eslint:recommended', 'react-app/jest', 'plugin:react/recommended', 'prettier'],
-  overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
@@ -16,6 +15,7 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'react/react-in-jsx-scope': 'off',
+    'react/prop-types': 0,
     camelcase: 'error',
     'spaced-comment': 'error',
     quotes: ['error', 'single'],

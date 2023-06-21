@@ -3,6 +3,7 @@ import { PROFILE_LIST as mockProfileList } from '../../../mock';
 import woman01 from '../../../assets/photos/woman-photo-01.png';
 import woman02 from '../../../assets/photos/woman-photo-02.png';
 import man01 from '../../../assets/photos/man-photo-01.png';
+import { LightningBlock } from '../LightningBlock';
 import {
   Box,
   PhotoImg,
@@ -54,6 +55,7 @@ export const PhotoBlock = () => {
               <Bullet key={index} $isActive={index <= activePhotoIndex} />
             ))}
           </BulletListWrapper>
+          <LightningBlock />
         </TopBlock>
         <PhotoImg $imgPath={activePhotoPath} />
       </PhotoWrapper>
