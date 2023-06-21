@@ -1,5 +1,6 @@
 import { Route, createBrowserRouter, createRoutesFromElements, Outlet } from 'react-router-dom';
 import { GlobalStyle } from '../assets/globalStyles';
+import { cssFonts } from '../assets/font-face';
 import { StartPage } from '../pages/StartPage';
 
 export const URL_DATA = {
@@ -13,6 +14,7 @@ export const URL_DATA = {
 
 const Layout = () => (
   <>
+    <style type='text/css'>{cssFonts}</style>
     <GlobalStyle />
     <Outlet />
   </>

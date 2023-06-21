@@ -4,6 +4,7 @@ import woman01 from '../../../assets/photos/woman-photo-01.png';
 import woman02 from '../../../assets/photos/woman-photo-02.png';
 import man01 from '../../../assets/photos/man-photo-01.png';
 import { LightningBlock } from '../LightningBlock';
+import { InfoBlock } from '../InfoBlock';
 import {
   Box,
   PhotoImg,
@@ -58,6 +59,7 @@ export const PhotoBlock = () => {
           <LightningBlock />
         </TopBlock>
         <PhotoImg $imgPath={activePhotoPath} />
+        <InfoBlock />
       </PhotoWrapper>
     </Box>
   );
