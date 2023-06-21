@@ -1,1 +1,0 @@
-export { ProfilePreivew } from './ProfilePreivew';

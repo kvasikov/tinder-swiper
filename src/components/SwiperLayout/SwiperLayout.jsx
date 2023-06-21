@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProfilePreivew } from '../ProfilePreivew';
+import { ProfilePreview } from '../ProfilePreview';
 import { ProfileInfo } from '../ProfileInfo';
 import { Box, Wrapper, Container, Content, SideWrapper } from './SwiperLayout.styles';
 
@@ -9,8 +9,8 @@ export const SwiperLayout = () => {
       <Wrapper>
         <Container>
           <Content>
-            <SideWrapper>
-              <ProfilePreivew />
+            <SideWrapper $isFullHeightMobile>
+              <ProfilePreview />
             </SideWrapper>
             <SideWrapper>
               <ProfileInfo />

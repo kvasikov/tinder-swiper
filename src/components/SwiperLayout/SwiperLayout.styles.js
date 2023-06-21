@@ -32,6 +32,8 @@ export const Container = styled.div`
 `;
 
 export const SideWrapper = styled.div`
+  height: ${(props) => props.$isFullHeightMobile && '100%'};
+
   @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
     position: relative;
     top: 50%;
