@@ -13,12 +13,7 @@ export const SwiperLayout = () => {
         <Container>
           <Content>
             <SideWrapper $isFullHeightMobile>
-              <Swiper
-                direction={'vertical'}
-                autoHeight={false}
-                className='mySwiper'
-                style={{ height: '100%' }}
-              >
+              <Swiper direction={'vertical'} autoHeight={false} style={{ height: '100%' }}>
                 {PROFILE_LIST.map((profile) => (
                   <SwiperSlide key={profile.id}>
                     <ProfilePreview profileData={profile} />

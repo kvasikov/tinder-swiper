@@ -48,6 +48,7 @@ export const TopBlock = styled.div`
 
 export const BulletListWrapper = styled.div`
   display: flex;
+  opacity: ${(props) => props.$isHide && '0'};
 `;
 
 export const Bullet = styled.div`

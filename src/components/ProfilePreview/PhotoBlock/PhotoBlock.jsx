@@ -36,7 +36,7 @@ export const PhotoBlock = ({ profileData }) => {
           <HandlerPhoto onClick={onChangePhoto(1)} />
         </HandlerWrapper>
         <TopBlock>
-          <BulletListWrapper>
+          <BulletListWrapper $isHide={profileData.photoList.length <= 1}>
             {profileData.photoList.map((_, index) => (
               // TODO: сделать надежный reactKey
               <Bullet key={index} $isActive={index <= activePhotoIndex} />
