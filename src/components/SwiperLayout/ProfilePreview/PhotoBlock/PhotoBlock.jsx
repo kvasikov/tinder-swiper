@@ -33,7 +33,7 @@ export const PhotoBlock = observer(({ profileData }) => {
 
   return (
     <Box $photoList={profileData.photoList}>
-      <PhotoWrapper>
+      <PhotoWrapper $isSwiperEnable={isSwiperEnable}>
         <HandlerWrapper>
           <HandlerPhoto onClick={onChangePhoto(-1)} />
           <HandlerPhoto onClick={onChangePhoto(1)} />

@@ -1,0 +1,1 @@
+export { PreviewMainInfo } from './PreviewMainInfo';

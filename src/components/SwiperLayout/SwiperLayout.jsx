@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -18,8 +18,6 @@ import {
 import { PROFILE_LIST } from '../../mock';
 
 export const SwiperLayout = observer(() => {
-  const containerRef = useRef(null);
-
   const { profileList, isSwiperEnable, setProfileList, setSwiperInstance } = swiperStore;
 
   // TODO: брать список с помощью API
@@ -27,16 +25,10 @@ export const SwiperLayout = observer(() => {
     setProfileList(PROFILE_LIST);
   }, [setProfileList]);
 
-  useEffect(() => {
-    if (containerRef.current && isSwiperEnable) {
-      containerRef.current.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  }, [isSwiperEnable]);
-
   return (
     <Box>
       <Wrapper>
-        <Container ref={containerRef} $isSwiperEnable={isSwiperEnable}>
+        <Container $isSwiperEnable={isSwiperEnable}>
           <Content>
             <SideWrapper $isFullHeightMobile>
               <SwiperWrapper>

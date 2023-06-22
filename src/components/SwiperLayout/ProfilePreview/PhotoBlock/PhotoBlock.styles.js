@@ -17,9 +17,10 @@ export const Box = styled.div`
 
 export const PhotoWrapper = styled.div`
   position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+  top: ${(props) => (props.$isSwiperEnable ? '50%' : '0')};
+  transform: ${(props) => (props.$isSwiperEnable ? 'translateY(-50%)' : 'translateY(0)')};
   text-align: center;
+  transition: top 0.25s, transform 0.25s;
 
   @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
     top: 100%;
