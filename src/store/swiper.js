@@ -11,18 +11,17 @@ configure({
 export class SwiperStore {
   profileList = [];
   swiperInstance = null;
+  isSwiperEnable = true;
 
   constructor() {
-    makeAutoObservable(
-      this,
-      {
-        profileList: observable,
-        swiperInstance: observable,
-        setSwiperInstance: action,
-        setProfileList: action,
-      },
-      { autoBind: true },
-    );
+    makeAutoObservable(this, {
+      profileList: observable,
+      swiperInstance: observable,
+      isSwiperEnable: observable,
+      setSwiperInstance: action,
+      setProfileList: action,
+      setSwiperStatus: action,
+    });
   }
 
   setSwiperInstance = (swiperInstance) => {
@@ -34,6 +33,12 @@ export class SwiperStore {
   setProfileList = (profileList = []) => {
     runInAction(() => {
       this.profileList = profileList;
+    });
+  };
+
+  setSwiperStatus = (status) => {
+    runInAction(() => {
+      this.isSwiperEnable = status;
     });
   };
 }

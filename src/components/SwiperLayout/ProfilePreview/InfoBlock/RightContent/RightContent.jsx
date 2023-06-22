@@ -1,21 +1,19 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { observer } from 'mobx-react';
 import { swiperStore } from '../../../../../store';
 import { CustomIcon } from '../../../../common/CustomIcon';
 import { Box, IconWrapper, InfoIconWrapper } from './RightContent.styles';
 
 export const RightContent = observer(() => {
-  const { swiperInstance } = swiperStore;
-
-  const swiperIsEnable = useRef(true);
+  const { swiperInstance, isSwiperEnable, setSwiperStatus } = swiperStore;
 
   const onInfoClick = () => {
-    if (swiperIsEnable.current) {
+    if (isSwiperEnable) {
       swiperInstance.disable();
-      swiperIsEnable.current = false;
+      setSwiperStatus(false);
     } else {
       swiperInstance.enable();
-      swiperIsEnable.current = true;
+      setSwiperStatus(true);
     }
   };
 
