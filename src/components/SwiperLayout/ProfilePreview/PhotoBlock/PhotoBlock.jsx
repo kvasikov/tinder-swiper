@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { observer } from 'mobx-react';
 import { swiperStore } from '../../../../store';
+import { ProfileInfo } from '../../ProfileInfo';
 import { LightningBlock } from '../LightningBlock';
 import { InfoBlock } from '../InfoBlock';
 import {
@@ -12,6 +13,7 @@ import {
   Bullet,
   HandlerWrapper,
   HandlerPhoto,
+  InfoWrapper,
 } from './PhotoBlock.styles';
 
 export const PhotoBlock = observer(({ profileData }) => {
@@ -50,6 +52,9 @@ export const PhotoBlock = observer(({ profileData }) => {
         <PhotoImg $imgPath={activePhotoPath} $isSwiperEnable={isSwiperEnable} />
         <InfoBlock />
       </PhotoWrapper>
+      <InfoWrapper $isSwiperEnable={isSwiperEnable}>
+        <ProfileInfo />
+      </InfoWrapper>
     </Box>
   );
 });

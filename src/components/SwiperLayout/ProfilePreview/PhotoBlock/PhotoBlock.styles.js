@@ -84,3 +84,11 @@ export const HandlerPhoto = styled.button`
   height: 100%;
   cursor: pointer;
 `;
+
+export const InfoWrapper = styled.div`
+  display: ${(props) => props.$isSwiperEnable && 'none'};
+
+  @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
+    display: none;
+  }
+`;

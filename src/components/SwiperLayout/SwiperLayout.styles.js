@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { breakpoints } from '../../assets/breakpoints';
 
 export const Box = styled.div`
@@ -44,6 +44,16 @@ export const SideWrapper = styled.div`
     border-radius: 16px;
     background-color: white;
   }
+
+  ${(props) =>
+    props.$isDesktop &&
+    css`
+      display: none;
+
+      @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
+        display: block;
+      }
+    `};
 `;
 
 export const SwiperWrapper = styled.div`

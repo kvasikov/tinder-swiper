@@ -49,7 +49,7 @@ export const SwiperLayout = observer(() => {
               </SwiperWrapper>
               <TweetButtonDesktop />
             </SideWrapper>
-            <SideWrapper>
+            <SideWrapper $isDesktop>
               <ProfileInfo />
               <ButtonBlockDesktop />
             </SideWrapper>
