@@ -29,7 +29,7 @@ export const PhotoWrapper = styled.div`
 
 export const PhotoImg = styled.div`
   width: 100%;
-  height: 577px;
+  height: 568px;
   max-height: 100%;
   background-image: ${(props) => props.$imgPath && `url("${props.$imgPath}")`};
   background-repeat: no-repeat;
