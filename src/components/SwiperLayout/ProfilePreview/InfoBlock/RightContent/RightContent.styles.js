@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { breakpoints } from '../../../../../assets/breakpoints';
 
 export const Box = styled.div`
   display: flex;
@@ -6,6 +7,10 @@ export const Box = styled.div`
   position: absolute;
   right: 16px;
   bottom: -24px;
+
+  @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
+    display: none;
+  }
 `;
 
 export const IconWrapper = styled.button`
