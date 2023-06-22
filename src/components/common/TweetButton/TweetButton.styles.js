@@ -8,6 +8,7 @@ export const Box = styled.div`
   border: 2px solid white;
   border-radius: 24px;
   min-height: 40px;
+  color: white;
 `;
 
 export const Button = styled.button`

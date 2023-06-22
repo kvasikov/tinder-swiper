@@ -43,8 +43,13 @@ export const SideWrapper = styled.div`
     max-height: 678px;
     border-radius: 16px;
     background-color: white;
-    overflow: ${(props) => props.$isFullHeightMobile && 'hidden'};
   }
+`;
+
+export const SwiperWrapper = styled.div`
+  height: 100%;
+  overflow: hidden;
+  border-radius: 16px;
 `;
 
 export const Content = styled.div`

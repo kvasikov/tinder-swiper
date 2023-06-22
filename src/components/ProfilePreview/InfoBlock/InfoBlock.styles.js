@@ -7,7 +7,6 @@ export const Box = styled.div`
   left: 0;
   right: 0;
   text-align: left;
-  color: white;
 `;
 
 export const Content = styled.div`
