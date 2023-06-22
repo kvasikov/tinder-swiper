@@ -1,16 +1,22 @@
 import React from 'react';
 import { TweetButton } from '../../common/TweetButton';
-import { Box, Content, TweetButtonWrapper } from './InfoBlock.styles';
+import { LeftContent } from './LeftContent';
+import { RightContent } from './RightContent';
+import { Box, Content, TweetButtonWrapper, LeftWrapper, RightWrapper } from './InfoBlock.styles';
 
 export const InfoBlock = () => {
   return (
     <Box>
       <Content>
-        <div>InfoBlock</div>
+        <LeftWrapper>
+          <LeftContent />
+        </LeftWrapper>
         <TweetButtonWrapper>
           <TweetButton />
         </TweetButtonWrapper>
-        <div>buttons</div>
+        <RightWrapper>
+          <RightContent />
+        </RightWrapper>
       </Content>
     </Box>
   );

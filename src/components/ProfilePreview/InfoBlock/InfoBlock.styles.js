@@ -24,3 +24,12 @@ export const TweetButtonWrapper = styled.div`
     display: none;
   }
 `;
+
+export const LeftWrapper = styled.div`
+  flex: 1;
+  padding-right: 40px;
+`;
+
+export const RightWrapper = styled.div`
+  padding: 0 16px;
+`;
