@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { breakpoints } from '../../../assets/breakpoints';
 
 export const Box = styled.div`
   position: absolute;
@@ -6,4 +7,21 @@ export const Box = styled.div`
   left: 0;
   right: 0;
   text-align: left;
+  color: white;
+`;
+
+export const Content = styled.div`
+  position: relative;
+  display: flex;
+`;
+
+export const TweetButtonWrapper = styled.div`
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -56px;
+
+  @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
+    display: none;
+  }
 `;

@@ -36,6 +36,7 @@ export const PhotoImg = styled.div`
   background-position: 50% 50%;
   background-size: cover;
   transition: background-image 0.08s ease-in-out;
+  border-radius: 16px;
 `;
 
 export const TopBlock = styled.div`

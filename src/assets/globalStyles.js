@@ -7,6 +7,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     font-family: '${TYPEFACE_FONT_FACE}', sans-serif;
+    -webkit-tap-highlight-color: transparent;
   }
 
   *::after, *::before {

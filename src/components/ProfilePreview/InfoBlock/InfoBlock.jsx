@@ -1,10 +1,17 @@
 import React from 'react';
-import { Box } from './InfoBlock.styles';
+import { TweetButton } from '../../common/TweetButton';
+import { Box, Content, TweetButtonWrapper } from './InfoBlock.styles';
 
 export const InfoBlock = () => {
   return (
     <Box>
-      <div>InfoBlock</div>
+      <Content>
+        <div>InfoBlock</div>
+        <TweetButtonWrapper>
+          <TweetButton />
+        </TweetButtonWrapper>
+        <div>buttons</div>
+      </Content>
     </Box>
   );
 };
