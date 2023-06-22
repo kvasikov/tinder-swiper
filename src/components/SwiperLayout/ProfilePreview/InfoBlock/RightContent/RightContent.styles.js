@@ -4,8 +4,7 @@ import { breakpoints } from '../../../../../assets/breakpoints';
 export const Box = styled.div`
   display: flex;
   flex-direction: column;
-  position: absolute;
-  right: 16px;
+  position: relative;
   bottom: -24px;
 
   @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
@@ -33,4 +32,9 @@ export const IconWrapper = styled.button`
 
 export const InfoIconWrapper = styled(IconWrapper)`
   margin-top: 16px;
+  position: relative;
+  top: ${(props) => (props.$isSwiperEnable ? 0 : '36px')};
+  transform: ${(props) => !props.$isSwiperEnable && 'rotate(-180deg)'};
+  transition: transform 0.25s, top 0.25s, background-color 0.25s;
+  background-color: ${(props) => !props.$isSwiperEnable && '#ff00d6'};
 `;

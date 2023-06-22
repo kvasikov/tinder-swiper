@@ -18,7 +18,7 @@ import {
 import { PROFILE_LIST } from '../../mock';
 
 export const SwiperLayout = observer(() => {
-  const { profileList, setProfileList, setSwiperInstance } = swiperStore;
+  const { profileList, isSwiperEnable, setProfileList, setSwiperInstance } = swiperStore;
 
   // TODO: брать список с помощью API
   useEffect(() => {
@@ -28,7 +28,7 @@ export const SwiperLayout = observer(() => {
   return (
     <Box>
       <Wrapper>
-        <Container>
+        <Container $isSwiperEnable={isSwiperEnable}>
           <Content>
             <SideWrapper $isFullHeightMobile>
               <SwiperWrapper>

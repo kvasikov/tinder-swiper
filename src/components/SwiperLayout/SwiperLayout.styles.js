@@ -23,7 +23,7 @@ export const Container = styled.div`
 
   @media screen and (max-width: ${breakpoints.DESKTOP_S - 1}px) {
     width: 100%;
-    overflow: hidden;
+    overflow: ${(props) => (props.$isSwiperEnable ? 'hidden' : 'auto')};
     position: relative;
     display: flex;
     align-items: center;

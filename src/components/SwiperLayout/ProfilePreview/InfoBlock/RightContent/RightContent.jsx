@@ -22,7 +22,7 @@ export const RightContent = observer(() => {
       <IconWrapper>
         <CustomIcon kind='chat' />
       </IconWrapper>
-      <InfoIconWrapper onClick={onInfoClick}>
+      <InfoIconWrapper $isSwiperEnable={isSwiperEnable} onClick={onInfoClick}>
         <CustomIcon kind='arrowUp' />
       </InfoIconWrapper>
     </Box>

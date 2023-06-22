@@ -37,6 +37,9 @@ export const PhotoImg = styled.div`
   background-size: cover;
   transition: background-image 0.08s ease-in-out;
   border-radius: 16px;
+  border-bottom-left-radius: ${(props) => !props.$isSwiperEnable && '0'};
+  border-bottom-right-radius: ${(props) => !props.$isSwiperEnable && '0'};
+  transition: border-radius 0.25s;
 `;
 
 export const TopBlock = styled.div`

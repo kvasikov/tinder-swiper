@@ -12,6 +12,8 @@ export const Box = styled.div`
 export const Content = styled.div`
   position: relative;
   display: flex;
+  align-items: flex-end;
+  padding: 0 16px;
 `;
 
 export const TweetButtonWrapper = styled.div`
@@ -30,6 +32,4 @@ export const LeftWrapper = styled.div`
   padding-right: 40px;
 `;
 
-export const RightWrapper = styled.div`
-  padding: 0 16px;
-`;
+export const RightWrapper = styled.div``;

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { observer } from 'mobx-react';
+import { swiperStore } from '../../../../store';
 import { LightningBlock } from '../LightningBlock';
 import { InfoBlock } from '../InfoBlock';
 import {
@@ -12,7 +14,8 @@ import {
   HandlerPhoto,
 } from './PhotoBlock.styles';
 
-export const PhotoBlock = ({ profileData }) => {
+export const PhotoBlock = observer(({ profileData }) => {
+  const { isSwiperEnable } = swiperStore;
   const [activePhotoIndex, setActivePhotoIndex] = useState(0);
 
   const activePhotoPath = profileData.photoList[activePhotoIndex];
@@ -44,9 +47,9 @@ export const PhotoBlock = ({ profileData }) => {
           </BulletListWrapper>
           <LightningBlock />
         </TopBlock>
-        <PhotoImg $imgPath={activePhotoPath} />
+        <PhotoImg $imgPath={activePhotoPath} $isSwiperEnable={isSwiperEnable} />
         <InfoBlock />
       </PhotoWrapper>
     </Box>
   );
-};
+});
