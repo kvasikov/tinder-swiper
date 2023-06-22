@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { CustomIcon } from '../common/CustomIcon';
-import { breakpoints } from '../../assets/breakpoints';
+import { CustomIcon } from '../../common/CustomIcon';
+import { breakpoints } from '../../../assets/breakpoints';
 
 export const Box = styled.div`
   display: none;

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { breakpoints } from '../../assets/breakpoints';
+import { breakpoints } from '../../../assets/breakpoints';
 
 export const Box = styled.div`
   display: none;

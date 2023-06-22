@@ -1,5 +1,5 @@
 import React from 'react';
-import { TweetButton } from '../../common/TweetButton';
+import { TweetButton } from '../../../common/TweetButton';
 import { LeftContent } from './LeftContent';
 import { RightContent } from './RightContent';
 import { Box, Content, TweetButtonWrapper, LeftWrapper, RightWrapper } from './InfoBlock.styles';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { CustomIcon } from '../common/CustomIcon';
+import { CustomIcon } from '../../common/CustomIcon';
 import { Box, ButtonArrow, IconRotate } from './ButtonBlockDesktop.styles';
 
 export const ButtonBlockDesktop = ({ swiperInstance }) => {

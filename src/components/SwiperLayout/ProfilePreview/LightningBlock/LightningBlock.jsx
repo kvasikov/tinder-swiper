@@ -1,5 +1,5 @@
 import React from 'react';
-import { CustomIcon } from '../../common/CustomIcon';
+import { CustomIcon } from '../../../common/CustomIcon';
 import { Box } from './LightningBlock.styles';
 
 export const LightningBlock = () => {

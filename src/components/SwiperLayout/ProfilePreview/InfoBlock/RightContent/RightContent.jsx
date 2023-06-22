@@ -1,5 +1,5 @@
 import React from 'react';
-import { CustomIcon } from '../../../common/CustomIcon';
+import { CustomIcon } from '../../../../common/CustomIcon';
 import { Box, IconWrapper, InfoIconWrapper } from './RightContent.styles';
 
 export const RightContent = () => {
