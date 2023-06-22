@@ -1,8 +1,4 @@
 import React, { useState } from 'react';
-import { PROFILE_LIST as mockProfileList } from '../../../mock';
-import woman01 from '../../../assets/photos/woman-photo-01.png';
-import woman02 from '../../../assets/photos/woman-photo-02.png';
-import man01 from '../../../assets/photos/man-photo-01.png';
 import { LightningBlock } from '../LightningBlock';
 import { InfoBlock } from '../InfoBlock';
 import {
@@ -16,25 +12,15 @@ import {
   HandlerPhoto,
 } from './PhotoBlock.styles';
 
-// TODO: mock
-const PROFILE_LIST = mockProfileList.map((profile) => ({
-  ...profile,
-  photoList: [woman01, woman02, man01],
-}));
-
-const PROFILE_DATA = PROFILE_LIST[0];
-
-export const PhotoBlock = () => {
-  const photoList = PROFILE_DATA.photoList; // TODO: mock
-
+export const PhotoBlock = ({ profileData }) => {
   const [activePhotoIndex, setActivePhotoIndex] = useState(0);
 
-  const activePhotoPath = photoList[activePhotoIndex];
+  const activePhotoPath = profileData.photoList[activePhotoIndex];
 
   const onChangePhoto = (offsetIndex) => () => {
     setActivePhotoIndex((prevIndex) => {
       const newIndex = prevIndex + offsetIndex;
-      if (newIndex >= photoList.length || newIndex < 0) {
+      if (newIndex >= profileData.photoList.length || newIndex < 0) {
         return prevIndex;
       }
 
@@ -43,7 +29,7 @@ export const PhotoBlock = () => {
   };
 
   return (
-    <Box $photoList={photoList}>
+    <Box $photoList={profileData.photoList}>
       <PhotoWrapper>
         <HandlerWrapper>
           <HandlerPhoto onClick={onChangePhoto(-1)} />
@@ -51,7 +37,7 @@ export const PhotoBlock = () => {
         </HandlerWrapper>
         <TopBlock>
           <BulletListWrapper>
-            {photoList.map((_, index) => (
+            {profileData.photoList.map((_, index) => (
               // TODO: сделать надежный reactKey
               <Bullet key={index} $isActive={index <= activePhotoIndex} />
             ))}

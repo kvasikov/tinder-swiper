@@ -1,3 +1,7 @@
+import woman01 from './assets/photos/woman-photo-01.png';
+import woman02 from './assets/photos/woman-photo-02.png';
+import man01 from './assets/photos/man-photo-01.png';
+
 /**
  * STATUS
  * 'longTermPartner' - долгосрочный партнер
@@ -12,7 +16,7 @@ export const PROFILE_LIST = [
   {
     id: 1,
     webStatus: 'online', // статус профиля - в сети или не в сети [online | offline]
-    photoList: ['https://www.photo1.png', 'https://www.photo2.png'],
+    photoList: [woman01, woman02],
     infoData: {
       name: 'Мария',
       age: 34,
@@ -27,13 +31,25 @@ export const PROFILE_LIST = [
   {
     id: 2,
     webStatus: 'offline',
-    photoList: ['https://www.photo1.png', 'https://www.photo2.png'],
+    photoList: [woman02, man01],
     infoData: {
       name: 'Валерия',
       age: 28,
       status: 'justHaveFun',
       location: 'Санкт-Петербург',
       typeOfActivity: 'Фотограф',
+    },
+  },
+  {
+    id: 3,
+    webStatus: 'offline',
+    photoList: [man01],
+    infoData: {
+      name: 'Максим',
+      age: 23,
+      status: 'justHaveFun',
+      location: 'Томск',
+      typeOfActivity: 'Ресторатор',
     },
   },
 ];

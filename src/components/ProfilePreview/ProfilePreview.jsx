@@ -2,10 +2,10 @@ import React from 'react';
 import { PhotoBlock } from './PhotoBlock';
 import { Box } from './ProfilePreview.styles';
 
-export const ProfilePreview = () => {
+export const ProfilePreview = ({ profileData }) => {
   return (
     <Box>
-      <PhotoBlock />
+      <PhotoBlock profileData={profileData} />
     </Box>
   );
 };
