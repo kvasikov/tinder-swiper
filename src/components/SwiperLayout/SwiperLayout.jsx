@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { observer } from 'mobx-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import { swiperStore } from '../../store';
 import { ProfilePreview } from './ProfilePreview';
 import { ProfileInfo } from './ProfileInfo';
 import { ButtonBlockDesktop } from './ButtonBlockDesktop';
@@ -15,8 +17,13 @@ import {
 } from './SwiperLayout.styles';
 import { PROFILE_LIST } from '../../mock';
 
-export const SwiperLayout = () => {
-  const [swiperInstance, setSwiperInstance] = useState(null);
+export const SwiperLayout = observer(() => {
+  const { profileList, setProfileList, setSwiperInstance } = swiperStore;
+
+  // TODO: брать список с помощью API
+  useEffect(() => {
+    setProfileList(PROFILE_LIST);
+  }, [setProfileList]);
 
   return (
     <Box>
@@ -33,7 +40,7 @@ export const SwiperLayout = () => {
                     setSwiperInstance(swiper);
                   }}
                 >
-                  {PROFILE_LIST.map((profile) => (
+                  {profileList.map((profile) => (
                     <SwiperSlide key={profile.id}>
                       <ProfilePreview profileData={profile} />
                     </SwiperSlide>
@@ -44,11 +51,11 @@ export const SwiperLayout = () => {
             </SideWrapper>
             <SideWrapper>
               <ProfileInfo />
-              <ButtonBlockDesktop swiperInstance={swiperInstance} />
+              <ButtonBlockDesktop />
             </SideWrapper>
           </Content>
         </Container>
       </Wrapper>
     </Box>
   );
-};
+});
