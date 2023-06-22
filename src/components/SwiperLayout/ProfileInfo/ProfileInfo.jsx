@@ -1,9 +1,10 @@
 import React from 'react';
+import { Box } from './ProfileInfo.styles';
 
 export const ProfileInfo = () => {
   return (
-    <div>
+    <Box>
       <div>ProfileInfo</div>
-    </div>
+    </Box>
   );
 };
