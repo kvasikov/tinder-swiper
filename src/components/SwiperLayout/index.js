@@ -1,1 +1,0 @@
-export { SwiperLayout } from './SwiperLayout';

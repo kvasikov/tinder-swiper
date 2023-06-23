@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.a3bca7cf.css",
+    "main.js": "/static/js/main.58fc4bba.js",
+    "static/js/787.74292e40.chunk.js": "/static/js/787.74292e40.chunk.js",
+    "static/media/man-photo-01.png": "/static/media/man-photo-01.fc5eeeea6b6586512104.png",
+    "static/media/woman-photo-02.png": "/static/media/woman-photo-02.49afe95809b711194c6f.png",
+    "static/media/Raleway-Medium.ttf": "/static/media/Raleway-Medium.601cda68c7b7bbcc9a12.ttf",
+    "static/media/Raleway-Regular.ttf": "/static/media/Raleway-Regular.3927fa2a37e6f7f4c7c0.ttf",
+    "static/media/Raleway-ExtraBold.ttf": "/static/media/Raleway-ExtraBold.8b7015f87bd9859e1382.ttf",
+    "static/media/Raleway-Bold.ttf": "/static/media/Raleway-Bold.18960343b3da49bfd353.ttf",
+    "static/media/woman-photo-01.png": "/static/media/woman-photo-01.6abf1862ce58784f326b.png",
+    "static/media/tweet.svg": "/static/media/tweet.7fefddebc11c075950a7ea1b14a570f8.svg",
+    "static/media/lightning.svg": "/static/media/lightning.e81b3acc1c93cfc9c8c59c8f83b8d70c.svg",
+    "static/media/verify.svg": "/static/media/verify.fd8f782513da1dc309edd0bf83797855.svg",
+    "static/media/chat.svg": "/static/media/chat.12f242f91c66c6ed789b9e073cb5a436.svg",
+    "static/media/arrow-up.svg": "/static/media/arrow-up.1feb9219134fc3e31a452f1892bfcbdf.svg",
+    "index.html": "/index.html",
+    "main.a3bca7cf.css.map": "/static/css/main.a3bca7cf.css.map",
+    "main.58fc4bba.js.map": "/static/js/main.58fc4bba.js.map",
+    "787.74292e40.chunk.js.map": "/static/js/787.74292e40.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a3bca7cf.css",
+    "static/js/main.58fc4bba.js"
+  ]
+}
