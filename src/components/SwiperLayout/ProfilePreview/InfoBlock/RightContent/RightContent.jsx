@@ -9,10 +9,8 @@ export const RightContent = observer(() => {
 
   const onInfoClick = () => {
     if (isSwiperEnable) {
-      // swiperInstance.disable();
       setSwiperStatus(false);
     } else {
-      // swiperInstance.enable();
       setSwiperStatus(true);
     }
   };
