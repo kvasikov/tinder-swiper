@@ -5,7 +5,7 @@ import { StartPage } from '../pages/StartPage';
 
 export const URL_DATA = {
   init: {
-    path: '/',
+    path: '/swiper',
   },
   notFound: {
     path: '*',
