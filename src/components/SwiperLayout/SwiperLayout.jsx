@@ -24,6 +24,7 @@ export const SwiperLayout = observer(() => {
     profileList,
     isSwiperEnable,
     currentProfileDataId,
+    currentProfileData,
     setProfileList,
     setSwiperInstance,
     setCurrentProfileId,
@@ -76,7 +77,7 @@ export const SwiperLayout = observer(() => {
               <TweetButtonDesktop />
             </SideWrapper>
             <SideWrapper $isDesktop>
-              <ProfileInfo />
+              <ProfileInfo profileData={currentProfileData} />
               <ButtonBlockDesktop />
             </SideWrapper>
           </Content>

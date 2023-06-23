@@ -20,12 +20,14 @@ export const PhotoBlock = observer(({ profileData }) => {
   const { isSwiperEnable } = swiperStore;
   const [activePhotoIndex, setActivePhotoIndex] = useState(0);
 
-  const activePhotoPath = profileData.photoList[activePhotoIndex];
+  const photoList = profileData.infoData.photoList;
+
+  const activePhotoPath = photoList[activePhotoIndex];
 
   const onChangePhoto = (offsetIndex) => () => {
     setActivePhotoIndex((prevIndex) => {
       const newIndex = prevIndex + offsetIndex;
-      if (newIndex >= profileData.photoList.length || newIndex < 0) {
+      if (newIndex >= photoList.length || newIndex < 0) {
         return prevIndex;
       }
 
@@ -34,15 +36,15 @@ export const PhotoBlock = observer(({ profileData }) => {
   };
 
   return (
-    <Box $photoList={profileData.photoList}>
+    <Box $photoList={photoList}>
       <PhotoWrapper $isSwiperEnable={isSwiperEnable}>
         <HandlerWrapper>
           <HandlerPhoto onClick={onChangePhoto(-1)} />
           <HandlerPhoto onClick={onChangePhoto(1)} />
         </HandlerWrapper>
         <TopBlock>
-          <BulletListWrapper $isHide={profileData.photoList.length <= 1}>
-            {profileData.photoList.map((_, index) => (
+          <BulletListWrapper $isHide={photoList.length <= 1}>
+            {photoList.map((_, index) => (
               // TODO: сделать надежный reactKey
               <Bullet key={index} $isActive={index <= activePhotoIndex} />
             ))}
@@ -50,10 +52,10 @@ export const PhotoBlock = observer(({ profileData }) => {
           <LightningBlock />
         </TopBlock>
         <PhotoImg $imgPath={activePhotoPath} $isSwiperEnable={isSwiperEnable} />
-        <InfoBlock />
+        <InfoBlock profileData={profileData} />
       </PhotoWrapper>
       <InfoWrapper $isSwiperEnable={isSwiperEnable}>
-        <ProfileInfo />
+        <ProfileInfo profileData={profileData} />
       </InfoWrapper>
     </Box>
   );

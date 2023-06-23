@@ -6,14 +6,14 @@ import { LeftContent } from './LeftContent';
 import { RightContent } from './RightContent';
 import { Box, Content, TweetButtonWrapper, LeftWrapper, RightWrapper } from './InfoBlock.styles';
 
-export const InfoBlock = observer(() => {
+export const InfoBlock = observer(({ profileData }) => {
   const { isSwiperEnable } = swiperStore;
 
   return (
     <Box>
       <Content>
         <LeftWrapper>
-          <LeftContent />
+          <LeftContent profileData={profileData} />
         </LeftWrapper>
         <TweetButtonWrapper $isSwiperEnable={isSwiperEnable}>
           <TweetButton />

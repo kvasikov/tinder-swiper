@@ -3,7 +3,7 @@ import woman02 from './assets/photos/woman-photo-02.png';
 import man01 from './assets/photos/man-photo-01.png';
 
 /**
- * STATUS
+ * поле relationshipIntent
  * 'longTermPartner' - долгосрочный партнер
  * 'justHaveFun' - просто повеселиться
  * 'longOrShortTermPartner' - долго или краткосрочно
@@ -15,41 +15,216 @@ import man01 from './assets/photos/man-photo-01.png';
 export const PROFILE_LIST = [
   {
     id: '1',
-    webStatus: 'online', // статус профиля - в сети или не в сети [online | offline]
-    photoList: [woman01, woman02],
+    distance: 7, // километр
     infoData: {
       name: 'Мария',
-      age: 34,
-      status: 'longTermPartner',
-      tagList: ['Путешествия', 'Языковой обмен', 'Мотоциклы', 'Спорт', 'Сериалы'],
-      growth: 182, // см
-      location: 'Москва',
-      education: 'Российский университет дружбы народов',
-      typeOfActivity: 'Предприниматель',
+      isVerified: true,
+      photoList: [woman01, woman02],
+      bio: 'По фото не реально понять нравится тебе человек или нет. Хочу живые свидания!!!',
+      birthDate: '1996-06-26T04:57:48.779Z',
+      gender: 'female',
+      city: {
+        name: 'Красноярск',
+      },
+      jobs: [
+        {
+          company: {
+            name: 'Вэри Грин',
+          },
+          title: {
+            name: 'Шеф-флорист, декоратор студии Вэри Грин',
+          },
+        },
+      ],
+      schools: [
+        {
+          name: 'Школа 32 Красноярск',
+        },
+      ],
+      recentlyActive: true,
+      selectedDescriptors: [
+        {
+          id: 'de_1',
+          name: 'Знак зодиака',
+          prompt: 'Какой у тебя знак зодиака?',
+          choiceSelections: [
+            {
+              id: '7',
+              name: 'Рак',
+            },
+          ],
+          sectionDd: 'sec_4',
+          sectionName: 'Основное',
+        },
+        {
+          id: 'de_9',
+          name: 'Образование',
+          prompt: 'Твое образование?',
+          choiceSelections: [
+            {
+              id: '1',
+              name: 'Бакалавриат',
+            },
+          ],
+          sectionId: 'sec_4',
+          sectionName: 'Основное',
+        },
+        {
+          id: 'de_33',
+          name: 'Планы на семью',
+          prompt: 'Ты хочешь детей?',
+          choiceSelections: [
+            {
+              id: '1',
+              name: 'Я хочу детей',
+            },
+          ],
+          sectionId: 'sec_4',
+          sectionName: 'Основное',
+        },
+        {
+          id: 'de_34',
+          name: 'Вакцина от COVID',
+          prompt: 'У тебя есть прививка?',
+          choiceSelections: [
+            {
+              id: '2',
+              name: 'Нет прививки',
+            },
+          ],
+          sectionId: 'sec_4',
+          sectionName: 'Основное',
+        },
+        {
+          id: 'de_35',
+          name: 'Язык любви',
+          prompt: 'Какие проявления любви тебе нравятся?',
+          choiceSelections: [
+            {
+              id: '5',
+              name: 'Время вместе',
+            },
+          ],
+          sectionId: 'sec_4',
+          sectionName: 'Основное',
+        },
+        {
+          id: 'de_3',
+          name: 'Питомцы',
+          prompt: 'У тебя есть питомцы?',
+          choiceSelections: [
+            {
+              id: '6',
+              name: 'Нет питомцев',
+            },
+          ],
+          sectionId: 'sec_1',
+          sectionName: 'Стиль жизнь',
+        },
+        {
+          id: 'de_22',
+          name: 'Алкоголь',
+          prompt: 'Как часто ты пьешь?',
+          choiceSelections: [
+            {
+              id: '11',
+              name: 'По особым случаям',
+            },
+          ],
+          sectionId: 'sec_1',
+          sectionName: 'Стиль жизнь',
+        },
+        {
+          id: 'de_10',
+          name: 'Тренировка',
+          prompt: 'Ты занимаешься спортом?',
+          choiceSelections: [
+            {
+              id: '5',
+              name: 'Часто',
+            },
+          ],
+          sectionId: 'sec_1',
+          sectionName: 'Стиль жизнь',
+        },
+        {
+          id: 'de_4',
+          name: 'Соцсети',
+          prompt: 'Какая у тебя активность в соцсетях?',
+          choiceSelections: [
+            {
+              id: '2',
+              name: 'Активный пользователь',
+            },
+          ],
+          sectionId: 'sec_1',
+          sectionName: 'Стиль жизнь',
+        },
+      ],
+      relationshipIntent: {
+        descriptorChoiceId: 'justHaveFun',
+        title: 'Просто повеселиться',
+      },
     },
   },
   {
     id: '2',
-    webStatus: 'offline',
-    photoList: [woman02, man01],
+    distance: 2,
     infoData: {
       name: 'Валерия',
-      age: 28,
-      status: 'justHaveFun',
-      location: 'Санкт-Петербург',
-      typeOfActivity: 'Фотограф',
+      isVerified: false,
+      photoList: [woman02, man01],
+      bio: 'inst: @insta',
+      birthDate: '1992-06-26T04:57:48.779Z',
+      gender: 'female',
+      city: {
+        name: 'Томск',
+      },
+      jobs: [],
+      schools: [],
+      recentlyActive: false,
+      selectedDescriptors: [],
+      relationshipIntent: {
+        descriptorChoiceId: 'longTermPartner',
+        title: 'Долгосрочный партнер',
+      },
     },
   },
   {
     id: '3',
-    webStatus: 'offline',
-    photoList: [man01],
+    distance: 14,
     infoData: {
       name: 'Максим',
-      age: 23,
-      status: 'justHaveFun',
-      location: 'Томск',
-      typeOfActivity: 'Ресторатор',
+      isVerified: true,
+      photoList: [man01],
+      bio: '',
+      birthDate: '1998-02-26T04:57:48.779Z',
+      gender: 'male',
+      city: {
+        name: 'Красноярск',
+      },
+      jobs: [],
+      schools: [],
+      recentlyActive: false,
+      selectedDescriptors: [
+        {
+          id: 'de_35',
+          name: 'Язык любви',
+          prompt: 'Какие проявления любви тебе нравятся?',
+          choiceSelections: [
+            {
+              id: '5',
+              name: 'Время вместе',
+            },
+          ],
+          sectionId: 'sec_4',
+          sectionName: 'Основное',
+        },
+      ],
+      relationshipIntent: {
+        descriptorChoiceId: 'longTermPartner',
+        title: 'Долгосрочный партнер',
+      },
     },
   },
 ];

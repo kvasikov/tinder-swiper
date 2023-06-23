@@ -1,4 +1,4 @@
-import { action, configure, makeAutoObservable, observable, runInAction } from 'mobx';
+import { action, configure, makeAutoObservable, computed, observable, runInAction } from 'mobx';
 import { DATA_ATTR_PROFILE_ID } from '../constants/attributes';
 
 configure({
@@ -32,6 +32,7 @@ export class SwiperStore {
       swiperInstance: observable,
       isSwiperEnable: observable,
       currentProfileDataId: observable,
+      currentProfileData: computed,
       setSwiperInstance: action,
       setCurrentProfileId: action,
       setProfileList: action,
@@ -62,6 +63,12 @@ export class SwiperStore {
       this.isSwiperEnable = status;
     });
   };
+
+  get currentProfileData() {
+    const profileId = this.currentProfileDataId;
+    const profileData = this.profileList.find((profile) => profile.id === profileId);
+    return profileData || null;
+  }
 }
 
 export default new SwiperStore();

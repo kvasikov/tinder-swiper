@@ -2,6 +2,7 @@ import { ReactComponent as LightningIcon } from '../../../assets/icons/lightning
 import { ReactComponent as ArrowUpIcon } from '../../../assets/icons/arrow-up.svg';
 import { ReactComponent as TweetIcon } from '../../../assets/icons/tweet.svg';
 import { ReactComponent as ChatIcon } from '../../../assets/icons/chat.svg';
+import { ReactComponent as VerifyIcon } from '../../../assets/icons/verify.svg';
 
 const Empty = () => null;
 
@@ -11,4 +12,5 @@ export const ICON_LIST = {
   arrowUp: ArrowUpIcon,
   tweet: TweetIcon,
   chat: ChatIcon,
+  verify: VerifyIcon,
 };
