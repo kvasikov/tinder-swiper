@@ -1,4 +1,4 @@
-import { action, configure, makeAutoObservable, computed, observable, runInAction } from 'mobx';
+import { action, configure, makeAutoObservable, computed, observable } from 'mobx';
 import { DATA_ATTR_PROFILE_ID } from '../constants/attributes';
 
 configure({
@@ -25,6 +25,7 @@ export class SwiperStore {
   currentProfileDataId = null;
   swiperInstance = null;
   isSwiperEnable = true;
+  offsetTop = 0;
 
   constructor() {
     makeAutoObservable(this, {
@@ -32,30 +33,26 @@ export class SwiperStore {
       swiperInstance: observable,
       isSwiperEnable: observable,
       currentProfileDataId: observable,
+      offsetTop: observable,
       currentProfileData: computed,
       setSwiperInstance: action,
       setCurrentProfileId: action,
       setProfileList: action,
       setSwiperStatus: action,
+      setOffsetTop: action,
     });
   }
 
   setSwiperInstance = (swiperInstance) => {
-    runInAction(() => {
-      this.swiperInstance = swiperInstance;
-    });
+    this.swiperInstance = swiperInstance;
   };
 
   setCurrentProfileId = (swiperInstance) => {
-    runInAction(() => {
-      this.currentProfileDataId = getProfileIdByDataAttr(swiperInstance);
-    });
+    this.currentProfileDataId = getProfileIdByDataAttr(swiperInstance);
   };
 
   setProfileList = (profileList = []) => {
-    runInAction(() => {
-      this.profileList = profileList;
-    });
+    this.profileList = profileList;
   };
 
   setSwiperStatus = (status) => {
@@ -65,9 +62,11 @@ export class SwiperStore {
       this.swiperInstance.disable();
     }
 
-    runInAction(() => {
-      this.isSwiperEnable = status;
-    });
+    this.isSwiperEnable = status;
+  };
+
+  setOffsetTop = (offsetTop) => {
+    this.offsetTop = offsetTop;
   };
 
   get currentProfileData() {

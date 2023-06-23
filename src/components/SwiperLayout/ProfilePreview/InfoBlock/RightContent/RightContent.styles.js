@@ -35,7 +35,6 @@ export const InfoIconWrapper = styled(IconWrapper)`
   position: relative;
   top: ${(props) => (props.$isSwiperEnable ? 0 : '36px')};
   transform: ${(props) => !props.$isSwiperEnable && 'rotate(-180deg)'};
-  // TODO: лагает на андроиде
-  /* transition: transform 0.25s, top 0.25s, background-color 0.25s; */
+  transition: transform 0.25s, top 0.25s, background-color 0.25s;
   background-color: ${(props) => !props.$isSwiperEnable && '#ff00d6'};
 `;

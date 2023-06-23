@@ -19,6 +19,7 @@ import {
   SideWrapper,
   Slide,
 } from './SwiperLayout.styles';
+import { useGetOffsetTop } from './useGetOffsetTop.hook';
 import { PROFILE_LIST } from '../../mock';
 
 export const SwiperLayout = observer(() => {
@@ -35,6 +36,8 @@ export const SwiperLayout = observer(() => {
   } = swiperStore;
 
   const isDesktop = useMediaBreakpoint(breakpoints.DESKTOP_S);
+
+  const { wrapperRef } = useGetOffsetTop({ currentProfileDataId });
 
   // TODO: брать список с помощью API
   useEffect(() => {
@@ -66,7 +69,7 @@ export const SwiperLayout = observer(() => {
         <Container $isSwiperEnable={isSwiperEnable}>
           <Content>
             <SideWrapper $isFullHeightMobile>
-              <SwiperWrapper>
+              <SwiperWrapper ref={wrapperRef}>
                 <Swiper
                   direction='vertical'
                   observer

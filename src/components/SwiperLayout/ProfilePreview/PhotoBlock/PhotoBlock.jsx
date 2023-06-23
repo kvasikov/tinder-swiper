@@ -17,7 +17,7 @@ import {
 } from './PhotoBlock.styles';
 
 export const PhotoBlock = observer(({ profileData }) => {
-  const { isSwiperEnable } = swiperStore;
+  const { isSwiperEnable, offsetTop } = swiperStore;
   const [activePhotoIndex, setActivePhotoIndex] = useState(0);
 
   const photoList = profileData.infoData.photoList;
@@ -37,7 +37,11 @@ export const PhotoBlock = observer(({ profileData }) => {
 
   return (
     <Box $photoList={photoList}>
-      <PhotoWrapper $isSwiperEnable={isSwiperEnable}>
+      <PhotoWrapper
+        $isSwiperEnable={isSwiperEnable}
+        $offset={offsetTop}
+        data-photo-wrapper-id={profileData.id}
+      >
         <HandlerWrapper>
           <HandlerPhoto onClick={onChangePhoto(-1)} />
           <HandlerPhoto onClick={onChangePhoto(1)} />

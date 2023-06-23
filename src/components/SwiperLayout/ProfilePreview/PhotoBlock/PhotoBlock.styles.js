@@ -17,13 +17,11 @@ export const Box = styled.div`
 
 export const PhotoWrapper = styled.div`
   position: relative;
-  top: ${(props) => (props.$isSwiperEnable ? '50%' : '0')};
-  transform: ${(props) => (props.$isSwiperEnable ? 'translateY(-50%)' : 'translateY(0)')};
+  top: ${(props) => (props.$isSwiperEnable && props.$offset ? `${props.$offset}px` : '0')};
   text-align: center;
-  // TODO: лагает на андроиде
-  /* transition-property: top, transform;
-  transition-duration: 0.1s;
-  transition-timing-function: steps(100, jump-both); */
+  transition-property: top;
+  transition-duration: 0.25s;
+  transition-timing-function: linear;
 
   @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
     top: 100%;
