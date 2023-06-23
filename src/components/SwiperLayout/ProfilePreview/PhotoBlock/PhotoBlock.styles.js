@@ -20,9 +20,10 @@ export const PhotoWrapper = styled.div`
   top: ${(props) => (props.$isSwiperEnable ? '50%' : '0')};
   transform: ${(props) => (props.$isSwiperEnable ? 'translateY(-50%)' : 'translateY(0)')};
   text-align: center;
-  transition-property: top, transform;
+  // TODO: лагает на андроиде
+  /* transition-property: top, transform;
   transition-duration: 0.1s;
-  transition-timing-function: steps(100, jump-both);
+  transition-timing-function: steps(100, jump-both); */
 
   @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
     top: 100%;
@@ -38,7 +39,6 @@ export const PhotoImg = styled.div`
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: cover;
-  transition: background-image 0.08s ease-in-out;
   border-radius: 16px;
   border-bottom-left-radius: ${(props) => !props.$isSwiperEnable && '0'};
   border-bottom-right-radius: ${(props) => !props.$isSwiperEnable && '0'};
