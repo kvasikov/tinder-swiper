@@ -20,7 +20,9 @@ export const PhotoWrapper = styled.div`
   top: ${(props) => (props.$isSwiperEnable ? '50%' : '0')};
   transform: ${(props) => (props.$isSwiperEnable ? 'translateY(-50%)' : 'translateY(0)')};
   text-align: center;
-  transition: top 0.25s, transform 0.25s;
+  transition-property: top, transform;
+  transition-duration: 0.1s;
+  transition-timing-function: steps(100, jump-both);
 
   @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
     top: 100%;
