@@ -1,1 +1,0 @@
-export { RightContent } from './RightContent';
