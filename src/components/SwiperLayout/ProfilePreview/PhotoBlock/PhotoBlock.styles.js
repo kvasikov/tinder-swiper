@@ -30,7 +30,7 @@ export const PhotoWrapper = styled.div`
 
 export const PhotoImg = styled.div`
   width: 100%;
-  height: 568px;
+  height: 400px;
   max-height: 100%;
   background-image: ${(props) => props.$imgPath && `url("${props.$imgPath}")`};
   background-repeat: no-repeat;
@@ -41,6 +41,10 @@ export const PhotoImg = styled.div`
   border-bottom-left-radius: ${(props) => !props.$isSwiperEnable && '0'};
   border-bottom-right-radius: ${(props) => !props.$isSwiperEnable && '0'};
   transition: border-radius 0.25s;
+
+  @media screen and (min-height: 700px) {
+    height: 568px;
+  }
 `;
 
 export const TopBlock = styled.div`

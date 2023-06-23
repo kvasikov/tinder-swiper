@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper } from 'swiper/react';
 import 'swiper/css';
 import { DATA_ATTR_PROFILE_ID } from '../../constants/attributes';
 import { swiperStore } from '../../store';
@@ -15,12 +15,19 @@ import {
   Content,
   SwiperWrapper,
   SideWrapper,
+  Slide,
 } from './SwiperLayout.styles';
 import { PROFILE_LIST } from '../../mock';
 
 export const SwiperLayout = observer(() => {
-  const { profileList, isSwiperEnable, setProfileList, setSwiperInstance, setCurrentProfileId } =
-    swiperStore;
+  const {
+    profileList,
+    isSwiperEnable,
+    currentProfileDataId,
+    setProfileList,
+    setSwiperInstance,
+    setCurrentProfileId,
+  } = swiperStore;
 
   // TODO: брать список с помощью API
   useEffect(() => {
@@ -55,9 +62,13 @@ export const SwiperLayout = observer(() => {
                     const dataProps = { [DATA_ATTR_PROFILE_ID]: profile.id };
 
                     return (
-                      <SwiperSlide key={profile.id} {...dataProps}>
+                      <Slide
+                        key={profile.id}
+                        $isActive={profile.id === currentProfileDataId}
+                        {...dataProps}
+                      >
                         <ProfilePreview profileData={profile} />
-                      </SwiperSlide>
+                      </Slide>
                     );
                   })}
                 </Swiper>
