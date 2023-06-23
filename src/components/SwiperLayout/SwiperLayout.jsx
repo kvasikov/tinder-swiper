@@ -22,6 +22,7 @@ import { PROFILE_LIST } from '../../mock';
 export const SwiperLayout = observer(() => {
   const {
     profileList,
+    swiperInstance,
     isSwiperEnable,
     currentProfileDataId,
     currentProfileData,
@@ -35,6 +36,19 @@ export const SwiperLayout = observer(() => {
     setProfileList(PROFILE_LIST);
   }, [setProfileList]);
 
+  const onSwiperInit = (swiper) => {
+    swiper.on('observerUpdate', (innerSwiper) => {
+      if (!swiperInstance) {
+        setCurrentProfileId(innerSwiper);
+        setSwiperInstance(innerSwiper);
+      }
+    });
+  };
+
+  const onSliderChange = (swiper) => {
+    setCurrentProfileId(swiper);
+  };
+
   return (
     <Box>
       <Wrapper>
@@ -44,20 +58,11 @@ export const SwiperLayout = observer(() => {
               <SwiperWrapper>
                 <Swiper
                   direction='vertical'
-                  onAfterInit={(swiper) => {
-                    setTimeout(() => {
-                      if (!swiper.slides) {
-                        return;
-                      }
-                      setCurrentProfileId(swiper);
-                      setSwiperInstance(swiper);
-                    });
-                  }}
+                  observer
+                  onAfterInit={onSwiperInit}
                   autoHeight={false}
                   style={{ height: '100%' }}
-                  onSlideChange={(swiper) => {
-                    setCurrentProfileId(swiper);
-                  }}
+                  onSlideChange={onSliderChange}
                 >
                   {profileList.map((profile) => {
                     const dataProps = { [DATA_ATTR_PROFILE_ID]: profile.id };
