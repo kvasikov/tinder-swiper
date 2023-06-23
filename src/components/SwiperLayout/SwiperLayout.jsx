@@ -4,6 +4,8 @@ import { Swiper } from 'swiper/react';
 import 'swiper/css';
 import { DATA_ATTR_PROFILE_ID } from '../../constants/attributes';
 import { swiperStore } from '../../store';
+import { breakpoints } from '../../assets/breakpoints';
+import { useMediaBreakpoint } from '../../hooks';
 import { ProfilePreview } from './ProfilePreview';
 import { ProfileInfo } from './ProfileInfo';
 import { ButtonBlockDesktop } from './ButtonBlockDesktop';
@@ -29,12 +31,21 @@ export const SwiperLayout = observer(() => {
     setProfileList,
     setSwiperInstance,
     setCurrentProfileId,
+    setSwiperStatus,
   } = swiperStore;
+
+  const isDesktop = useMediaBreakpoint(breakpoints.DESKTOP_S);
 
   // TODO: брать список с помощью API
   useEffect(() => {
     setProfileList(PROFILE_LIST);
   }, [setProfileList]);
+
+  useEffect(() => {
+    if (isDesktop && !isSwiperEnable) {
+      setSwiperStatus(true);
+    }
+  }, [isDesktop, isSwiperEnable, swiperInstance, setSwiperStatus]);
 
   const onSwiperInit = (swiper) => {
     swiper.on('observerUpdate', (innerSwiper) => {

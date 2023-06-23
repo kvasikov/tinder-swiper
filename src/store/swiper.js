@@ -59,6 +59,12 @@ export class SwiperStore {
   };
 
   setSwiperStatus = (status) => {
+    if (status) {
+      this.swiperInstance.enable();
+    } else {
+      this.swiperInstance.disable();
+    }
+
     runInAction(() => {
       this.isSwiperEnable = status;
     });

@@ -5,14 +5,14 @@ import { CustomIcon } from '../../../../common/CustomIcon';
 import { Box, IconWrapper, InfoIconWrapper } from './RightContent.styles';
 
 export const RightContent = observer(() => {
-  const { swiperInstance, isSwiperEnable, setSwiperStatus } = swiperStore;
+  const { isSwiperEnable, setSwiperStatus } = swiperStore;
 
   const onInfoClick = () => {
     if (isSwiperEnable) {
-      swiperInstance.disable();
+      // swiperInstance.disable();
       setSwiperStatus(false);
     } else {
-      swiperInstance.enable();
+      // swiperInstance.enable();
       setSwiperStatus(true);
     }
   };
