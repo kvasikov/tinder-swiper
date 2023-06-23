@@ -14,7 +14,7 @@ import man01 from './assets/photos/man-photo-01.png';
 
 export const PROFILE_LIST = [
   {
-    id: 1,
+    id: '1',
     webStatus: 'online', // статус профиля - в сети или не в сети [online | offline]
     photoList: [woman01, woman02],
     infoData: {
@@ -29,7 +29,7 @@ export const PROFILE_LIST = [
     },
   },
   {
-    id: 2,
+    id: '2',
     webStatus: 'offline',
     photoList: [woman02, man01],
     infoData: {
@@ -41,7 +41,7 @@ export const PROFILE_LIST = [
     },
   },
   {
-    id: 3,
+    id: '3',
     webStatus: 'offline',
     photoList: [man01],
     infoData: {

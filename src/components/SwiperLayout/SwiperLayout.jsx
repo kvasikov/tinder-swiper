@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import { DATA_ATTR_PROFILE_ID } from '../../constants/attributes';
 import { swiperStore } from '../../store';
 import { ProfilePreview } from './ProfilePreview';
 import { ProfileInfo } from './ProfileInfo';
@@ -18,7 +19,8 @@ import {
 import { PROFILE_LIST } from '../../mock';
 
 export const SwiperLayout = observer(() => {
-  const { profileList, isSwiperEnable, setProfileList, setSwiperInstance } = swiperStore;
+  const { profileList, isSwiperEnable, setProfileList, setSwiperInstance, setCurrentProfileId } =
+    swiperStore;
 
   // TODO: брать список с помощью API
   useEffect(() => {
@@ -33,18 +35,31 @@ export const SwiperLayout = observer(() => {
             <SideWrapper $isFullHeightMobile>
               <SwiperWrapper>
                 <Swiper
-                  direction={'vertical'}
+                  direction='vertical'
+                  onAfterInit={(swiper) => {
+                    setTimeout(() => {
+                      if (!swiper.slides) {
+                        return;
+                      }
+                      setCurrentProfileId(swiper);
+                      setSwiperInstance(swiper);
+                    });
+                  }}
                   autoHeight={false}
                   style={{ height: '100%' }}
-                  onSwiper={(swiper) => {
-                    setSwiperInstance(swiper);
+                  onSlideChange={(swiper) => {
+                    setCurrentProfileId(swiper);
                   }}
                 >
-                  {profileList.map((profile) => (
-                    <SwiperSlide key={profile.id}>
-                      <ProfilePreview profileData={profile} />
-                    </SwiperSlide>
-                  ))}
+                  {profileList.map((profile) => {
+                    const dataProps = { [DATA_ATTR_PROFILE_ID]: profile.id };
+
+                    return (
+                      <SwiperSlide key={profile.id} {...dataProps}>
+                        <ProfilePreview profileData={profile} />
+                      </SwiperSlide>
+                    );
+                  })}
                 </Swiper>
               </SwiperWrapper>
               <TweetButtonDesktop />
