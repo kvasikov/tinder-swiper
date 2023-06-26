@@ -42,7 +42,7 @@ const getGenerateNextList = (profileList) => {
 // end
 
 export const useGetProfileList = () => {
-  const [fetchList, isFetching] = useFetchReturn('/profile-list-mock.json');
+  const [fetchList, isFetching] = useFetchReturn('/tinder-swiper/profile-list-mock.json');
 
   const { setProfileList } = swiperStore;
 
