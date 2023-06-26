@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { observer } from 'mobx-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Virtual } from 'swiper';
+import SwiperCore, { Virtual, Controller } from 'swiper';
 import 'swiper/css';
 import { DATA_ATTR_PROFILE_ID } from '../../constants/attributes';
 import { breakpoints } from '../../assets/breakpoints';
@@ -22,16 +22,19 @@ import {
 import { useGetOffsetTop } from './useGetOffsetTop.hook';
 import { useGetProfileList } from './useGetProfileList.hook';
 
-SwiperCore.use([Virtual]);
+SwiperCore.use([Virtual, Controller]);
 
 export const SwiperLayout = observer(() => {
+  const prevIndex = useRef(null);
+  const wasInitRef = useRef(false);
+
+  const [swiperState, setSwiperState] = useState(null);
+
   const {
     profileList,
-    swiperInstance,
     isSwiperEnable,
     currentProfileDataId,
     currentProfileData,
-    setSwiperInstance,
     setCurrentProfileId,
     setSwiperStatus,
   } = swiperStore;
@@ -45,20 +48,33 @@ export const SwiperLayout = observer(() => {
   useEffect(() => {
     if (isDesktop && !isSwiperEnable) {
       setSwiperStatus(true);
+      swiperState.enable();
     }
-  }, [isDesktop, isSwiperEnable, swiperInstance, setSwiperStatus]);
+  }, [isDesktop, isSwiperEnable, swiperState, setSwiperStatus]);
 
-  const onSwiperInit = (swiper) => {
-    swiper.on('observerUpdate', (innerSwiper) => {
-      if (!swiperInstance) {
-        setCurrentProfileId(innerSwiper.visibleSlides);
-        setSwiperInstance(innerSwiper);
-      }
-    });
-  };
+  useEffect(() => {
+    if (!wasInitRef.current && swiperState?.mounted) {
+      // TODO: избавится от setTimeout
+      setTimeout(() => {
+        setCurrentProfileId(swiperState?.visibleSlides?.[swiperState.activeIndex]);
+      }, 1000);
+      wasInitRef.current = true;
+    }
+  }, [swiperState, setCurrentProfileId]);
 
   const onSliderChange = (swiper) => {
-    setCurrentProfileId(swiper.visibleSlides);
+    const isPrev =
+      prevIndex.current - swiper.activeIndex === 1 || prevIndex.current === swiper.activeIndex;
+
+    // TODO: убрать тернарник внутри тернарника
+    const currentIndex = isPrev
+      ? 0
+      : swiper.visibleSlides.length > 1
+      ? swiper.visibleSlides.length - 1
+      : 0;
+
+    setCurrentProfileId(swiper?.visibleSlides?.[currentIndex]);
+    prevIndex.current = swiper.activeIndex;
 
     if (swiper.virtual.slides.length - swiper.realIndex <= 1) {
       setTimeout(() => {
@@ -66,6 +82,8 @@ export const SwiperLayout = observer(() => {
       }, 100);
     }
   };
+
+  console.log(profileList.find((i) => i.id === currentProfileDataId)?.infoData?.name);
 
   return (
     <Box>
@@ -80,7 +98,7 @@ export const SwiperLayout = observer(() => {
                   observer
                   virtual
                   touchStartPreventDefault={false}
-                  onAfterInit={onSwiperInit}
+                  onAfterInit={setSwiperState}
                   onSlideChange={onSliderChange}
                 >
                   {profileList.map((profile, profileIndex) => {
@@ -98,7 +116,7 @@ export const SwiperLayout = observer(() => {
             </SideWrapper>
             <SideWrapper $isDesktop>
               <ProfileInfo profileData={currentProfileData} />
-              <ButtonBlockDesktop />
+              <ButtonBlockDesktop swiperState={swiperState} />
             </SideWrapper>
           </Content>
         </Container>

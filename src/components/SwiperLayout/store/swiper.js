@@ -9,9 +9,7 @@ configure({
   disableErrorBoundaries: true,
 });
 
-const getProfileIdByDataAttr = (visibleSlides) => {
-  const slideEl = visibleSlides?.[visibleSlides?.length - 1];
-
+const getProfileIdByDataAttr = (slideEl) => {
   if (!slideEl) {
     return null;
   }
@@ -23,7 +21,6 @@ const getProfileIdByDataAttr = (visibleSlides) => {
 export class SwiperStore {
   profileList = [];
   currentProfileDataId = null;
-  swiperInstance = null; // TODO: удалить - использовать вместо этого useSwiper
   isSwiperEnable = true;
   offsetTop = 0;
 
@@ -31,12 +28,8 @@ export class SwiperStore {
     makeAutoObservable(this);
   }
 
-  setSwiperInstance = (swiperInstance) => {
-    this.swiperInstance = swiperInstance;
-  };
-
-  setCurrentProfileId = (visibleSlides) => {
-    this.currentProfileDataId = getProfileIdByDataAttr(visibleSlides);
+  setCurrentProfileId = (visibleSlide) => {
+    this.currentProfileDataId = getProfileIdByDataAttr(visibleSlide);
   };
 
   setProfileList = (profileList = [], isInit) => {
@@ -49,12 +42,6 @@ export class SwiperStore {
   };
 
   setSwiperStatus = (status) => {
-    if (status) {
-      this.swiperInstance.enable();
-    } else {
-      this.swiperInstance.disable();
-    }
-
     this.isSwiperEnable = status;
   };
 

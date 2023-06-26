@@ -1,18 +1,14 @@
 import React from 'react';
-import { observer } from 'mobx-react';
-import { swiperStore } from '../store';
 import { CustomIcon } from '../../common/CustomIcon';
 import { Box, ButtonArrow, IconRotate } from './ButtonBlockDesktop.styles';
 
-export const ButtonBlockDesktop = observer(() => {
-  const { swiperInstance } = swiperStore;
-
+export const ButtonBlockDesktop = ({ swiperState }) => {
   const onPrevProfileClick = () => {
-    swiperInstance.slidePrev();
+    swiperState.slidePrev();
   };
 
   const onNextProfileClick = () => {
-    swiperInstance.slideNext();
+    swiperState.slideNext();
   };
 
   return (
@@ -25,4 +21,4 @@ export const ButtonBlockDesktop = observer(() => {
       </ButtonArrow>
     </Box>
   );
-});
+};
