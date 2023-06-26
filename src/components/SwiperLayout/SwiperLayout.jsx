@@ -20,7 +20,7 @@ import {
   Slide,
 } from './SwiperLayout.styles';
 import { useGetOffsetTop } from './useGetOffsetTop.hook';
-import { PROFILE_LIST } from '../../mock';
+import { useGetProfileList } from './useGetProfileList.hook';
 
 export const SwiperLayout = observer(() => {
   const {
@@ -29,7 +29,6 @@ export const SwiperLayout = observer(() => {
     isSwiperEnable,
     currentProfileDataId,
     currentProfileData,
-    setProfileList,
     setSwiperInstance,
     setCurrentProfileId,
     setSwiperStatus,
@@ -39,10 +38,7 @@ export const SwiperLayout = observer(() => {
 
   const { wrapperRef } = useGetOffsetTop({ currentProfileDataId });
 
-  // TODO: брать список с помощью API
-  useEffect(() => {
-    setProfileList(PROFILE_LIST);
-  }, [setProfileList]);
+  useGetProfileList();
 
   useEffect(() => {
     if (isDesktop && !isSwiperEnable) {
