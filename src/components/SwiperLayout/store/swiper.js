@@ -10,7 +10,7 @@ configure({
 });
 
 const getProfileIdByDataAttr = (visibleSlides) => {
-  const slideEl = visibleSlides?.[0];
+  const slideEl = visibleSlides?.[visibleSlides?.length - 1];
 
   if (!slideEl) {
     return null;
