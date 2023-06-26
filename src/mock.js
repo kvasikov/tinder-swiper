@@ -1,6 +1,7 @@
 import woman01 from './assets/photos/woman-photo-01.png';
 import woman02 from './assets/photos/woman-photo-02.png';
 import man01 from './assets/photos/man-photo-01.png';
+import man02 from './assets/photos/man-photo-02.png';
 
 /**
  * поле relationshipIntent
@@ -19,7 +20,7 @@ export const PROFILE_LIST = [
     infoData: {
       name: 'Мария',
       isVerified: true,
-      photoList: [woman01, woman02],
+      photoList: [woman01, woman02, man02],
       bio: 'По фото не реально понять нравится тебе человек или нет. Хочу живые свидания!!!',
       birthDate: '1996-06-26T04:57:48.779Z',
       gender: 'female',
@@ -173,7 +174,7 @@ export const PROFILE_LIST = [
     infoData: {
       name: 'Валерия',
       isVerified: false,
-      photoList: [woman02, man01],
+      photoList: [woman02, man02],
       bio: 'inst: @insta',
       birthDate: '1992-06-26T04:57:48.779Z',
       gender: 'female',
