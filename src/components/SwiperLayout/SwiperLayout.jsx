@@ -76,6 +76,7 @@ export const SwiperLayout = observer(() => {
                   onAfterInit={onSwiperInit}
                   autoHeight={false}
                   style={{ height: '100%' }}
+                  touchStartPreventDefault={false}
                   onSlideChange={onSliderChange}
                 >
                   {profileList.map((profile) => {

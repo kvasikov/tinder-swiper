@@ -73,16 +73,14 @@ export const Bullet = styled.div`
 
 export const HandlerWrapper = styled.div`
   position: absolute;
+  display: flex;
   left: 0;
   right: 0;
   top: 0;
   bottom: 128px; // TODO: считать исходя из высоты (является динамическим) контента с описанием профиля
 `;
 
-export const HandlerPhoto = styled.button`
-  appearance: none;
-  outline: none;
-  border: none;
+export const HandlerPhoto = styled.div`
   background-color: transparent;
   width: 50%;
   height: 100%;

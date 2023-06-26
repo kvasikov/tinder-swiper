@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { DATA_ATTR_PHOTO_WRAPPER_ID } from '../../constants/attributes';
 import { swiperStore } from '../SwiperLayout/store';
 
 export const useGetOffsetTop = ({ currentProfileDataId }) => {
@@ -19,7 +20,7 @@ export const useGetOffsetTop = ({ currentProfileDataId }) => {
       );
 
       const actualPhotoWrapper = wrapperRef.current.querySelector(
-        `[data-photo-wrapper-id="${currentProfileDataId}"]`,
+        `[${DATA_ATTR_PHOTO_WRAPPER_ID}="${currentProfileDataId}"]`,
       );
 
       if (!actualPhotoWrapper) {
@@ -35,7 +36,7 @@ export const useGetOffsetTop = ({ currentProfileDataId }) => {
     window.addEventListener('resize', execGetOffsetTop);
 
     return () => {
-      window.addEventListener('resize', execGetOffsetTop);
+      window.removeEventListener('resize', execGetOffsetTop);
     };
   }, [currentProfileDataId, setOffsetTop]);
 

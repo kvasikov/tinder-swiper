@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { observer } from 'mobx-react';
+import { DATA_ATTR_PHOTO_WRAPPER_ID } from '../../../../constants/attributes';
 import { swiperStore } from '../../store';
 import { ProfileInfo } from '../../ProfileInfo';
 import { LightningBlock } from '../LightningBlock';
@@ -35,21 +36,18 @@ export const PhotoBlock = observer(({ profileData }) => {
     });
   };
 
+  const attrProps = { [DATA_ATTR_PHOTO_WRAPPER_ID]: profileData.id };
+
   return (
     <Box $photoList={photoList}>
-      <PhotoWrapper
-        $isSwiperEnable={isSwiperEnable}
-        $offset={offsetTop}
-        data-photo-wrapper-id={profileData.id}
-      >
+      <PhotoWrapper {...attrProps} $isSwiperEnable={isSwiperEnable} $offset={offsetTop}>
         <HandlerWrapper>
-          <HandlerPhoto onClick={onChangePhoto(-1)} />
-          <HandlerPhoto onClick={onChangePhoto(1)} />
+          <HandlerPhoto onMouseUp={onChangePhoto(-1)} />
+          <HandlerPhoto onMouseUp={onChangePhoto(1)} />
         </HandlerWrapper>
         <TopBlock>
           <BulletListWrapper $isHide={photoList.length <= 1}>
             {photoList.map((_, index) => (
-              // TODO: сделать надежный reactKey
               <Bullet key={index} $isActive={index <= activePhotoIndex} />
             ))}
           </BulletListWrapper>
