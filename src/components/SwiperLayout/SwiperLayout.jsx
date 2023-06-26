@@ -83,8 +83,6 @@ export const SwiperLayout = observer(() => {
     }
   };
 
-  console.log(profileList.find((i) => i.id === currentProfileDataId)?.infoData?.name);
-
   return (
     <Box>
       <Wrapper>
