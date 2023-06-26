@@ -38,7 +38,7 @@ export const SwiperLayout = observer(() => {
 
   const { wrapperRef } = useGetOffsetTop({ currentProfileDataId });
 
-  useGetProfileList();
+  const { fetchDataList } = useGetProfileList();
 
   useEffect(() => {
     if (isDesktop && !isSwiperEnable) {
@@ -57,6 +57,12 @@ export const SwiperLayout = observer(() => {
 
   const onSliderChange = (swiper) => {
     setCurrentProfileId(swiper);
+
+    if (swiper.slides.length - swiper.activeIndex <= 2) {
+      setTimeout(() => {
+        fetchDataList();
+      }, 1000);
+    }
   };
 
   return (
@@ -68,11 +74,11 @@ export const SwiperLayout = observer(() => {
               <SwiperWrapper ref={wrapperRef}>
                 <Swiper
                   direction='vertical'
-                  observer
-                  onAfterInit={onSwiperInit}
-                  autoHeight={false}
                   style={{ height: '100%' }}
+                  observer
+                  autoHeight={false}
                   touchStartPreventDefault={false}
+                  onAfterInit={onSwiperInit}
                   onSlideChange={onSliderChange}
                 >
                   {profileList.map((profile) => {

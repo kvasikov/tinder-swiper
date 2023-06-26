@@ -213,6 +213,43 @@
           "title": "Долгосрочный партнер"
         }
       }
+    },
+    {
+      "id": "4",
+      "distance": 14,
+      "infoData": {
+        "name": "Максим",
+        "isVerified": true,
+        "photoList": [],
+        "bio": "",
+        "birthDate": "1998-02-26T04:57:48.779Z",
+        "gender": "male",
+        "city": {
+          "name": "Красноярск"
+        },
+        "jobs": [],
+        "schools": [],
+        "recentlyActive": false,
+        "selectedDescriptors": [
+          {
+            "id": "de_35",
+            "name": "Язык любви",
+            "prompt": "Какие проявления любви тебе нравятся?",
+            "choiceSelections": [
+              {
+                "id": "5",
+                "name": "Время вместе"
+              }
+            ],
+            "sectionId": "sec_4",
+            "sectionName": "Основное"
+          }
+        ],
+        "relationshipIntent": {
+          "descriptorChoiceId": "longTermPartner",
+          "title": "Долгосрочный партнер"
+        }
+      }
     }
   ]
 }

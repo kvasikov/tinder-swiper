@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 // TODO: start - при реальном АПИ удалить
 import woman01 from '../../assets/photos/woman-photo-01.png';
 import woman02 from '../../assets/photos/woman-photo-02.png';
@@ -46,20 +46,22 @@ export const useGetProfileList = () => {
 
   const { setProfileList } = swiperStore;
 
-  useEffect(() => {
-    const fetchDataList = async () => {
+  const fetchDataList = useCallback(
+    async (isInit = false) => {
       const { response, error } = await fetchList();
       if (!response || error) {
         // TODO: обработать ошибку
         return;
       }
-
       const profileList = getGenerateNextList(response.list); // TODO: при реальном апи удалить генерацию
-      setProfileList(profileList);
-    };
+      setProfileList(profileList, isInit);
+    },
+    [fetchList, setProfileList],
+  );
 
-    fetchDataList();
-  }, [fetchList, setProfileList]);
+  useEffect(() => {
+    fetchDataList(true);
+  }, [fetchDataList]);
 
-  return { isFetching };
+  return { isFetching, fetchDataList };
 };

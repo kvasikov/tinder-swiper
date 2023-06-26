@@ -1,4 +1,4 @@
-import { configure, makeAutoObservable } from 'mobx';
+import { configure, makeAutoObservable, toJS } from 'mobx';
 import { DATA_ATTR_PROFILE_ID } from '../../../constants/attributes';
 
 configure({
@@ -39,8 +39,8 @@ export class SwiperStore {
     this.currentProfileDataId = getProfileIdByDataAttr(swiperInstance);
   };
 
-  setProfileList = (profileList = []) => {
-    this.profileList = profileList;
+  setProfileList = (profileList = [], isInit) => {
+    this.profileList = isInit ? profileList : [...toJS(this.profileList), ...profileList];
   };
 
   setSwiperStatus = (status) => {
