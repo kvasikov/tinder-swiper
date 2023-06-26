@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
-import { Swiper } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Virtual } from 'swiper';
 import 'swiper/css';
 import { DATA_ATTR_PROFILE_ID } from '../../constants/attributes';
 import { breakpoints } from '../../assets/breakpoints';
@@ -17,10 +18,11 @@ import {
   Content,
   SwiperWrapper,
   SideWrapper,
-  Slide,
 } from './SwiperLayout.styles';
 import { useGetOffsetTop } from './useGetOffsetTop.hook';
 import { useGetProfileList } from './useGetProfileList.hook';
+
+SwiperCore.use([Virtual]);
 
 export const SwiperLayout = observer(() => {
   const {
@@ -49,19 +51,19 @@ export const SwiperLayout = observer(() => {
   const onSwiperInit = (swiper) => {
     swiper.on('observerUpdate', (innerSwiper) => {
       if (!swiperInstance) {
-        setCurrentProfileId(innerSwiper);
+        setCurrentProfileId(innerSwiper.visibleSlides);
         setSwiperInstance(innerSwiper);
       }
     });
   };
 
   const onSliderChange = (swiper) => {
-    setCurrentProfileId(swiper);
+    setCurrentProfileId(swiper.visibleSlides);
 
-    if (swiper.slides.length - swiper.activeIndex <= 2) {
+    if (swiper.virtual.slides.length - swiper.realIndex <= 1) {
       setTimeout(() => {
         fetchDataList();
-      }, 1000);
+      }, 100);
     }
   };
 
@@ -76,22 +78,18 @@ export const SwiperLayout = observer(() => {
                   direction='vertical'
                   style={{ height: '100%' }}
                   observer
-                  autoHeight={false}
+                  virtual
                   touchStartPreventDefault={false}
                   onAfterInit={onSwiperInit}
                   onSlideChange={onSliderChange}
                 >
-                  {profileList.map((profile) => {
+                  {profileList.map((profile, profileIndex) => {
                     const dataProps = { [DATA_ATTR_PROFILE_ID]: profile.id };
 
                     return (
-                      <Slide
-                        key={profile.id}
-                        $isActive={profile.id === currentProfileDataId}
-                        {...dataProps}
-                      >
+                      <SwiperSlide key={profile.id} virtualIndex={profileIndex} {...dataProps}>
                         <ProfilePreview profileData={profile} />
-                      </Slide>
+                      </SwiperSlide>
                     );
                   })}
                 </Swiper>

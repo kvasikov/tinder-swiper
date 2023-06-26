@@ -1,10 +1,5 @@
 import styled, { css } from 'styled-components';
-import { SwiperSlide } from 'swiper/react';
 import { breakpoints } from '../../assets/breakpoints';
-
-export const Slide = styled(SwiperSlide)`
-  z-index: ${(props) => (props.$isActive ? '1' : '-1')};
-`;
 
 export const Box = styled.div`
   position: fixed;

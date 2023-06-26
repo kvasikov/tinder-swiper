@@ -9,8 +9,8 @@ configure({
   disableErrorBoundaries: true,
 });
 
-const getProfileIdByDataAttr = (swiperInstance) => {
-  const slideEl = swiperInstance.slides[swiperInstance.activeIndex];
+const getProfileIdByDataAttr = (visibleSlides) => {
+  const slideEl = visibleSlides?.[0];
 
   if (!slideEl) {
     return null;
@@ -35,12 +35,17 @@ export class SwiperStore {
     this.swiperInstance = swiperInstance;
   };
 
-  setCurrentProfileId = (swiperInstance) => {
-    this.currentProfileDataId = getProfileIdByDataAttr(swiperInstance);
+  setCurrentProfileId = (visibleSlides) => {
+    this.currentProfileDataId = getProfileIdByDataAttr(visibleSlides);
   };
 
   setProfileList = (profileList = [], isInit) => {
-    this.profileList = isInit ? profileList : [...toJS(this.profileList), ...profileList];
+    if (isInit) {
+      this.profileList = profileList;
+      return;
+    }
+
+    this.profileList = [...toJS(this.profileList), ...profileList];
   };
 
   setSwiperStatus = (status) => {
