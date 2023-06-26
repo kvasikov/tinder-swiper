@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { observer } from 'mobx-react';
+import { useSwiper } from 'swiper/react';
 import { DATA_ATTR_PHOTO_WRAPPER_ID } from '../../../../constants/attributes';
 import { swiperStore } from '../../store';
 import { ProfileInfo } from '../../ProfileInfo';
@@ -18,6 +19,8 @@ import {
 } from './PhotoBlock.styles';
 
 export const PhotoBlock = observer(({ profileData }) => {
+  const swiper = useSwiper();
+
   const { isSwiperEnable, offsetTop } = swiperStore;
   const [activePhotoIndex, setActivePhotoIndex] = useState(0);
 
@@ -26,6 +29,10 @@ export const PhotoBlock = observer(({ profileData }) => {
   const activePhotoPath = photoList[activePhotoIndex];
 
   const onChangePhoto = (offsetIndex) => () => {
+    if (swiper.animating) {
+      return;
+    }
+
     setActivePhotoIndex((prevIndex) => {
       const newIndex = prevIndex + offsetIndex;
       if (newIndex >= photoList.length || newIndex < 0) {

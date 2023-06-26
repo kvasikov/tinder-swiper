@@ -23,7 +23,7 @@ const getProfileIdByDataAttr = (swiperInstance) => {
 export class SwiperStore {
   profileList = [];
   currentProfileDataId = null;
-  swiperInstance = null;
+  swiperInstance = null; // TODO: удалить - использовать вместо этого useSwiper
   isSwiperEnable = true;
   offsetTop = 0;
 
