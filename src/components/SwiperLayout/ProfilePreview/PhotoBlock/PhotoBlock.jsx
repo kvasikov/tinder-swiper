@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { observer } from 'mobx-react';
-import { useSwiper } from 'swiper/react';
 import { DATA_ATTR_PHOTO_WRAPPER_ID } from '../../../../constants/attributes';
 import { swiperStore } from '../../store';
 import { ProfileInfo } from '../../ProfileInfo';
@@ -19,28 +18,25 @@ import {
 } from './PhotoBlock.styles';
 
 export const PhotoBlock = observer(({ profileData }) => {
-  const swiper = useSwiper();
-
-  const { isSwiperEnable, offsetTop } = swiperStore;
-  const [activePhotoIndex, setActivePhotoIndex] = useState(0);
+  const { isSwiperEnable, swiperInstance, offsetTop, updateProfileData } = swiperStore;
 
   const photoList = profileData.infoData.photoList;
 
-  const activePhotoPath = photoList[activePhotoIndex];
+  const photoIndex = profileData.activePhotoIndex || 0;
+  const activePhotoPath = photoList[photoIndex];
 
   const onChangePhoto = (offsetIndex) => () => {
-    if (swiper.animating) {
+    if (swiperInstance.animating) {
       return;
     }
 
-    setActivePhotoIndex((prevIndex) => {
-      const newIndex = prevIndex + offsetIndex;
-      if (newIndex >= photoList.length || newIndex < 0) {
-        return prevIndex;
-      }
+    const prevIndex = photoIndex;
+    let newIndex = prevIndex + offsetIndex;
+    if (newIndex >= photoList.length || newIndex < 0) {
+      newIndex = prevIndex;
+    }
 
-      return newIndex;
-    });
+    updateProfileData(profileData.id, { activePhotoIndex: newIndex });
   };
 
   const attrProps = { [DATA_ATTR_PHOTO_WRAPPER_ID]: profileData.id };
@@ -55,7 +51,7 @@ export const PhotoBlock = observer(({ profileData }) => {
         <TopBlock>
           <BulletListWrapper $isHide={photoList.length <= 1}>
             {photoList.map((_, index) => (
-              <Bullet key={index} $isActive={index <= activePhotoIndex} />
+              <Bullet key={index} $isActive={index <= photoIndex} />
             ))}
           </BulletListWrapper>
           <LightningBlock />

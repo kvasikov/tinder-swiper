@@ -62,6 +62,16 @@ export class SwiperStore {
     this.offsetTop = offsetTop;
   };
 
+  updateProfileData = (profileId, newProfileData) => {
+    this.profileList = this.profileList.map((profile) => {
+      if (profile.id === profileId) {
+        return { ...profile, ...newProfileData };
+      }
+
+      return profile;
+    });
+  };
+
   get currentProfileData() {
     const profileId = this.currentProfileDataId;
     const profileData = this.profileList.find((profile) => profile.id === profileId);
