@@ -59,7 +59,10 @@ export const SideWrapper = styled.div`
 export const SwiperWrapper = styled.div`
   height: 100%;
   overflow: hidden;
-  border-radius: 16px;
+
+  @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
+    border-radius: 16px;
+  }
 `;
 
 export const Content = styled.div`
