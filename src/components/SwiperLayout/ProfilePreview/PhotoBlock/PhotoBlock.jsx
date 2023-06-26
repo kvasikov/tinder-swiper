@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { observer } from 'mobx-react';
-import { swiperStore } from '../../../../store';
+import { swiperStore } from '../../store';
 import { ProfileInfo } from '../../ProfileInfo';
 import { LightningBlock } from '../LightningBlock';
 import { InfoBlock } from '../InfoBlock';

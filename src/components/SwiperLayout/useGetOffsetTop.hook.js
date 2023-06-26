@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { swiperStore } from '../../store';
+import { swiperStore } from '../SwiperLayout/store';
 
 export const useGetOffsetTop = ({ currentProfileDataId }) => {
   const { setOffsetTop } = swiperStore;

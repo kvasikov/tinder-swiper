@@ -1,5 +1,5 @@
-import { action, configure, makeAutoObservable, computed, observable } from 'mobx';
-import { DATA_ATTR_PROFILE_ID } from '../constants/attributes';
+import { configure, makeAutoObservable } from 'mobx';
+import { DATA_ATTR_PROFILE_ID } from '../../../constants/attributes';
 
 configure({
   enforceActions: 'always',
@@ -28,19 +28,7 @@ export class SwiperStore {
   offsetTop = 0;
 
   constructor() {
-    makeAutoObservable(this, {
-      profileList: observable,
-      swiperInstance: observable,
-      isSwiperEnable: observable,
-      currentProfileDataId: observable,
-      offsetTop: observable,
-      currentProfileData: computed,
-      setSwiperInstance: action,
-      setCurrentProfileId: action,
-      setProfileList: action,
-      setSwiperStatus: action,
-      setOffsetTop: action,
-    });
+    makeAutoObservable(this);
   }
 
   setSwiperInstance = (swiperInstance) => {

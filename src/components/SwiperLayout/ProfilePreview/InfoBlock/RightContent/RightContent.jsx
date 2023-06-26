@@ -1,6 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import { swiperStore } from '../../../../../store';
+import { swiperStore } from '../../../store';
 import { CustomIcon } from '../../../../common/CustomIcon';
 import { Box, IconWrapper, InfoIconWrapper } from './RightContent.styles';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import { swiperStore } from '../../../../store';
+import { swiperStore } from '../../store';
 import { TweetButton } from '../../../common/TweetButton';
 import { LeftContent } from './LeftContent';
 import { RightContent } from './RightContent';
