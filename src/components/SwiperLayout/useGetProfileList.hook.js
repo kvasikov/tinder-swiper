@@ -41,6 +41,8 @@ const getGenerateNextList = (profileList) => {
 };
 // end
 
+let iter = 1000;
+
 export const useGetProfileList = () => {
   const [fetchList] = useFetchReturn('/tinder-swiper/profile-list-mock.json');
   const wasFetchingOnceRef = useRef(false);
@@ -50,7 +52,7 @@ export const useGetProfileList = () => {
     async (isInit = false) => {
       setFetchingList(true);
       // TODO: временный delay в 3 сек для разработки
-      const { response, error } = await fetchList(undefined, undefined, 30000, 3000);
+      const { response, error } = await fetchList(undefined, undefined, 30000, 3 * iter);
       if (!response || error) {
         setFetchingList(false);
         // TODO: обработать ошибку
@@ -59,6 +61,7 @@ export const useGetProfileList = () => {
       const profileList = getGenerateNextList(response.list); // TODO: при реальном апи удалить генерацию
       setProfileList(profileList, isInit);
       setFetchingList(false);
+      iter = 10000;
     },
     [fetchList, setFetchingList, setProfileList],
   );

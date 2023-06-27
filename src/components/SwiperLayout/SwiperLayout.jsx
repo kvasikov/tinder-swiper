@@ -21,6 +21,7 @@ import {
   SideWrapper,
   SpaceStyled,
   SwiperSlideStyled,
+  LastLoaderWrapper,
 } from './SwiperLayout.styles';
 import { useGetOffsetTop } from './useGetOffsetTop.hook';
 import { useGetProfileList } from './useGetProfileList.hook';
@@ -122,6 +123,11 @@ export const SwiperLayout = observer(() => {
                         {...dataProps}
                       >
                         <ProfilePreview profileData={profile} />
+                        {isFetchingList && profileIndex === profileList.length - 1 && (
+                          <LastLoaderWrapper>
+                            <Spin size='default' />
+                          </LastLoaderWrapper>
+                        )}
                       </SwiperSlideStyled>
                     );
                   })}

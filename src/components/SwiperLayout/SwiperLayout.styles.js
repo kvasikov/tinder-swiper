@@ -112,3 +112,11 @@ export const Content = styled.div`
     }
   }
 `;
+
+export const LastLoaderWrapper = styled.div`
+  position: relative;
+  top: 8px;
+  width: 100%;
+  z-index: 1;
+  text-align: center;
+`;
