@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
-import { DATA_ATTR_PHOTO_WRAPPER_ID } from '../../constants/attributes';
-import { swiperStore } from '../SwiperLayout/store';
+import { DATA_ATTR_PHOTO_WRAPPER_ID } from '../../../constants/attributes';
+import { swiperStore } from '../store';
 
 export const useGetOffsetTop = ({ currentProfileDataId }) => {
   const { setOffsetTop } = swiperStore;

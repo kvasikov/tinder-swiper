@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useRef } from 'react';
 // TODO: start - при реальном АПИ удалить
-import woman01 from '../../assets/photos/woman-photo-01.png';
-import woman02 from '../../assets/photos/woman-photo-02.png';
-import man01 from '../../assets/photos/man-photo-01.png';
-import man02 from '../../assets/photos/man-photo-02.png';
+import woman01 from '../../../assets/photos/woman-photo-01.png';
+import woman02 from '../../../assets/photos/woman-photo-02.png';
+import man01 from '../../../assets/photos/man-photo-01.png';
+import man02 from '../../../assets/photos/man-photo-02.png';
 // end
-import { useFetchReturn } from '../../hooks';
-import { swiperStore } from './store';
+import { useFetchReturn } from '../../../hooks';
+import { swiperStore } from '../store';
 
 // TODO: start - при реальном АПИ удалить
 const generateKey = () =>

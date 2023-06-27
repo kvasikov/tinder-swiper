@@ -1,0 +1,1 @@
+export { ProfileSwiper } from './ProfileSwiper';

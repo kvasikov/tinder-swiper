@@ -1,14 +1,5 @@
 import styled, { css, keyframes } from 'styled-components';
-import { SwiperSlide } from 'swiper/react';
-import { Space } from 'antd';
 import { breakpoints } from '../../assets/breakpoints';
-
-export const SpaceStyled = styled(Space)`
-  width: 100%;
-  height: 100%;
-  display: inline-flex;
-  justify-content: center;
-`;
 
 export const fadeIn = keyframes`
   0% {
@@ -17,12 +8,6 @@ export const fadeIn = keyframes`
   100% {
     opacity: 1;
   }
-`;
-
-export const SwiperSlideStyled = styled(SwiperSlide)`
-  animation-name: ${fadeIn};
-  animation-iteration-count: 1;
-  animation-duration: 0.25s;
 `;
 
 export const Box = styled.div`
@@ -80,15 +65,6 @@ export const SideWrapper = styled.div`
     `};
 `;
 
-export const SwiperWrapper = styled.div`
-  height: 100%;
-  overflow: hidden;
-
-  @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
-    border-radius: 16px;
-  }
-`;
-
 export const Content = styled.div`
   height: 100%;
 
@@ -111,12 +87,4 @@ export const Content = styled.div`
       margin-left: 4px;
     }
   }
-`;
-
-export const LastLoaderWrapper = styled.div`
-  position: relative;
-  top: 8px;
-  width: 100%;
-  z-index: 1;
-  text-align: center;
 `;
