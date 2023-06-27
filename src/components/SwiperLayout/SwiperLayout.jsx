@@ -99,7 +99,11 @@ export const SwiperLayout = observer(() => {
                   direction='vertical'
                   style={{ height: '100%' }}
                   observer
-                  virtual
+                  virtual={{
+                    enabled: true,
+                    addSlidesAfter: 2,
+                    addSlidesBefore: 2,
+                  }}
                   touchStartPreventDefault={false}
                   onAfterInit={setSwiperState}
                   onSlideChange={onSliderChange}
