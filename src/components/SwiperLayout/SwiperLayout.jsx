@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { observer } from 'mobx-react';
 import { Spin } from 'antd';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper } from 'swiper/react';
 import SwiperCore, { Virtual, Controller } from 'swiper';
 import 'swiper/css';
 import { DATA_ATTR_PROFILE_ID } from '../../constants/attributes';
@@ -20,6 +20,7 @@ import {
   SwiperWrapper,
   SideWrapper,
   SpaceStyled,
+  SwiperSlideStyled,
 } from './SwiperLayout.styles';
 import { useGetOffsetTop } from './useGetOffsetTop.hook';
 import { useGetProfileList } from './useGetProfileList.hook';
@@ -103,21 +104,25 @@ export const SwiperLayout = observer(() => {
                   onSlideChange={onSliderChange}
                 >
                   {isFetchingList && profileList.length === 0 && (
-                    <SwiperSlide>
+                    <SwiperSlideStyled>
                       <SpaceStyled direction='vertical'>
                         <Spin tip='Loading' size='large'>
                           <div />
                         </Spin>
                       </SpaceStyled>
-                    </SwiperSlide>
+                    </SwiperSlideStyled>
                   )}
                   {profileList.map((profile, profileIndex) => {
                     const dataProps = { [DATA_ATTR_PROFILE_ID]: profile.id };
 
                     return (
-                      <SwiperSlide key={profile.id} virtualIndex={profileIndex} {...dataProps}>
+                      <SwiperSlideStyled
+                        key={profile.id}
+                        virtualIndex={profileIndex}
+                        {...dataProps}
+                      >
                         <ProfilePreview profileData={profile} />
-                      </SwiperSlide>
+                      </SwiperSlideStyled>
                     );
                   })}
                 </Swiper>

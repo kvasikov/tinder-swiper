@@ -63,10 +63,6 @@ export const useGetProfileList = () => {
     [fetchList, setFetchingList, setProfileList],
   );
 
-  // useEffect(() => {
-  //   setFetchingList(isFetching);
-  // }, [isFetching, setFetchingList]);
-
   useEffect(() => {
     if (wasFetchingOnceRef.current) {
       return;

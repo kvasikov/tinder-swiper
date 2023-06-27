@@ -1,4 +1,5 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
+import { SwiperSlide } from 'swiper/react';
 import { Space } from 'antd';
 import { breakpoints } from '../../assets/breakpoints';
 
@@ -7,6 +8,21 @@ export const SpaceStyled = styled(Space)`
   height: 100%;
   display: inline-flex;
   justify-content: center;
+`;
+
+export const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
+export const SwiperSlideStyled = styled(SwiperSlide)`
+  animation-name: ${fadeIn};
+  animation-iteration-count: 1;
+  animation-duration: 0.25s;
 `;
 
 export const Box = styled.div`
