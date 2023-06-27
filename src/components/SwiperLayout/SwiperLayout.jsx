@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { observer } from 'mobx-react';
+import { Spin } from 'antd';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Virtual, Controller } from 'swiper';
 import 'swiper/css';
@@ -18,6 +19,7 @@ import {
   Content,
   SwiperWrapper,
   SideWrapper,
+  SpaceStyled,
 } from './SwiperLayout.styles';
 import { useGetOffsetTop } from './useGetOffsetTop.hook';
 import { useGetProfileList } from './useGetProfileList.hook';
@@ -31,6 +33,7 @@ export const SwiperLayout = observer(() => {
   const [swiperState, setSwiperState] = useState(null);
 
   const {
+    isFetchingList,
     profileList,
     isSwiperEnable,
     currentProfileDataId,
@@ -53,14 +56,16 @@ export const SwiperLayout = observer(() => {
   }, [isDesktop, isSwiperEnable, swiperState, setSwiperStatus]);
 
   useEffect(() => {
-    if (!wasInitRef.current && swiperState?.mounted) {
-      // TODO: избавится от setTimeout
-      setTimeout(() => {
-        setCurrentProfileId(swiperState?.visibleSlides?.[swiperState.activeIndex]);
-      }, 1000);
-      wasInitRef.current = true;
+    if (!wasInitRef.current && swiperState?.mounted && !isFetchingList) {
+      swiperState.on('observerUpdate', (_swiper) => {
+        if (wasInitRef.current) {
+          return;
+        }
+        setCurrentProfileId(_swiper.visibleSlides[_swiper.activeIndex]);
+        wasInitRef.current = true;
+      });
     }
-  }, [swiperState, setCurrentProfileId]);
+  }, [swiperState, isFetchingList, setCurrentProfileId]);
 
   const onSliderChange = (swiper) => {
     const isPrev =
@@ -77,9 +82,7 @@ export const SwiperLayout = observer(() => {
     prevIndex.current = swiper.activeIndex;
 
     if (swiper.virtual.slides.length - swiper.realIndex <= 1) {
-      setTimeout(() => {
-        fetchDataList();
-      }, 100);
+      fetchDataList();
     }
   };
 
@@ -99,6 +102,15 @@ export const SwiperLayout = observer(() => {
                   onAfterInit={setSwiperState}
                   onSlideChange={onSliderChange}
                 >
+                  {isFetchingList && profileList.length === 0 && (
+                    <SwiperSlide>
+                      <SpaceStyled direction='vertical'>
+                        <Spin tip='Loading' size='large'>
+                          <div />
+                        </Spin>
+                      </SpaceStyled>
+                    </SwiperSlide>
+                  )}
                   {profileList.map((profile, profileIndex) => {
                     const dataProps = { [DATA_ATTR_PROFILE_ID]: profile.id };
 

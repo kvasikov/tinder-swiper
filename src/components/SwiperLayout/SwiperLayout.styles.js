@@ -1,5 +1,13 @@
 import styled, { css } from 'styled-components';
+import { Space } from 'antd';
 import { breakpoints } from '../../assets/breakpoints';
+
+export const SpaceStyled = styled(Space)`
+  width: 100%;
+  height: 100%;
+  display: inline-flex;
+  justify-content: center;
+`;
 
 export const Box = styled.div`
   position: fixed;

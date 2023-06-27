@@ -9,13 +9,13 @@ configure({
   disableErrorBoundaries: true,
 });
 
-const getProfileIdByDataAttr = (slideEl) => {
+const getProfileIdByDataAttr = (slideEl, defaultProfileId) => {
   if (!slideEl) {
-    return null;
+    return defaultProfileId;
   }
 
   const profileId = slideEl.getAttribute(DATA_ATTR_PROFILE_ID);
-  return profileId || null;
+  return profileId || defaultProfileId;
 };
 
 export class SwiperStore {
@@ -23,13 +23,18 @@ export class SwiperStore {
   currentProfileDataId = null;
   isSwiperEnable = true;
   offsetTop = 0;
+  isFetchingList = true;
 
   constructor() {
     makeAutoObservable(this);
   }
 
+  setFetchingList = (isFetching) => {
+    this.isFetchingList = isFetching;
+  };
+
   setCurrentProfileId = (visibleSlide) => {
-    this.currentProfileDataId = getProfileIdByDataAttr(visibleSlide);
+    this.currentProfileDataId = getProfileIdByDataAttr(visibleSlide, this.profileList[0].id);
   };
 
   setProfileList = (profileList = [], isInit) => {

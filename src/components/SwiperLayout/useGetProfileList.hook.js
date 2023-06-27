@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 // TODO: start - при реальном АПИ удалить
 import woman01 from '../../assets/photos/woman-photo-01.png';
 import woman02 from '../../assets/photos/woman-photo-02.png';
@@ -42,26 +42,39 @@ const getGenerateNextList = (profileList) => {
 // end
 
 export const useGetProfileList = () => {
-  const [fetchList, isFetching] = useFetchReturn('/tinder-swiper/profile-list-mock.json');
-
-  const { setProfileList } = swiperStore;
+  const [fetchList] = useFetchReturn('/tinder-swiper/profile-list-mock.json');
+  const wasFetchingOnceRef = useRef(false);
+  const { setProfileList, setFetchingList } = swiperStore;
 
   const fetchDataList = useCallback(
     async (isInit = false) => {
-      const { response, error } = await fetchList();
+      setFetchingList(true);
+      // TODO: временный delay в 3 сек для разработки
+      const { response, error } = await fetchList(undefined, undefined, 30000, 3000);
       if (!response || error) {
+        setFetchingList(false);
         // TODO: обработать ошибку
         return;
       }
       const profileList = getGenerateNextList(response.list); // TODO: при реальном апи удалить генерацию
       setProfileList(profileList, isInit);
+      setFetchingList(false);
     },
-    [fetchList, setProfileList],
+    [fetchList, setFetchingList, setProfileList],
   );
 
+  // useEffect(() => {
+  //   setFetchingList(isFetching);
+  // }, [isFetching, setFetchingList]);
+
   useEffect(() => {
+    if (wasFetchingOnceRef.current) {
+      return;
+    }
+
     fetchDataList(true);
+    wasFetchingOnceRef.current = true;
   }, [fetchDataList]);
 
-  return { isFetching, fetchDataList };
+  return { fetchDataList };
 };
