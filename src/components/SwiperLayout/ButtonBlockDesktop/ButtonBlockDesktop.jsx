@@ -1,6 +1,6 @@
 import React from 'react';
-import { CustomIcon } from '../../common/CustomIcon';
-import { Box, ButtonArrow, IconRotate } from './ButtonBlockDesktop.styles';
+import { CircleIcon } from '../../common/CircleIcon';
+import { Box, IconDown } from './ButtonBlockDesktop.styles';
 
 export const ButtonBlockDesktop = ({ swiperState }) => {
   const onPrevProfileClick = () => {
@@ -13,12 +13,8 @@ export const ButtonBlockDesktop = ({ swiperState }) => {
 
   return (
     <Box>
-      <ButtonArrow onClick={onPrevProfileClick}>
-        <CustomIcon kind='arrowUp' />
-      </ButtonArrow>
-      <ButtonArrow onClick={onNextProfileClick}>
-        <IconRotate kind='arrowUp' />
-      </ButtonArrow>
+      <CircleIcon design='transparent' kind='arrowUp' onClick={onPrevProfileClick} />
+      <IconDown kind='arrowUp' onClick={onNextProfileClick} />
     </Box>
   );
 };

@@ -2,8 +2,8 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import { useSwiper } from 'swiper/react';
 import { swiperStore } from '../../../store';
-import { CustomIcon } from '../../../../common/CustomIcon';
-import { Box, IconWrapper, InfoIconWrapper } from './RightContent.styles';
+import { CircleIcon } from '../../../../common/CircleIcon';
+import { Box, MoreInfoIcon } from './RightContent.styles';
 
 export const RightContent = observer(() => {
   const swiper = useSwiper();
@@ -21,12 +21,8 @@ export const RightContent = observer(() => {
 
   return (
     <Box>
-      <IconWrapper>
-        <CustomIcon kind='chat' />
-      </IconWrapper>
-      <InfoIconWrapper $isSwiperEnable={isSwiperEnable} onClick={onInfoClick}>
-        <CustomIcon kind='arrowUp' />
-      </InfoIconWrapper>
+      <CircleIcon kind='chat' />
+      <MoreInfoIcon kind='arrowUp' $isSwiperEnable={isSwiperEnable} onClick={onInfoClick} />
     </Box>
   );
 });

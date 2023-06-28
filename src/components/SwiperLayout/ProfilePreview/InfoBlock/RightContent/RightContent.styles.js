@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { CircleIcon } from '../../../../common/CircleIcon';
 import { breakpoints } from '../../../../../assets/breakpoints';
 
 export const Box = styled.div`
@@ -12,25 +13,7 @@ export const Box = styled.div`
   }
 `;
 
-export const IconWrapper = styled.button`
-  outline: none;
-  appearance: none;
-  padding: 0;
-  margin: 0;
-  cursor: pointer;
-  border-radius: 100%;
-  height: 40px;
-  width: 40px;
-  border: 2px solid white;
-  background-color: rgba(10, 13, 39, 0.15);
-  backdrop-filter: blur(20px);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const InfoIconWrapper = styled(IconWrapper)`
+export const MoreInfoIcon = styled(CircleIcon)`
   margin-top: 16px;
   position: relative;
   top: ${(props) => (props.$isSwiperEnable ? 0 : '36px')};

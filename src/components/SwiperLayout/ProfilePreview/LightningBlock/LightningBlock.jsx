@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CustomIcon } from '../../../common/CustomIcon';
+import { CircleIcon } from '../../../common/CircleIcon';
 import { Modal } from '../../../common/Modal';
 import { Box } from './LightningBlock.styles';
 
@@ -11,8 +11,8 @@ export const LightningBlock = () => {
 
   return (
     <>
-      <Box type='button' onClick={onOpenModal}>
-        <CustomIcon kind='lightning' />
+      <Box>
+        <CircleIcon design='dark' kind='lightning' onClick={onOpenModal} />
       </Box>
       <Modal isOpen={isOpenModal} onCancel={onCloseModal}>
         <div>content</div>
