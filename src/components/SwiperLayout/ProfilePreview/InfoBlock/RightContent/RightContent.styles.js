@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { CircleIcon } from '../../../../common/CircleIcon';
+import { breakpoints } from '../../../../../assets/breakpoints';
 
 export const Box = styled.div`
   display: flex;
@@ -15,4 +16,8 @@ export const MoreInfoIcon = styled(CircleIcon)`
   transform: ${(props) => !props.$isSwiperEnable && 'rotate(-180deg)'};
   transition: transform 0.25s, top 0.25s, background-color 0.25s;
   background-color: ${(props) => !props.$isSwiperEnable && '#ff00d6'};
+
+  @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
+    display: none;
+  }
 `;
