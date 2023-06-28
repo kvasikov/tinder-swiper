@@ -53,6 +53,7 @@ export const Textarea = styled(Input.TextArea)`
   &&& {
     min-height: 147px;
     resize: none;
+    font-size: 16px;
   }
 `;
 
