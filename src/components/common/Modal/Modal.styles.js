@@ -20,3 +20,7 @@ export const CloseIconWrapper = styled.button`
   border-radius: 100%;
   top: 16px;
 `;
+
+export const Content = styled.div`
+  padding: 16px;
+`;

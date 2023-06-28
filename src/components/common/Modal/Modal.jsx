@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Modal as ModalAntd } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 import { breakpoints } from '../../../assets/breakpoints';
 import { useMediaBreakpoint } from '../../../hooks';
-import { DrawerStyled, CloseIconWrapper } from './Modal.styles';
+import { DrawerStyled, CloseIconWrapper, Content } from './Modal.styles';
 
 export const Modal = ({
   isOpen,
@@ -14,13 +14,49 @@ export const Modal = ({
   onConfirm,
   onCancel,
 }) => {
+  const [contentEl, setContentEl] = useState(null);
+  const [mobileDrawerHeight, setMobileDrawerHeight] = useState(mobileModalHeight);
   const isDesktop = useMediaBreakpoint(breakpoints.DESKTOP_S);
+
+  const elRef = useCallback((node) => {
+    if (node !== null) {
+      setContentEl(node);
+    }
+  }, []);
 
   const closeIcon = (
     <CloseIconWrapper onClick={onCancel}>
       <CloseOutlined style={{ fontSize: '16px' }} />
     </CloseIconWrapper>
   );
+
+  useEffect(() => {
+    const checkHeightContent = () => {
+      if (!contentEl || isDesktop) {
+        return;
+      }
+
+      const viewportHeight = Math.max(
+        document.documentElement.clientHeight || 0,
+        window.innerHeight || 0,
+      );
+      const contentHeight = contentEl.clientHeight;
+
+      if (contentHeight >= viewportHeight) {
+        setMobileDrawerHeight('100%');
+      } else {
+        setMobileDrawerHeight(mobileModalHeight);
+      }
+    };
+
+    checkHeightContent();
+
+    window.addEventListener('resize', checkHeightContent);
+
+    return () => {
+      window.removeEventListener('resize', checkHeightContent);
+    };
+  }, [contentEl, isDesktop, mobileModalHeight]);
 
   return (
     <>
@@ -41,17 +77,17 @@ export const Modal = ({
       )}
       {!isDesktop && (
         <DrawerStyled
-          bodyStyle={{ padding: '16px' }}
+          bodyStyle={{ padding: 0 }}
           footer={null}
           title={title}
-          height={mobileModalHeight}
+          height={mobileDrawerHeight}
           placement='bottom'
           open={isOpen}
           closable={false}
           onClose={onCancel}
         >
           {closeIcon}
-          <div>{children}</div>
+          <Content ref={elRef}>{children}</Content>
         </DrawerStyled>
       )}
     </>
