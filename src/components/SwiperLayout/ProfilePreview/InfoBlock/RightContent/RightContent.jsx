@@ -2,7 +2,7 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import { useSwiper } from 'swiper/react';
 import { swiperStore } from '../../../store';
-import { CircleIcon } from '../../../../common/CircleIcon';
+import { SuperLikeBlock } from './SuperLikeBlock';
 import { Box, MoreInfoIcon } from './RightContent.styles';
 
 export const RightContent = observer(() => {
@@ -21,7 +21,7 @@ export const RightContent = observer(() => {
 
   return (
     <Box>
-      <CircleIcon kind='chat' />
+      <SuperLikeBlock />
       <MoreInfoIcon kind='arrowUp' $isSwiperEnable={isSwiperEnable} onClick={onInfoClick} />
     </Box>
   );

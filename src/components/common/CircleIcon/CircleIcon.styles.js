@@ -11,7 +11,7 @@ export const Box = styled.button`
   appearance: none;
   padding: 0;
   margin: 0;
-  cursor: pointer;
+  cursor: ${({ onClick }) => typeof onClick === 'function' && 'pointer'};
   border-radius: 100%;
   height: 40px;
   width: 40px;

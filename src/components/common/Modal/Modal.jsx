@@ -41,7 +41,7 @@ export const Modal = ({
       )}
       {!isDesktop && (
         <DrawerStyled
-          bodyStyle={{ padding: 0 }}
+          bodyStyle={{ padding: '16px' }}
           footer={null}
           title={title}
           height={mobileModalHeight}
@@ -51,7 +51,7 @@ export const Modal = ({
           onClose={onCancel}
         >
           {closeIcon}
-          {children}
+          <div>{children}</div>
         </DrawerStyled>
       )}
     </>

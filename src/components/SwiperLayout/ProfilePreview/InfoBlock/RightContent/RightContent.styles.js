@@ -1,16 +1,11 @@
 import styled from 'styled-components';
 import { CircleIcon } from '../../../../common/CircleIcon';
-import { breakpoints } from '../../../../../assets/breakpoints';
 
 export const Box = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
   bottom: -24px;
-
-  @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
-    display: none;
-  }
 `;
 
 export const MoreInfoIcon = styled(CircleIcon)`
