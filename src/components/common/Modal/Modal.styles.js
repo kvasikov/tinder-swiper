@@ -16,6 +16,7 @@ export const CloseIconWrapper = styled.button`
   position: absolute;
   right: 16px;
   background: rgba(151, 164, 211, 0.1);
+  color: #0a0d27;
   padding: 8px;
   border-radius: 100%;
   top: 16px;
