@@ -1,16 +1,32 @@
 import React from 'react';
 import { Modal as ModalAntd } from 'antd';
+import { CloseOutlined } from '@ant-design/icons';
 import { breakpoints } from '../../../assets/breakpoints';
 import { useMediaBreakpoint } from '../../../hooks';
-import { DrawerStyled } from './Modal.styles';
+import { DrawerStyled, CloseIconWrapper } from './Modal.styles';
 
-export const Modal = ({ isOpen, title, children, onConfirm, onCancel }) => {
+export const Modal = ({
+  isOpen,
+  title,
+  children,
+  desktopModalWidth,
+  mobileModalHeight,
+  onConfirm,
+  onCancel,
+}) => {
   const isDesktop = useMediaBreakpoint(breakpoints.DESKTOP_S);
+
+  const closeIcon = (
+    <CloseIconWrapper onClick={onCancel}>
+      <CloseOutlined style={{ fontSize: '16px' }} />
+    </CloseIconWrapper>
+  );
 
   return (
     <>
       {isDesktop && (
         <ModalAntd
+          width={desktopModalWidth}
           title={title}
           open={isOpen}
           centered
@@ -19,6 +35,7 @@ export const Modal = ({ isOpen, title, children, onConfirm, onCancel }) => {
           onOk={onConfirm}
           onCancel={onCancel}
         >
+          {closeIcon}
           {children}
         </ModalAntd>
       )}
@@ -27,11 +44,13 @@ export const Modal = ({ isOpen, title, children, onConfirm, onCancel }) => {
           bodyStyle={{ padding: 0 }}
           footer={null}
           title={title}
+          height={mobileModalHeight}
           placement='bottom'
           open={isOpen}
           closable={false}
           onClose={onCancel}
         >
+          {closeIcon}
           {children}
         </DrawerStyled>
       )}
