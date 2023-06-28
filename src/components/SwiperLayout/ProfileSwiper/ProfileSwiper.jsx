@@ -29,12 +29,8 @@ export const ProfileSwiper = observer(({ setSwiperState }) => {
     const isPrev =
       prevIndex.current - swiper.activeIndex === 1 || prevIndex.current === swiper.activeIndex;
 
-    // TODO: убрать тернарник внутри тернарника
-    const currentIndex = isPrev
-      ? 0
-      : swiper.visibleSlides.length > 1
-      ? swiper.visibleSlides.length - 1
-      : 0;
+    const actualIndex = swiper.visibleSlides.length > 1 ? swiper.visibleSlides.length - 1 : 0;
+    const currentIndex = isPrev ? 0 : actualIndex;
 
     setCurrentProfileId(swiper?.visibleSlides?.[currentIndex]);
     prevIndex.current = swiper.activeIndex;
