@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
+import { observer } from 'mobx-react';
 import { swiperStore } from '../../../SwiperLayout/store';
 import { Status } from '../../Status';
 import { Box } from './StatusBlock.styles';
 
-export const StatusBlock = ({ profileData }) => {
+export const StatusBlock = observer(({ profileData }) => {
   const { isSwiperEnable, updateProfileData } = swiperStore;
 
   useEffect(() => {
@@ -27,4 +28,4 @@ export const StatusBlock = ({ profileData }) => {
       />
     </Box>
   );
-};
+});
