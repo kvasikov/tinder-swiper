@@ -42,6 +42,10 @@ export const PhotoImg = styled.div`
   border-bottom-right-radius: ${(props) => !props.$isSwiperEnable && '0'};
   transition: border-radius 0.25s;
 
+  @media screen and (min-height: 600px) {
+    height: 500px;
+  }
+
   @media screen and (min-height: 700px) {
     height: 568px;
   }
