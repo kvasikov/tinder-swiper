@@ -1,1 +1,2 @@
-export { default as swiperStore, MAX_DESCRIPTOR_COUNT } from './swiper';
+export { default as swiperStore } from './swiper';
+export { MAX_DESCRIPTOR_COUNT } from './utils';
