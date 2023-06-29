@@ -8,7 +8,7 @@ import {
 } from './InfoItemBlock.styles';
 
 export const InfoItemBlock = ({ color, profileData }) => {
-  const isShow = profileData.activePhotoIndex === 0 || !profileData.activePhotoIndex;
+  const isShow = profileData.activePhotoIndex === 0;
 
   if (!isShow) {
     return null;

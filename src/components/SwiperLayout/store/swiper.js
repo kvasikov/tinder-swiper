@@ -20,6 +20,28 @@ const getProfileIdByDataAttr = (slideEl, defaultProfileId) => {
 
 export const MAX_DESCRIPTOR_COUNT = 4;
 
+const getDescriptorList = (profileData) => {
+  const selectedDescriptors = profileData?.infoData?.selectedDescriptors;
+
+  if (
+    !selectedDescriptors ||
+    (Array.isArray(selectedDescriptors) && selectedDescriptors.length === 0)
+  ) {
+    return [];
+  }
+
+  const sectionData =
+    selectedDescriptors.reduce((result, item) => {
+      return {
+        ...result,
+        [item.sectionId]: result[item.sectionId] ? [...result[item.sectionId], item] : [item],
+      };
+    }, {}) || {};
+
+  const sectionDataList = Object.values(sectionData);
+  return sectionDataList;
+};
+
 export class SwiperStore {
   profileList = [];
   currentProfileDataId = null;
@@ -40,12 +62,21 @@ export class SwiperStore {
   };
 
   setProfileList = (profileList = [], isInit) => {
+    const dataProfileList = profileList.map((profile) => ({
+      ...profile,
+      activePhotoIndex: 0,
+      infoData: {
+        ...profile.infoData,
+        sectionDataList: getDescriptorList(profile),
+      },
+    }));
+
     if (isInit) {
-      this.profileList = profileList;
+      this.profileList = dataProfileList;
       return;
     }
 
-    this.profileList = [...toJS(this.profileList), ...profileList];
+    this.profileList = [...toJS(this.profileList), ...dataProfileList];
   };
 
   setSwiperStatus = (status) => {
@@ -70,26 +101,6 @@ export class SwiperStore {
     const profileId = this.currentProfileDataId;
     const profileData = this.profileList.find((profile) => profile.id === profileId);
     return profileData || null;
-  }
-
-  get currentDescriptorList() {
-    const profileData = toJS(this.currentProfileData);
-
-    const sectionData =
-      profileData?.infoData?.selectedDescriptors?.reduce((result, item) => {
-        return {
-          ...result,
-          [item.sectionId]: result[item.sectionId] ? [...result[item.sectionId], item] : [item],
-        };
-      }, {}) || {};
-
-    const sectionDataList = Object.values(sectionData);
-    const activePhotoIndex = profileData?.activePhotoIndex || 0;
-
-    const index = activePhotoIndex <= 1 ? 0 : activePhotoIndex - 1;
-    let currentList = sectionDataList[index] || [];
-
-    return currentList;
   }
 }
 

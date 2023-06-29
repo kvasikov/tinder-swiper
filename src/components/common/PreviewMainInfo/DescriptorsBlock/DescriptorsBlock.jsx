@@ -6,15 +6,21 @@ import { swiperStore, MAX_DESCRIPTOR_COUNT } from '../../../SwiperLayout/store';
 import { Box } from './DescriptorsBlock.styles';
 
 export const DescriptorsBlock = observer(({ profileData }) => {
-  const swiper = useSwiper();
   const isShow = profileData.activePhotoIndex >= 1;
-  const { currentDescriptorList, isSwiperEnable, setSwiperStatus } = swiperStore;
 
-  if (!isShow || currentDescriptorList.length === 0 || !isSwiperEnable) {
+  const swiper = useSwiper();
+  const { isSwiperEnable, setSwiperStatus } = swiperStore;
+
+  const sectionDataList = profileData?.infoData?.sectionDataList;
+  const activePhotoIndex = profileData.activePhotoIndex;
+  const index = activePhotoIndex <= 1 ? 0 : activePhotoIndex - 1;
+  let descriptorList = sectionDataList[index] || [];
+
+  if (!isShow || descriptorList?.length === 0 || !isSwiperEnable) {
     return null;
   }
 
-  const isShowMoreButton = currentDescriptorList.length > MAX_DESCRIPTOR_COUNT;
+  const isShowMoreButton = descriptorList.length > MAX_DESCRIPTOR_COUNT;
 
   const onInfoClick = () => {
     if (isSwiperEnable) {
@@ -28,7 +34,7 @@ export const DescriptorsBlock = observer(({ profileData }) => {
 
   return (
     <Box>
-      {currentDescriptorList
+      {descriptorList
         .filter((_, index) => index < MAX_DESCRIPTOR_COUNT)
         .map((item) => (
           <Badge key={item.id} design='pink' text={item.choiceSelections[0].name} />

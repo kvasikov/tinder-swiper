@@ -24,7 +24,7 @@ export const PhotoBlock = observer(({ profileData }) => {
 
   const photoList = profileData.infoData.photoList;
 
-  const photoIndex = profileData.activePhotoIndex || 0;
+  const photoIndex = profileData.activePhotoIndex;
   const activePhotoPath = photoList[photoIndex];
 
   const onChangePhoto = (offsetIndex) => () => {
