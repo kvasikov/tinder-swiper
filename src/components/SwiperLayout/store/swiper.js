@@ -1,5 +1,5 @@
 import { configure, makeAutoObservable, toJS } from 'mobx';
-import { getDescriptorList, getProfileIdByDataAttr, getStatusData } from './utils';
+import { getDescriptorList, getStatusData } from './utils';
 
 configure({
   enforceActions: 'always',
@@ -24,8 +24,8 @@ export class SwiperStore {
     this.isFetchingList = isFetching;
   };
 
-  setCurrentProfileId = (visibleSlide) => {
-    this.currentProfileDataId = getProfileIdByDataAttr(visibleSlide, this.profileList?.[0]?.id);
+  setCurrentProfileId = (profileId) => {
+    this.currentProfileDataId = profileId;
   };
 
   setProfileList = (profileList = [], isInit) => {

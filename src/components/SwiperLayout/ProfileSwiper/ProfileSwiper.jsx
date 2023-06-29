@@ -5,7 +5,7 @@ import { Swiper } from 'swiper/react';
 import SwiperCore, { Virtual, Controller } from 'swiper';
 import 'swiper/css';
 import { DATA_ATTR_PROFILE_ID } from '../../../constants/attributes';
-import { swiperStore } from '../store';
+import { swiperStore, getProfileIdByDataAttr } from '../store';
 import { ProfilePreview } from '../ProfilePreview';
 import {
   SwiperWrapper,
@@ -21,7 +21,13 @@ SwiperCore.use([Virtual, Controller]);
 export const ProfileSwiper = observer(({ setSwiperState }) => {
   const prevIndex = useRef(null);
 
-  const { isFetchingList, profileList, currentProfileDataId, setCurrentProfileId } = swiperStore;
+  const {
+    isFetchingList,
+    profileList,
+    currentProfileDataId,
+    setCurrentProfileId,
+    updateProfileData,
+  } = swiperStore;
   const { fetchDataList } = useGetProfileList();
   const { wrapperRef } = useGetOffsetTop({ currentProfileDataId });
 
@@ -32,8 +38,21 @@ export const ProfileSwiper = observer(({ setSwiperState }) => {
     const actualIndex = swiper.visibleSlides.length > 1 ? swiper.visibleSlides.length - 1 : 0;
     const currentIndex = isPrev ? 0 : actualIndex;
 
-    setCurrentProfileId(swiper?.visibleSlides?.[currentIndex]);
+    const profileId = getProfileIdByDataAttr(
+      swiper?.visibleSlides?.[currentIndex],
+      profileList?.[0].id,
+    );
+
+    setCurrentProfileId(profileId);
     prevIndex.current = swiper.activeIndex;
+
+    const profileData = profileList.find((profile) => profile.id === currentProfileDataId);
+
+    if (profileData?.isTweet === null && !isPrev) {
+      setTimeout(() => {
+        updateProfileData(profileData.id, { isTweet: false });
+      }, 500);
+    }
 
     if (swiper.virtual.slides.length - swiper.realIndex <= 1) {
       fetchDataList();

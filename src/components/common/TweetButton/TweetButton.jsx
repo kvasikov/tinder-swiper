@@ -8,7 +8,7 @@ export const TweetButton = observer(({ swiperState }) => {
   const { currentProfileData, updateProfileData } = swiperStore;
 
   const onTweet = () => {
-    if (!currentProfileData.id || swiperState.animating || currentProfileData.isTweet) {
+    if (!currentProfileData.id || swiperState.animating) {
       return;
     }
 

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { observer } from 'mobx-react';
 import { breakpoints } from '../../assets/breakpoints';
 import { useMediaBreakpoint } from '../../hooks';
-import { swiperStore } from './store';
+import { swiperStore, getProfileIdByDataAttr } from './store';
 import { ProfileInfo } from './ProfileInfo';
 import { ButtonBlockDesktop } from './ButtonBlockDesktop';
 import { TweetButtonDesktop } from './TweetButtonDesktop';
@@ -16,6 +16,7 @@ export const SwiperLayout = observer(() => {
 
   const {
     isFetchingList,
+    profileList,
     isSwiperEnable,
     currentProfileData,
     setCurrentProfileId,
@@ -37,11 +38,17 @@ export const SwiperLayout = observer(() => {
         if (wasInitRef.current) {
           return;
         }
-        setCurrentProfileId(_swiper.visibleSlides[_swiper.activeIndex]);
+
+        const profileId = getProfileIdByDataAttr(
+          _swiper.visibleSlides[_swiper.activeIndex],
+          profileList?.[0].id,
+        );
+
+        setCurrentProfileId(profileId);
         wasInitRef.current = true;
       });
     }
-  }, [swiperState, isFetchingList, setCurrentProfileId]);
+  }, [swiperState, profileList, isFetchingList, setCurrentProfileId]);
 
   return (
     <Box>
@@ -49,12 +56,12 @@ export const SwiperLayout = observer(() => {
         <Container $isSwiperEnable={isSwiperEnable}>
           <Content>
             <SideWrapper $isFullHeightMobile>
-              <ProfileSwiper setSwiperState={setSwiperState} />
+              <ProfileSwiper swiperState={swiperState} setSwiperState={setSwiperState} />
               <TweetButtonDesktop swiperState={swiperState} />
             </SideWrapper>
             <SideWrapper $isDesktop>
               <ProfileInfo profileData={currentProfileData} />
-              <ButtonBlockDesktop swiperState={swiperState} />
+              <ButtonBlockDesktop profileData={currentProfileData} swiperState={swiperState} />
             </SideWrapper>
           </Content>
         </Container>

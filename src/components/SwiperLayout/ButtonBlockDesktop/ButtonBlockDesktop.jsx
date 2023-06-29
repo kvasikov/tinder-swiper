@@ -1,8 +1,11 @@
 import React from 'react';
+import { swiperStore } from '../store';
 import { CircleIcon } from '../../common/CircleIcon';
 import { Box, IconDown } from './ButtonBlockDesktop.styles';
 
-export const ButtonBlockDesktop = ({ swiperState }) => {
+export const ButtonBlockDesktop = ({ profileData, swiperState }) => {
+  const { updateProfileData } = swiperStore;
+
   const onPrevProfileClick = () => {
     if (swiperState.animating) {
       return;
@@ -17,6 +20,12 @@ export const ButtonBlockDesktop = ({ swiperState }) => {
     }
 
     swiperState.slideNext(250, false);
+
+    if (profileData.isTweet === null) {
+      setTimeout(() => {
+        updateProfileData(profileData.id, { isTweet: false });
+      }, 500);
+    }
   };
 
   return (
