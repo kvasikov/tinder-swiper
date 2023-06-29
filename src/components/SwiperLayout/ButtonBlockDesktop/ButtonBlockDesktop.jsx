@@ -4,11 +4,19 @@ import { Box, IconDown } from './ButtonBlockDesktop.styles';
 
 export const ButtonBlockDesktop = ({ swiperState }) => {
   const onPrevProfileClick = () => {
-    swiperState.slidePrev();
+    if (swiperState.animating) {
+      return;
+    }
+
+    swiperState.slidePrev(250, false);
   };
 
   const onNextProfileClick = () => {
-    swiperState.slideNext();
+    if (swiperState.animating) {
+      return;
+    }
+
+    swiperState.slideNext(250, false);
   };
 
   return (

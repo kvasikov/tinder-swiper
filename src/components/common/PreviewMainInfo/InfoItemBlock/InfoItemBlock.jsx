@@ -1,4 +1,6 @@
 import React from 'react';
+import { useMediaBreakpoint } from '../../../../hooks';
+import { breakpoints } from '../../../../assets/breakpoints';
 import {
   OnlineIcon,
   IconStyled,
@@ -8,7 +10,8 @@ import {
 } from './InfoItemBlock.styles';
 
 export const InfoItemBlock = ({ color, profileData }) => {
-  const isShow = profileData.activePhotoIndex === 0;
+  const isDesktop = useMediaBreakpoint(breakpoints.DESKTOP_S);
+  const isShow = (profileData.activePhotoIndex === 0 && !isDesktop) || isDesktop;
 
   if (!isShow) {
     return null;
