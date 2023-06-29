@@ -61,7 +61,12 @@ export const PhotoBlock = observer(({ profileData }) => {
         </TopBlock>
         <PhotoImg $imgPath={activePhotoPath} $isSwiperEnable={isSwiperEnable} />
         <InfoBlock profileData={profileData} />
-        {profileData.isStatusShow && <BackgroundStatus $design={profileData.statusData.design} />}
+        {profileData.isStatusShow && (
+          <BackgroundStatus
+            $isSwiperEnable={isSwiperEnable}
+            $design={profileData.statusData.design}
+          />
+        )}
       </PhotoWrapper>
       <InfoWrapper $isSwiperEnable={isSwiperEnable}>
         <ProfileInfo profileData={profileData} />

@@ -4,7 +4,7 @@ import { Status } from '../../Status';
 import { Box } from './StatusBlock.styles';
 
 export const StatusBlock = ({ profileData }) => {
-  const { updateProfileData } = swiperStore;
+  const { isSwiperEnable, updateProfileData } = swiperStore;
 
   useEffect(() => {
     if (profileData.activePhotoIndex >= 3 && !profileData.isStatusShow) {
@@ -14,7 +14,7 @@ export const StatusBlock = ({ profileData }) => {
     }
   }, [profileData.activePhotoIndex, profileData.id, profileData.isStatusShow, updateProfileData]);
 
-  if (!profileData.isStatusShow) {
+  if (!profileData.isStatusShow || !isSwiperEnable) {
     return null;
   }
 

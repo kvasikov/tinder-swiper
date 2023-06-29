@@ -105,6 +105,7 @@ const bgColorByDesign = {
 };
 
 export const BackgroundStatus = styled.div`
+  display: ${(props) => !props.$isSwiperEnable && 'none'};
   position: absolute;
   height: 150px;
   left: 0;
@@ -113,4 +114,8 @@ export const BackgroundStatus = styled.div`
   background: ${({ $design }) => bgColorByDesign[$design]};
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
+
+  @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
+    display: none;
+  }
 `;
