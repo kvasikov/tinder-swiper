@@ -54,7 +54,7 @@ export const PROFILE_LIST = [
               name: 'Рак',
             },
           ],
-          sectionDd: 'sec_4',
+          sectionId: 'sec_4',
           sectionName: 'Основное',
         },
         {
