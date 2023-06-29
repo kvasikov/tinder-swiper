@@ -31,6 +31,7 @@ export class SwiperStore {
   setProfileList = (profileList = [], isInit) => {
     const dataProfileList = profileList.map((profile) => ({
       ...profile,
+      isTweet: null, // null | boolean
       activePhotoIndex: 0,
       isStatusShow: false,
       statusData: getStatusData(profile),

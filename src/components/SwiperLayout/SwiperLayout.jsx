@@ -50,7 +50,7 @@ export const SwiperLayout = observer(() => {
           <Content>
             <SideWrapper $isFullHeightMobile>
               <ProfileSwiper setSwiperState={setSwiperState} />
-              <TweetButtonDesktop />
+              <TweetButtonDesktop swiperState={swiperState} />
             </SideWrapper>
             <SideWrapper $isDesktop>
               <ProfileInfo profileData={currentProfileData} />

@@ -6,6 +6,7 @@ import { swiperStore } from '../../store';
 import { ProfileInfo } from '../../ProfileInfo';
 import { LightningBlock } from '../LightningBlock';
 import { InfoBlock } from '../InfoBlock';
+import { TweetStatus } from './TweetStatus';
 import {
   Box,
   PhotoImg,
@@ -51,6 +52,7 @@ export const PhotoBlock = observer(({ profileData }) => {
           <HandlerPhoto onMouseUp={onChangePhoto(-1)} />
           <HandlerPhoto onMouseUp={onChangePhoto(1)} />
         </HandlerWrapper>
+        <TweetStatus profileData={profileData} />
         <TopBlock>
           <BulletListWrapper $isHide={photoList.length <= 1}>
             {photoList.map((_, index) => (

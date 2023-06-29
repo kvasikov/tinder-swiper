@@ -7,4 +7,5 @@ export const Box = styled.div`
   animation-name: ${fadeIn};
   animation-iteration-count: 1;
   animation-duration: 0.25s;
+  user-select: none;
 `;

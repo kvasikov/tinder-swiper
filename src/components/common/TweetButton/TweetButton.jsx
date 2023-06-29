@@ -1,12 +1,28 @@
 import React from 'react';
+import { observer } from 'mobx-react';
+import { swiperStore } from '../../SwiperLayout/store';
 import { CustomIcon } from '../CustomIcon';
-import { Box, Button } from './TweetButton.styles';
+import { Box, Text } from './TweetButton.styles';
 
-export const TweetButton = () => {
+export const TweetButton = observer(({ swiperState }) => {
+  const { currentProfileData, updateProfileData } = swiperStore;
+
+  const onTweet = () => {
+    if (!currentProfileData.id || swiperState.animating || currentProfileData.isTweet) {
+      return;
+    }
+
+    swiperState.slideNext(250, false);
+
+    setTimeout(() => {
+      updateProfileData(currentProfileData.id, { isTweet: true });
+    }, 500);
+  };
+
   return (
-    <Box>
+    <Box onClick={onTweet}>
       <CustomIcon kind='tweet' />
-      <Button>Tweet</Button>
+      <Text>Tweet</Text>
     </Box>
   );
-};
+});
