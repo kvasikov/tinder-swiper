@@ -6,7 +6,7 @@ import { swiperStore, MAX_DESCRIPTOR_COUNT } from '../../../SwiperLayout/store';
 import { Box } from './DescriptorsBlock.styles';
 
 export const DescriptorsBlock = observer(({ profileData }) => {
-  const isShow = profileData.activePhotoIndex >= 1;
+  const isShow = profileData.activePhotoIndex >= 1 && profileData.activePhotoIndex <= 2;
 
   const swiper = useSwiper();
   const { isSwiperEnable, setSwiperStatus } = swiperStore;

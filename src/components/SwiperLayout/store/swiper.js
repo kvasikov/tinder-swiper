@@ -42,6 +42,49 @@ const getDescriptorList = (profileData) => {
   return sectionDataList;
 };
 
+const STATUS_DATA = {
+  longTermPartner: {
+    text: 'Долгосрочный партнер',
+    iconKind: 'heart',
+    design: 'pink',
+  },
+  justHaveFun: {
+    text: 'Просто повеселиться',
+    iconKind: 'fun',
+    design: 'yellow',
+  },
+  longOrShortTermPartner: {
+    text: 'Долго или краткосрочно',
+    iconKind: 'manyHeart',
+    design: 'purple',
+  },
+  lookingForFriends: {
+    text: 'Ищу друзей',
+    iconKind: 'hands',
+    design: 'green',
+  },
+  stillFiguringItOut: {
+    text: 'Все еще разбираюсь',
+    iconKind: 'monkey',
+    design: 'blue',
+  },
+  expressRelationship: {
+    text: 'Экспресс отношения',
+    iconKind: 'fire',
+    design: 'orange',
+  },
+};
+
+const getStatusData = (profileData) => {
+  const statusId = profileData?.infoData?.relationshipIntent?.descriptorChoiceId;
+
+  if (!statusId) {
+    return null;
+  }
+
+  return STATUS_DATA[statusId];
+};
+
 export class SwiperStore {
   profileList = [];
   currentProfileDataId = null;
@@ -65,6 +108,8 @@ export class SwiperStore {
     const dataProfileList = profileList.map((profile) => ({
       ...profile,
       activePhotoIndex: 0,
+      isStatusShow: false,
+      statusData: getStatusData(profile),
       infoData: {
         ...profile.infoData,
         sectionDataList: getDescriptorList(profile),

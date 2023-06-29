@@ -94,3 +94,23 @@ export const InfoWrapper = styled.div`
     display: none;
   }
 `;
+
+const bgColorByDesign = {
+  pink: 'linear-gradient(180deg, rgba(255, 0, 214, 0.00) 0%, rgba(255, 0, 214, 0.50) 100%)',
+  yellow: 'linear-gradient(180deg, rgba(255, 184, 0, 0.00) 0%, rgba(255, 184, 0, 0.50) 100%)',
+  purple: 'linear-gradient(180deg, rgba(219, 0, 255, 0.00) 0%, rgba(219, 0, 255, 0.50) 100%)',
+  green: 'linear-gradient(180deg, rgba(24, 216, 112, 0) 0%, rgba(24, 216, 112, 0.5) 100%)',
+  blue: 'linear-gradient(180deg, rgba(5, 0, 255, 0) 0%, rgba(7, 1, 255, 0.5) 100%)',
+  orange: 'linear-gradient(180deg, rgba(255, 122, 0, 0) 0%, rgba(255, 122, 0, 0.5) 100%)',
+};
+
+export const BackgroundStatus = styled.div`
+  position: absolute;
+  height: 150px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: ${({ $design }) => bgColorByDesign[$design]};
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+`;

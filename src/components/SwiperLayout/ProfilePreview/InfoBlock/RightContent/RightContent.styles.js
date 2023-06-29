@@ -3,10 +3,12 @@ import { CircleIcon } from '../../../../common/CircleIcon';
 import { breakpoints } from '../../../../../assets/breakpoints';
 
 export const Box = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   position: relative;
   bottom: -24px;
+  z-index: 10;
 `;
 
 export const MoreInfoIcon = styled(CircleIcon)`

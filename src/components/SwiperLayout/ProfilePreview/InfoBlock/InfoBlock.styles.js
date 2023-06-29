@@ -14,6 +14,7 @@ export const Content = styled.div`
   display: flex;
   align-items: flex-end;
   padding: 0 16px;
+  z-index: 10;
 `;
 
 export const TweetButtonWrapper = styled.div`
@@ -23,6 +24,7 @@ export const TweetButtonWrapper = styled.div`
   bottom: -56px;
   transition: opacity 0.25s;
   opacity: ${(props) => (props.$isSwiperEnable ? '1' : '0')};
+  z-index: 10;
 
   @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
     display: none;
