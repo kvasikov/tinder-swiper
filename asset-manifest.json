@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/tinder-swiper/static/css/main.a3bca7cf.css",
-    "main.js": "/tinder-swiper/static/js/main.39484fad.js",
+    "main.js": "/tinder-swiper/static/js/main.a6e747f6.js",
     "static/js/787.74292e40.chunk.js": "/tinder-swiper/static/js/787.74292e40.chunk.js",
     "static/media/man-photo-01.png": "/tinder-swiper/static/media/man-photo-01.fc5eeeea6b6586512104.png",
     "static/media/man-photo-02.png": "/tinder-swiper/static/media/man-photo-02.aee0dac1774b96419870.png",
@@ -11,12 +11,12 @@
     "static/media/Raleway-ExtraBold.ttf": "/tinder-swiper/static/media/Raleway-ExtraBold.8b7015f87bd9859e1382.ttf",
     "static/media/Raleway-Bold.ttf": "/tinder-swiper/static/media/Raleway-Bold.18960343b3da49bfd353.ttf",
     "static/media/woman-photo-01.png": "/tinder-swiper/static/media/woman-photo-01.6abf1862ce58784f326b.png",
-    "static/media/monkey.svg": "/tinder-swiper/static/media/monkey.01c8729fa6be3a1ae9a673d4a8f03497.svg",
-    "static/media/fun.svg": "/tinder-swiper/static/media/fun.e17e10ba20c57c9dbd476becb09e2c5b.svg",
-    "static/media/fire.svg": "/tinder-swiper/static/media/fire.405c4343be47390120731cd5940fc6fd.svg",
-    "static/media/hands.svg": "/tinder-swiper/static/media/hands.2da738004daee2c49f9e6b94ea0da2f8.svg",
-    "static/media/heart.svg": "/tinder-swiper/static/media/heart.d3388a687c39471ecdc5fc6722ebe690.svg",
-    "static/media/many-heart.svg": "/tinder-swiper/static/media/many-heart.feb6440d1c775a3ae62a2c9f3e11240d.svg",
+    "static/media/monkey.svg": "/tinder-swiper/static/media/monkey.78058e33e72d0a3477c0ee34bd67345d.svg",
+    "static/media/fun.svg": "/tinder-swiper/static/media/fun.6a95290e92a63274fe9ca5e7cc49fc9b.svg",
+    "static/media/fire.svg": "/tinder-swiper/static/media/fire.1fb6c6025ac1b6b0c8393a6459f4f57f.svg",
+    "static/media/hands.svg": "/tinder-swiper/static/media/hands.3145bc7d66f6a7dd78baea1514ef1a9e.svg",
+    "static/media/heart.svg": "/tinder-swiper/static/media/heart.fda016ff0f23e75a63a1844f2beb3629.svg",
+    "static/media/many-heart.svg": "/tinder-swiper/static/media/many-heart.94131bfdfeb8d248d562ec3a28e8a98a.svg",
     "static/media/home.svg": "/tinder-swiper/static/media/home.b18d55554a8c97be93560d9ac724cc07.svg",
     "static/media/tweet.svg": "/tinder-swiper/static/media/tweet.7fefddebc11c075950a7ea1b14a570f8.svg",
     "static/media/lightning.svg": "/tinder-swiper/static/media/lightning.e81b3acc1c93cfc9c8c59c8f83b8d70c.svg",
@@ -29,11 +29,11 @@
     "index.html": "/tinder-swiper/index.html",
     "static/media/arrow-up.svg": "/tinder-swiper/static/media/arrow-up.1feb9219134fc3e31a452f1892bfcbdf.svg",
     "main.a3bca7cf.css.map": "/tinder-swiper/static/css/main.a3bca7cf.css.map",
-    "main.39484fad.js.map": "/tinder-swiper/static/js/main.39484fad.js.map",
+    "main.a6e747f6.js.map": "/tinder-swiper/static/js/main.a6e747f6.js.map",
     "787.74292e40.chunk.js.map": "/tinder-swiper/static/js/787.74292e40.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a3bca7cf.css",
-    "static/js/main.39484fad.js"
+    "static/js/main.a6e747f6.js"
   ]
 }
