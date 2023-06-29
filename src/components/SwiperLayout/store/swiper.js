@@ -18,6 +18,8 @@ const getProfileIdByDataAttr = (slideEl, defaultProfileId) => {
   return profileId || defaultProfileId;
 };
 
+export const MAX_DESCRIPTOR_COUNT = 4;
+
 export class SwiperStore {
   profileList = [];
   currentProfileDataId = null;
@@ -34,7 +36,7 @@ export class SwiperStore {
   };
 
   setCurrentProfileId = (visibleSlide) => {
-    this.currentProfileDataId = getProfileIdByDataAttr(visibleSlide, this.profileList[0].id);
+    this.currentProfileDataId = getProfileIdByDataAttr(visibleSlide, this.profileList?.[0]?.id);
   };
 
   setProfileList = (profileList = [], isInit) => {
@@ -68,6 +70,26 @@ export class SwiperStore {
     const profileId = this.currentProfileDataId;
     const profileData = this.profileList.find((profile) => profile.id === profileId);
     return profileData || null;
+  }
+
+  get currentDescriptorList() {
+    const profileData = toJS(this.currentProfileData);
+
+    const sectionData =
+      profileData?.infoData?.selectedDescriptors?.reduce((result, item) => {
+        return {
+          ...result,
+          [item.sectionId]: result[item.sectionId] ? [...result[item.sectionId], item] : [item],
+        };
+      }, {}) || {};
+
+    const sectionDataList = Object.values(sectionData);
+    const activePhotoIndex = profileData?.activePhotoIndex || 0;
+
+    const index = activePhotoIndex <= 1 ? 0 : activePhotoIndex - 1;
+    let currentList = sectionDataList[index] || [];
+
+    return currentList;
   }
 }
 

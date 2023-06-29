@@ -1,0 +1,1 @@
+export { InfoItemBlock } from './InfoItemBlock';

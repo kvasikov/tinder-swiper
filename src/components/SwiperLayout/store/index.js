@@ -1,1 +1,1 @@
-export { default as swiperStore } from './swiper';
+export { default as swiperStore, MAX_DESCRIPTOR_COUNT } from './swiper';
