@@ -9,25 +9,25 @@ export const DescriptorsBlock = observer(({ profileData }) => {
   const isShow = profileData.activePhotoIndex >= 1 && profileData.activePhotoIndex <= 2;
 
   const swiper = useSwiper();
-  const { isSwiperEnable, setSwiperStatus } = swiperStore;
+  const { isShowMoreProfileInfo, setMoreInfoStatus } = swiperStore;
 
   const sectionDataList = profileData?.infoData?.sectionDataList;
   const activePhotoIndex = profileData.activePhotoIndex;
   const index = activePhotoIndex <= 1 ? 0 : activePhotoIndex - 1;
   let descriptorList = sectionDataList[index] || [];
 
-  if (!isShow || descriptorList?.length === 0 || !isSwiperEnable) {
+  if (!isShow || descriptorList?.length === 0 || !isShowMoreProfileInfo) {
     return null;
   }
 
   const isShowMoreButton = descriptorList.length > MAX_DESCRIPTOR_COUNT;
 
   const onInfoClick = () => {
-    if (isSwiperEnable) {
-      setSwiperStatus(false);
+    if (isShowMoreProfileInfo) {
+      setMoreInfoStatus(false);
       swiper.disable();
     } else {
-      setSwiperStatus(true);
+      setMoreInfoStatus(true);
       swiper.enable();
     }
   };

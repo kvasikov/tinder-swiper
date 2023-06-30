@@ -9,15 +9,15 @@ import { Box, MoreInfoIcon } from './RightContent.styles';
 
 export const RightContent = observer(() => {
   const swiper = useSwiper();
-  const { isSwiperEnable, setSwiperStatus } = swiperStore;
+  const { isShowMoreProfileInfo, setMoreInfoStatus } = swiperStore;
   const isDesktop = useMediaBreakpoint(breakpoints.DESKTOP_S);
 
   const onInfoClick = () => {
-    if (isSwiperEnable) {
-      setSwiperStatus(false);
+    if (isShowMoreProfileInfo) {
+      setMoreInfoStatus(false);
       !isDesktop && swiper.disable();
     } else {
-      setSwiperStatus(true);
+      setMoreInfoStatus(true);
       !isDesktop && swiper.enable();
     }
   };
@@ -25,7 +25,11 @@ export const RightContent = observer(() => {
   return (
     <Box>
       <SuperLikeBlock />
-      <MoreInfoIcon kind='arrowUp' $isSwiperEnable={isSwiperEnable} onClick={onInfoClick} />
+      <MoreInfoIcon
+        kind='arrowUp'
+        $isShowMoreProfileInfo={isShowMoreProfileInfo}
+        onClick={onInfoClick}
+      />
     </Box>
   );
 });

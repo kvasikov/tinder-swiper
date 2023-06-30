@@ -5,10 +5,10 @@ import { PhotoBlock } from './PhotoBlock';
 import { Box } from './ProfilePreview.styles';
 
 export const ProfilePreview = observer(({ profileData }) => {
-  const { isSwiperEnable } = swiperStore;
+  const { isShowMoreProfileInfo } = swiperStore;
 
   return (
-    <Box $isSwiperEnable={isSwiperEnable}>
+    <Box $isShowMoreProfileInfo={isShowMoreProfileInfo}>
       <PhotoBlock profileData={profileData} />
     </Box>
   );

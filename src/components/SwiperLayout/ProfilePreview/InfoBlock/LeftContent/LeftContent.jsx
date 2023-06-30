@@ -6,11 +6,11 @@ import { PreviewMainInfo } from '../../../../common/PreviewMainInfo';
 import { Box } from './LeftContent.styles';
 
 export const LeftContent = observer(({ profileData }) => {
-  const { isSwiperEnable } = swiperStore;
+  const { isShowMoreProfileInfo } = swiperStore;
   const swiper = useSwiper();
 
   return (
-    <Box $isHide={isSwiperEnable}>
+    <Box $isHide={isShowMoreProfileInfo}>
       <PreviewMainInfo profileData={profileData} isShownMobile swiperState={swiper} />
     </Box>
   );

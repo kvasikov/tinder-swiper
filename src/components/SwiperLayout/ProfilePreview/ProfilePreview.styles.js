@@ -3,7 +3,7 @@ import { fadeIn } from '../SwiperLayout.styles';
 
 export const Box = styled.div`
   height: 100%;
-  overflow: ${(props) => !props.$isSwiperEnable && 'auto'};
+  overflow: ${(props) => !props.$isShowMoreProfileInfo && 'auto'};
   animation-name: ${fadeIn};
   animation-iteration-count: 1;
   animation-duration: 0.25s;

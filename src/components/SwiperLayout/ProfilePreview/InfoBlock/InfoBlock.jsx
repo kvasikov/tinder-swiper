@@ -10,7 +10,7 @@ import { Box, Content, TweetButtonWrapper, LeftWrapper, RightWrapper } from './I
 export const InfoBlock = observer(({ profileData }) => {
   const swiper = useSwiper();
 
-  const { isSwiperEnable } = swiperStore;
+  const { isShowMoreProfileInfo } = swiperStore;
 
   return (
     <Box>
@@ -18,7 +18,7 @@ export const InfoBlock = observer(({ profileData }) => {
         <LeftWrapper>
           <LeftContent profileData={profileData} />
         </LeftWrapper>
-        <TweetButtonWrapper $isSwiperEnable={isSwiperEnable}>
+        <TweetButtonWrapper $isShowMoreProfileInfo={isShowMoreProfileInfo}>
           <TweetButton swiperState={swiper} />
         </TweetButtonWrapper>
         <RightWrapper>

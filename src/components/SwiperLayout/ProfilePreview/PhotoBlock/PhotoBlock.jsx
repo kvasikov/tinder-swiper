@@ -22,7 +22,7 @@ import {
 
 export const PhotoBlock = observer(({ profileData }) => {
   const swiper = useSwiper();
-  const { isSwiperEnable, offsetTop, updateProfileData } = swiperStore;
+  const { isShowMoreProfileInfo, offsetTop, updateProfileData } = swiperStore;
 
   const photoList = profileData.infoData.photoList;
 
@@ -47,7 +47,11 @@ export const PhotoBlock = observer(({ profileData }) => {
 
   return (
     <Box $photoList={photoList}>
-      <PhotoWrapper {...attrProps} $isSwiperEnable={isSwiperEnable} $offset={offsetTop}>
+      <PhotoWrapper
+        {...attrProps}
+        $isShowMoreProfileInfo={isShowMoreProfileInfo}
+        $offset={offsetTop}
+      >
         <HandlerWrapper>
           <HandlerPhoto onMouseUp={onChangePhoto(-1)} />
           <HandlerPhoto onMouseUp={onChangePhoto(1)} />
@@ -61,16 +65,16 @@ export const PhotoBlock = observer(({ profileData }) => {
           </BulletListWrapper>
           <LightningBlock />
         </TopBlock>
-        <PhotoImg $imgPath={activePhotoPath} $isSwiperEnable={isSwiperEnable} />
+        <PhotoImg $imgPath={activePhotoPath} $isShowMoreProfileInfo={isShowMoreProfileInfo} />
         <InfoBlock profileData={profileData} />
         {profileData.isStatusShow && (
           <BackgroundStatus
-            $isSwiperEnable={isSwiperEnable}
+            $isShowMoreProfileInfo={isShowMoreProfileInfo}
             $design={profileData.statusData.design}
           />
         )}
       </PhotoWrapper>
-      <InfoWrapper $isSwiperEnable={isSwiperEnable}>
+      <InfoWrapper $isShowMoreProfileInfo={isShowMoreProfileInfo}>
         <ProfileInfo swiperState={swiper} profileData={profileData} />
       </InfoWrapper>
     </Box>

@@ -23,7 +23,7 @@ export const TweetButtonWrapper = styled.div`
   transform: translateX(-50%);
   bottom: -56px;
   transition: opacity 0.25s;
-  opacity: ${(props) => (props.$isSwiperEnable ? '1' : '0')};
+  opacity: ${(props) => (props.$isShowMoreProfileInfo ? '1' : '0')};
   z-index: 10;
 
   @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {

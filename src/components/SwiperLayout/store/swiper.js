@@ -12,7 +12,7 @@ configure({
 export class SwiperStore {
   profileList = [];
   currentProfileDataId = null;
-  isSwiperEnable = true;
+  isShowMoreProfileInfo = true;
   offsetTop = 0;
   isFetchingList = true;
 
@@ -49,8 +49,8 @@ export class SwiperStore {
     this.profileList = [...toJS(this.profileList), ...dataProfileList];
   };
 
-  setSwiperStatus = (status) => {
-    this.isSwiperEnable = status;
+  setMoreInfoStatus = (status) => {
+    this.isShowMoreProfileInfo = status;
   };
 
   setOffsetTop = (offsetTop) => {

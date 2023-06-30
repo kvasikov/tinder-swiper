@@ -19,8 +19,13 @@ export const SwiperLayout = observer(() => {
 
   const [swiperState, setSwiperState] = useState(null);
 
-  const { isFetchingList, profileList, isSwiperEnable, currentProfileData, setCurrentProfileId } =
-    swiperStore;
+  const {
+    isFetchingList,
+    profileList,
+    isShowMoreProfileInfo,
+    currentProfileData,
+    setCurrentProfileId,
+  } = swiperStore;
 
   useEffect(() => {
     if (!wasInitRef.current && swiperState?.mounted && !isFetchingList) {
@@ -43,16 +48,16 @@ export const SwiperLayout = observer(() => {
   return (
     <Box>
       <Wrapper>
-        <Container $isSwiperEnable={isSwiperEnable}>
+        <Container $isShowMoreProfileInfo={isShowMoreProfileInfo}>
           <Content>
-            <SideWrapper $isFullHeightMobile $isSwiperEnable={isSwiperEnable}>
+            <SideWrapper $isFullHeightMobile $isShowMoreProfileInfo={isShowMoreProfileInfo}>
               <ProfileSwiper swiperState={swiperState} setSwiperState={setSwiperState} />
               <TweetButtonDesktop swiperState={swiperState} />
             </SideWrapper>
-            <SideWrapper $isDesktopInfo $isSwiperEnable={isSwiperEnable}>
+            <SideWrapper $isDesktopInfo $isShowMoreProfileInfo={isShowMoreProfileInfo}>
               <ProfileInfo swiperState={swiperState} profileData={currentProfileData} />
             </SideWrapper>
-            <ButtonWrapper $isSwiperEnable={isSwiperEnable}>
+            <ButtonWrapper $isShowMoreProfileInfo={isShowMoreProfileInfo}>
               <ButtonBlockDesktop profileData={currentProfileData} swiperState={swiperState} />
             </ButtonWrapper>
           </Content>
