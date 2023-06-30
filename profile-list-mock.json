@@ -3,6 +3,7 @@
     {
       "id": "1",
       "distance": 7,
+      "isOrganization": false,
       "infoData": {
         "name": "Мария",
         "isVerified": true,
@@ -158,6 +159,7 @@
     {
       "id": "2",
       "distance": 2,
+      "isOrganization": false,
       "infoData": {
         "name": "Валерия",
         "isVerified": false,
@@ -182,6 +184,12 @@
     {
       "id": "3",
       "distance": 14,
+      "isOrganization": true,
+      "organizationData": {
+        "organizationName": "Ольга",
+        "avatar": "",
+        "groupList": []
+      },
       "infoData": {
         "name": "Максим",
         "isVerified": true,
@@ -219,6 +227,7 @@
     {
       "id": "4",
       "distance": 14,
+      "isOrganization": false,
       "infoData": {
         "name": "Максим",
         "isVerified": true,
