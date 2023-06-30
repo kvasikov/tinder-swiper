@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { observer } from 'mobx-react';
 import { breakpoints } from '../../../assets/breakpoints';
-import { DATA_ATTR_PROFILE_WRAPPER_ID } from '../../../constants/attributes';
+import { setScrollToTopProfile } from '../../SwiperLayout/utils';
 import { useMediaBreakpoint } from '../../../hooks';
 import { swiperStore } from '../../SwiperLayout/store';
 import { CustomIcon } from '../CustomIcon';
@@ -19,7 +19,12 @@ export const TweetButton = observer(({ swiperState, isFromMoreBlock }) => {
     }
 
     const execTweet = () => {
-      swiperState.slideNext(250, false);
+      if (!isDesktop) {
+        setMoreInfoStatus(true);
+        swiperState.enable();
+      }
+
+      swiperState.slideNext(500, false);
 
       setTimeout(() => {
         updateProfileData(currentProfileData.id, { isTweet: true });
@@ -27,18 +32,7 @@ export const TweetButton = observer(({ swiperState, isFromMoreBlock }) => {
     };
 
     if (isFromMoreBlock && !isDesktop) {
-      const wrapperEl = buttonRef.current.closest(`[${DATA_ATTR_PROFILE_WRAPPER_ID}]`);
-      wrapperEl.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
-
-      setTimeout(() => {
-        setMoreInfoStatus(true);
-        swiperState.enable();
-
-        execTweet();
-      }, 350);
+      setScrollToTopProfile(buttonRef.current, execTweet);
       return;
     }
 
