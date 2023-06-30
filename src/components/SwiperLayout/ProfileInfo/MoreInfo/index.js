@@ -1,1 +1,0 @@
-export { MoreInfo } from './MoreInfo';

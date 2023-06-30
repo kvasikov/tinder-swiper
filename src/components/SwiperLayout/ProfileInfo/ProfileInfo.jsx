@@ -1,14 +1,19 @@
 import React from 'react';
 import { PreviewMainInfo } from '../../common/PreviewMainInfo';
-import { MoreInfo } from './MoreInfo';
+import { OrganizationBlock } from './OrganizationBlock';
+import { ProfileMoreInfoBlock } from './ProfileMoreInfoBlock';
+import { ActionBlock } from './ActionBlock';
 import { Box } from './ProfileInfo.styles';
 
-export const ProfileInfo = ({ profileData }) => {
+export const ProfileInfo = ({ swiperState, profileData }) => {
   return (
-    // TODO: 500px для тестирования
-    <Box style={{ height: '500px' }}>
+    <Box>
       <PreviewMainInfo color='black' profileData={profileData} />
-      <MoreInfo profileData={profileData} />
+      <div>
+        <OrganizationBlock profileData={profileData} />
+        <ProfileMoreInfoBlock profileData={profileData} />
+        <ActionBlock profileData={profileData} swiperState={swiperState} />
+      </div>
     </Box>
   );
 };

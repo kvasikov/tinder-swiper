@@ -1,0 +1,1 @@
+export { ProfileMoreInfoBlock } from './ProfileMoreInfoBlock';

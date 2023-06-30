@@ -71,7 +71,7 @@ export const PhotoBlock = observer(({ profileData }) => {
         )}
       </PhotoWrapper>
       <InfoWrapper $isSwiperEnable={isSwiperEnable}>
-        <ProfileInfo profileData={profileData} />
+        <ProfileInfo swiperState={swiper} profileData={profileData} />
       </InfoWrapper>
     </Box>
   );

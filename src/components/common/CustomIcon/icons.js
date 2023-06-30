@@ -15,6 +15,7 @@ import { ReactComponent as HandsIcon } from '../../../assets/icons/hands.svg';
 import { ReactComponent as HeartIcon } from '../../../assets/icons/heart.svg';
 import { ReactComponent as ManyHeartIcon } from '../../../assets/icons/many-heart.svg';
 import { ReactComponent as MonkeyIcon } from '../../../assets/icons/monkey.svg';
+import { ReactComponent as ShareIcon } from '../../../assets/icons/share.svg';
 
 const Empty = () => null;
 
@@ -37,4 +38,5 @@ export const ICON_LIST = {
   heart: HeartIcon,
   manyHeart: ManyHeartIcon,
   monkey: MonkeyIcon,
+  share: ShareIcon,
 };

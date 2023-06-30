@@ -3,7 +3,7 @@ import { Modal as ModalAntd } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 import { breakpoints } from '../../../assets/breakpoints';
 import { useMediaBreakpoint } from '../../../hooks';
-import { DrawerStyled, CloseIconWrapper, Content } from './Modal.styles';
+import { DrawerStyled, CloseIconWrapper, Content, Title } from './Modal.styles';
 
 export const Modal = ({
   isOpen,
@@ -29,6 +29,8 @@ export const Modal = ({
       <CloseOutlined style={{ fontSize: '16px' }} />
     </CloseIconWrapper>
   );
+
+  const titleContent = title && <Title>{title}</Title>;
 
   useEffect(() => {
     const checkHeightContent = () => {
@@ -63,7 +65,6 @@ export const Modal = ({
       {isDesktop && (
         <ModalAntd
           width={desktopModalWidth}
-          title={title}
           open={isOpen}
           centered
           footer={null}
@@ -71,6 +72,7 @@ export const Modal = ({
           onOk={onConfirm}
           onCancel={onCancel}
         >
+          {titleContent}
           {closeIcon}
           {children}
         </ModalAntd>
@@ -79,13 +81,13 @@ export const Modal = ({
         <DrawerStyled
           bodyStyle={{ padding: 0 }}
           footer={null}
-          title={title}
           height={mobileDrawerHeight}
           placement='bottom'
           open={isOpen}
           closable={false}
           onClose={onCancel}
         >
+          {titleContent}
           {closeIcon}
           <Content ref={elRef}>{children}</Content>
         </DrawerStyled>
