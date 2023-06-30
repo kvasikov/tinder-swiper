@@ -46,7 +46,7 @@ export const ActionBlock = ({ profileData, swiperState }) => {
         <ShareText>Поделиться профилем</ShareText>
       </ShareWrapper>
       <TweetButtonWrapper>
-        <TweetButton swiperState={swiperState} />
+        <TweetButton swiperState={swiperState} isFromMoreBlock />
       </TweetButtonWrapper>
       <ComplainWrapper>
         <ActionButton label='Пожаловаться' onClick={onComplainClick} />
