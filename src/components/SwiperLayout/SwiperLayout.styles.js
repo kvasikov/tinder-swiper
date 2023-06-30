@@ -43,6 +43,7 @@ export const Container = styled.div`
 export const SideWrapper = styled.div`
   height: ${(props) => props.$isFullHeightMobile && '100%'};
   transition: left 0.25s, transform 0.25s, opacity 0.25s;
+  transition-timing-function: steps(100, jump-none);
 
   @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
     position: relative;
