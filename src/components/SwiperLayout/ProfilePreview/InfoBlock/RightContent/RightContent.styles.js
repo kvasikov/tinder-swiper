@@ -20,6 +20,7 @@ export const MoreInfoIcon = styled(CircleIcon)`
   background-color: ${(props) => !props.$isSwiperEnable && '#ff00d6'};
 
   @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
-    display: none;
+    transform: ${(props) => (props.$isSwiperEnable ? 'rotate(90deg)' : 'rotate(270deg)')};
+    top: 0;
   }
 `;

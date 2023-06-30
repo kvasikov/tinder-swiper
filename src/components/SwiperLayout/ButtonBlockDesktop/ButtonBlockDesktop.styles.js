@@ -8,9 +8,6 @@ export const Box = styled.div`
   @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
     display: flex;
     flex-direction: column;
-    position: absolute;
-    right: -64px;
-    top: 0;
   }
 `;
 

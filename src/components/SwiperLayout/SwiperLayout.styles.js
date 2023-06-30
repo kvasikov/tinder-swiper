@@ -42,11 +42,14 @@ export const Container = styled.div`
 
 export const SideWrapper = styled.div`
   height: ${(props) => props.$isFullHeightMobile && '100%'};
+  transition: left 0.25s, transform 0.25s;
 
   @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
     position: relative;
     top: 50%;
-    transform: translateY(-50%);
+    left: ${({ $isSwiperEnable }) => ($isSwiperEnable ? '50%' : '0')};
+    transform: ${({ $isSwiperEnable }) =>
+      $isSwiperEnable ? 'translateY(-50%) translateX(-50%)' : 'translateY(-50%) translateX(0)'};
     width: 375px;
     height: 100%;
     max-height: 678px;
@@ -55,14 +58,35 @@ export const SideWrapper = styled.div`
   }
 
   ${(props) =>
-    props.$isDesktop &&
-    css`
-      display: none;
+    props.$isDesktopInfo
+      ? css`
+          display: none;
 
-      @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
-        display: block;
-      }
-    `};
+          @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
+            display: block;
+            width: ${({ $isSwiperEnable }) => ($isSwiperEnable ? '102px' : '375px')};
+            opacity: ${({ $isSwiperEnable }) => ($isSwiperEnable ? '0' : '1')};
+            z-index: ${({ $isSwiperEnable }) => ($isSwiperEnable ? '-1' : '1')};
+            margin-right: ${({ $isSwiperEnable }) => ($isSwiperEnable ? '0' : '24px')};
+          }
+        `
+      : css`
+          @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
+            margin-right: ${({ $isSwiperEnable }) => ($isSwiperEnable ? '0' : '4px')};
+          }
+        `};
+`;
+
+export const ButtonWrapper = styled.div`
+  display: none;
+
+  @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
+    display: block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    max-height: 678px;
+  }
 `;
 
 export const Content = styled.div`
@@ -78,13 +102,5 @@ export const Content = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
-
-    ${SideWrapper}:first-child {
-      margin-right: 4px;
-    }
-
-    ${SideWrapper}:last-child {
-      margin-left: 4px;
-    }
   }
 `;
