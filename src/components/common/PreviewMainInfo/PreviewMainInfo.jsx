@@ -2,6 +2,7 @@ import React from 'react';
 import { InfoItemBlock } from './InfoItemBlock';
 import { DescriptorsBlock } from './DescriptorsBlock';
 import { StatusBlock } from './StatusBlock';
+import { OrganizationBlock } from './OrganizationBlock';
 import { Box, MainBox, Name, BirthData, VerifyIcon } from './PreviewMainInfo.styles';
 import { getAgeByDate } from './utils';
 
@@ -22,6 +23,7 @@ export const PreviewMainInfo = ({ color = 'white', profileData, isShownMobile })
       <InfoItemBlock color={color} profileData={profileData} />
       <DescriptorsBlock profileData={profileData} />
       <StatusBlock profileData={profileData} />
+      <OrganizationBlock profileData={profileData} />
     </Box>
   );
 };
