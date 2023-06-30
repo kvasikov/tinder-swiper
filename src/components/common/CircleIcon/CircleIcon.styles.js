@@ -16,7 +16,7 @@ export const Box = styled.button`
   height: 40px;
   width: 40px;
   background-color: ${({ $design }) => bgColorByDesign[$design]};
-  backdrop-filter: blur(20px);
+  /* backdrop-filter: blur(20px); // TODO: найти альтернативу. При использовании мерцает элемент при свайпе */
   color: white;
   display: flex;
   align-items: center;

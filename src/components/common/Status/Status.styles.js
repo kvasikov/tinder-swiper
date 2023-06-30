@@ -24,7 +24,7 @@ export const Box = styled.div`
   border-radius: 24px;
   border: ${({ $design }) => `2px solid ${borderColorByDesign[$design]}`};
   background-color: ${({ $design }) => bgColorByDesign[$design]};
-  backdrop-filter: blur(50px);
+  /* backdrop-filter: blur(50px); // TODO: найти альтернативу. При использовании мерцает элемент при свайпе */
   display: inline-flex;
   flex-direction: row;
   align-items: center;

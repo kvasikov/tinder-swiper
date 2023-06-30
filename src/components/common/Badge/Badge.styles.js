@@ -29,7 +29,7 @@ export const Box = styled.button`
   background-color: ${({ $design }) => bgColorByDesign[$design]};
   color: ${({ $design }) => textColorByDesign[$design]};
   border: ${({ $design }) => `1px solid ${borderColorByDesign[$design]}`};
-  backdrop-filter: blur(12.5px);
+  /* backdrop-filter: blur(12.5px); // TODO: найти альтернативу. При использовании мерцает элемент при свайпе */
   border-radius: 16px;
   font-size: 12px;
   font-style: normal;

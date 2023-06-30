@@ -14,6 +14,6 @@ export const Box = styled.div`
   padding: 12px;
   border-radius: 24px;
   border: 2px solid ${({ $isSuccess }) => ($isSuccess ? '#3db812' : '#f10d5f')};
-  backdrop-filter: blur(50px);
+  /* backdrop-filter: blur(50px); // TODO: найти альтернативу. При использовании мерцает элемент при свайпе */
   text-transform: uppercase;
 `;
