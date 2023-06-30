@@ -42,7 +42,7 @@ export const Container = styled.div`
 
 export const SideWrapper = styled.div`
   height: ${(props) => props.$isFullHeightMobile && '100%'};
-  transition: left 0.25s, transform 0.25s;
+  transition: left 0.25s, transform 0.25s, opacity 0.25s;
 
   @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
     position: relative;
@@ -50,11 +50,12 @@ export const SideWrapper = styled.div`
     left: ${({ $isSwiperEnable }) => ($isSwiperEnable ? '50%' : '0')};
     transform: ${({ $isSwiperEnable }) =>
       $isSwiperEnable ? 'translateY(-50%) translateX(-50%)' : 'translateY(-50%) translateX(0)'};
-    width: 375px;
+    width: 374px;
     height: 100%;
     max-height: 678px;
     border-radius: 16px;
     background-color: white;
+    z-index: 2;
   }
 
   ${(props) =>
@@ -63,11 +64,15 @@ export const SideWrapper = styled.div`
           display: none;
 
           @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
+            overflow: auto;
             display: block;
-            width: ${({ $isSwiperEnable }) => ($isSwiperEnable ? '102px' : '375px')};
             opacity: ${({ $isSwiperEnable }) => ($isSwiperEnable ? '0' : '1')};
             z-index: ${({ $isSwiperEnable }) => ($isSwiperEnable ? '-1' : '1')};
             margin-right: ${({ $isSwiperEnable }) => ($isSwiperEnable ? '0' : '24px')};
+            transform: ${({ $isSwiperEnable }) =>
+              $isSwiperEnable
+                ? 'translateY(-50%) translateX(-150%)'
+                : 'translateY(-50%) translateX(0)'};
           }
         `
       : css`
@@ -86,6 +91,8 @@ export const ButtonWrapper = styled.div`
     top: 50%;
     transform: translateY(-50%);
     max-height: 678px;
+    left: ${({ $isSwiperEnable }) => ($isSwiperEnable ? '-144px' : '0')};
+    transition: left 0.25s;
   }
 `;
 

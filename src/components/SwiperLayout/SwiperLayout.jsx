@@ -52,7 +52,7 @@ export const SwiperLayout = observer(() => {
             <SideWrapper $isDesktopInfo $isSwiperEnable={isSwiperEnable}>
               <ProfileInfo profileData={currentProfileData} />
             </SideWrapper>
-            <ButtonWrapper>
+            <ButtonWrapper $isSwiperEnable={isSwiperEnable}>
               <ButtonBlockDesktop profileData={currentProfileData} swiperState={swiperState} />
             </ButtonWrapper>
           </Content>
