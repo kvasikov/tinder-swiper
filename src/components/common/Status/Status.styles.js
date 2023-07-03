@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { CustomIcon } from '../CustomIcon';
 
 const borderColorByDesign = {
   pink: '#ff00d6',
@@ -35,6 +34,9 @@ export const Box = styled.div`
   padding: 8px 16px;
 `;
 
-export const IconStyled = styled(CustomIcon)`
+export const ImgStyled = styled.img`
   margin-right: 8px;
+  height: 20px;
+  width: 24px;
+  object-fit: cover;
 `;

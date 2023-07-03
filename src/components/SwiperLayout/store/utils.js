@@ -1,3 +1,9 @@
+import FireImg from '../../../assets/images/fire.png';
+import FunImg from '../../../assets/images/fun.png';
+import HandsImg from '../../../assets/images/hands.png';
+import HeartImg from '../../../assets/images/heart.png';
+import ManyHeartImg from '../../../assets/images/many-heart.png';
+import MonkeyImg from '../../../assets/images/monkey.png';
 import { DATA_ATTR_PROFILE_ID } from '../../../constants/attributes';
 
 export const getProfileIdByDataAttr = (slideEl, defaultProfileId) => {
@@ -36,32 +42,32 @@ export const getDescriptorList = (profileData) => {
 const STATUS_DATA = {
   longTermPartner: {
     text: 'Долгосрочный партнер',
-    iconKind: 'heart',
+    imgPath: HeartImg,
     design: 'pink',
   },
   justHaveFun: {
     text: 'Просто повеселиться',
-    iconKind: 'fun',
+    imgPath: FunImg,
     design: 'yellow',
   },
   longOrShortTermPartner: {
     text: 'Долго или краткосрочно',
-    iconKind: 'manyHeart',
+    imgPath: ManyHeartImg,
     design: 'purple',
   },
   lookingForFriends: {
     text: 'Ищу друзей',
-    iconKind: 'hands',
+    imgPath: HandsImg,
     design: 'green',
   },
   stillFiguringItOut: {
     text: 'Все еще разбираюсь',
-    iconKind: 'monkey',
+    imgPath: MonkeyImg,
     design: 'blue',
   },
   expressRelationship: {
     text: 'Экспресс отношения',
-    iconKind: 'fire',
+    imgPath: FireImg,
     design: 'orange',
   },
 };

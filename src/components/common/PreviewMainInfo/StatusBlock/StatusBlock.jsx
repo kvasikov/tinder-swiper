@@ -16,7 +16,7 @@ export const StatusBlock = observer(({ profileData }) => {
       <Status
         text={profileData.statusData.text}
         design={profileData.statusData.design}
-        iconKind={profileData.statusData.iconKind}
+        imgPath={profileData.statusData.imgPath}
       />
     </Box>
   );

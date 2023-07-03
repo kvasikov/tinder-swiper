@@ -9,12 +9,6 @@ import { ReactComponent as EducationIcon } from '../../../assets/icons/education
 import { ReactComponent as GeoIcon } from '../../../assets/icons/geo.svg';
 import { ReactComponent as HeightIcon } from '../../../assets/icons/height.svg';
 import { ReactComponent as HomeIcon } from '../../../assets/icons/home.svg';
-import { ReactComponent as FireIcon } from '../../../assets/icons/fire.svg';
-import { ReactComponent as FunIcon } from '../../../assets/icons/fun.svg';
-import { ReactComponent as HandsIcon } from '../../../assets/icons/hands.svg';
-import { ReactComponent as HeartIcon } from '../../../assets/icons/heart.svg';
-import { ReactComponent as ManyHeartIcon } from '../../../assets/icons/many-heart.svg';
-import { ReactComponent as MonkeyIcon } from '../../../assets/icons/monkey.svg';
 import { ReactComponent as ShareIcon } from '../../../assets/icons/share.svg';
 
 const Empty = () => null;
@@ -32,11 +26,5 @@ export const ICON_LIST = {
   geo: GeoIcon,
   height: HeightIcon,
   home: HomeIcon,
-  fire: FireIcon,
-  fun: FunIcon,
-  hands: HandsIcon,
-  heart: HeartIcon,
-  manyHeart: ManyHeartIcon,
-  monkey: MonkeyIcon,
   share: ShareIcon,
 };

@@ -1,10 +1,10 @@
 import React from 'react';
-import { Box, IconStyled } from './Status.styles';
+import { Box, ImgStyled } from './Status.styles';
 
-export const Status = ({ design = 'pink', text, iconKind }) => {
+export const Status = ({ design = 'pink', text, imgPath }) => {
   return (
     <Box $design={design}>
-      <IconStyled kind={iconKind} iconSize='24px' />
+      <ImgStyled src={imgPath} alt={design} />
       <span>{text}</span>
     </Box>
   );
