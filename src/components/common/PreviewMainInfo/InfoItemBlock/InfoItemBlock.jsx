@@ -1,4 +1,6 @@
 import React from 'react';
+import { observer } from 'mobx-react';
+import { swiperStore } from '../../../SwiperLayout/store';
 import { useMediaBreakpoint } from '../../../../hooks';
 import { breakpoints } from '../../../../assets/breakpoints';
 import {
@@ -9,9 +11,17 @@ import {
   InfoItemText,
 } from './InfoItemBlock.styles';
 
-export const InfoItemBlock = ({ color, profileData }) => {
+export const InfoItemBlock = observer(({ color, profileData }) => {
+  const { isHideMoreProfileInfo } = swiperStore;
+
   const isDesktop = useMediaBreakpoint(breakpoints.DESKTOP_S);
-  const isShow = (profileData.activePhotoIndex === 0 && !isDesktop) || isDesktop;
+
+  const isShowMobile = !isDesktop && profileData.activePhotoIndex === 0;
+  const isShowDesktop =
+    isDesktop &&
+    (!isHideMoreProfileInfo || (isHideMoreProfileInfo && profileData.activePhotoIndex === 0));
+
+  const isShow = isShowMobile || isShowDesktop;
 
   if (!isShow) {
     return null;
@@ -53,4 +63,4 @@ export const InfoItemBlock = ({ color, profileData }) => {
         ))}
     </InfoWrapper>
   );
-};
+});

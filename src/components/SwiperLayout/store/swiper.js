@@ -11,8 +11,8 @@ configure({
 
 export class SwiperStore {
   profileList = [];
-  currentProfileDataId = null;
-  isShowMoreProfileInfo = true;
+  currentProfileDataId = {};
+  isHideMoreProfileInfo = true;
   offsetTop = 0;
   isFetchingList = true;
 
@@ -50,7 +50,7 @@ export class SwiperStore {
   };
 
   setMoreInfoStatus = (status) => {
-    this.isShowMoreProfileInfo = status;
+    this.isHideMoreProfileInfo = status;
   };
 
   setOffsetTop = (offsetTop) => {
@@ -70,7 +70,7 @@ export class SwiperStore {
   get currentProfileData() {
     const profileId = this.currentProfileDataId;
     const profileData = this.profileList.find((profile) => profile.id === profileId);
-    return profileData || null;
+    return profileData || {};
   }
 }
 

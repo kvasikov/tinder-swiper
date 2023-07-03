@@ -12,7 +12,7 @@ export const RightContent = observer(() => {
   const contentRef = useRef(null);
 
   const swiper = useSwiper();
-  const { isShowMoreProfileInfo, setMoreInfoStatus } = swiperStore;
+  const { isHideMoreProfileInfo, setMoreInfoStatus } = swiperStore;
   const isDesktop = useMediaBreakpoint(breakpoints.DESKTOP_S);
 
   const onInfoClick = () => {
@@ -21,7 +21,7 @@ export const RightContent = observer(() => {
       !isDesktop && swiper.enable();
     };
 
-    if (isShowMoreProfileInfo) {
+    if (isHideMoreProfileInfo) {
       setMoreInfoStatus(false);
       !isDesktop && swiper.disable();
     } else {
@@ -34,7 +34,7 @@ export const RightContent = observer(() => {
       <SuperLikeBlock />
       <MoreInfoIcon
         kind='arrowUp'
-        $isShowMoreProfileInfo={isShowMoreProfileInfo}
+        $isHideMoreProfileInfo={isHideMoreProfileInfo}
         onClick={onInfoClick}
       />
     </Box>

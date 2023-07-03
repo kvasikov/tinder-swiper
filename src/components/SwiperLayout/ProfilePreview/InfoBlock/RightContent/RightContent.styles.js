@@ -14,13 +14,13 @@ export const Box = styled.div`
 export const MoreInfoIcon = styled(CircleIcon)`
   margin-top: 16px;
   position: relative;
-  top: ${(props) => (props.$isShowMoreProfileInfo ? 0 : '36px')};
-  transform: ${(props) => !props.$isShowMoreProfileInfo && 'rotate(-180deg)'};
+  top: ${(props) => (props.$isHideMoreProfileInfo ? 0 : '36px')};
+  transform: ${(props) => !props.$isHideMoreProfileInfo && 'rotate(-180deg)'};
   transition: transform 0.25s, top 0.25s, background-color 0.25s;
-  background-color: ${(props) => !props.$isShowMoreProfileInfo && '#ff00d6'};
+  background-color: ${(props) => !props.$isHideMoreProfileInfo && '#ff00d6'};
 
   @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
-    transform: ${(props) => (props.$isShowMoreProfileInfo ? 'rotate(90deg)' : 'rotate(270deg)')};
+    transform: ${(props) => (props.$isHideMoreProfileInfo ? 'rotate(90deg)' : 'rotate(270deg)')};
     top: 0;
   }
 `;

@@ -22,7 +22,7 @@ export const SwiperLayout = observer(() => {
   const {
     isFetchingList,
     profileList,
-    isShowMoreProfileInfo,
+    isHideMoreProfileInfo,
     currentProfileData,
     setCurrentProfileId,
   } = swiperStore;
@@ -48,16 +48,16 @@ export const SwiperLayout = observer(() => {
   return (
     <Box>
       <Wrapper>
-        <Container $isShowMoreProfileInfo={isShowMoreProfileInfo}>
+        <Container $isHideMoreProfileInfo={isHideMoreProfileInfo}>
           <Content>
-            <SideWrapper $isFullHeightMobile $isShowMoreProfileInfo={isShowMoreProfileInfo}>
+            <SideWrapper $isFullHeightMobile $isHideMoreProfileInfo={isHideMoreProfileInfo}>
               <ProfileSwiper swiperState={swiperState} setSwiperState={setSwiperState} />
               <TweetButtonDesktop swiperState={swiperState} />
             </SideWrapper>
-            <SideWrapper $isDesktopInfo $isShowMoreProfileInfo={isShowMoreProfileInfo}>
+            <SideWrapper $isDesktopInfo $isHideMoreProfileInfo={isHideMoreProfileInfo}>
               <ProfileInfo swiperState={swiperState} profileData={currentProfileData} />
             </SideWrapper>
-            <ButtonWrapper $isShowMoreProfileInfo={isShowMoreProfileInfo}>
+            <ButtonWrapper $isHideMoreProfileInfo={isHideMoreProfileInfo}>
               <ButtonBlockDesktop profileData={currentProfileData} swiperState={swiperState} />
             </ButtonWrapper>
           </Content>

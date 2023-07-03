@@ -1,1 +1,0 @@
-export { OrganizationBlock } from './OrganizationBlock';

@@ -32,7 +32,7 @@ export const Container = styled.div`
 
   @media screen and (max-width: ${breakpoints.DESKTOP_S - 1}px) {
     width: 100%;
-    overflow: ${(props) => (props.$isShowMoreProfileInfo ? 'hidden' : 'auto')};
+    overflow: ${(props) => (props.$isHideMoreProfileInfo ? 'hidden' : 'auto')};
     position: relative;
     display: flex;
     align-items: center;
@@ -48,9 +48,9 @@ export const SideWrapper = styled.div`
   @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
     position: relative;
     top: 50%;
-    left: ${({ $isShowMoreProfileInfo }) => ($isShowMoreProfileInfo ? '50%' : '0')};
-    transform: ${({ $isShowMoreProfileInfo }) =>
-      $isShowMoreProfileInfo
+    left: ${({ $isHideMoreProfileInfo }) => ($isHideMoreProfileInfo ? '50%' : '0')};
+    transform: ${({ $isHideMoreProfileInfo }) =>
+      $isHideMoreProfileInfo
         ? 'translateY(-50%) translateX(-50%)'
         : 'translateY(-50%) translateX(0)'};
     width: 374px;
@@ -69,19 +69,19 @@ export const SideWrapper = styled.div`
           @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
             overflow: auto;
             display: block;
-            opacity: ${({ $isShowMoreProfileInfo }) => ($isShowMoreProfileInfo ? '0' : '1')};
-            z-index: ${({ $isShowMoreProfileInfo }) => ($isShowMoreProfileInfo ? '-1' : '1')};
-            margin-right: ${({ $isShowMoreProfileInfo }) =>
-              $isShowMoreProfileInfo ? '0' : '24px'};
-            transform: ${({ $isShowMoreProfileInfo }) =>
-              $isShowMoreProfileInfo
+            opacity: ${({ $isHideMoreProfileInfo }) => ($isHideMoreProfileInfo ? '0' : '1')};
+            z-index: ${({ $isHideMoreProfileInfo }) => ($isHideMoreProfileInfo ? '-1' : '1')};
+            margin-right: ${({ $isHideMoreProfileInfo }) =>
+              $isHideMoreProfileInfo ? '0' : '24px'};
+            transform: ${({ $isHideMoreProfileInfo }) =>
+              $isHideMoreProfileInfo
                 ? 'translateY(-50%) translateX(-150%)'
                 : 'translateY(-50%) translateX(0)'};
           }
         `
       : css`
           @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
-            margin-right: ${({ $isShowMoreProfileInfo }) => ($isShowMoreProfileInfo ? '0' : '4px')};
+            margin-right: ${({ $isHideMoreProfileInfo }) => ($isHideMoreProfileInfo ? '0' : '4px')};
           }
         `};
 `;
@@ -95,7 +95,7 @@ export const ButtonWrapper = styled.div`
     top: 50%;
     transform: translateY(-50%);
     max-height: 678px;
-    left: ${({ $isShowMoreProfileInfo }) => ($isShowMoreProfileInfo ? '-144px' : '0')};
+    left: ${({ $isHideMoreProfileInfo }) => ($isHideMoreProfileInfo ? '-144px' : '0')};
     transition: left 0.25s;
   }
 `;

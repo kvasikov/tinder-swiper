@@ -17,7 +17,7 @@ export const Box = styled.div`
 
 export const PhotoWrapper = styled.div`
   position: relative;
-  top: ${(props) => (props.$isShowMoreProfileInfo && props.$offset ? `${props.$offset}px` : '0')};
+  top: ${(props) => (props.$isHideMoreProfileInfo && props.$offset ? `${props.$offset}px` : '0')};
   text-align: center;
   transition-property: top;
   transition-duration: 0.25s;
@@ -38,8 +38,8 @@ export const PhotoImg = styled.div`
   background-position: 50% 50%;
   background-size: cover;
   border-radius: 16px;
-  border-bottom-left-radius: ${(props) => !props.$isShowMoreProfileInfo && '0'};
-  border-bottom-right-radius: ${(props) => !props.$isShowMoreProfileInfo && '0'};
+  border-bottom-left-radius: ${(props) => !props.$isHideMoreProfileInfo && '0'};
+  border-bottom-right-radius: ${(props) => !props.$isHideMoreProfileInfo && '0'};
   transition: border-radius 0.25s;
 
   @media screen and (min-height: 600px) {
@@ -92,7 +92,7 @@ export const HandlerPhoto = styled.div`
 `;
 
 export const InfoWrapper = styled.div`
-  display: ${(props) => props.$isShowMoreProfileInfo && 'none'};
+  display: ${(props) => props.$isHideMoreProfileInfo && 'none'};
 
   @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
     display: none;
@@ -109,7 +109,7 @@ const bgColorByDesign = {
 };
 
 export const BackgroundStatus = styled.div`
-  display: ${(props) => !props.$isShowMoreProfileInfo && 'none'};
+  display: ${(props) => !props.$isHideMoreProfileInfo && 'none'};
   position: absolute;
   height: 150px;
   left: 0;
@@ -118,8 +118,4 @@ export const BackgroundStatus = styled.div`
   background: ${({ $design }) => bgColorByDesign[$design]};
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
-
-  @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
-    display: none;
-  }
 `;

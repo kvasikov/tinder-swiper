@@ -1,13 +1,8 @@
 import styled from 'styled-components';
-import { breakpoints } from '../../../assets/breakpoints';
 import { CustomIcon } from '../CustomIcon';
 
 export const Box = styled.div`
   color: ${(props) => `${props.$color}`};
-
-  @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
-    display: ${(props) => props.$isShownMobile && 'none'};
-  }
 `;
 
 export const MainBox = styled.div`

@@ -5,7 +5,7 @@ import { StatusBlock } from './StatusBlock';
 import { Box, MainBox, Name, BirthData, VerifyIcon } from './PreviewMainInfo.styles';
 import { getAgeByDate } from './utils';
 
-export const PreviewMainInfo = ({ color = 'white', profileData, isShownMobile }) => {
+export const PreviewMainInfo = ({ color = 'white', profileData }) => {
   if (!profileData?.infoData) {
     return null;
   }
@@ -13,7 +13,7 @@ export const PreviewMainInfo = ({ color = 'white', profileData, isShownMobile })
   const { name, birthDate, isVerified } = profileData.infoData;
 
   return (
-    <Box $color={color} $isShownMobile={isShownMobile}>
+    <Box $color={color}>
       <MainBox>
         <Name>{name}</Name>
         {birthDate && <BirthData>{getAgeByDate(birthDate)}</BirthData>}

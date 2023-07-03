@@ -6,12 +6,12 @@ import { PhotoBlock } from './PhotoBlock';
 import { Box } from './ProfilePreview.styles';
 
 export const ProfilePreview = observer(({ profileData }) => {
-  const { isShowMoreProfileInfo } = swiperStore;
+  const { isHideMoreProfileInfo } = swiperStore;
 
   const attrProps = { [DATA_ATTR_PROFILE_WRAPPER_ID]: true };
 
   return (
-    <Box $isShowMoreProfileInfo={isShowMoreProfileInfo} {...attrProps}>
+    <Box $isHideMoreProfileInfo={isHideMoreProfileInfo} {...attrProps}>
       <PhotoBlock profileData={profileData} />
     </Box>
   );
