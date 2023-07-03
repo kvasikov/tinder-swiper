@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TweetButton } from '../../../common/TweetButton';
+import { TweetButton } from '../../TweetButton';
 import { Modal } from '../../../common/Modal';
 import {
   Box,

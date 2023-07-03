@@ -1,10 +1,10 @@
 import React, { useRef } from 'react';
 import { observer } from 'mobx-react';
 import { breakpoints } from '../../../assets/breakpoints';
-import { setScrollToTopProfile } from '../../SwiperLayout/utils';
+import { setScrollToTopProfile } from '../utils';
 import { useMediaBreakpoint } from '../../../hooks';
-import { swiperStore } from '../../SwiperLayout/store';
-import { CustomIcon } from '../CustomIcon';
+import { swiperStore } from '../store';
+import { CustomIcon } from '../../common/CustomIcon';
 import { Box, Text } from './TweetButton.styles';
 
 export const TweetButton = observer(({ swiperState, isFromMoreBlock }) => {
