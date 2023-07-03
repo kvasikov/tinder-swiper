@@ -12,7 +12,6 @@ export const DescriptorsBlock = observer(({ profileData }) => {
   const contentRef = useRef(null);
 
   const isDesktop = useMediaBreakpoint(breakpoints.DESKTOP_S);
-  const isShow = profileData.activePhotoIndex >= 1 && profileData.activePhotoIndex <= 2;
 
   const swiper = useSwiper();
   const { isHideMoreProfileInfo, setMoreInfoStatus } = swiperStore;
@@ -22,7 +21,7 @@ export const DescriptorsBlock = observer(({ profileData }) => {
   const index = activePhotoIndex <= 1 ? 0 : activePhotoIndex - 1;
   let descriptorList = sectionDataList[index] || [];
 
-  if (!isShow || descriptorList?.length === 0 || !isHideMoreProfileInfo) {
+  if (descriptorList?.length === 0 || !isHideMoreProfileInfo) {
     return null;
   }
 
