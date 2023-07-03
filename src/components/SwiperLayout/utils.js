@@ -1,6 +1,6 @@
 import { DATA_ATTR_PROFILE_WRAPPER_ID } from '../../constants/attributes';
 
-export const setScrollToTopProfile = (element, callback) => {
+export const setScrollToTopProfile = (element, callback, delay = 350) => {
   const wrapperEl = element.closest(`[${DATA_ATTR_PROFILE_WRAPPER_ID}]`);
 
   if (!wrapperEl?.scrollTop) {
@@ -15,5 +15,5 @@ export const setScrollToTopProfile = (element, callback) => {
 
   setTimeout(() => {
     callback();
-  }, 350);
+  }, delay);
 };

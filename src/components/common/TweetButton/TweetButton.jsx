@@ -24,7 +24,7 @@ export const TweetButton = observer(({ swiperState, isFromMoreBlock }) => {
         swiperState.enable();
       }
 
-      swiperState.slideNext(500, false);
+      swiperState.slideNext(250, false);
 
       setTimeout(() => {
         updateProfileData(currentProfileData.id, { isTweet: true });
@@ -32,7 +32,7 @@ export const TweetButton = observer(({ swiperState, isFromMoreBlock }) => {
     };
 
     if (isFromMoreBlock && !isDesktop) {
-      setScrollToTopProfile(buttonRef.current, execTweet);
+      setScrollToTopProfile(buttonRef.current, execTweet, 10);
       return;
     }
 
