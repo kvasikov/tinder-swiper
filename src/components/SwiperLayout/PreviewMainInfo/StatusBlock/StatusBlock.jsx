@@ -1,13 +1,13 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import { swiperStore } from '../../../SwiperLayout/store';
-import { Status } from '../../Status';
+import { swiperStore } from '../../store';
+import { Status } from '../../../common/Status';
 import { Box } from './StatusBlock.styles';
 
 export const StatusBlock = observer(({ profileData }) => {
   const { isHideMoreProfileInfo } = swiperStore;
 
-  if (!profileData.statusData) {
+  if (!profileData.statusData || profileData.isOrganization) {
     return null;
   }
 

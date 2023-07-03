@@ -1,12 +1,11 @@
 import React from 'react';
-import { PreviewMainInfo } from '../../common/PreviewMainInfo';
+import { PreviewMainInfo } from '../PreviewMainInfo';
+import { InfoItemBlock } from '../PreviewMainInfo/InfoItemBlock';
+import { StatusBlock } from '../PreviewMainInfo/StatusBlock';
 import { OrganizationBlock } from './OrganizationBlock';
 import { ProfileMoreInfoBlock } from './ProfileMoreInfoBlock';
 import { ActionBlock } from './ActionBlock';
 import { Box } from './ProfileInfo.styles';
-
-import { InfoItemBlock } from '../../common/PreviewMainInfo/InfoItemBlock';
-import { StatusBlock } from '../../common/PreviewMainInfo/StatusBlock';
 
 export const ProfileInfo = ({ swiperState, profileData }) => {
   return (

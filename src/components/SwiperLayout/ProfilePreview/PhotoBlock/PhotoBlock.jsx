@@ -67,7 +67,7 @@ export const PhotoBlock = observer(({ profileData }) => {
         </TopBlock>
         <PhotoImg $imgPath={activePhotoPath} $isHideMoreProfileInfo={isHideMoreProfileInfo} />
         <InfoBlock profileData={profileData} />
-        {profileData.isStatusShow && (
+        {profileData.isStatusShow && !profileData.isOrganization && (
           <BackgroundStatus
             $isHideMoreProfileInfo={isHideMoreProfileInfo}
             $design={profileData.statusData.design}

@@ -3,9 +3,9 @@ import { useSwiper } from 'swiper/react';
 import { observer } from 'mobx-react';
 import { breakpoints } from '../../../../assets/breakpoints';
 import { useMediaBreakpoint } from '../../../../hooks';
-import { setScrollToTopProfile } from '../../../SwiperLayout/utils';
-import { Badge } from '../../Badge';
-import { swiperStore, MAX_DESCRIPTOR_COUNT } from '../../../SwiperLayout/store';
+import { setScrollToTopProfile } from '../../utils';
+import { Badge } from '../../../common/Badge';
+import { swiperStore, MAX_DESCRIPTOR_COUNT } from '../../store';
 import { Box } from './DescriptorsBlock.styles';
 
 export const DescriptorsBlock = observer(({ profileData }) => {

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { CustomIcon } from '../../CustomIcon';
+import { CustomIcon } from '../../../common/CustomIcon';
 
 export const InfoItemWrapper = styled.div`
   display: flex;
