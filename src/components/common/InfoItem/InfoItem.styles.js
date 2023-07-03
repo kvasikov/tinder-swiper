@@ -21,3 +21,9 @@ export const Text = styled.p`
   font-weight: 500;
   line-height: 16px;
 `;
+
+export const WrapperContent = styled.div`
+  > *:not(:first-child) {
+    margin-left: 8px;
+  }
+`;

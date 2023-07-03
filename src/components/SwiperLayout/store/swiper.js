@@ -1,5 +1,5 @@
 import { configure, makeAutoObservable, toJS } from 'mobx';
-import { getDescriptorList, getStatusData } from './utils';
+import { getDescriptorList, getStatusData, ORGANIZATION_DATA } from './utils';
 
 configure({
   enforceActions: 'always',
@@ -35,6 +35,7 @@ export class SwiperStore {
       activePhotoIndex: 0,
       isStatusShow: false,
       statusData: getStatusData(profile),
+      organizationData: ORGANIZATION_DATA,
       infoData: {
         ...profile.infoData,
         sectionDataList: getDescriptorList(profile),

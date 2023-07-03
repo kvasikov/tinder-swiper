@@ -18,8 +18,8 @@ export const DescriptorsBlock = observer(({ profileData }) => {
 
   const sectionDataList = profileData?.infoData?.sectionDataList;
   const activePhotoIndex = profileData.activePhotoIndex;
-  const index = activePhotoIndex <= 1 ? 0 : activePhotoIndex - 1;
-  let descriptorList = sectionDataList[index] || [];
+  const activeIndex = activePhotoIndex <= 1 ? 0 : activePhotoIndex - 1;
+  let descriptorList = sectionDataList[activeIndex] || [];
 
   if (descriptorList?.length === 0 || !isHideMoreProfileInfo) {
     return null;
@@ -45,8 +45,12 @@ export const DescriptorsBlock = observer(({ profileData }) => {
     <Box ref={contentRef}>
       {descriptorList
         .filter((_, index) => index < MAX_DESCRIPTOR_COUNT)
-        .map((item) => (
-          <Badge key={item.id} design='pink' text={item.choiceSelections[0].name} />
+        .map((item, index) => (
+          <Badge
+            key={item.id}
+            design={index === 0 ? 'pink' : 'dark'} // TODO: pink - когда имеется совпадение с пользователем
+            text={item.choiceSelections[0].name}
+          />
         ))}
       {isShowMoreButton && (
         <Badge design='pink-transparent' text='Подробнее' onClick={onInfoClick} />

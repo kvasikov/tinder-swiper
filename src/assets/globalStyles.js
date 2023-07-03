@@ -20,4 +20,8 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+
+  div, span, button, p {
+    font-feature-settings: 'lnum' 1;
+  }
 `;

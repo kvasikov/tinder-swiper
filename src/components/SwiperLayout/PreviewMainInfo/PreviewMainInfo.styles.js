@@ -21,7 +21,6 @@ export const BirthData = styled.span`
   font-size: 24px;
   line-height: 24px;
   margin-left: 10px;
-  font-feature-settings: 'lnum' 1;
 `;
 
 export const VerifyIcon = styled(CustomIcon)`

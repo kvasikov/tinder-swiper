@@ -31,7 +31,6 @@ export const Description = styled.p`
   color: #0a0d27;
   font-size: 17px;
   line-height: 24px;
-  font-feature-settings: 'lnum' 1;
 `;
 
 export const AvatarIcon = styled(CircleIcon)`

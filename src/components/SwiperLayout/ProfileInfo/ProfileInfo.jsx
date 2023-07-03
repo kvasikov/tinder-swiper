@@ -13,11 +13,9 @@ export const ProfileInfo = ({ swiperState, profileData }) => {
       <PreviewMainInfo color='black' profileData={profileData} />
       <InfoItemBlock color='black' profileData={profileData} />
       <StatusBlock profileData={profileData} />
-      <div>
-        <OrganizationBlock profileData={profileData} />
-        <ProfileMoreInfoBlock profileData={profileData} />
-        <ActionBlock profileData={profileData} swiperState={swiperState} />
-      </div>
+      <OrganizationBlock profileData={profileData} />
+      <ProfileMoreInfoBlock profileData={profileData} />
+      <ActionBlock profileData={profileData} swiperState={swiperState} />
     </Box>
   );
 };

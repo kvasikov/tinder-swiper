@@ -22,7 +22,6 @@ export const InfoItemText = styled.span`
   font-weight: 500;
   line-height: 16px;
   margin-left: 8px;
-  font-feature-settings: 'lnum' 1;
 `;
 
 export const IconStyled = styled(CustomIcon)`

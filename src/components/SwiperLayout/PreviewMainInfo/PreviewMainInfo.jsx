@@ -7,7 +7,12 @@ export const PreviewMainInfo = ({ color = 'white', profileData }) => {
     return null;
   }
 
-  const { name, birthDate, isVerified } = profileData.infoData;
+  const orgData = profileData?.organizationData;
+  const humanData = profileData?.infoData;
+
+  const name = profileData.isOrganization ? orgData.organizationName : humanData.name;
+  const birthDate = !profileData.isOrganization && humanData.birthDate;
+  const isVerified = profileData.isOrganization ? orgData.isVerified : humanData.isVerified;
 
   return (
     <Box $color={color}>

@@ -46,6 +46,13 @@ export const getDescriptorList = (profileData) => {
   return sectionDataList;
 };
 
+export const ORGANIZATION_DATA = {
+  organizationName: 'Поход в горы',
+  description: 'Занимаюсь важными делами, пишите. Я обязательно помогу',
+  avatar: '',
+  groupList: [],
+};
+
 const STATUS_DATA = {
   longTermPartner: {
     text: 'Долгосрочный партнер',
