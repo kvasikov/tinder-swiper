@@ -109,7 +109,7 @@ const bgColorByDesign = {
 };
 
 export const BackgroundStatus = styled.div`
-  display: ${(props) => !props.$isHideMoreProfileInfo && 'none'};
+  opacity: ${(props) => (props.$isHideMoreProfileInfo ? '1' : '0')};
   position: absolute;
   height: 150px;
   left: 0;
@@ -118,4 +118,5 @@ export const BackgroundStatus = styled.div`
   background: ${({ $design }) => bgColorByDesign[$design]};
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
+  transition: opacity 0.25s;
 `;

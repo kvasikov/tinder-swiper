@@ -1,9 +1,16 @@
+/** INFO START
+ * Пришлось вместо svg иконок для вывода "статуса" профиля использовать png картинки
+ * В макете эти иконки все-равно растровые, а не векторные.
+ * Также даже если их экспортировать как svg и использовать как иконки, то браузер
+ * не позволяет их рендерить в более чем двух местах одну и ту же иконку в рамках одной страницы (из-за использования id в fill)
+ */
 import FireImg from '../../../assets/images/fire.png';
 import FunImg from '../../../assets/images/fun.png';
 import HandsImg from '../../../assets/images/hands.png';
 import HeartImg from '../../../assets/images/heart.png';
 import ManyHeartImg from '../../../assets/images/many-heart.png';
 import MonkeyImg from '../../../assets/images/monkey.png';
+/** INFO END */
 import { DATA_ATTR_PROFILE_ID } from '../../../constants/attributes';
 
 export const getProfileIdByDataAttr = (slideEl, defaultProfileId) => {
