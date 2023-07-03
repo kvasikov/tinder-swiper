@@ -2,8 +2,7 @@ import React, { useRef } from 'react';
 import { observer } from 'mobx-react';
 import { useSwiper } from 'swiper/react';
 import { setScrollToTopProfile } from '../../../utils';
-import { breakpoints } from '../../../../../assets/breakpoints';
-import { useMediaBreakpoint } from '../../../../../hooks';
+import { useIsDesktop } from '../../../../../hooks';
 import { swiperStore } from '../../../store';
 import { SuperLikeBlock } from './SuperLikeBlock';
 import { Box, MoreInfoIcon } from './RightContent.styles';
@@ -13,7 +12,7 @@ export const RightContent = observer(() => {
 
   const swiper = useSwiper();
   const { isHideMoreProfileInfo, setMoreInfoStatus } = swiperStore;
-  const isDesktop = useMediaBreakpoint(breakpoints.DESKTOP_S);
+  const isDesktop = useIsDesktop();
 
   const onInfoClick = () => {
     const execHideMoreInfo = () => {

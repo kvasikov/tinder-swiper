@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Modal as ModalAntd } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
-import { breakpoints } from '../../../assets/breakpoints';
-import { useMediaBreakpoint } from '../../../hooks';
+import { useIsDesktop } from '../../../hooks';
 import { DrawerStyled, CloseIconWrapper, Content, Title } from './Modal.styles';
 
 export const Modal = ({
@@ -16,7 +15,7 @@ export const Modal = ({
 }) => {
   const [contentEl, setContentEl] = useState(null);
   const [mobileDrawerHeight, setMobileDrawerHeight] = useState(mobileModalHeight);
-  const isDesktop = useMediaBreakpoint(breakpoints.DESKTOP_S);
+  const isDesktop = useIsDesktop();
 
   const elRef = useCallback((node) => {
     if (node !== null) {

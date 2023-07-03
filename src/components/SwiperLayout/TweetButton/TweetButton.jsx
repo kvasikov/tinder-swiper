@@ -1,8 +1,7 @@
 import React, { useRef } from 'react';
 import { observer } from 'mobx-react';
-import { breakpoints } from '../../../assets/breakpoints';
 import { setScrollToTopProfile } from '../utils';
-import { useMediaBreakpoint } from '../../../hooks';
+import { useIsDesktop } from '../../../hooks';
 import { swiperStore } from '../store';
 import { CustomIcon } from '../../common/CustomIcon';
 import { Box, Text } from './TweetButton.styles';
@@ -11,7 +10,7 @@ export const TweetButton = observer(({ swiperState, isFromMoreBlock }) => {
   const buttonRef = useRef(null);
 
   const { currentProfileData, updateProfileData, setMoreInfoStatus } = swiperStore;
-  const isDesktop = useMediaBreakpoint(breakpoints.DESKTOP_S);
+  const isDesktop = useIsDesktop();
 
   const onTweet = () => {
     if (!currentProfileData.id || swiperState.animating) {

@@ -1,8 +1,7 @@
 import React, { useRef } from 'react';
 import { useSwiper } from 'swiper/react';
 import { observer } from 'mobx-react';
-import { breakpoints } from '../../../../assets/breakpoints';
-import { useMediaBreakpoint } from '../../../../hooks';
+import { useIsDesktop } from '../../../../hooks';
 import { setScrollToTopProfile } from '../../utils';
 import { Badge } from '../../../common/Badge';
 import { swiperStore, MAX_DESCRIPTOR_COUNT } from '../../store';
@@ -11,7 +10,7 @@ import { Box } from './DescriptorsBlock.styles';
 export const DescriptorsBlock = observer(({ profileData }) => {
   const contentRef = useRef(null);
 
-  const isDesktop = useMediaBreakpoint(breakpoints.DESKTOP_S);
+  const isDesktop = useIsDesktop();
 
   const swiper = useSwiper();
   const { isHideMoreProfileInfo, setMoreInfoStatus } = swiperStore;
