@@ -1,0 +1,24 @@
+@import './fonts';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-family-primary, 'Arial', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+*::after, *::before {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+div, span, button, p {
+  font-feature-settings: 'lnum' 1;
+}
