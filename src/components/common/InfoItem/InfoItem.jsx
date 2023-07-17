@@ -1,12 +1,12 @@
 import React from 'react';
-import { Box, Title, Text, WrapperContent } from './InfoItem.styles';
+import styles from './InfoItem.module.scss';
 
 export const InfoItem = ({ title, text, children }) => {
   return (
-    <Box>
-      {title && <Title>{title}</Title>}
-      {text && <Text>{text}</Text>}
-      {children && <WrapperContent>{children}</WrapperContent>}
-    </Box>
+    <div className={styles.box}>
+      {title && <p className={styles.title}>{title}</p>}
+      {text && <p className={styles.text}>{text}</p>}
+      {children && <div className={styles['wrapper-content']}>{children}</div>}
+    </div>
   );
 };

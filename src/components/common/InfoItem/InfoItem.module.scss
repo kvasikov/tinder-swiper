@@ -1,29 +1,29 @@
-import styled from 'styled-components';
+@import 'src/assets/scss/utils';
 
-export const Box = styled.div`
+.box {
   margin: 24px 0;
-`;
+}
 
-export const Title = styled.p`
+.title {
   padding: 0;
   margin: 0 0 8px 0;
   color: #000;
   font-size: 16px;
   font-weight: 700;
   line-height: 24px;
-`;
+}
 
-export const Text = styled.p`
+.text {
   padding: 0;
   margin: 0;
   color: #000;
   font-size: 12px;
   font-weight: 500;
   line-height: 16px;
-`;
+}
 
-export const WrapperContent = styled.div`
+.wrapper-content {
   > *:not(:first-child) {
     margin-left: 8px;
   }
-`;
+}

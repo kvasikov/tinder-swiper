@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Modal as ModalAntd } from 'antd';
+import { Modal as ModalAntd, Drawer } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 import { useIsDesktop } from '../../../hooks';
-import { DrawerStyled, CloseIconWrapper, Content, Title } from './Modal.styles';
+import styles from './Modal.module.scss';
 
 export const Modal = ({
   isOpen,
@@ -24,12 +24,12 @@ export const Modal = ({
   }, []);
 
   const closeIcon = (
-    <CloseIconWrapper onClick={onCancel}>
+    <button className={styles['close-icon-wrapper']} type='button' onClick={onCancel}>
       <CloseOutlined style={{ fontSize: '16px' }} />
-    </CloseIconWrapper>
+    </button>
   );
 
-  const titleContent = title && <Title>{title}</Title>;
+  const titleContent = title && <span className={styles.title}>{title}</span>;
 
   useEffect(() => {
     const checkHeightContent = () => {
@@ -77,7 +77,8 @@ export const Modal = ({
         </ModalAntd>
       )}
       {!isDesktop && (
-        <DrawerStyled
+        <Drawer
+          className={styles.drawer}
           bodyStyle={{ padding: 0 }}
           footer={null}
           height={mobileDrawerHeight}
@@ -88,8 +89,10 @@ export const Modal = ({
         >
           {titleContent}
           {closeIcon}
-          <Content ref={elRef}>{children}</Content>
-        </DrawerStyled>
+          <div className={styles.content} ref={elRef}>
+            {children}
+          </div>
+        </Drawer>
       )}
     </>
   );

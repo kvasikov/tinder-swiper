@@ -1,0 +1,52 @@
+@import 'src/assets/scss/utils';
+
+.box {
+  color: #06090c;
+  border-radius: 24px;
+  /* backdrop-filter: blur(50px); // TODO: найти альтернативу. При использовании мерцает элемент при свайпе */
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px;
+  padding: 8px 16px;
+
+  &--pink {
+    border: 2px solid #ff00d6;
+    background-color: rgba(255, 0, 214, 0.1);
+  }
+
+  &--yellow {
+    border: 2px solid #FFB800;
+    background-color: rgba(255, 122, 0, 0.1);
+  }
+
+  &--purple {
+    border: 2px solid #DB00FF;
+    background-color: rgba(189, 0, 255, 0.1);
+  }
+
+  &--green {
+    border: 2px solid #18D870;
+    background-color: rgba(24, 216, 112, 0.1);
+  }
+
+  &--blue {
+    border: 2px solid #0500FF;
+    background-color: rgba(0, 10, 255, 0.1);
+  }
+
+  &--orange {
+    border: 2px solid #FF7A00;
+    background-color: rgba(255, 122, 0, 0.1);
+  }
+}
+
+.img {
+  margin-right: 8px;
+  height: 20px;
+  width: 24px;
+  object-fit: cover;
+}

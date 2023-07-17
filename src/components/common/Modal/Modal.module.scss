@@ -1,12 +1,10 @@
-import styled from 'styled-components';
-import { Drawer } from 'antd';
-import { breakpoints } from '../../../assets/breakpoints';
+@import 'src/assets/scss/utils';
 
-export const DrawerStyled = styled(Drawer)`
+.drawer {
   border-radius: 16px 16px 0px 0px;
-`;
+}
 
-export const CloseIconWrapper = styled.button`
+.close-icon-wrapper {
   outline: none;
   appearance: none;
   padding: 0;
@@ -20,13 +18,13 @@ export const CloseIconWrapper = styled.button`
   padding: 8px;
   border-radius: 100%;
   top: 16px;
-`;
+}
 
-export const Content = styled.div`
+.content {
   padding: 16px;
-`;
+}
 
-export const Title = styled.span`
+.title {
   display: inline-block;
   width: 100%;
   color: #0a0d27;
@@ -36,7 +34,7 @@ export const Title = styled.span`
   line-height: 24px;
   margin-top: 16px;
 
-  @media screen and (min-width: ${breakpoints.DESKTOP_S}px) {
+  @media #{$desktop-s} {
     margin-top: 0;
   }
-`;
+}

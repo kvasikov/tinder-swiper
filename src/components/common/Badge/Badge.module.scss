@@ -1,0 +1,43 @@
+@import 'src/assets/scss/utils';
+
+.box {
+  outline: none;
+  appearance: none;
+  margin: 0;
+  /* backdrop-filter: blur(12.5px); // TODO: найти альтернативу. При использовании мерцает элемент при свайпе */
+  border-radius: 16px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 2px 12px;
+  display: inline-block;
+
+  &--transparent {
+    background-color: transparent;
+    color: #FF00D6;
+    border: 1px solid #d8d8d8;
+  }
+
+  &--pink {
+    background-color: #FFDFFC;
+    color: #FF00D6;
+    border: 1px solid #FFDFFC;
+  }
+
+  &--pink-transparent {
+    background-color: transparent;
+    color: #FF00D6;
+    border: 1px solid #FF00D6;
+  }
+
+  &--dark {
+    background-color: rgba(31, 12, 51, 0.60);
+    color: white;
+    border: 1px solid rgba(31, 12, 51, 0.60);
+  }
+
+  &--pointer {
+    cursor: pointer; 
+  }
+}

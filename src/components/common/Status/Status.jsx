@@ -1,11 +1,12 @@
 import React from 'react';
-import { Box, ImgStyled } from './Status.styles';
+import cn from 'classnames';
+import styles from './Status.module.scss';
 
-export const Status = ({ design = 'pink', text, imgPath }) => {
+export const Status = ({ design = 'pink', text, imgPath, className }) => {
   return (
-    <Box $design={design}>
-      <ImgStyled src={imgPath} alt={design} />
+    <div className={cn(className, styles.box, styles[`box--${design}`])}>
+      <img className={styles.img} src={imgPath} alt={design} />
       <span>{text}</span>
-    </Box>
+    </div>
   );
 };
