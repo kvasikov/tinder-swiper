@@ -10,10 +10,11 @@ import { ProfilePreview } from '../ProfilePreview';
 import styles from './ProfileSwiper.module.scss';
 import { useGetOffsetTop } from './useGetOffsetTop.hook';
 import { useGetProfileList } from './useGetProfileList.hook';
+import { useWheelSwipe } from './useWheelSwipe.hook';
 
 SwiperCore.use([Virtual, Controller]);
 
-export const ProfileSwiper = observer(({ setSwiperState }) => {
+export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
   const prevIndex = useRef(null);
 
   const {
@@ -54,12 +55,16 @@ export const ProfileSwiper = observer(({ setSwiperState }) => {
     }
   };
 
+  useWheelSwipe({ swiperState, wrapperEl: wrapperRef.current });
+
   return (
     <div className={styles.wrapper} ref={wrapperRef}>
       <Swiper
         direction='vertical'
         style={{ height: '100%' }}
         observer
+        speed={400}
+        simulateTouch={false}
         virtual={{
           enabled: true,
           addSlidesAfter: 2,
