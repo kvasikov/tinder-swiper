@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
+import cn from 'classnames';
 import { observer } from 'mobx-react';
 import { swiperStore } from '../../../store';
 import { PreviewMainInfo } from '../../../PreviewMainInfo';
 import { InfoItemBlock } from '../../../PreviewMainInfo/InfoItemBlock';
 import { DescriptorsBlock } from '../../../PreviewMainInfo/DescriptorsBlock';
 import { StatusBlock } from '../../../PreviewMainInfo/StatusBlock';
-import { Box } from './LeftContent.styles';
+import styles from './LeftContent.module.scss';
 
 export const LeftContent = observer(({ profileData }) => {
   const { isHideMoreProfileInfo, updateProfileData } = swiperStore;
@@ -22,11 +23,15 @@ export const LeftContent = observer(({ profileData }) => {
   }, [profileData.activePhotoIndex, profileData.id, profileData.isStatusShow, updateProfileData]);
 
   return (
-    <Box $isHide={isHideMoreProfileInfo}>
+    <div
+      className={cn(styles.box, {
+        [styles['box--hide']]: isHideMoreProfileInfo,
+      })}
+    >
       <PreviewMainInfo profileData={profileData} />
       {isShowInfoItems && <InfoItemBlock color='white' profileData={profileData} />}
       {isShowDescriptors && <DescriptorsBlock profileData={profileData} />}
       {profileData.isStatusShow && <StatusBlock profileData={profileData} />}
-    </Box>
+    </div>
   );
 });

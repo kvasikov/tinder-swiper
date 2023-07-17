@@ -1,11 +1,13 @@
 import React, { useRef } from 'react';
+import cn from 'classnames';
 import { observer } from 'mobx-react';
 import { useSwiper } from 'swiper/react';
+import { CircleIcon } from '../../../../common/CircleIcon';
 import { setScrollToTopProfile } from '../../../utils';
 import { useIsDesktop } from '../../../../../hooks';
 import { swiperStore } from '../../../store';
 import { SuperLikeBlock } from './SuperLikeBlock';
-import { Box, MoreInfoIcon } from './RightContent.styles';
+import styles from './RightContent.module.scss';
 
 export const RightContent = observer(() => {
   const contentRef = useRef(null);
@@ -29,13 +31,15 @@ export const RightContent = observer(() => {
   };
 
   return (
-    <Box ref={contentRef}>
+    <div className={styles.box} ref={contentRef}>
       <SuperLikeBlock />
-      <MoreInfoIcon
+      <CircleIcon
+        className={cn(styles['more-info-icon'], {
+          [styles['more-info-icon--show']]: !isHideMoreProfileInfo,
+        })}
         kind='arrowUp'
-        $isHideMoreProfileInfo={isHideMoreProfileInfo}
         onClick={onInfoClick}
       />
-    </Box>
+    </div>
   );
 });

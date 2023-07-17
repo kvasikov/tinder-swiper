@@ -1,0 +1,32 @@
+@import 'src/assets/scss/utils';
+
+.box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  bottom: -24px;
+  z-index: 10;
+}
+
+.more-info-icon {
+  margin-top: 16px;
+  position: relative;
+  top: 0;
+  transition: transform 0.25s, top 0.25s, background-color 0.25s;
+
+  &--show {
+    background-color: #ff00d6;
+    top: 36px;
+    transform: rotate(-180deg);
+
+    @media #{$desktop-s} {
+      transform: rotate(270deg) !important;
+    }
+  }
+
+  @media #{$desktop-s} {
+    top: 0;
+    transform: rotate(90deg);
+  }
+}

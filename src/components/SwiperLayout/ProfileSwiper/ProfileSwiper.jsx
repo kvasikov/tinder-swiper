@@ -1,18 +1,13 @@
 import React, { useRef } from 'react';
 import { observer } from 'mobx-react';
-import { Spin } from 'antd';
-import { Swiper } from 'swiper/react';
+import { Spin, Space } from 'antd';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Virtual, Controller } from 'swiper';
 import 'swiper/css';
 import { DATA_ATTR_PROFILE_ID } from '../../../constants/attributes';
 import { swiperStore, getProfileIdByDataAttr } from '../store';
 import { ProfilePreview } from '../ProfilePreview';
-import {
-  SwiperWrapper,
-  SpaceStyled,
-  SwiperSlideStyled,
-  LastLoaderWrapper,
-} from './ProfileSwiper.styles';
+import styles from './ProfileSwiper.module.scss';
 import { useGetOffsetTop } from './useGetOffsetTop.hook';
 import { useGetProfileList } from './useGetProfileList.hook';
 
@@ -60,7 +55,7 @@ export const ProfileSwiper = observer(({ setSwiperState }) => {
   };
 
   return (
-    <SwiperWrapper ref={wrapperRef}>
+    <div className={styles.wrapper} ref={wrapperRef}>
       <Swiper
         direction='vertical'
         style={{ height: '100%' }}
@@ -75,29 +70,34 @@ export const ProfileSwiper = observer(({ setSwiperState }) => {
         onSlideChange={onSliderChange}
       >
         {isFetchingList && profileList.length === 0 && (
-          <SwiperSlideStyled>
-            <SpaceStyled direction='vertical'>
+          <SwiperSlide className={styles.slide}>
+            <Space className={styles.space} direction='vertical'>
               <Spin tip='Loading' size='large'>
                 <div />
               </Spin>
-            </SpaceStyled>
-          </SwiperSlideStyled>
+            </Space>
+          </SwiperSlide>
         )}
         {profileList.map((profile, profileIndex) => {
           const dataProps = { [DATA_ATTR_PROFILE_ID]: profile.id };
 
           return (
-            <SwiperSlideStyled key={profile.id} virtualIndex={profileIndex} {...dataProps}>
+            <SwiperSlide
+              className={styles.slide}
+              key={profile.id}
+              virtualIndex={profileIndex}
+              {...dataProps}
+            >
               <ProfilePreview profileData={profile} />
               {isFetchingList && profileIndex === profileList.length - 1 && (
-                <LastLoaderWrapper>
+                <div className={styles['last-loader-wrapper']}>
                   <Spin size='default' />
-                </LastLoaderWrapper>
+                </div>
               )}
-            </SwiperSlideStyled>
+            </SwiperSlide>
           );
         })}
       </Swiper>
-    </SwiperWrapper>
+    </div>
   );
 });

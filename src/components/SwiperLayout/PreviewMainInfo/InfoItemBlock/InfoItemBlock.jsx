@@ -1,12 +1,8 @@
 import React from 'react';
+import cn from 'classnames';
 import { observer } from 'mobx-react';
-import {
-  OnlineIcon,
-  IconStyled,
-  InfoWrapper,
-  InfoItemWrapper,
-  InfoItemText,
-} from './InfoItemBlock.styles';
+import { CustomIcon } from '../../../common/CustomIcon';
+import styles from './InfoItemBlock.module.scss';
 
 export const InfoItemBlock = observer(({ color, profileData }) => {
   if (!profileData.infoData) {
@@ -27,14 +23,29 @@ export const InfoItemBlock = observer(({ color, profileData }) => {
   }
 
   const Item = ({ iconKind, isOnline, text }) => (
-    <InfoItemWrapper>
-      {isOnline ? <OnlineIcon /> : <IconStyled kind={iconKind} iconSize='8px' $color={color} />}
-      <InfoItemText $color={color}>{text}</InfoItemText>
-    </InfoItemWrapper>
+    <div className={styles['info-wrapper__item']}>
+      {isOnline ? (
+        <div className={styles['online-icon']} />
+      ) : (
+        <CustomIcon
+          className={cn(styles.icon, styles[`icon--${color}`])}
+          kind={iconKind}
+          iconSize='8px'
+        />
+      )}
+      <span
+        className={cn(
+          styles['info-wrapper__item__text'],
+          styles[`info-wrapper__item__text--${color}`],
+        )}
+      >
+        {text}
+      </span>
+    </div>
   );
 
   return (
-    <InfoWrapper>
+    <div className={styles['info-wrapper']}>
       {data.recentlyActive && <Item isOnline text='Недавно активные' />}
       {profileData.distance && <Item iconKind='geo' text={`${profileData.distance} км от тебя`} />}
       {data.growth && <Item iconKind='height' text={`${data.growth} см`} />}
@@ -47,6 +58,6 @@ export const InfoItemBlock = observer(({ color, profileData }) => {
         data.jobs.map((job, index) => (
           <Item key={index} iconKind='business' text={job.title.name} />
         ))}
-    </InfoWrapper>
+    </div>
   );
 });

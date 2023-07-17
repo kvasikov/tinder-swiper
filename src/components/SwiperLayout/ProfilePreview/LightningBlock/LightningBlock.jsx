@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
+import { Button } from 'antd';
 import { Modal } from '../../../common/Modal';
-import {
-  Box,
-  IconWrapper,
-  LightningIcon,
-  Title,
-  Description,
-  ButtonStyled,
-} from './LightningBlock.styles';
+import { CircleIcon } from '../../../common/CircleIcon';
+import styles from './LightningBlock.module.scss';
 
 export const LightningBlock = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -19,26 +14,31 @@ export const LightningBlock = () => {
 
   return (
     <>
-      <Box>
-        <LightningIcon design='dark' kind='lightning' onClick={onOpenModal} />
-      </Box>
+      <div className={styles.box}>
+        <CircleIcon
+          className={styles['lightning-icon']}
+          design='dark'
+          kind='lightning'
+          onClick={onOpenModal}
+        />
+      </div>
       <Modal
         isOpen={isOpenModal}
         desktopModalWidth='400px'
         mobileModalHeight='auto'
         onCancel={onCloseModal}
       >
-        <IconWrapper>
-          <LightningIcon design='dark' kind='lightning' />
-        </IconWrapper>
-        <Title>Внимание</Title>
-        <Description>
+        <div className={styles['icon-wrapper']}>
+          <CircleIcon className={styles['lightning-icon']} design='dark' kind='lightning' />
+        </div>
+        <h4 className={styles.title}>Внимание</h4>
+        <p className={styles.description}>
           40 минут ваша анкета будет показываться раньше остальных. Больше людей вас увидят и
           выразят симпатию
-        </Description>
-        <ButtonStyled type='primary' onClick={onActiveClick}>
+        </p>
+        <Button className={styles.button} type='primary' onClick={onActiveClick}>
           Активировать внимание
-        </ButtonStyled>
+        </Button>
       </Modal>
     </>
   );

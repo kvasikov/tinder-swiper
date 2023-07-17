@@ -1,11 +1,11 @@
 import React from 'react';
 import { TweetButton } from '../TweetButton';
-import { Box } from './TweetButtonDesktop.styles';
+import styles from './TweetButtonDesktop.module.scss';
 
 export const TweetButtonDesktop = ({ swiperState }) => {
   return (
-    <Box>
+    <div className={styles.box}>
       <TweetButton swiperState={swiperState} />
-    </Box>
+    </div>
   );
 };

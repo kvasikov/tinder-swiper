@@ -1,0 +1,15 @@
+@import 'src/assets/scss/utils';
+
+.box {
+  display: none;
+
+  @media #{$desktop-s} {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.icon-down {
+  transform: rotate(180deg);
+  margin-top: 12px;
+}

@@ -1,23 +1,16 @@
 import React, { useState } from 'react';
 import { TweetButton } from '../../TweetButton';
 import { Modal } from '../../../common/Modal';
-import {
-  Box,
-  ShareWrapper,
-  IconStyled,
-  ShareText,
-  TweetButtonWrapper,
-  ComplainWrapper,
-  Button,
-} from './ActionBlock.styles';
+import { CustomIcon } from '../../../common/CustomIcon';
+import styles from './ActionBlock.module.scss';
 
 const COMPLAIN_LIST = ['Чужие изображения', 'Непристойный контент', 'Непристойные фото', 'Другое'];
 
 const ActionButton = ({ label, onClick }) => {
   return (
-    <Button type='button' onClick={onClick}>
+    <button className={styles.button} type='button' onClick={onClick}>
       {label}
-    </Button>
+    </button>
   );
 };
 
@@ -40,18 +33,18 @@ export const ActionBlock = ({ profileData, swiperState }) => {
   };
 
   return (
-    <Box>
-      <ShareWrapper onClick={onShareClick}>
-        <IconStyled kind='share' iconSize='24px' />
-        <ShareText>Поделиться профилем</ShareText>
-      </ShareWrapper>
-      <TweetButtonWrapper>
+    <div className={styles.box}>
+      <button className={styles['share-wrapper']} type='button' onClick={onShareClick}>
+        <CustomIcon className={styles.icon} kind='share' iconSize='24px' />
+        <span className={styles['share-text']}>Поделиться профилем</span>
+      </button>
+      <div className={styles['tweet-button-wrapper']}>
         <TweetButton swiperState={swiperState} isFromMoreBlock />
-      </TweetButtonWrapper>
-      <ComplainWrapper>
+      </div>
+      <div className={styles['complain-wrapper']}>
         <ActionButton label='Пожаловаться' onClick={onComplainClick} />
         <ActionButton label='Заблокировать' onClick={onBlockClick} />
-      </ComplainWrapper>
+      </div>
       <Modal
         title='Пожаловаться'
         isOpen={isShowComplain}
@@ -59,7 +52,7 @@ export const ActionBlock = ({ profileData, swiperState }) => {
         mobileModalHeight='auto'
         onCancel={closeComplainModal}
       >
-        <ComplainWrapper>
+        <div className={styles['complain-wrapper']}>
           {COMPLAIN_LIST.map((complainText) => (
             <ActionButton
               key={complainText}
@@ -67,8 +60,8 @@ export const ActionBlock = ({ profileData, swiperState }) => {
               onClick={onComplainItemClick(complainText)}
             />
           ))}
-        </ComplainWrapper>
+        </div>
       </Modal>
-    </Box>
+    </div>
   );
 };

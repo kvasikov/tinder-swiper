@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box } from './TweetStatus.styles';
+import cn from 'classnames';
+import styles from './TweetStatus.module.scss';
 
 export const TweetStatus = ({ profileData }) => {
   if (typeof profileData.isTweet !== 'boolean') {
@@ -7,8 +8,12 @@ export const TweetStatus = ({ profileData }) => {
   }
 
   return (
-    <Box $isSuccess={profileData.isTweet}>
+    <div
+      className={cn(styles.box, {
+        [styles['box--success']]: profileData.isTweet,
+      })}
+    >
       <span>{profileData.isTweet ? 'again' : 'nope'}</span>
-    </Box>
+    </div>
   );
 };

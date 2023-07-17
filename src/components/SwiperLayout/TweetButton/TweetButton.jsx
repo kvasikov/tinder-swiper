@@ -4,7 +4,7 @@ import { setScrollToTopProfile } from '../utils';
 import { useIsDesktop } from '../../../hooks';
 import { swiperStore } from '../store';
 import { CustomIcon } from '../../common/CustomIcon';
-import { Box, Text } from './TweetButton.styles';
+import styles from './TweetButton.module.scss';
 
 export const TweetButton = observer(({ swiperState, isFromMoreBlock }) => {
   const buttonRef = useRef(null);
@@ -39,9 +39,9 @@ export const TweetButton = observer(({ swiperState, isFromMoreBlock }) => {
   };
 
   return (
-    <Box ref={buttonRef} onClick={onTweet}>
+    <button className={styles.box} type='button' ref={buttonRef} onClick={onTweet}>
       <CustomIcon kind='tweet' />
-      <Text>Tweet</Text>
-    </Box>
+      <span className={styles.text}>Tweet</span>
+    </button>
   );
 });

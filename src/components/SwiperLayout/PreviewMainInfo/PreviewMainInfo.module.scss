@@ -1,0 +1,41 @@
+@import 'src/assets/scss/utils';
+
+.box {
+  &--black {
+    color: black;
+  }
+
+  &--white {
+    color: white;
+  }
+}
+
+.main-box {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.name {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.birth-date {
+  font-size: 24px;
+  line-height: 24px;
+  margin-left: 10px;
+}
+
+.verify-icon {
+  margin-left: 10px;
+  color: black;
+  position: relative;
+  top: 3px;
+  opacity: 0;
+
+  &--show {
+    opacity: 1;
+  }
+}

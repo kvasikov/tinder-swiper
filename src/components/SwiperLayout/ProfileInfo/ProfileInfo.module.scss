@@ -1,0 +1,10 @@
+@import 'src/assets/scss/utils';
+
+.box {
+  background-color: white;
+  padding: 16px;
+
+  @media #{$desktop-s} {
+    border-radius: 16px;
+  }
+}

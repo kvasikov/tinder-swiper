@@ -5,17 +5,17 @@ import { StatusBlock } from '../PreviewMainInfo/StatusBlock';
 import { OrganizationBlock } from './OrganizationBlock';
 import { ProfileMoreInfoBlock } from './ProfileMoreInfoBlock';
 import { ActionBlock } from './ActionBlock';
-import { Box } from './ProfileInfo.styles';
+import styles from './ProfileInfo.module.scss';
 
 export const ProfileInfo = ({ swiperState, profileData }) => {
   return (
-    <Box>
+    <div className={styles.box}>
       <PreviewMainInfo color='black' profileData={profileData} />
       <InfoItemBlock color='black' profileData={profileData} />
       <StatusBlock profileData={profileData} />
       <OrganizationBlock profileData={profileData} />
       <ProfileMoreInfoBlock profileData={profileData} />
       <ActionBlock profileData={profileData} swiperState={swiperState} />
-    </Box>
+    </div>
   );
 };

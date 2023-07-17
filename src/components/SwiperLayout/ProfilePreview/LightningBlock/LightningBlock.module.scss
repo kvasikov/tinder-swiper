@@ -1,26 +1,22 @@
-import styled from 'styled-components';
-import { Button } from 'antd';
-import { CircleIcon } from '../../../common/CircleIcon';
-
-export const LightningIcon = styled(CircleIcon)`
+.lightning-icon {
   svg {
     fill: none;
   }
-`;
+}
 
-export const Box = styled.div`
+.box {
   position: absolute;
   right: 16px;
   top: 8px;
-`;
+}
 
-export const IconWrapper = styled.div`
+.icon-wrapper {
   margin-top: 72px;
   display: flex;
   justify-content: center;
-`;
+}
 
-export const Title = styled.h4`
+.title {
   margin-top: 40px;
   padding: 0;
   font-size: 20px;
@@ -28,19 +24,19 @@ export const Title = styled.h4`
   line-height: 24px;
   text-align: center;
   color: #0a0d27;
-`;
+}
 
-export const Description = styled.p`
+.description {
   padding: 0;
   text-align: center;
   margin-top: 16px;
   color: #0a0d27;
   font-size: 17px;
   line-height: 24px;
-`;
+}
 
-export const ButtonStyled = styled(Button)`
+.button {
   margin-top: 40px;
   margin-bottom: 54px;
   width: 100%;
-`;
+}

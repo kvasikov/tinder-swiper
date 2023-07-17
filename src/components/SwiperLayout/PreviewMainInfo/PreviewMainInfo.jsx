@@ -1,5 +1,7 @@
 import React from 'react';
-import { Box, MainBox, Name, BirthData, VerifyIcon } from './PreviewMainInfo.styles';
+import cn from 'classnames';
+import { CustomIcon } from '../../common/CustomIcon';
+import styles from './PreviewMainInfo.module.scss';
 import { getAgeByDate } from './utils';
 
 export const PreviewMainInfo = ({ color = 'white', profileData }) => {
@@ -15,12 +17,18 @@ export const PreviewMainInfo = ({ color = 'white', profileData }) => {
   const isVerified = profileData.isOrganization ? orgData.isVerified : humanData.isVerified;
 
   return (
-    <Box $color={color}>
-      <MainBox>
-        <Name>{name}</Name>
-        {birthDate && <BirthData>{getAgeByDate(birthDate)}</BirthData>}
-        <VerifyIcon kind='verify' iconSize='30px' $isShown={isVerified} />
-      </MainBox>
-    </Box>
+    <div className={styles[`box--${color}`]}>
+      <div className={styles['main-box']}>
+        <span className={styles.name}>{name}</span>
+        {birthDate && <span className={styles['birth-date']}>{getAgeByDate(birthDate)}</span>}
+        <CustomIcon
+          className={cn(styles['verify-icon'], {
+            [styles['verify-icon--show']]: isVerified,
+          })}
+          kind='verify'
+          iconSize='30px'
+        />
+      </div>
+    </div>
   );
 };

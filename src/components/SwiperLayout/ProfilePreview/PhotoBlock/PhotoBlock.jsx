@@ -1,4 +1,5 @@
 import React from 'react';
+import cn from 'classnames';
 import { observer } from 'mobx-react';
 import { useSwiper } from 'swiper/react';
 import { DATA_ATTR_PHOTO_WRAPPER_ID } from '../../../../constants/attributes';
@@ -7,18 +8,7 @@ import { ProfileInfo } from '../../ProfileInfo';
 import { LightningBlock } from '../LightningBlock';
 import { InfoBlock } from '../InfoBlock';
 import { TweetStatus } from './TweetStatus';
-import {
-  Box,
-  PhotoImg,
-  PhotoWrapper,
-  TopBlock,
-  BulletListWrapper,
-  Bullet,
-  HandlerWrapper,
-  HandlerPhoto,
-  InfoWrapper,
-  BackgroundStatus,
-} from './PhotoBlock.styles';
+import styles from './PhotoBlock.module.scss';
 
 export const PhotoBlock = observer(({ profileData }) => {
   const swiper = useSwiper();
@@ -46,37 +36,62 @@ export const PhotoBlock = observer(({ profileData }) => {
   const attrProps = { [DATA_ATTR_PHOTO_WRAPPER_ID]: profileData.id };
 
   return (
-    <Box $photoList={photoList}>
-      <PhotoWrapper
+    <div className={styles.box}>
+      <div
         {...attrProps}
-        $isHideMoreProfileInfo={isHideMoreProfileInfo}
-        $offset={offsetTop}
+        className={styles['photo-wrapper']}
+        style={{
+          top: isHideMoreProfileInfo && offsetTop ? offsetTop : 0,
+        }}
       >
-        <HandlerWrapper>
-          <HandlerPhoto onMouseUp={onChangePhoto(-1)} />
-          <HandlerPhoto onMouseUp={onChangePhoto(1)} />
-        </HandlerWrapper>
+        <div className={styles['handler-wrapper']}>
+          <div className={styles['handler-photo']} onMouseUp={onChangePhoto(-1)} />
+          <div className={styles['handler-photo']} onMouseUp={onChangePhoto(1)} />
+        </div>
         <TweetStatus profileData={profileData} />
-        <TopBlock>
-          <BulletListWrapper $isHide={photoList.length <= 1}>
+        <div className={styles['top-block']}>
+          <div
+            className={cn(styles['bullet-list-wrapper'], {
+              [styles['bullet-list-wrapper--hide']]: photoList.length <= 1,
+            })}
+          >
             {photoList.map((_, index) => (
-              <Bullet key={index} $isActive={index <= photoIndex} />
+              <div
+                className={cn(styles.bullet, {
+                  [styles['bullet--active']]: index <= photoIndex,
+                })}
+                key={index}
+              />
             ))}
-          </BulletListWrapper>
+          </div>
           <LightningBlock />
-        </TopBlock>
-        <PhotoImg $imgPath={activePhotoPath} $isHideMoreProfileInfo={isHideMoreProfileInfo} />
+        </div>
+        <div
+          className={cn(styles['photo-img'], {
+            [styles['photo-img--show']]: !isHideMoreProfileInfo,
+          })}
+          style={{ backgroundImage: `url("${activePhotoPath}")` }}
+        />
         <InfoBlock profileData={profileData} />
         {profileData.isStatusShow && !profileData.isOrganization && (
-          <BackgroundStatus
-            $isHideMoreProfileInfo={isHideMoreProfileInfo}
-            $design={profileData.statusData.design}
+          <div
+            className={cn(
+              styles['background-status'],
+              styles[`background-status--${profileData.statusData.design}`],
+              {
+                [styles['background-status--hide']]: isHideMoreProfileInfo,
+              },
+            )}
           />
         )}
-      </PhotoWrapper>
-      <InfoWrapper $isHideMoreProfileInfo={isHideMoreProfileInfo}>
+      </div>
+      <div
+        className={cn(styles['info-wrapper'], {
+          [styles['info-wrapper--hide']]: isHideMoreProfileInfo,
+        })}
+      >
         <ProfileInfo swiperState={swiper} profileData={profileData} />
-      </InfoWrapper>
-    </Box>
+      </div>
+    </div>
   );
 });

@@ -1,8 +1,9 @@
 import React from 'react';
+import cn from 'classnames';
 import { observer } from 'mobx-react';
 import { swiperStore } from '../../store';
 import { Status } from '../../../common/Status';
-import { Box } from './StatusBlock.styles';
+import styles from './StatusBlock.module.scss';
 
 export const StatusBlock = observer(({ profileData }) => {
   const { isHideMoreProfileInfo } = swiperStore;
@@ -12,12 +13,16 @@ export const StatusBlock = observer(({ profileData }) => {
   }
 
   return (
-    <Box $isHideMoreProfileInfo={isHideMoreProfileInfo}>
+    <div
+      className={cn(styles.box, {
+        [styles['box--hide']]: isHideMoreProfileInfo,
+      })}
+    >
       <Status
         text={profileData.statusData.text}
         design={profileData.statusData.design}
         imgPath={profileData.statusData.imgPath}
       />
-    </Box>
+    </div>
   );
 });

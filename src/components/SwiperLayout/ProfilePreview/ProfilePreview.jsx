@@ -1,9 +1,10 @@
 import React from 'react';
+import cn from 'classnames';
 import { observer } from 'mobx-react';
 import { DATA_ATTR_PROFILE_WRAPPER_ID } from '../../../constants/attributes';
 import { swiperStore } from '../store';
 import { PhotoBlock } from './PhotoBlock';
-import { Box } from './ProfilePreview.styles';
+import styles from './ProfilePreview.module.scss';
 
 export const ProfilePreview = observer(({ profileData }) => {
   const { isHideMoreProfileInfo } = swiperStore;
@@ -11,8 +12,13 @@ export const ProfilePreview = observer(({ profileData }) => {
   const attrProps = { [DATA_ATTR_PROFILE_WRAPPER_ID]: true };
 
   return (
-    <Box $isHideMoreProfileInfo={isHideMoreProfileInfo} {...attrProps}>
+    <div
+      className={cn(styles.box, {
+        [styles['box--overflow']]: !isHideMoreProfileInfo,
+      })}
+      {...attrProps}
+    >
       <PhotoBlock profileData={profileData} />
-    </Box>
+    </div>
   );
 });

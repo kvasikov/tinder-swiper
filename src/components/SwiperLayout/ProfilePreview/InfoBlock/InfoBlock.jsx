@@ -1,11 +1,12 @@
 import React from 'react';
 import { useSwiper } from 'swiper/react';
+import cn from 'classnames';
 import { observer } from 'mobx-react';
 import { swiperStore } from '../../store';
 import { TweetButton } from '../../TweetButton';
 import { LeftContent } from './LeftContent';
 import { RightContent } from './RightContent';
-import { Box, Content, TweetButtonWrapper, LeftWrapper, RightWrapper } from './InfoBlock.styles';
+import styles from './InfoBlock.module.scss';
 
 export const InfoBlock = observer(({ profileData }) => {
   const swiper = useSwiper();
@@ -13,18 +14,22 @@ export const InfoBlock = observer(({ profileData }) => {
   const { isHideMoreProfileInfo } = swiperStore;
 
   return (
-    <Box>
-      <Content>
-        <LeftWrapper>
+    <div className={styles.box}>
+      <div className={styles.content}>
+        <div className={styles['left-wrapper']}>
           <LeftContent profileData={profileData} />
-        </LeftWrapper>
-        <TweetButtonWrapper $isHideMoreProfileInfo={isHideMoreProfileInfo}>
+        </div>
+        <div
+          className={cn(styles['tweet-button-wrapper'], {
+            [styles['tweet-button-wrapper--hide']]: isHideMoreProfileInfo,
+          })}
+        >
           <TweetButton swiperState={swiper} />
-        </TweetButtonWrapper>
-        <RightWrapper>
+        </div>
+        <div>
           <RightContent />
-        </RightWrapper>
-      </Content>
-    </Box>
+        </div>
+      </div>
+    </div>
   );
 });

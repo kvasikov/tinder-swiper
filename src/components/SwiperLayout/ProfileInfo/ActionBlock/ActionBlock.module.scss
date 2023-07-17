@@ -1,0 +1,66 @@
+.box {
+  margin-bottom: 54px;
+  margin-top: 24px;
+}
+
+.share {
+  &-wrapper {
+    color: #ff00d6;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: transparent;
+    outline: none;
+    appearance: none;
+    margin: 0;
+    border: none;
+    cursor: pointer;
+  }
+
+  &-text {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px;
+    margin-left: 16px;
+  }
+}
+
+.icon {
+  svg {
+    fill: none;
+  }
+}
+
+.tweet-button-wrapper {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.complain-wrapper {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  background-color: transparent;
+  outline: none;
+  appearance: none;
+  margin: 0;
+  border: none;
+  cursor: pointer;
+  color: #d90026;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  display: flex;
+  padding: 12px 32px;
+  justify-content: center;
+  align-items: center;
+
+  &:not(:first-child) {
+    margin-top: 16px;
+  }
+}

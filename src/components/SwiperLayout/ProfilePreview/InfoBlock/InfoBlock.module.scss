@@ -1,0 +1,40 @@
+@import 'src/assets/scss/utils';
+
+.box {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  text-align: left;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 16px;
+  z-index: 10;
+}
+
+.tweet-button-wrapper {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -56px;
+  transition: opacity 0.25s;
+  opacity: 0;
+  z-index: 10;
+
+  &--hide {
+    opacity: 1;
+  }
+
+  @media #{$desktop-s} {
+    display: none;
+  }
+}
+
+.left-wrapper {
+  flex: 1;
+  padding-right: 40px;
+}

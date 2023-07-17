@@ -1,0 +1,50 @@
+.info-wrapper {
+  margin-top: 8px;
+
+  &__item {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+
+    &:not(:first-child) {
+      margin-top: 4px;
+    }
+
+    &__text {
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 16px;
+      margin-left: 8px;
+
+      &--white {
+        color: white;
+      }
+
+      &--black {
+        color: black;
+      }
+    }
+  }
+}
+
+.icon {
+  svg {
+    fill: none;
+  }
+
+  &--white {
+    color: white;
+  }
+
+  &--black {
+    color: black;
+  }
+}
+
+.online-icon {
+  background-color: #40f700;
+  height: 8px;
+  width: 8px;
+  border-radius: 100%;
+}

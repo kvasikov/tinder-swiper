@@ -1,0 +1,31 @@
+@import 'src/assets/scss/utils';
+
+.space {
+  width: 100%;
+  height: 100%;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.slide {
+  animation-name: fadeIn;
+  animation-iteration-count: 1;
+  animation-duration: 0.25s;
+}
+
+.wrapper {
+  height: 100%;
+  overflow: hidden;
+
+  @media #{$desktop-s} {
+    border-radius: 16px;
+  }
+}
+
+.last-loader-wrapper {
+  position: relative;
+  top: 8px;
+  width: 100%;
+  z-index: 1;
+  text-align: center;
+}

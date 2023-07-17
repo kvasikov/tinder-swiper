@@ -1,7 +1,7 @@
 import React from 'react';
 import { swiperStore } from '../store';
 import { CircleIcon } from '../../common/CircleIcon';
-import { Box, IconDown } from './ButtonBlockDesktop.styles';
+import styles from './ButtonBlockDesktop.module.scss';
 
 export const ButtonBlockDesktop = ({ profileData, swiperState }) => {
   const { updateProfileData } = swiperStore;
@@ -29,9 +29,9 @@ export const ButtonBlockDesktop = ({ profileData, swiperState }) => {
   };
 
   return (
-    <Box>
+    <div className={styles.box}>
       <CircleIcon design='transparent' kind='arrowUp' onClick={onPrevProfileClick} />
-      <IconDown kind='arrowUp' onClick={onNextProfileClick} />
-    </Box>
+      <CircleIcon className={styles['icon-down']} kind='arrowUp' onClick={onNextProfileClick} />
+    </div>
   );
 };

@@ -1,20 +1,11 @@
 import React, { useState } from 'react';
 import { observer } from 'mobx-react';
+import { Input, Button } from 'antd';
 import { PlusCircleOutlined } from '@ant-design/icons';
 import { swiperStore } from '../../../../store';
 import { CircleIcon } from '../../../../../common/CircleIcon';
 import { Modal } from '../../../../../common/Modal';
-import {
-  AvatarWrapper,
-  AvatarContent,
-  Description,
-  Title,
-  AvatarIcon,
-  Avatar,
-  Textarea,
-  EventButton,
-  SubmitButton,
-} from './SuperLikeBlock.styles';
+import styles from './SuperLikeBlock.module.scss';
 
 export const SuperLikeBlock = observer(() => {
   const { currentProfileData } = swiperStore;
@@ -34,17 +25,23 @@ export const SuperLikeBlock = observer(() => {
         mobileModalHeight='auto'
         onCancel={onCloseModal}
       >
-        <AvatarWrapper>
-          <AvatarContent>
-            <Avatar src={firstPhoto} alt='avatar' />
-            <AvatarIcon kind='chat' />
-          </AvatarContent>
-        </AvatarWrapper>
-        <Title>Суперлайк</Title>
-        <Description>Отправьте суперлайк, чтобы увеличить шансы на взаимность</Description>
-        <Textarea placeholder='Напишите что-нибудь' />
-        <EventButton icon={<PlusCircleOutlined />}>Предложить событие или место</EventButton>
-        <SubmitButton type='primary'>Отправьте суперлайк</SubmitButton>
+        <div className={styles['avatar-wrapper']}>
+          <div className={styles['avatar-content']}>
+            <img className={styles['avatar-img']} src={firstPhoto} alt='avatar' />
+            <CircleIcon className={styles['avatar-icon']} kind='chat' />
+          </div>
+        </div>
+        <h4 className={styles.title}>Суперлайк</h4>
+        <p className={styles.description}>
+          Отправьте суперлайк, чтобы увеличить шансы на взаимность
+        </p>
+        <Input.TextArea className={styles.textarea} placeholder='Напишите что-нибудь' />
+        <Button className={styles['event-button']} icon={<PlusCircleOutlined />}>
+          Предложить событие или место
+        </Button>
+        <Button className={styles['submit-button']} type='primary'>
+          Отправьте суперлайк
+        </Button>
       </Modal>
     </div>
   );

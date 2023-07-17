@@ -5,7 +5,7 @@ import { useIsDesktop } from '../../../../hooks';
 import { setScrollToTopProfile } from '../../utils';
 import { Badge } from '../../../common/Badge';
 import { swiperStore, MAX_DESCRIPTOR_COUNT } from '../../store';
-import { Box } from './DescriptorsBlock.styles';
+import styles from './DescriptorsBlock.module.scss';
 
 export const DescriptorsBlock = observer(({ profileData }) => {
   const contentRef = useRef(null);
@@ -41,7 +41,7 @@ export const DescriptorsBlock = observer(({ profileData }) => {
   };
 
   return (
-    <Box ref={contentRef}>
+    <div className={styles.box} ref={contentRef}>
       {descriptorList
         .filter((_, index) => index < MAX_DESCRIPTOR_COUNT)
         .map((item, index) => (
@@ -54,6 +54,6 @@ export const DescriptorsBlock = observer(({ profileData }) => {
       {isShowMoreButton && (
         <Badge design='pink-transparent' text='Подробнее' onClick={onInfoClick} />
       )}
-    </Box>
+    </div>
   );
 });

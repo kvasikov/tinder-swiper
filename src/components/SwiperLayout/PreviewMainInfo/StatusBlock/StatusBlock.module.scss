@@ -1,0 +1,9 @@
+.box {
+  position: relative;
+  transition: margin 0.25s;
+  margin: 24px 0;
+
+  &--hide {
+    margin: 8px 0 0 0;
+  }
+}
