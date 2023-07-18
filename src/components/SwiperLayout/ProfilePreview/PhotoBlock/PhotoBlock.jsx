@@ -12,7 +12,6 @@ import styles from './PhotoBlock.module.scss';
 
 export const PhotoBlock = observer(({ profileData }) => {
   const swiper = useSwiper();
-  const { isHideMoreProfileInfo, offsetTop, updateProfileData } = swiperStore;
 
   const photoList = profileData.infoData.photoList;
 
@@ -30,7 +29,7 @@ export const PhotoBlock = observer(({ profileData }) => {
       newIndex = prevIndex;
     }
 
-    updateProfileData(profileData.id, { activePhotoIndex: newIndex });
+    swiperStore.updateProfileData(profileData.id, { activePhotoIndex: newIndex });
   };
 
   const attrProps = { [DATA_ATTR_PHOTO_WRAPPER_ID]: profileData.id };
@@ -41,7 +40,8 @@ export const PhotoBlock = observer(({ profileData }) => {
         {...attrProps}
         className={styles['photo-wrapper']}
         style={{
-          top: isHideMoreProfileInfo && offsetTop ? offsetTop : 0,
+          top:
+            swiperStore.isHideMoreProfileInfo && swiperStore.offsetTop ? swiperStore.offsetTop : 0,
         }}
       >
         <div className={styles['handler-wrapper']}>
@@ -68,7 +68,7 @@ export const PhotoBlock = observer(({ profileData }) => {
         </div>
         <div
           className={cn(styles['photo-img'], {
-            [styles['photo-img--show']]: !isHideMoreProfileInfo,
+            [styles['photo-img--show']]: !swiperStore.isHideMoreProfileInfo,
           })}
           style={{ backgroundImage: `url("${activePhotoPath}")` }}
         />
@@ -79,7 +79,7 @@ export const PhotoBlock = observer(({ profileData }) => {
               styles['background-status'],
               styles[`background-status--${profileData.statusData.design}`],
               {
-                [styles['background-status--hide']]: isHideMoreProfileInfo,
+                [styles['background-status--hide']]: swiperStore.isHideMoreProfileInfo,
               },
             )}
           />
@@ -87,7 +87,7 @@ export const PhotoBlock = observer(({ profileData }) => {
       </div>
       <div
         className={cn(styles['info-wrapper'], {
-          [styles['info-wrapper--hide']]: isHideMoreProfileInfo,
+          [styles['info-wrapper--hide']]: swiperStore.isHideMoreProfileInfo,
         })}
       >
         <ProfileInfo swiperState={swiper} profileData={profileData} />

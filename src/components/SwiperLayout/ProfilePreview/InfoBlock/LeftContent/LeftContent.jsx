@@ -9,23 +9,21 @@ import { StatusBlock } from '../../../PreviewMainInfo/StatusBlock';
 import styles from './LeftContent.module.scss';
 
 export const LeftContent = observer(({ profileData }) => {
-  const { isHideMoreProfileInfo, updateProfileData } = swiperStore;
-
   const isShowInfoItems = profileData.activePhotoIndex === 0;
   const isShowDescriptors = profileData.activePhotoIndex >= 1 && profileData.activePhotoIndex <= 2;
 
   useEffect(() => {
     if (profileData.activePhotoIndex >= 3 && !profileData.isStatusShow) {
-      updateProfileData(profileData.id, { isStatusShow: true });
+      swiperStore.updateProfileData(profileData.id, { isStatusShow: true });
     } else if (profileData.activePhotoIndex < 3 && profileData.isStatusShow) {
-      updateProfileData(profileData.id, { isStatusShow: false });
+      swiperStore.updateProfileData(profileData.id, { isStatusShow: false });
     }
-  }, [profileData.activePhotoIndex, profileData.id, profileData.isStatusShow, updateProfileData]);
+  }, [profileData.activePhotoIndex, profileData.id, profileData.isStatusShow]);
 
   return (
     <div
       className={cn(styles.box, {
-        [styles['box--hide']]: isHideMoreProfileInfo,
+        [styles['box--hide']]: swiperStore.isHideMoreProfileInfo,
       })}
     >
       <PreviewMainInfo profileData={profileData} />

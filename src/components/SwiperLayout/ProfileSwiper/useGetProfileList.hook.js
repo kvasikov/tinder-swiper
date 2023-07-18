@@ -44,22 +44,21 @@ const getGenerateNextList = (profileList) => {
 export const useGetProfileList = () => {
   const [fetchList] = useFetchReturn('/tinder-swiper/profile-list-mock.json');
   const wasFetchingOnceRef = useRef(false);
-  const { setProfileList, setFetchingList } = swiperStore;
 
   const fetchDataList = useCallback(
     async (isInit = false) => {
-      setFetchingList(true);
+      swiperStore.setFetchingList(true);
       const { response, error } = await fetchList();
       if (!response || error) {
-        setFetchingList(false);
+        swiperStore.setFetchingList(false);
         // TODO: обработать ошибку
         return;
       }
       const profileList = getGenerateNextList(response.list); // TODO: при реальном апи удалить генерацию
-      setProfileList(profileList, isInit);
-      setFetchingList(false);
+      swiperStore.setProfileList(profileList, isInit);
+      swiperStore.setFetchingList(false);
     },
-    [fetchList, setFetchingList, setProfileList],
+    [fetchList],
   );
 
   useEffect(() => {

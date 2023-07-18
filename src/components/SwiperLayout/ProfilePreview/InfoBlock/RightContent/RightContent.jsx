@@ -13,17 +13,16 @@ export const RightContent = observer(() => {
   const contentRef = useRef(null);
 
   const swiper = useSwiper();
-  const { isHideMoreProfileInfo, setMoreInfoStatus } = swiperStore;
   const isDesktop = useIsDesktop();
 
   const onInfoClick = () => {
     const execHideMoreInfo = () => {
-      setMoreInfoStatus(true);
+      swiperStore.setMoreInfoStatus(true);
       !isDesktop && swiper.enable();
     };
 
-    if (isHideMoreProfileInfo) {
-      setMoreInfoStatus(false);
+    if (swiperStore.isHideMoreProfileInfo) {
+      swiperStore.setMoreInfoStatus(false);
       !isDesktop && swiper.disable();
     } else {
       setScrollToTopProfile(contentRef.current, execHideMoreInfo);
@@ -35,7 +34,7 @@ export const RightContent = observer(() => {
       <SuperLikeBlock />
       <CircleIcon
         className={cn(styles['more-info-icon'], {
-          [styles['more-info-icon--show']]: !isHideMoreProfileInfo,
+          [styles['more-info-icon--show']]: !swiperStore.isHideMoreProfileInfo,
         })}
         kind='arrowUp'
         onClick={onInfoClick}

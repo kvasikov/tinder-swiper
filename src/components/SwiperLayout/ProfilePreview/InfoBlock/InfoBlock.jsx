@@ -11,8 +11,6 @@ import styles from './InfoBlock.module.scss';
 export const InfoBlock = observer(({ profileData }) => {
   const swiper = useSwiper();
 
-  const { isHideMoreProfileInfo } = swiperStore;
-
   return (
     <div className={styles.box}>
       <div className={styles.content}>
@@ -21,7 +19,7 @@ export const InfoBlock = observer(({ profileData }) => {
         </div>
         <div
           className={cn(styles['tweet-button-wrapper'], {
-            [styles['tweet-button-wrapper--hide']]: isHideMoreProfileInfo,
+            [styles['tweet-button-wrapper--hide']]: swiperStore.isHideMoreProfileInfo,
           })}
         >
           <TweetButton swiperState={swiper} />

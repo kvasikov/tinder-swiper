@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { toJS } from 'mobx';
 import { observer } from 'mobx-react';
 import { Spin, Space } from 'antd';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -17,17 +18,14 @@ SwiperCore.use([Virtual, Controller]);
 export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
   const prevIndex = useRef(null);
 
-  const {
-    isFetchingList,
-    profileList,
-    currentProfileDataId,
-    setCurrentProfileId,
-    updateProfileData,
-  } = swiperStore;
   const { fetchDataList } = useGetProfileList();
-  const { wrapperRef } = useGetOffsetTop({ currentProfileDataId });
+  const { wrapperRef } = useGetOffsetTop({
+    currentProfileDataId: swiperStore.currentProfileDataId,
+  });
 
   const onSliderChange = (swiper) => {
+    const prevProfileDataId = toJS(swiperStore.currentProfileData.id);
+
     const isPrev =
       prevIndex.current - swiper.activeIndex === 1 || prevIndex.current === swiper.activeIndex;
 
@@ -36,17 +34,19 @@ export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
 
     const profileId = getProfileIdByDataAttr(
       swiper?.visibleSlides?.[currentIndex],
-      profileList?.[0].id,
+      swiperStore.profileList?.[0].id,
     );
 
-    setCurrentProfileId(profileId);
+    swiperStore.setCurrentProfileId(profileId);
     prevIndex.current = swiper.activeIndex;
 
-    const profileData = profileList.find((profile) => profile.id === currentProfileDataId);
+    const profileData = swiperStore.profileList.find(
+      (profile) => profile.id === swiperStore.currentProfileDataId,
+    );
 
     if (profileData?.isTweet === null && !isPrev) {
       setTimeout(() => {
-        updateProfileData(profileData.id, { isTweet: false });
+        swiperStore.updateProfileData(prevProfileDataId, { isTweet: false });
       }, 500);
     }
 
@@ -74,7 +74,7 @@ export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
         onAfterInit={setSwiperState}
         onSlideChange={onSliderChange}
       >
-        {isFetchingList && profileList.length === 0 && (
+        {swiperStore.isFetchingList && swiperStore.profileList.length === 0 && (
           <SwiperSlide className={styles.slide}>
             <Space className={styles.space} direction='vertical'>
               <Spin tip='Loading' size='large'>
@@ -83,7 +83,7 @@ export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
             </Space>
           </SwiperSlide>
         )}
-        {profileList.map((profile, profileIndex) => {
+        {swiperStore.profileList.map((profile, profileIndex) => {
           const dataProps = { [DATA_ATTR_PROFILE_ID]: profile.id };
 
           return (
@@ -94,11 +94,12 @@ export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
               {...dataProps}
             >
               <ProfilePreview profileData={profile} />
-              {isFetchingList && profileIndex === profileList.length - 1 && (
-                <div className={styles['last-loader-wrapper']}>
-                  <Spin size='default' />
-                </div>
-              )}
+              {swiperStore.isFetchingList &&
+                profileIndex === swiperStore.profileList.length - 1 && (
+                  <div className={styles['last-loader-wrapper']}>
+                    <Spin size='default' />
+                  </div>
+                )}
             </SwiperSlide>
           );
         })}

@@ -1,10 +1,9 @@
 import React from 'react';
 import cn from 'classnames';
-import { observer } from 'mobx-react';
 import { CustomIcon } from '../../../common/CustomIcon';
 import styles from './InfoItemBlock.module.scss';
 
-export const InfoItemBlock = observer(({ color, profileData }) => {
+export const InfoItemBlock = ({ color, profileData }) => {
   if (!profileData.infoData) {
     return null;
   }
@@ -60,4 +59,4 @@ export const InfoItemBlock = observer(({ color, profileData }) => {
         ))}
     </div>
   );
-});
+};

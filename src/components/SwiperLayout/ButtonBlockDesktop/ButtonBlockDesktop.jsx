@@ -4,8 +4,6 @@ import { CircleIcon } from '../../common/CircleIcon';
 import styles from './ButtonBlockDesktop.module.scss';
 
 export const ButtonBlockDesktop = ({ profileData, swiperState }) => {
-  const { updateProfileData } = swiperStore;
-
   const onPrevProfileClick = () => {
     if (swiperState.animating) {
       return;
@@ -23,7 +21,7 @@ export const ButtonBlockDesktop = ({ profileData, swiperState }) => {
 
     if (profileData.isTweet === null) {
       setTimeout(() => {
-        updateProfileData(profileData.id, { isTweet: false });
+        swiperStore.updateProfileData(profileData.id, { isTweet: false });
       }, 500);
     }
   };

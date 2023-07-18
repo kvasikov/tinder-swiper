@@ -3,8 +3,6 @@ import { DATA_ATTR_PHOTO_WRAPPER_ID } from '../../../constants/attributes';
 import { swiperStore } from '../store';
 
 export const useGetOffsetTop = ({ currentProfileDataId }) => {
-  const { setOffsetTop } = swiperStore;
-
   const wrapperRef = useRef(null);
 
   // вычисляем размер отступа для открытия информации профиля
@@ -28,7 +26,7 @@ export const useGetOffsetTop = ({ currentProfileDataId }) => {
       }
 
       const offsetTop = (viewportHeight - actualPhotoWrapper.clientHeight) / 2;
-      setOffsetTop(offsetTop);
+      swiperStore.setOffsetTop(offsetTop);
     };
 
     execGetOffsetTop();
@@ -38,7 +36,7 @@ export const useGetOffsetTop = ({ currentProfileDataId }) => {
     return () => {
       window.removeEventListener('resize', execGetOffsetTop);
     };
-  }, [currentProfileDataId, setOffsetTop]);
+  }, [currentProfileDataId]);
 
   return { wrapperRef };
 };

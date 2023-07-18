@@ -7,14 +7,12 @@ import { PhotoBlock } from './PhotoBlock';
 import styles from './ProfilePreview.module.scss';
 
 export const ProfilePreview = observer(({ profileData }) => {
-  const { isHideMoreProfileInfo } = swiperStore;
-
   const attrProps = { [DATA_ATTR_PROFILE_WRAPPER_ID]: true };
 
   return (
     <div
       className={cn(styles.box, {
-        [styles['box--overflow']]: !isHideMoreProfileInfo,
+        [styles['box--overflow']]: !swiperStore.isHideMoreProfileInfo,
       })}
       {...attrProps}
     >

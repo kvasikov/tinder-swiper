@@ -1,26 +1,24 @@
 import React, { useRef } from 'react';
 import { useSwiper } from 'swiper/react';
-import { observer } from 'mobx-react';
 import { useIsDesktop } from '../../../../hooks';
 import { setScrollToTopProfile } from '../../utils';
 import { Badge } from '../../../common/Badge';
 import { swiperStore, MAX_DESCRIPTOR_COUNT } from '../../store';
 import styles from './DescriptorsBlock.module.scss';
 
-export const DescriptorsBlock = observer(({ profileData }) => {
+export const DescriptorsBlock = ({ profileData }) => {
   const contentRef = useRef(null);
 
   const isDesktop = useIsDesktop();
 
   const swiper = useSwiper();
-  const { isHideMoreProfileInfo, setMoreInfoStatus } = swiperStore;
 
   const sectionDataList = profileData?.infoData?.sectionDataList;
   const activePhotoIndex = profileData.activePhotoIndex;
   const activeIndex = activePhotoIndex <= 1 ? 0 : activePhotoIndex - 1;
   let descriptorList = sectionDataList[activeIndex] || [];
 
-  if (descriptorList?.length === 0 || !isHideMoreProfileInfo) {
+  if (descriptorList?.length === 0 || !swiperStore.isHideMoreProfileInfo) {
     return null;
   }
 
@@ -28,12 +26,12 @@ export const DescriptorsBlock = observer(({ profileData }) => {
 
   const onInfoClick = () => {
     const execHideMoreInfo = () => {
-      setMoreInfoStatus(true);
+      swiperStore.setMoreInfoStatus(true);
       !isDesktop && swiper.enable();
     };
 
-    if (isHideMoreProfileInfo) {
-      setMoreInfoStatus(false);
+    if (swiperStore.isHideMoreProfileInfo) {
+      swiperStore.setMoreInfoStatus(false);
       !isDesktop && swiper.disable();
     } else {
       setScrollToTopProfile(contentRef.current, execHideMoreInfo);
@@ -56,4 +54,4 @@ export const DescriptorsBlock = observer(({ profileData }) => {
       )}
     </div>
   );
-});
+};

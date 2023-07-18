@@ -8,8 +8,7 @@ import { Modal } from '../../../../../common/Modal';
 import styles from './SuperLikeBlock.module.scss';
 
 export const SuperLikeBlock = observer(() => {
-  const { currentProfileData } = swiperStore;
-  const firstPhoto = currentProfileData?.infoData?.photoList?.[0];
+  const firstPhoto = swiperStore.currentProfileData?.infoData?.photoList?.[0];
 
   const [isOpenModal, setIsOpenModal] = useState(false);
 

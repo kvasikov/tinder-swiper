@@ -1,32 +1,32 @@
 import React, { useRef } from 'react';
-import { observer } from 'mobx-react';
+import { toJS } from 'mobx';
 import { setScrollToTopProfile } from '../utils';
 import { useIsDesktop } from '../../../hooks';
 import { swiperStore } from '../store';
 import { CustomIcon } from '../../common/CustomIcon';
 import styles from './TweetButton.module.scss';
 
-export const TweetButton = observer(({ swiperState, isFromMoreBlock }) => {
+export const TweetButton = ({ swiperState, isFromMoreBlock }) => {
   const buttonRef = useRef(null);
-
-  const { currentProfileData, updateProfileData, setMoreInfoStatus } = swiperStore;
   const isDesktop = useIsDesktop();
 
   const onTweet = () => {
-    if (!currentProfileData.id || swiperState.animating) {
+    if (!swiperStore.currentProfileData.id || swiperState.animating) {
       return;
     }
 
     const execTweet = () => {
       if (!isDesktop) {
-        setMoreInfoStatus(true);
+        swiperStore.setMoreInfoStatus(true);
         swiperState.enable();
       }
+
+      const prevProfileDataId = toJS(swiperStore.currentProfileData.id);
 
       swiperState.slideNext(250, false);
 
       setTimeout(() => {
-        updateProfileData(currentProfileData.id, { isTweet: true });
+        swiperStore.updateProfileData(prevProfileDataId, { isTweet: true });
       }, 500);
     };
 
@@ -44,4 +44,4 @@ export const TweetButton = observer(({ swiperState, isFromMoreBlock }) => {
       <span className={styles.text}>Tweet</span>
     </button>
   );
-});
+};

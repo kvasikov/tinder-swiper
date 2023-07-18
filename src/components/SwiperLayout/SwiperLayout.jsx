@@ -13,16 +13,8 @@ export const SwiperLayout = observer(() => {
 
   const [swiperState, setSwiperState] = useState(null);
 
-  const {
-    isFetchingList,
-    profileList,
-    isHideMoreProfileInfo,
-    currentProfileData,
-    setCurrentProfileId,
-  } = swiperStore;
-
   useEffect(() => {
-    if (!wasInitRef.current && swiperState?.mounted && !isFetchingList) {
+    if (!wasInitRef.current && swiperState?.mounted && !swiperStore.isFetchingList) {
       swiperState.on('observerUpdate', (_swiper) => {
         if (wasInitRef.current) {
           return;
@@ -30,27 +22,28 @@ export const SwiperLayout = observer(() => {
 
         const profileId = getProfileIdByDataAttr(
           _swiper.visibleSlides[_swiper.activeIndex],
-          profileList?.[0].id,
+          swiperStore.profileList?.[0].id,
         );
 
-        setCurrentProfileId(profileId);
+        swiperStore.setCurrentProfileId(profileId);
         wasInitRef.current = true;
       });
     }
-  }, [swiperState, profileList, isFetchingList, setCurrentProfileId]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [swiperStore.isFetchingList, swiperStore.profileList, swiperStore.setCurrentProfileId]);
 
   return (
     <div className={styles.box}>
       <div className={styles.wrapper}>
         <div
           className={cn(styles.container, {
-            [styles['container--no-scroll']]: isHideMoreProfileInfo,
+            [styles['container--no-scroll']]: swiperStore.isHideMoreProfileInfo,
           })}
         >
           <div className={styles.content}>
             <div
               className={cn(styles['side-wrapper'], styles['side-wrapper--full'], {
-                [styles['side-wrapper--hide']]: isHideMoreProfileInfo,
+                [styles['side-wrapper--hide']]: swiperStore.isHideMoreProfileInfo,
               })}
             >
               <ProfileSwiper swiperState={swiperState} setSwiperState={setSwiperState} />
@@ -58,17 +51,20 @@ export const SwiperLayout = observer(() => {
             </div>
             <div
               className={cn(styles['side-wrapper'], styles['side-wrapper_desktop'], {
-                [styles['side-wrapper_desktop--hide']]: isHideMoreProfileInfo,
+                [styles['side-wrapper_desktop--hide']]: swiperStore.isHideMoreProfileInfo,
               })}
             >
-              <ProfileInfo swiperState={swiperState} profileData={currentProfileData} />
+              <ProfileInfo swiperState={swiperState} profileData={swiperStore.currentProfileData} />
             </div>
             <div
               className={cn(styles['button-wrapper'], {
-                [styles['button-wrapper--hide']]: isHideMoreProfileInfo,
+                [styles['button-wrapper--hide']]: swiperStore.isHideMoreProfileInfo,
               })}
             >
-              <ButtonBlockDesktop profileData={currentProfileData} swiperState={swiperState} />
+              <ButtonBlockDesktop
+                profileData={swiperStore.currentProfileData}
+                swiperState={swiperState}
+              />
             </div>
           </div>
         </div>
