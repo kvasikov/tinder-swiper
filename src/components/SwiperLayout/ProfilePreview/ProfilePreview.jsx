@@ -11,7 +11,7 @@ export const ProfilePreview = observer(({ profileData }) => {
 
   return (
     <div
-      className={cn(styles.box, {
+      className={cn(styles.box, 'scrollbar', {
         [styles['box--overflow']]: !swiperStore.isHideMoreProfileInfo,
       })}
       {...attrProps}

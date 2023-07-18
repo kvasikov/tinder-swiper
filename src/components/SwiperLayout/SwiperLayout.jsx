@@ -37,13 +37,13 @@ export const SwiperLayout = observer(() => {
     <div className={styles.box}>
       <div className={styles.wrapper}>
         <div
-          className={cn(styles.container, {
+          className={cn(styles.container, 'scrollbar', {
             [styles['container--no-scroll']]: swiperStore.isHideMoreProfileInfo,
           })}
         >
           <div className={styles.content}>
             <div
-              className={cn(styles['side-wrapper'], styles['side-wrapper--full'], {
+              className={cn(styles['side-wrapper'], styles['side-wrapper--full'], 'scrollbar', {
                 [styles['side-wrapper--hide']]: swiperStore.isHideMoreProfileInfo,
               })}
             >
@@ -52,7 +52,7 @@ export const SwiperLayout = observer(() => {
               <TweetButtonDesktop swiperState={swiperState} />
             </div>
             <div
-              className={cn(styles['side-wrapper'], styles['side-wrapper_desktop'], {
+              className={cn(styles['side-wrapper'], styles['side-wrapper_desktop'], 'scrollbar', {
                 [styles['side-wrapper_desktop--hide']]: swiperStore.isHideMoreProfileInfo,
               })}
             >
