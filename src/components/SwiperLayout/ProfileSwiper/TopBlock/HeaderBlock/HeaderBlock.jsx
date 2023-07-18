@@ -14,8 +14,10 @@ export const HeaderBlock = () => {
         </button>
       </div>
       <div className={styles.right}>
-        <div>icon1</div>
-        <div>icon2</div>
+        <button type='button' className={styles.calendar}>
+          <CustomIcon className={styles.dots} kind='dots' iconSize='24px' />
+        </button>
+        <div>icons</div>
       </div>
     </div>
   );
