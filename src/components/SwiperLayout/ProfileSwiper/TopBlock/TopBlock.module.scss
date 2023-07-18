@@ -1,14 +1,21 @@
 @import 'src/assets/scss/utils';
 
 .box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
   position: absolute;
   top: 0;
   width: 100%;
   z-index: 10;
   background-color: white;
-  padding-top: 44px;
   padding-left: 16px;
   padding-right: 16px;
+
+  @media screen and (min-height: 810px) {
+    padding-top: 44px;
+  }
 
   @media #{$desktop-s} {
     border-top-left-radius: 16px;
