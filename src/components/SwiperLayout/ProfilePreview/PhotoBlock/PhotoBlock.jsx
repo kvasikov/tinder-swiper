@@ -8,6 +8,7 @@ import { ProfileInfo } from '../../ProfileInfo';
 import { LightningBlock } from '../LightningBlock';
 import { InfoBlock } from '../InfoBlock';
 import { TweetStatus } from './TweetStatus';
+import { TopTabBlock } from './TopTabBlock';
 import styles from './PhotoBlock.module.scss';
 
 export const PhotoBlock = observer(({ profileData }) => {
@@ -44,6 +45,7 @@ export const PhotoBlock = observer(({ profileData }) => {
             swiperStore.isHideMoreProfileInfo && swiperStore.offsetTop ? swiperStore.offsetTop : 0,
         }}
       >
+        <TopTabBlock />
         <div className={styles['handler-wrapper']}>
           <div className={styles['handler-photo']} onMouseUp={onChangePhoto(-1)} />
           <div className={styles['handler-photo']} onMouseUp={onChangePhoto(1)} />

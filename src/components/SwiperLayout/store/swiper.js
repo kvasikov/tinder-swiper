@@ -1,4 +1,5 @@
 import { configure, makeAutoObservable, toJS } from 'mobx';
+import { TAB_LIST } from '../../../constants/tabs';
 import { getDescriptorList, getStatusData, ORGANIZATION_DATA } from './utils';
 
 configure({
@@ -15,6 +16,7 @@ export class SwiperStore {
   isHideMoreProfileInfo = true;
   offsetTop = 0;
   isFetchingList = true;
+  activeTabValue = TAB_LIST[0].value;
 
   constructor() {
     makeAutoObservable(this);
@@ -73,6 +75,10 @@ export class SwiperStore {
     const profileData = this.profileList.find((profile) => profile.id === profileId);
     return profileData || {};
   }
+
+  updateTabValue = (tabValue) => {
+    this.activeTabValue = tabValue;
+  };
 }
 
 export default new SwiperStore();
