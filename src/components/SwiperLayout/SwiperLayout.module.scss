@@ -103,6 +103,7 @@
 
 .content {
   height: 100%;
+  position: relative;
 
   @media screen and (max-width: #{$md - 1}px) {
     background-color: white;
