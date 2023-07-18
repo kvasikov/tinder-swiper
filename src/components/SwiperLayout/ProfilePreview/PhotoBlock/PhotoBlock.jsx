@@ -6,7 +6,6 @@ import { DATA_ATTR_PHOTO_WRAPPER_ID } from '../../../../constants/attributes';
 import { swiperStore } from '../../store';
 import { ProfileInfo } from '../../ProfileInfo';
 import { ProfileBlock } from './ProfileBlock';
-import { GeoBlock } from './GeoBlock';
 import styles from './PhotoBlock.module.scss';
 
 export const PhotoBlock = observer(({ profileData }) => {
@@ -24,17 +23,13 @@ export const PhotoBlock = observer(({ profileData }) => {
             swiperStore.isHideMoreProfileInfo && swiperStore.offsetTop ? swiperStore.offsetTop : 0,
         }}
       >
-        {swiperStore.activeTabValue === 'profile' && (
-          <div className={styles['tab-block']}>
-            <ProfileBlock profileData={profileData} />
-          </div>
-        )}
-        {/* TODO: вынести наружу за свайпер */}
-        {swiperStore.activeTabValue === 'geo' && (
-          <div className={styles['tab-block']}>
-            <GeoBlock />
-          </div>
-        )}
+        <div
+          className={cn(styles['tab-block'], {
+            [styles['tab-block--hide']]: swiperStore.activeTabValue !== 'profile',
+          })}
+        >
+          <ProfileBlock profileData={profileData} />
+        </div>
       </div>
       <div
         className={cn(styles['info-wrapper'], {

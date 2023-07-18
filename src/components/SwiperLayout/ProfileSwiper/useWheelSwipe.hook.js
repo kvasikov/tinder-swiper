@@ -3,6 +3,8 @@ import { throttle } from '../../../utils';
 
 export const useWheelSwipe = ({ swiperState, wrapperEl }) => {
   useEffect(() => {
+    // TODO: если swiperStore.activeTabValue !== 'profile' это запрещать обработку wheel
+
     const onMouseWheel = (event) => {
       if (swiperState.animating) {
         return;
