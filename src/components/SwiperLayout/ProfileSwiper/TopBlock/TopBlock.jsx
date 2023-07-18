@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { observer } from 'mobx-react';
 import { swiperStore } from '../../store';
 import { useIsDesktop } from '../../../../hooks';
@@ -8,11 +8,23 @@ import styles from './TopBlock.module.scss';
 
 export const TopBlock = observer(() => {
   const isDesktop = useIsDesktop();
+  const [zIndex, setZIndex] = useState();
+
+  useEffect(() => {
+    if (swiperStore.isHideMoreProfileInfo) {
+      setTimeout(() => {
+        setZIndex(undefined);
+      }, 500);
+    } else {
+      setZIndex(1);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [swiperStore.isHideMoreProfileInfo]);
 
   const mobileStyles = !isDesktop
     ? {
         height: `${swiperStore.offsetTop}px`,
-        zIndex: !swiperStore.isHideMoreProfileInfo && 1,
+        zIndex: zIndex,
       }
     : {};
 
