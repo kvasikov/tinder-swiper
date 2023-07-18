@@ -1,10 +1,7 @@
 import { useEffect } from 'react';
-import { useIsDesktop } from '../../../hooks';
 import { throttle } from '../../../utils';
 
 export const useWheelSwipe = ({ swiperState, wrapperEl }) => {
-  const isDesktop = useIsDesktop();
-
   useEffect(() => {
     const onMouseWheel = (event) => {
       if (swiperState.animating) {
@@ -24,16 +21,10 @@ export const useWheelSwipe = ({ swiperState, wrapperEl }) => {
 
     const execMouseWheel = throttle(onMouseWheel, 1000);
 
-    if (!isDesktop) {
-      return () => {
-        wrapperEl?.removeEventListener('wheel', execMouseWheel);
-      };
-    }
-
     wrapperEl.addEventListener('wheel', execMouseWheel);
 
     return () => {
       wrapperEl?.removeEventListener('wheel', execMouseWheel);
     };
-  }, [isDesktop, swiperState, wrapperEl]);
+  }, [swiperState, wrapperEl]);
 };

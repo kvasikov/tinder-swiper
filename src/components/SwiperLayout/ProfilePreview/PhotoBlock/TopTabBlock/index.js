@@ -1,1 +1,0 @@
-export { TopTabBlock } from './TopTabBlock';

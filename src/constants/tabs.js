@@ -1,10 +1,10 @@
 export const TAB_LIST = [
   {
-    value: '1',
+    value: 'profile',
     iconKind: 'chat',
   },
   {
-    value: '2',
+    value: 'geo',
     iconKind: 'geo',
   },
 ];

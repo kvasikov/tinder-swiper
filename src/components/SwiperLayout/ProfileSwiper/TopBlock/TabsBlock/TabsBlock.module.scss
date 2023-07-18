@@ -1,0 +1,11 @@
+@import 'src/assets/scss/utils';
+
+.box {
+  margin-top: 16px;
+  margin-bottom: 12px;
+
+  @media #{$desktop-s} {
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+}

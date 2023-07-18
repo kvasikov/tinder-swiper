@@ -27,20 +27,10 @@
   }
 }
 
-.photo-img {
+.tab-block {
   width: 100%;
   height: 400px;
   max-height: 100%;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size: cover;
-  border-radius: 16px;
-  transition: border-radius 0.25s;
-
-  &--show {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
 
   @media screen and (min-height: 600px) {
     height: 500px;
@@ -51,55 +41,69 @@
   }
 }
 
-.top-block {
-  position: absolute;
-  top: 8px;
-  left: 0;
-  right: 0;
-  padding: 0 16px;
-}
+// .photo-img {
+//   height: 100%;
+//   background-repeat: no-repeat;
+//   background-position: 50% 50%;
+//   background-size: cover;
+//   border-radius: 16px;
+//   transition: border-radius 0.25s;
 
-.bullet-list-wrapper {
-  display: flex;
+//   &--show {
+//     border-bottom-left-radius: 0;
+//     border-bottom-right-radius: 0;
+//   }
+// }
 
-  &--hide {
-    opacity: 0;
-  }
-}
+// .top-block {
+//   position: absolute;
+//   top: 8px;
+//   left: 0;
+//   right: 0;
+//   padding: 0 16px;
+// }
 
-.bullet {
-  height: 2px;
-  background-color: rgba(10, 13, 39, 0.2);
-  width: 100%;
-  border-radius: 16px;
-  transition: background-color 0.1s;
+// .bullet-list-wrapper {
+//   display: flex;
 
-  &:not(:first-child) {
-    margin-left: 8px;
-  }
+//   &--hide {
+//     opacity: 0;
+//   }
+// }
 
-  &--active {
-    background-color: white;
-  }
-}
+// .bullet {
+//   height: 2px;
+//   background-color: rgba(10, 13, 39, 0.2);
+//   width: 100%;
+//   border-radius: 16px;
+//   transition: background-color 0.1s;
 
-.handler {
-  &-wrapper {
-    position: absolute;
-    display: flex;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 128px; // TODO: считать исходя из высоты (является динамическим) контента с описанием профиля
-  }
+//   &:not(:first-child) {
+//     margin-left: 8px;
+//   }
 
-  &-photo {
-    background-color: transparent;
-    width: 50%;
-    height: 100%;
-    cursor: pointer;
-  }
-}
+//   &--active {
+//     background-color: white;
+//   }
+// }
+
+// .handler {
+//   &-wrapper {
+//     position: absolute;
+//     display: flex;
+//     left: 0;
+//     right: 0;
+//     top: 0;
+//     bottom: 128px; // TODO: считать исходя из высоты (является динамическим) контента с описанием профиля
+//   }
+
+//   &-photo {
+//     background-color: transparent;
+//     width: 50%;
+//     height: 100%;
+//     cursor: pointer;
+//   }
+// }
 
 .info-wrapper {
   @media #{$desktop-s} {

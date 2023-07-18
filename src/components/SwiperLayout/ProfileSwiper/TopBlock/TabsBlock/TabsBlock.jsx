@@ -3,9 +3,9 @@ import { observer } from 'mobx-react';
 import { TAB_LIST } from '../../../../../constants/tabs';
 import { swiperStore } from '../../../store';
 import { TabsHorizontal } from '../../../../common/TabsHorizontal';
-import styles from './TopTabBlock.module.scss';
+import styles from './TabsBlock.module.scss';
 
-export const TopTabBlock = observer(() => {
+export const TabsBlock = observer(() => {
   const onTabChange = (tabValue) => {
     swiperStore.updateTabValue(tabValue);
   };
