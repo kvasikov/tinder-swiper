@@ -6,6 +6,23 @@
   box-sizing: border-box;
   font-family: $font-family-primary, 'Arial', sans-serif;
   -webkit-tap-highlight-color: transparent;
+
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #8080805e transparent;
+
+  /* Chrome, Edge, and Safari */
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #8080805e;
+  }
 }
 
 *::after, *::before {
@@ -22,3 +39,5 @@ body {
 div, span, button, p {
   font-feature-settings: 'lnum' 1;
 }
+
+
