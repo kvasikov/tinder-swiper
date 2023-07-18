@@ -29,6 +29,7 @@ export const PhotoBlock = observer(({ profileData }) => {
             <ProfileBlock profileData={profileData} />
           </div>
         )}
+        {/* TODO: вынести наружу за свайпер */}
         {swiperStore.activeTabValue === 'geo' && (
           <div className={styles['tab-block']}>
             <GeoBlock />
