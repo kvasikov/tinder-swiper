@@ -5,7 +5,6 @@ import styles from './TabsHorizontal.module.scss';
 
 export const TabsHorizontal = ({ list, value, onChange }) => {
   const onInnerChange = (tabValue) => () => {
-    console.log(onChange);
     onChange(tabValue);
   };
 
