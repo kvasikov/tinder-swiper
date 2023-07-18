@@ -1,7 +1,7 @@
 export const TAB_LIST = [
   {
     value: 'profile',
-    iconKind: 'chat',
+    iconKind: 'apps',
   },
   {
     value: 'geo',

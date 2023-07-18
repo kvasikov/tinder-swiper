@@ -11,10 +11,47 @@ import { ReactComponent as HeightIcon } from '../../../assets/icons/height.svg';
 import { ReactComponent as HomeIcon } from '../../../assets/icons/home.svg';
 import { ReactComponent as ShareIcon } from '../../../assets/icons/share.svg';
 
+import { ReactComponent as AppsIcon } from '../../../assets/icons/apps.svg';
+import { ReactComponent as CabinetIcon } from '../../../assets/icons/cabinet.svg';
+import { ReactComponent as CarIcon } from '../../../assets/icons/car.svg';
+import { ReactComponent as ChartsIcon } from '../../../assets/icons/charts.svg';
+import { ReactComponent as EarthIcon } from '../../../assets/icons/earth.svg';
+import { ReactComponent as FireworkIcon } from '../../../assets/icons/firework.svg';
+import { ReactComponent as GameIcon } from '../../../assets/icons/game.svg';
+import { ReactComponent as HeartOutlineIcon } from '../../../assets/icons/heart-outline.svg';
+import { ReactComponent as HelpIcon } from '../../../assets/icons/help.svg';
+import { ReactComponent as HobbyIcon } from '../../../assets/icons/hobby.svg';
+import { ReactComponent as ItIcon } from '../../../assets/icons/it.svg';
+import { ReactComponent as MentorshipIcon } from '../../../assets/icons/mentorship.svg';
+import { ReactComponent as MessagesIcon } from '../../../assets/icons/messages.svg';
+import { ReactComponent as PlainIcon } from '../../../assets/icons/plain.svg';
+import { ReactComponent as ProfileIcon } from '../../../assets/icons/profile.svg';
+import { ReactComponent as SportIcon } from '../../../assets/icons/sport.svg';
+import { ReactComponent as StarsIcon } from '../../../assets/icons/stars.svg';
+import { ReactComponent as DotsIcon } from '../../../assets/icons/dots.svg';
+
 const Empty = () => null;
 
 export const ICON_LIST = {
   undefined: Empty,
+  apps: AppsIcon,
+  cabinet: CabinetIcon,
+  car: CarIcon,
+  dots: DotsIcon,
+  charts: ChartsIcon,
+  earth: EarthIcon,
+  firework: FireworkIcon,
+  game: GameIcon,
+  heartOutline: HeartOutlineIcon,
+  profile: ProfileIcon,
+  sport: SportIcon,
+  stars: StarsIcon,
+  plain: PlainIcon,
+  messages: MessagesIcon,
+  hobby: HobbyIcon,
+  mentorship: MentorshipIcon,
+  it: ItIcon,
+  help: HelpIcon,
   lightning: LightningIcon,
   arrowUp: ArrowUpIcon,
   arrowRight: ArrowRightIcon,

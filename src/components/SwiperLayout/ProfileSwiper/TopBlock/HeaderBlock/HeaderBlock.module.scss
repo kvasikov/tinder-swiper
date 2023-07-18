@@ -1,0 +1,62 @@
+@import 'src/assets/scss/utils';
+
+.box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  min-height: 24px;
+  align-items: center;
+}
+
+.left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.title {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%;
+  text-transform: uppercase;
+  margin-right: 16px;
+  
+  background: linear-gradient(104deg, #1F0C33 11.46%, #8D98FF 22.39%, #FC03D7 47.40%, #2628FF 75.00%, #4D83FF 90.18%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  @media #{$desktop-s} {
+    display: none;
+  }
+}
+
+.categories {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding-right: 24px;
+
+  &::after {
+    content: '🞃';
+    position: absolute;
+    top: -3px;
+    right: 3px;
+    color: #FF00D6;
+  }
+}
+
+.plain {
+  color: #FF00D6;
+}
