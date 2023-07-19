@@ -1,6 +1,37 @@
 import React from 'react';
+import { Dropdown } from 'antd';
 import { CustomIcon } from '../../../../common/CustomIcon';
 import styles from './HeaderBlock.module.scss';
+
+const SETTINGS_ITEMS = [
+  {
+    label: <span className={styles['item__label']}>Настройки фильтра</span>,
+    key: '0',
+    icon: <CustomIcon kind='filter' iconSize='16px' />,
+    className: styles['item'],
+    onClick: () => {
+      console.log('Настройки фильтра');
+    },
+  },
+  {
+    label: <span className={styles['item__label']}>Календарь мероприятий</span>,
+    key: '1',
+    icon: <CustomIcon kind='calendar' iconSize='16px' isNoFill />,
+    className: styles['item'],
+    onClick: () => {
+      console.log('Календарь мероприятий');
+    },
+  },
+  {
+    label: <span className={styles['item__label']}>Поделиться профилем</span>,
+    key: '3',
+    icon: <CustomIcon kind='share' iconSize='16px' isNoFill />,
+    className: styles['item'],
+    onClick: () => {
+      console.log('Поделиться профилем');
+    },
+  },
+];
 
 export const HeaderBlock = () => {
   const onCategoriesOpen = () => console.log('show categories');
@@ -14,9 +45,11 @@ export const HeaderBlock = () => {
         </button>
       </div>
       <div className={styles.right}>
-        <button type='button' className={styles.calendar}>
-          <CustomIcon className={styles.dots} kind='dots' iconSize='24px' />
-        </button>
+        <Dropdown menu={{ items: SETTINGS_ITEMS }} trigger={['click']}>
+          <button type='button' className={styles.calendar}>
+            <CustomIcon className={styles.dots} kind='dots' iconSize='24px' />
+          </button>
+        </Dropdown>
         <div>icons</div>
       </div>
     </div>

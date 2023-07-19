@@ -75,3 +75,15 @@
 .dots {
   color: #4D4D54;
 }
+
+.item {
+  padding: 12px !important;
+  color: #06090C !important;
+
+  &__label {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+  }
+}

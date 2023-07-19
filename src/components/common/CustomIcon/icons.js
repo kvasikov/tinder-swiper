@@ -10,7 +10,6 @@ import { ReactComponent as GeoIcon } from '../../../assets/icons/geo.svg';
 import { ReactComponent as HeightIcon } from '../../../assets/icons/height.svg';
 import { ReactComponent as HomeIcon } from '../../../assets/icons/home.svg';
 import { ReactComponent as ShareIcon } from '../../../assets/icons/share.svg';
-
 import { ReactComponent as AppsIcon } from '../../../assets/icons/apps.svg';
 import { ReactComponent as CabinetIcon } from '../../../assets/icons/cabinet.svg';
 import { ReactComponent as CarIcon } from '../../../assets/icons/car.svg';
@@ -29,12 +28,16 @@ import { ReactComponent as ProfileIcon } from '../../../assets/icons/profile.svg
 import { ReactComponent as SportIcon } from '../../../assets/icons/sport.svg';
 import { ReactComponent as StarsIcon } from '../../../assets/icons/stars.svg';
 import { ReactComponent as DotsIcon } from '../../../assets/icons/dots.svg';
+import { ReactComponent as CalendarIcon } from '../../../assets/icons/calendar.svg';
+import { ReactComponent as FilterIcon } from '../../../assets/icons/filter.svg';
 
 const Empty = () => null;
 
 export const ICON_LIST = {
   undefined: Empty,
   apps: AppsIcon,
+  calendar: CalendarIcon,
+  filter: FilterIcon,
   cabinet: CabinetIcon,
   car: CarIcon,
   dots: DotsIcon,
