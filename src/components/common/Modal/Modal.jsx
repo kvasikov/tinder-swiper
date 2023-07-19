@@ -10,6 +10,8 @@ export const Modal = ({
   children,
   desktopModalWidth,
   mobileModalHeight,
+  withDesktopCloseIcon = true,
+  withMobileCloseIcon = true,
   onConfirm,
   onCancel,
 }) => {
@@ -72,7 +74,7 @@ export const Modal = ({
           onCancel={onCancel}
         >
           {titleContent}
-          {closeIcon}
+          {withDesktopCloseIcon && closeIcon}
           {children}
         </ModalAntd>
       )}
@@ -88,7 +90,7 @@ export const Modal = ({
           onClose={onCancel}
         >
           {titleContent}
-          {closeIcon}
+          {withMobileCloseIcon && closeIcon}
           <div className={styles.content} ref={elRef}>
             {children}
           </div>

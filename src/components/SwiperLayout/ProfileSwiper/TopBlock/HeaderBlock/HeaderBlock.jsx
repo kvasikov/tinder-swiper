@@ -2,6 +2,7 @@ import React from 'react';
 import { Dropdown } from 'antd';
 import { CustomIcon } from '../../../../common/CustomIcon';
 import { SwitcherIcon } from '../../../../common/SwitcherIcon';
+import { CategoriesBlock } from './CategoriesBlock';
 import styles from './HeaderBlock.module.scss';
 
 const SETTINGS_ITEMS = [
@@ -54,15 +55,11 @@ const MODE_ITEMS = [
 ];
 
 export const HeaderBlock = () => {
-  const onCategoriesOpen = () => console.log('show categories');
-
   return (
     <div className={styles.box}>
       <div className={styles.left}>
         <div className={styles.title}>tweetmeet</div>
-        <button type='button' className={styles.categories} onClick={onCategoriesOpen}>
-          <CustomIcon className={styles.plain} kind='plain' iconSize='16px' isNoFill />
-        </button>
+        <CategoriesBlock />
       </div>
       <div className={styles.right}>
         <Dropdown menu={{ items: SETTINGS_ITEMS }} trigger={['click']}>

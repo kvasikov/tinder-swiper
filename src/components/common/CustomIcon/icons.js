@@ -30,6 +30,8 @@ import { ReactComponent as StarsIcon } from '../../../assets/icons/stars.svg';
 import { ReactComponent as DotsIcon } from '../../../assets/icons/dots.svg';
 import { ReactComponent as CalendarIcon } from '../../../assets/icons/calendar.svg';
 import { ReactComponent as FilterIcon } from '../../../assets/icons/filter.svg';
+import { ReactComponent as SuccessIcon } from '../../../assets/icons/success.svg';
+import { ReactComponent as PlusCircleIcon } from '../../../assets/icons/plus-circle.svg';
 
 const Empty = () => null;
 
@@ -39,6 +41,8 @@ export const ICON_LIST = {
   calendar: CalendarIcon,
   filter: FilterIcon,
   cabinet: CabinetIcon,
+  success: SuccessIcon,
+  plusCircle: PlusCircleIcon,
   car: CarIcon,
   dots: DotsIcon,
   charts: ChartsIcon,
