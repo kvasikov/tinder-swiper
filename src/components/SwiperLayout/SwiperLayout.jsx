@@ -7,6 +7,7 @@ import { ButtonBlockDesktop } from './ButtonBlockDesktop';
 import { TweetButtonDesktop } from './TweetButtonDesktop';
 import { GeoBlock } from './GeoBlock';
 import { ProfileSwiper } from './ProfileSwiper';
+import { Header } from './Header';
 import styles from './SwiperLayout.module.scss';
 
 export const SwiperLayout = observer(() => {
@@ -34,43 +35,49 @@ export const SwiperLayout = observer(() => {
   }, [swiperStore.isFetchingList, swiperStore.profileList, swiperStore.setCurrentProfileId]);
 
   return (
-    <div className={styles.box}>
-      <div className={styles.wrapper}>
-        <div
-          className={cn(styles.container, 'scrollbar', {
-            [styles['container--no-scroll']]: swiperStore.isHideMoreProfileInfo,
-          })}
-        >
-          <div className={styles.content}>
-            <div
-              className={cn(styles['side-wrapper'], styles['side-wrapper--full'], 'scrollbar', {
-                [styles['side-wrapper--hide']]: swiperStore.isHideMoreProfileInfo,
-              })}
-            >
-              {swiperStore.activeTabValue === 'geo' && <GeoBlock />}
-              <ProfileSwiper swiperState={swiperState} setSwiperState={setSwiperState} />
-              <TweetButtonDesktop swiperState={swiperState} />
-            </div>
-            <div
-              className={cn(styles['side-wrapper'], styles['side-wrapper_desktop'], 'scrollbar', {
-                [styles['side-wrapper_desktop--hide']]: swiperStore.isHideMoreProfileInfo,
-              })}
-            >
-              <ProfileInfo swiperState={swiperState} profileData={swiperStore.currentProfileData} />
-            </div>
-            <div
-              className={cn(styles['button-wrapper'], {
-                [styles['button-wrapper--hide']]: swiperStore.isHideMoreProfileInfo,
-              })}
-            >
-              <ButtonBlockDesktop
-                profileData={swiperStore.currentProfileData}
-                swiperState={swiperState}
-              />
+    <>
+      <Header />
+      <main className={styles.box}>
+        <div className={styles.wrapper}>
+          <div
+            className={cn(styles.container, 'scrollbar', {
+              [styles['container--no-scroll']]: swiperStore.isHideMoreProfileInfo,
+            })}
+          >
+            <div className={styles.content}>
+              <div
+                className={cn(styles['side-wrapper'], styles['side-wrapper--full'], 'scrollbar', {
+                  [styles['side-wrapper--hide']]: swiperStore.isHideMoreProfileInfo,
+                })}
+              >
+                {swiperStore.activeTabValue === 'geo' && <GeoBlock />}
+                <ProfileSwiper swiperState={swiperState} setSwiperState={setSwiperState} />
+                <TweetButtonDesktop swiperState={swiperState} />
+              </div>
+              <div
+                className={cn(styles['side-wrapper'], styles['side-wrapper_desktop'], 'scrollbar', {
+                  [styles['side-wrapper_desktop--hide']]: swiperStore.isHideMoreProfileInfo,
+                })}
+              >
+                <ProfileInfo
+                  swiperState={swiperState}
+                  profileData={swiperStore.currentProfileData}
+                />
+              </div>
+              <div
+                className={cn(styles['button-wrapper'], {
+                  [styles['button-wrapper--hide']]: swiperStore.isHideMoreProfileInfo,
+                })}
+              >
+                <ButtonBlockDesktop
+                  profileData={swiperStore.currentProfileData}
+                  swiperState={swiperState}
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </main>
+    </>
   );
 });

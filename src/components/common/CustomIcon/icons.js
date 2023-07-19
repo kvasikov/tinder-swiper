@@ -32,6 +32,9 @@ import { ReactComponent as CalendarIcon } from '../../../assets/icons/calendar.s
 import { ReactComponent as FilterIcon } from '../../../assets/icons/filter.svg';
 import { ReactComponent as SuccessIcon } from '../../../assets/icons/success.svg';
 import { ReactComponent as PlusCircleIcon } from '../../../assets/icons/plus-circle.svg';
+import { ReactComponent as BurgerIcon } from '../../../assets/icons/burger.svg';
+import { ReactComponent as CrossIcon } from '../../../assets/icons/cross.svg';
+import { ReactComponent as LogoutIcon } from '../../../assets/icons/logout.svg';
 
 const Empty = () => null;
 
@@ -39,6 +42,9 @@ export const ICON_LIST = {
   undefined: Empty,
   apps: AppsIcon,
   calendar: CalendarIcon,
+  burger: BurgerIcon,
+  logout: LogoutIcon,
+  cross: CrossIcon,
   filter: FilterIcon,
   cabinet: CabinetIcon,
   success: SuccessIcon,
