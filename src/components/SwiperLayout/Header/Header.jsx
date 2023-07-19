@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Drawer } from 'antd';
 import cn from 'classnames';
+import { useIsDesktop } from '../../../hooks';
 import { CustomIcon } from '../../common/CustomIcon';
 import styles from './Header.module.scss';
 
@@ -43,7 +44,12 @@ const MENU_ITEMS = [
 ];
 
 export const Header = () => {
+  const isDesktop = useIsDesktop();
   const [isShowMenu, setIsShowMenu] = useState(false);
+
+  if (!isDesktop) {
+    return null;
+  }
 
   return (
     <header className={styles.box}>
