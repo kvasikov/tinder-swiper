@@ -55,7 +55,7 @@ export const Header = () => {
       </div>
       <Drawer
         rootStyle={{ marginTop: '72px' }}
-        maskStyle={{ backgroundColor: 'transparent' }}
+        maskStyle={{ backgroundColor: 'transparent', marginTop: '-72px', marginLeft: '402px' }}
         contentWrapperStyle={{ minWidth: '402px' }}
         bodyStyle={{ padding: 0 }}
         footer={null}
