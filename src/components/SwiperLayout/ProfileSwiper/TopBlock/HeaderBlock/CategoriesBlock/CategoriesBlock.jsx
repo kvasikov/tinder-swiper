@@ -74,6 +74,7 @@ export const CategoriesBlock = () => {
         isOpen={isShowModal}
         onCancel={() => setIsShowModal(false)}
         desktopModalWidth='375px'
+        mobileModalHeight='auto'
         withDesktopCloseIcon={false}
         title='Выберите категорию'
       >

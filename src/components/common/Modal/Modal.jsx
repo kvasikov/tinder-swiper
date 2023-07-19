@@ -73,8 +73,10 @@ export const Modal = ({
           onOk={onConfirm}
           onCancel={onCancel}
         >
-          {titleContent}
-          {withDesktopCloseIcon && closeIcon}
+          <div className={styles.header}>
+            {titleContent}
+            {withDesktopCloseIcon && closeIcon}
+          </div>
           {children}
         </ModalAntd>
       )}
@@ -89,8 +91,10 @@ export const Modal = ({
           closable={false}
           onClose={onCancel}
         >
-          {titleContent}
-          {withMobileCloseIcon && closeIcon}
+          <div className={styles.header}>
+            {titleContent}
+            {withMobileCloseIcon && closeIcon}
+          </div>
           <div className={styles.content} ref={elRef}>
             {children}
           </div>
