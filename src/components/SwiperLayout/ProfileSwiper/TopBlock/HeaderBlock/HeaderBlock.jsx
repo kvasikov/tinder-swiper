@@ -1,6 +1,7 @@
 import React from 'react';
 import { Dropdown } from 'antd';
 import { CustomIcon } from '../../../../common/CustomIcon';
+import { SwitcherIcon } from '../../../../common/SwitcherIcon';
 import styles from './HeaderBlock.module.scss';
 
 const SETTINGS_ITEMS = [
@@ -33,6 +34,25 @@ const SETTINGS_ITEMS = [
   },
 ];
 
+const MODE_ITEMS = [
+  {
+    value: '1',
+    iconKind: 'profile',
+    isNoFill: true,
+    onClick: () => {
+      console.log('Режим профиля');
+    },
+  },
+  {
+    value: '2',
+    iconKind: 'firework',
+    isNoFill: false,
+    onClick: () => {
+      console.log('Режим организации');
+    },
+  },
+];
+
 export const HeaderBlock = () => {
   const onCategoriesOpen = () => console.log('show categories');
 
@@ -50,7 +70,9 @@ export const HeaderBlock = () => {
             <CustomIcon className={styles.dots} kind='dots' iconSize='24px' />
           </button>
         </Dropdown>
-        <div>icons</div>
+        <div>
+          <SwitcherIcon items={MODE_ITEMS} />
+        </div>
       </div>
     </div>
   );
