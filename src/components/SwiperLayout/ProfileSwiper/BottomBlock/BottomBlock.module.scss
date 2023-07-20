@@ -6,6 +6,11 @@
   left: 0;
   right: 0;
   z-index: 10;
+  margin-top: 28px;
+
+  &--hide {
+    z-index: 0;
+  }
 
   @media #{$desktop-s} {
     display: none;
@@ -16,5 +21,24 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 0 32px 32px 42px;
+  margin: 0 20px;
+}
+
+.item {
+  color: #4D4D54;
+  border: none;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  appearance: none;
+  cursor: pointer;
+  padding: 12px;
+
+  &:hover {
+    color: #FF00D6;
+  }
+
+  &--active {
+    color: #FF00D6;
+  }
 }

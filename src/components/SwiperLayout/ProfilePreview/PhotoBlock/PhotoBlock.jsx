@@ -20,7 +20,9 @@ export const PhotoBlock = observer(({ profileData }) => {
         className={styles['photo-wrapper']}
         style={{
           top:
-            swiperStore.isHideMoreProfileInfo && swiperStore.offsetTop ? swiperStore.offsetTop : 0,
+            swiperStore.isHideMoreProfileInfo && swiperStore.offsetData.top
+              ? swiperStore.offsetData.top
+              : 0,
         }}
       >
         <div
@@ -33,6 +35,7 @@ export const PhotoBlock = observer(({ profileData }) => {
       </div>
       <div
         className={cn(styles['info-wrapper'], {
+          [styles['info-wrapper--hidden']]: swiperStore.currentProfileDataId !== profileData.id,
           [styles['info-wrapper--hide']]: swiperStore.isHideMoreProfileInfo,
         })}
       >

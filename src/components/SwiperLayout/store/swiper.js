@@ -14,7 +14,10 @@ export class SwiperStore {
   profileList = [];
   currentProfileDataId = {};
   isHideMoreProfileInfo = true;
-  offsetTop = 0;
+  offsetData = {
+    top: 0,
+    bottom: 0,
+  };
   isFetchingList = true;
   activeTabValue = TAB_LIST[0].value;
 
@@ -56,8 +59,11 @@ export class SwiperStore {
     this.isHideMoreProfileInfo = status;
   };
 
-  setOffsetTop = (offsetTop) => {
-    this.offsetTop = offsetTop;
+  setOffsetData = (offsetData) => {
+    this.offsetData = {
+      ...this.offsetData,
+      ...offsetData,
+    };
   };
 
   updateProfileData = (profileId, newProfileData) => {

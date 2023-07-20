@@ -7,7 +7,10 @@ export const LocationBlock = () => {
     <div
       className={styles.box}
       style={{
-        top: swiperStore.isHideMoreProfileInfo && swiperStore.offsetTop ? swiperStore.offsetTop : 0,
+        top:
+          swiperStore.isHideMoreProfileInfo && swiperStore.offsetData.top
+            ? swiperStore.offsetData.top
+            : 0,
       }}
     >
       <div>LocationBlock</div>

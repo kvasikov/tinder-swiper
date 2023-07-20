@@ -23,7 +23,7 @@ export const TopBlock = observer(() => {
 
   const mobileStyles = !isDesktop
     ? {
-        height: `${swiperStore.offsetTop}px`,
+        height: `${swiperStore.offsetData.top}px`,
         zIndex: zIndex,
       }
     : {};

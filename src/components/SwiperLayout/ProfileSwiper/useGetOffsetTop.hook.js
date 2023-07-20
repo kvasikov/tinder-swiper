@@ -25,8 +25,19 @@ export const useGetOffsetTop = ({ currentProfileDataId }) => {
         return;
       }
 
+      // сначала вычисляем положение сверху
       const offsetTop = (viewportHeight - actualPhotoWrapper.clientHeight) / 2;
-      swiperStore.setOffsetTop(offsetTop);
+      swiperStore.setOffsetData({
+        top: offsetTop,
+      });
+
+      // ждем применения положения сверху и высчитываем нижнюю границу
+      setTimeout(() => {
+        const rect = actualPhotoWrapper.getBoundingClientRect();
+        swiperStore.setOffsetData({
+          bottom: rect.bottom,
+        });
+      }, 250);
     };
 
     execGetOffsetTop();
