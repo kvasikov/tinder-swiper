@@ -5,13 +5,17 @@
   flex-direction: column;
   justify-content: flex-end;
 
-  position: relative;
+  position: absolute;
+  top: 0;
   width: 100%;
   z-index: 10;
   background-color: white;
   padding-left: 16px;
   padding-right: 16px;
-  flex: 1;
+
+  @media screen and (min-height: 800px) {
+    padding-top: 44px;
+  }
 
   @media #{$desktop-s} {
     border-top-left-radius: 16px;

@@ -1,24 +1,5 @@
 @import 'src/assets/scss/utils';
 
-.box {
-  overflow: hidden;
-  border-radius: 16px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  height: 100%;
-
-  @media #{$desktop-s} {
-    position: relative;
-    top: 100%;
-    transform: translateY(-100%);
-    display: block;
-    height: unset;
-  }
-}
-
 .space {
   width: 100%;
   height: 100%;
@@ -32,40 +13,19 @@
   animation-duration: 0.25s;
 }
 
+.wrapper {
+  height: 100%;
+  overflow: hidden;
+
+  @media #{$desktop-s} {
+    border-radius: 16px;
+  }
+}
+
 .last-loader-wrapper {
   position: relative;
   top: 8px;
   width: 100%;
   z-index: 1;
   text-align: center;
-}
-
-.wrapper {
-  max-height: 100%;
-  height: 380px;
-
-  @media screen and (min-height: 600px), screen and (min-width: 1024px) {
-    height: 400px;
-  }
-
-  @media screen and (min-height: 700px), screen and (min-width: 1024px) {
-    height: 484px;
-  }
-
-  @media screen and (min-height: 750px), screen and (min-width: 1024px) {
-    height: 500px;
-  }
-
-  @media screen and (min-height: 800px), screen and (min-width: 1024px) {
-    height: 568px;
-  }
-}
-
-.content {
-  height: 100%;
-}
-
-.swiper {
-  width: 100%;
-  height: 100%;
 }

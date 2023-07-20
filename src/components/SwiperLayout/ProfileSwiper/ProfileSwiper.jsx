@@ -10,8 +10,8 @@ import { swiperStore, getProfileIdByDataAttr } from '../store';
 import { ProfilePreview } from '../ProfilePreview';
 import { TopBlock } from './TopBlock';
 import { BottomBlock } from './BottomBlock';
-import { GeoBlock } from './GeoBlock';
 import styles from './ProfileSwiper.module.scss';
+import { useGetOffsetTop } from './useGetOffsetTop.hook';
 import { useGetProfileList } from './useGetProfileList.hook';
 import { useWheelSwipe } from './useWheelSwipe.hook';
 
@@ -19,9 +19,11 @@ SwiperCore.use([Virtual, Controller]);
 
 export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
   const prevIndex = useRef(null);
-  const wrapperRef = useRef(null);
 
   const { fetchDataList } = useGetProfileList();
+  const { wrapperRef } = useGetOffsetTop({
+    currentProfileDataId: swiperStore.currentProfileDataId,
+  });
 
   const onSliderChange = (swiper) => {
     const prevProfileDataId = toJS(swiperStore.currentProfileData.id);
@@ -58,62 +60,56 @@ export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
   useWheelSwipe({ swiperState, wrapperEl: wrapperRef.current });
 
   return (
-    <div className={styles.box}>
+    <>
       <TopBlock />
-      <div className={styles.wrapper}>
-        {swiperStore.activeTabValue === 'geo' && <GeoBlock />}
-        {swiperStore.activeTabValue === 'profile' && (
-          <div className={styles.content} ref={wrapperRef}>
-            <Swiper
-              className={styles.swiper}
-              direction='vertical'
-              observer
-              speed={400}
-              simulateTouch={false}
-              spaceBetween={48}
-              virtual={{
-                enabled: true,
-                addSlidesAfter: 2,
-                addSlidesBefore: 2,
-              }}
-              touchStartPreventDefault={false}
-              onAfterInit={setSwiperState}
-              onSlideChange={onSliderChange}
-            >
-              {swiperStore.isFetchingList && swiperStore.profileList.length === 0 && (
-                <SwiperSlide className={styles.slide}>
-                  <Space className={styles.space} direction='vertical'>
-                    <Spin tip='Loading' size='large'>
-                      <div />
-                    </Spin>
-                  </Space>
-                </SwiperSlide>
-              )}
-              {swiperStore.profileList.map((profile, profileIndex) => {
-                const dataProps = { [DATA_ATTR_PROFILE_ID]: profile.id };
+      <div className={styles.wrapper} ref={wrapperRef}>
+        <Swiper
+          direction='vertical'
+          style={{ height: '100%' }}
+          observer
+          speed={400}
+          simulateTouch={false}
+          virtual={{
+            enabled: true,
+            addSlidesAfter: 2,
+            addSlidesBefore: 2,
+          }}
+          touchStartPreventDefault={false}
+          onAfterInit={setSwiperState}
+          onSlideChange={onSliderChange}
+        >
+          {swiperStore.isFetchingList && swiperStore.profileList.length === 0 && (
+            <SwiperSlide className={styles.slide}>
+              <Space className={styles.space} direction='vertical'>
+                <Spin tip='Loading' size='large'>
+                  <div />
+                </Spin>
+              </Space>
+            </SwiperSlide>
+          )}
+          {swiperStore.profileList.map((profile, profileIndex) => {
+            const dataProps = { [DATA_ATTR_PROFILE_ID]: profile.id };
 
-                return (
-                  <SwiperSlide
-                    className={styles.slide}
-                    key={profile.id}
-                    virtualIndex={profileIndex}
-                    {...dataProps}
-                  >
-                    <ProfilePreview profileData={profile} />
-                    {swiperStore.isFetchingList &&
-                      profileIndex === swiperStore.profileList.length - 1 && (
-                        <div className={styles['last-loader-wrapper']}>
-                          <Spin size='default' />
-                        </div>
-                      )}
-                  </SwiperSlide>
-                );
-              })}
-            </Swiper>
-          </div>
-        )}
+            return (
+              <SwiperSlide
+                className={styles.slide}
+                key={profile.id}
+                virtualIndex={profileIndex}
+                {...dataProps}
+              >
+                <ProfilePreview profileData={profile} />
+                {swiperStore.isFetchingList &&
+                  profileIndex === swiperStore.profileList.length - 1 && (
+                    <div className={styles['last-loader-wrapper']}>
+                      <Spin size='default' />
+                    </div>
+                  )}
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
       </div>
       <BottomBlock />
-    </div>
+    </>
   );
 });
