@@ -9,6 +9,7 @@ import { DATA_ATTR_PROFILE_ID } from '../../../constants/attributes';
 import { swiperStore, getProfileIdByDataAttr } from '../store';
 import { ProfilePreview } from '../ProfilePreview';
 import { TopBlock } from './TopBlock';
+import { BottomBlock } from './BottomBlock';
 import styles from './ProfileSwiper.module.scss';
 import { useGetOffsetTop } from './useGetOffsetTop.hook';
 import { useGetProfileList } from './useGetProfileList.hook';
@@ -108,6 +109,7 @@ export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
           })}
         </Swiper>
       </div>
+      <BottomBlock />
     </>
   );
 });

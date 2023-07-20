@@ -1,0 +1,20 @@
+@import 'src/assets/scss/utils';
+
+.box {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+
+  @media #{$desktop-s} {
+    display: none;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 32px 32px 42px;
+}
