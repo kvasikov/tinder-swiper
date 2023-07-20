@@ -15,14 +15,7 @@ export const PhotoBlock = observer(({ profileData }) => {
 
   return (
     <div className={styles.box}>
-      <div
-        {...attrProps}
-        className={styles['photo-wrapper']}
-        style={{
-          top:
-            swiperStore.isHideMoreProfileInfo && swiperStore.offsetTop ? swiperStore.offsetTop : 0,
-        }}
-      >
+      <div {...attrProps} className={styles['photo-wrapper']}>
         <div
           className={cn(styles['tab-block'], {
             [styles['tab-block--hide']]: swiperStore.activeTabValue !== 'profile',

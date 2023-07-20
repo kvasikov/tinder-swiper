@@ -1,11 +1,9 @@
 @import 'src/assets/scss/utils';
 
 .box {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  position: relative;
   z-index: 10;
+  flex: 1;
 
   @media #{$desktop-s} {
     display: none;
