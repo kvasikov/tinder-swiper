@@ -40,9 +40,7 @@
   text-align: center;
 }
 
-.swiper {
-  // TODO: убрать копипасту из PhotoBlock
-  width: 100%;
+.wrapper {
   max-height: 100%;
   height: 380px;
 
@@ -61,4 +59,13 @@
   @media screen and (min-height: 800px), screen and (min-width: 1024px) {
     height: 568px;
   }
+}
+
+.content {
+  height: 100%;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
 }
