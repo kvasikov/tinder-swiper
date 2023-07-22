@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { observer } from 'mobx-react';
 import cn from 'classnames';
+import { Spin } from 'antd';
 import { swiperStore, getProfileIdByDataAttr } from './store';
 import { ProfileInfo } from './ProfileInfo';
 import { ButtonBlockDesktop } from './ButtonBlockDesktop';
@@ -12,6 +13,13 @@ import styles from './SwiperLayout.module.scss';
 
 export const SwiperLayout = observer(() => {
   const wasInitRef = useRef(false);
+  const [isInit, setIsInit] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsInit(true);
+    }, 500);
+  }, []);
 
   const [swiperState, setSwiperState] = useState(null);
 
@@ -50,9 +58,14 @@ export const SwiperLayout = observer(() => {
                   [styles['side-wrapper--hide']]: swiperStore.isHideMoreProfileInfo,
                 })}
               >
+                {!isInit && (
+                  <div className={styles.loader}>
+                    <Spin />
+                  </div>
+                )}
                 {swiperStore.activeTabValue === 'geo' && <LocationBlock />}
                 <ProfileSwiper swiperState={swiperState} setSwiperState={setSwiperState} />
-                <TweetButtonDesktop swiperState={swiperState} />
+                {isInit && <TweetButtonDesktop swiperState={swiperState} />}
               </div>
               <div
                 className={cn(styles['side-wrapper'], styles['side-wrapper_desktop'], 'scrollbar', {
@@ -69,10 +82,12 @@ export const SwiperLayout = observer(() => {
                   [styles['button-wrapper--hide']]: swiperStore.isHideMoreProfileInfo,
                 })}
               >
-                <ButtonBlockDesktop
-                  profileData={swiperStore.currentProfileData}
-                  swiperState={swiperState}
-                />
+                {isInit && (
+                  <ButtonBlockDesktop
+                    profileData={swiperStore.currentProfileData}
+                    swiperState={swiperState}
+                  />
+                )}
               </div>
             </div>
           </div>
