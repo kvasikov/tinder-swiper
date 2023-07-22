@@ -50,7 +50,7 @@ export const BottomBlock = observer(() => {
         [styles['box--hide']]: !swiperStore.isHideMoreProfileInfo,
       })}
       style={{
-        top: `${swiperStore.offsetData.bottom}px`,
+        top: `${swiperStore.offsetData.top + swiperStore.offsetData.height}px`,
       }}
     >
       <div className={styles.wrapper}>

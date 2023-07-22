@@ -16,7 +16,6 @@ export class SwiperStore {
   isHideMoreProfileInfo = true;
   offsetData = {
     top: 0,
-    bottom: 0,
   };
   isFetchingList = true;
   activeTabValue = TAB_LIST[0].value;
