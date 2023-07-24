@@ -9,7 +9,11 @@
   padding-left: 16px;
   padding-right: 16px;
   padding-top: 52px;
-  transition: padding 0.15s, height 0.15s;
+  transition-property: padding, height;
+  transition-duration: 0.15s;
+  transition-timing-function: linear;
+  flex: 1;
+  height: 100%;
 
   &--active {
     height: 0;

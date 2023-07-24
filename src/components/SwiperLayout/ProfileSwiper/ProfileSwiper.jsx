@@ -104,7 +104,7 @@ export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
           //   },
           // }}
           // modules={[EffectFade]}
-          spaceBetween={20}
+          spaceBetween={16}
           simulateTouch={false}
           virtual={{
             enabled: true,

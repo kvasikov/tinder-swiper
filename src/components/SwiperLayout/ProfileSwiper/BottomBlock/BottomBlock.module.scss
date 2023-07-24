@@ -5,7 +5,11 @@
   padding-top: 30px;
   padding-bottom: 34px;
   background-color: white;
-  transition: height 0.15s, padding 0.15s;
+  transition-property: padding, height;
+  transition-duration: 0.15s;
+  transition-timing-function: linear;
+  flex: 1;
+  height: 100%;
 
   &--hide {
     height: 0;
