@@ -26,7 +26,9 @@ export const TopBlock = observer(() => {
         height: `${swiperStore.offsetData.top}px`,
         zIndex: zIndex,
       }
-    : {};
+    : {
+        bottom: `${swiperStore.offsetData.height}px`,
+      };
 
   return (
     <div className={styles.box} style={mobileStyles}>

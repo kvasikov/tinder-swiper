@@ -16,6 +16,11 @@
 .wrapper {
   height: 100%;
   overflow: hidden;
+  position: relative;
+
+  &--active {
+    z-index: 100;
+  }
 
   @media #{$desktop-s} {
     border-radius: 16px;

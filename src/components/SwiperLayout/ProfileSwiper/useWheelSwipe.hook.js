@@ -1,10 +1,16 @@
 import { useEffect } from 'react';
+import { useIsDesktop } from '../../../hooks';
 import { throttle } from '../../../utils';
 
-export const useWheelSwipe = ({ swiperState, wrapperEl }) => {
-  useEffect(() => {
-    // TODO: если swiperStore.activeTabValue !== 'profile' это запрещать обработку wheel
+export const useWheelSwipe = ({
+  swiperState,
+  wrapperEl,
+  isHideMoreProfileInfo,
+  activeTabValue,
+}) => {
+  const isDesktop = useIsDesktop();
 
+  useEffect(() => {
     const onMouseWheel = (event) => {
       if (swiperState.animating) {
         return;
@@ -23,10 +29,15 @@ export const useWheelSwipe = ({ swiperState, wrapperEl }) => {
 
     const execMouseWheel = throttle(onMouseWheel, 1000);
 
+    if ((!isDesktop && !isHideMoreProfileInfo) || activeTabValue !== 'profile') {
+      wrapperEl?.removeEventListener('wheel', execMouseWheel);
+      return;
+    }
+
     wrapperEl.addEventListener('wheel', execMouseWheel);
 
     return () => {
       wrapperEl?.removeEventListener('wheel', execMouseWheel);
     };
-  }, [swiperState, wrapperEl]);
+  }, [swiperState, wrapperEl, isDesktop, isHideMoreProfileInfo, activeTabValue]);
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import cn from 'classnames';
+import { useDelayEffect } from '../../../../hooks';
 import { CustomIcon } from '../../../common/CustomIcon';
 import { swiperStore } from '../../store';
 import styles from './BottomBlock.module.scss';
@@ -44,10 +45,14 @@ const MENU_ITEMS = [
 ];
 
 export const BottomBlock = observer(() => {
+  const [isActive] = useDelayEffect({
+    dependencyFlag: !swiperStore.isHideMoreProfileInfo,
+  });
+
   return (
     <div
       className={cn(styles.box, {
-        [styles['box--hide']]: !swiperStore.isHideMoreProfileInfo,
+        [styles['box--hide']]: isActive,
       })}
       style={{
         top: `${swiperStore.offsetData.top + swiperStore.offsetData.height}px`,

@@ -2,3 +2,4 @@ export { usePrevious } from './usePrevious';
 export { useMediaBreakpoint, useMedia, useMediaPredicate } from './useMediaBreakpoint';
 export { useFetchReturn } from './useFetchReturn';
 export { useIsDesktop } from './useIsDesktop';
+export { useDelayEffect } from './useDelayEffect';

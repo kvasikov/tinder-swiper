@@ -1,11 +1,13 @@
 import React, { useRef } from 'react';
 import { toJS } from 'mobx';
+import cn from 'classnames';
 import { observer } from 'mobx-react';
 import { Spin, Space } from 'antd';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Virtual, Controller } from 'swiper';
 import 'swiper/css';
 import { DATA_ATTR_PROFILE_ID } from '../../../constants/attributes';
+import { useDelayEffect, useIsDesktop } from '../../../hooks';
 import { swiperStore, getProfileIdByDataAttr } from '../store';
 import { ProfilePreview } from '../ProfilePreview';
 import { TopBlock } from './TopBlock';
@@ -18,6 +20,9 @@ import { useWheelSwipe } from './useWheelSwipe.hook';
 SwiperCore.use([Virtual, Controller]);
 
 export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
+  const isDesktop = useIsDesktop();
+  const [isActive] = useDelayEffect({ dependencyFlag: !swiperStore.isHideMoreProfileInfo });
+
   const prevIndex = useRef(null);
 
   const { fetchDataList } = useGetProfileList();
@@ -57,12 +62,22 @@ export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
     }
   };
 
-  useWheelSwipe({ swiperState, wrapperEl: wrapperRef.current });
+  useWheelSwipe({
+    swiperState,
+    wrapperEl: wrapperRef.current,
+    activeTabValue: swiperStore.activeTabValue,
+    isHideMoreProfileInfo: swiperStore.isHideMoreProfileInfo,
+  });
 
   return (
     <>
       <TopBlock />
-      <div className={styles.wrapper} ref={wrapperRef}>
+      <div
+        className={cn(styles.wrapper, {
+          [styles['wrapper--active']]: !isDesktop && isActive,
+        })}
+        ref={wrapperRef}
+      >
         <Swiper
           direction='vertical'
           style={{ height: '100%' }}

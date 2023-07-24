@@ -45,6 +45,7 @@ const MENU_ITEMS = [
 
 export const Header = () => {
   const isDesktop = useIsDesktop();
+
   const [isShowMenu, setIsShowMenu] = useState(false);
 
   if (!isDesktop) {

@@ -57,7 +57,8 @@
 .info-wrapper {
   position: relative;
   top: 0;
-  transition: top 0.15s;
+  transition: top 0.15s, opacity 0.15s;
+  opacity: 1;
   
   @media #{$desktop-s} {
     display: none;
@@ -68,6 +69,7 @@
   }
 
   &--hide {
+    opacity: 0;
     top: 50%;
   }
 }
