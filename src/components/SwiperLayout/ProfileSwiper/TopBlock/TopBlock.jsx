@@ -1,5 +1,6 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 import { observer } from 'mobx-react';
+import cn from 'classnames';
 import { useIsDesktop } from '../../../../hooks';
 import { swiperStore } from '../../store';
 import { TabsBlock } from './TabsBlock';
@@ -9,21 +10,12 @@ import styles from './TopBlock.module.scss';
 export const TopBlock = observer(() => {
   const isDesktop = useIsDesktop();
 
-  const [wrapperHeight, setWrapperHeight] = useState(0);
-
-  const wrapperRef = useCallback((node) => {
-    setWrapperHeight(node.clientHeight);
-  }, []);
-
-  const hideStyles =
-    !isDesktop && !swiperStore.isHideMoreProfileInfo
-      ? {
-          marginTop: `-${wrapperHeight}px`,
-        }
-      : {};
-
   return (
-    <div ref={wrapperRef} className={styles.box} style={hideStyles}>
+    <div
+      className={cn(styles.box, {
+        [styles['box--active']]: !isDesktop && !swiperStore.isHideMoreProfileInfo,
+      })}
+    >
       <HeaderBlock />
       <TabsBlock />
     </div>

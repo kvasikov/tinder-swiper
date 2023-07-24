@@ -49,7 +49,7 @@ export const SwiperLayout = observer(() => {
         <div className={styles.wrapper}>
           <div
             className={cn(styles.container, 'scrollbar', {
-              [styles['container--no-scroll']]: swiperStore.isHideMoreProfileInfo,
+              [styles['container--no-scroll']]: !swiperStore.isHideMoreProfileInfo,
             })}
           >
             <div className={styles.content}>
