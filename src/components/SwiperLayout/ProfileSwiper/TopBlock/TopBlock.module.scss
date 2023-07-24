@@ -4,18 +4,13 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-
-  position: absolute;
-  top: 0;
   width: 100%;
   z-index: 10;
   background-color: white;
   padding-left: 16px;
   padding-right: 16px;
-
-  @media screen and (min-height: 800px) {
-    // padding-top: 44px;
-  }
+  padding-top: 52px;
+  transition: margin 0.15s;
 
   @media #{$desktop-s} {
     border-top-left-radius: 16px;

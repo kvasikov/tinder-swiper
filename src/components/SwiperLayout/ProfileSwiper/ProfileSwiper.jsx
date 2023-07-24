@@ -70,7 +70,7 @@ export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
   });
 
   return (
-    <>
+    <div className={styles.box}>
       <TopBlock />
       <div
         className={cn(styles.wrapper, {
@@ -147,6 +147,6 @@ export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
         </Swiper>
       </div>
       <BottomBlock />
-    </>
+    </div>
   );
 });

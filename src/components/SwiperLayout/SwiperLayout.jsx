@@ -6,7 +6,7 @@ import { swiperStore, getProfileIdByDataAttr } from './store';
 import { ProfileInfo } from './ProfileInfo';
 import { ButtonBlockDesktop } from './ButtonBlockDesktop';
 import { TweetButtonDesktop } from './TweetButtonDesktop';
-import { LocationBlock } from './LocationBlock';
+// import { LocationBlock } from './LocationBlock';
 import { ProfileSwiper } from './ProfileSwiper';
 import { Header } from './Header';
 import styles from './SwiperLayout.module.scss';
@@ -63,7 +63,7 @@ export const SwiperLayout = observer(() => {
                     <Spin />
                   </div>
                 )}
-                {swiperStore.activeTabValue === 'geo' && <LocationBlock />}
+                {/* {swiperStore.activeTabValue === 'geo' && <LocationBlock />} */}
                 <ProfileSwiper swiperState={swiperState} setSwiperState={setSwiperState} />
                 {isInit && <TweetButtonDesktop swiperState={swiperState} />}
               </div>
