@@ -18,28 +18,6 @@
   overflow: hidden;
   position: relative;
 
-  top: 50%;
-  transform: translateY(-50%);
-
-  max-height: 100%;
-  height: 380px;
-
-  @media screen and (min-height: 600px), screen and (min-width: 1024px) {
-    height: 400px;
-  }
-
-  @media screen and (min-height: 700px), screen and (min-width: 1024px) {
-    height: 484px;
-  }
-
-  @media screen and (min-height: 750px), screen and (min-width: 1024px) {
-    height: 500px;
-  }
-
-  @media screen and (min-height: 800px), screen and (min-width: 1024px) {
-    height: 568px;
-  }
-
   &--active {
     z-index: 100;
   }

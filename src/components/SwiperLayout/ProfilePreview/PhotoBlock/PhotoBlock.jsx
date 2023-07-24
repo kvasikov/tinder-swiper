@@ -18,12 +18,12 @@ export const PhotoBlock = observer(({ profileData }) => {
       <div
         {...attrProps}
         className={styles['photo-wrapper']}
-        // style={{
-        //   top:
-        //     swiperStore.isHideMoreProfileInfo && swiperStore.offsetData.top
-        //       ? swiperStore.offsetData.top
-        //       : 0,
-        // }}
+        style={{
+          top:
+            swiperStore.isHideMoreProfileInfo && swiperStore.offsetData.top
+              ? swiperStore.offsetData.top
+              : 0,
+        }}
       >
         <div
           className={cn(styles['tab-block'], {
