@@ -82,7 +82,29 @@ export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
           direction='vertical'
           style={{ height: '100%' }}
           observer
-          speed={400}
+          // mousewheel={true}
+          // speed={400}
+          // effect='creative'
+          // creativeEffect={{
+          //   limitProgress: 1,
+          //   // progressMultiplier: 2,
+          //   // perspective: false,
+          //   prev: {
+          //     // limitProgress: 1,
+          //     // shadow: true,
+          //     translate: [0, '-105%', -1],
+          //     scale: 0.75,
+          //     origin: 'top',
+          //   },
+          //   next: {
+          //     // limitProgress: 1,
+          //     translate: [0, '105%', 0],
+          //     scale: 0.75,
+          //     origin: 'bottom',
+          //   },
+          // }}
+          // modules={[EffectFade]}
+          spaceBetween={20}
           simulateTouch={false}
           virtual={{
             enabled: true,
