@@ -3,9 +3,11 @@ import { toJS } from 'mobx';
 import cn from 'classnames';
 import { observer } from 'mobx-react';
 import { Spin, Space } from 'antd';
+import SwiperCore, { Virtual, EffectCreative, Manipulation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Virtual } from 'swiper/modules';
-import 'swiper/css';
+import 'swiper/css/effect-creative';
+import 'swiper/css/virtual';
+import 'swiper/css/manipulation';
 import { DATA_ATTR_PROFILE_ID } from '../../../constants/attributes';
 import { useDelayEffect, useIsDesktop } from '../../../hooks';
 import { swiperStore, getProfileIdByDataAttr } from '../store';
@@ -16,6 +18,8 @@ import styles from './ProfileSwiper.module.scss';
 import { useGetOffsetTop } from './useGetOffsetTop.hook';
 import { useGetProfileList } from './useGetProfileList.hook';
 import { useWheelSwipe } from './useWheelSwipe.hook';
+
+SwiperCore.use([Virtual, EffectCreative, Manipulation]);
 
 export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
   const isDesktop = useIsDesktop();
@@ -28,18 +32,19 @@ export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
     currentProfileDataId: swiperStore.currentProfileDataId,
   });
 
-  const onSliderChange = (swiper) => {
+  const onSliderChange = async (swiper) => {
     const prevProfileDataId = toJS(swiperStore.currentProfileData.id);
 
     const isPrev =
       prevIndex.current - swiper.activeIndex === 1 || prevIndex.current === swiper.activeIndex;
 
-    const actualIndex = swiper.visibleSlides.length > 1 ? swiper.visibleSlides.length - 1 : 0;
+    const actualIndex = swiper?.visibleSlides?.length > 1 ? swiper?.visibleSlides?.length - 1 : 0;
     const currentIndex = isPrev ? 0 : actualIndex;
 
+    // TODO
     const profileId = getProfileIdByDataAttr(
       swiper?.visibleSlides?.[currentIndex],
-      swiperStore.profileList?.[0].id,
+      swiperStore.profileList?.[0]?.id,
     );
 
     swiperStore.setCurrentProfileId(profileId);
@@ -55,9 +60,11 @@ export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
       }, 500);
     }
 
-    if (swiper.virtual.slides.length - swiper.realIndex <= 1) {
-      fetchDataList();
-    }
+    // if (swiper.slides.length - swiper.activeIndex <= 1) {
+    //   console.log(swiper.slides.length, swiper.activeIndex);
+    //   // fetchDataList();
+    //   // fetchDataList();
+    // }
   };
 
   useWheelSwipe({
@@ -77,42 +84,31 @@ export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
         ref={wrapperRef}
       >
         <Swiper
-          modules={[Virtual]}
           direction='vertical'
           style={{ height: '100%' }}
           observer
-          // mousewheel={true}
-          // speed={400}
-          // effect='creative'
-          // creativeEffect={{
-          //   limitProgress: 1,
-          //   // progressMultiplier: 2,
-          //   // perspective: false,
-          //   prev: {
-          //     // limitProgress: 1,
-          //     // shadow: true,
-          //     translate: [0, '-105%', -1],
-          //     scale: 0.75,
-          //     origin: 'top',
-          //   },
-          //   next: {
-          //     // limitProgress: 1,
-          //     translate: [0, '105%', 0],
-          //     scale: 0.75,
-          //     origin: 'bottom',
-          //   },
-          // }}
-          // modules={[EffectFade]}
-          spaceBetween={16}
-          simulateTouch={false}
-          virtual={{
-            enabled: true,
-            addSlidesAfter: 2,
-            addSlidesBefore: 2,
+          effect='creative'
+          creativeEffect={{
+            limitProgress: 1,
+            prev: {
+              translate: [0, '-95%', 0],
+              scale: 0.75,
+            },
+            next: {
+              translate: [0, '95%', 0],
+              scale: 0.75,
+            },
           }}
+          spaceBetween={0}
+          simulateTouch={false}
           touchStartPreventDefault={false}
           onAfterInit={setSwiperState}
           onSlideChange={onSliderChange}
+          onProgress={(_, progress) => {
+            if (progress >= 0.9) {
+              fetchDataList();
+            }
+          }}
         >
           {swiperStore.isFetchingList && swiperStore.profileList.length === 0 && (
             <SwiperSlide className={styles.slide}>
@@ -130,7 +126,7 @@ export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
               <SwiperSlide
                 className={styles.slide}
                 key={profile.id}
-                virtualIndex={profileIndex}
+                // virtualIndex={profileIndex}
                 {...dataProps}
               >
                 <ProfilePreview profileData={profile} />
