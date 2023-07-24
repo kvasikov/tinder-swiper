@@ -4,7 +4,7 @@ import cn from 'classnames';
 import { observer } from 'mobx-react';
 import { Spin, Space } from 'antd';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Virtual, Controller } from 'swiper';
+import { Virtual } from 'swiper/modules';
 import 'swiper/css';
 import { DATA_ATTR_PROFILE_ID } from '../../../constants/attributes';
 import { useDelayEffect, useIsDesktop } from '../../../hooks';
@@ -16,8 +16,6 @@ import styles from './ProfileSwiper.module.scss';
 import { useGetOffsetTop } from './useGetOffsetTop.hook';
 import { useGetProfileList } from './useGetProfileList.hook';
 import { useWheelSwipe } from './useWheelSwipe.hook';
-
-SwiperCore.use([Virtual, Controller]);
 
 export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
   const isDesktop = useIsDesktop();
@@ -79,6 +77,7 @@ export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
         ref={wrapperRef}
       >
         <Swiper
+          modules={[Virtual]}
           direction='vertical'
           style={{ height: '100%' }}
           observer
