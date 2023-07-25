@@ -8,9 +8,9 @@
 
 .photo-img {
   height: 100%;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size: cover;
+  width: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
   border-radius: 16px;
   transition: border-radius 0.25s;
 

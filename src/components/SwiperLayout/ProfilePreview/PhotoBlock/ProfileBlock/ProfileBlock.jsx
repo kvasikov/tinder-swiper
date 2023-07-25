@@ -51,11 +51,12 @@ export const ProfileBlock = observer(({ profileData }) => {
         </div>
         <LightningBlock />
       </div>
-      <div
+      <img
         className={cn(styles['photo-img'], {
           [styles['photo-img--show']]: !profileData.isHideMoreProfileInfo,
         })}
-        style={{ backgroundImage: `url("${activePhotoPath}")` }}
+        src={activePhotoPath}
+        alt={profileData.id}
       />
       <InfoBlock profileData={profileData} />
       {profileData.isStatusShow && !profileData.isOrganization && (

@@ -6,16 +6,6 @@
   transition-duration: 0.15s;
   transition-timing-function: linear;
 
-  // TODO: фоновая загрузка всех фото текущего профиля
-  // &::after {
-  //   position: absolute;
-  //   width: 0;
-  //   height: 0;
-  //   overflow: hidden;
-  //   z-index: -1;
-  //   content: ${(props) => props.$photoList.reduce((str, photo) => `${str}url('${photo}') `, '')};
-  // }
-
   &--active {
     height: 60%;
   }
