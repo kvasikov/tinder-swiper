@@ -18,7 +18,7 @@ export const PhotoBlock = observer(({ profileData }) => {
   return (
     <div
       className={cn(styles.box, {
-        [styles['box--active']]: !isDesktop && !swiperStore.isHideMoreProfileInfo,
+        [styles['box--active']]: !isDesktop && !profileData.isHideMoreProfileInfo,
       })}
     >
       <div {...attrProps} className={styles['photo-wrapper']}>
@@ -29,7 +29,7 @@ export const PhotoBlock = observer(({ profileData }) => {
       <div
         className={cn(styles['info-wrapper'], {
           [styles['info-wrapper--hidden']]: swiperStore.currentProfileDataId !== profileData.id,
-          [styles['info-wrapper--hide']]: swiperStore.isHideMoreProfileInfo,
+          [styles['info-wrapper--hide']]: profileData.isHideMoreProfileInfo,
         })}
       >
         <ProfileInfo swiperState={swiper} profileData={profileData} />

@@ -47,7 +47,7 @@ export const BottomBlock = observer(() => {
   return (
     <div
       className={cn(styles.box, {
-        [styles['box--hide']]: !swiperStore.isHideMoreProfileInfo,
+        [styles['box--hide']]: !swiperStore.currentProfileData.isHideMoreProfileInfo,
       })}
     >
       <div className={styles.wrapper}>

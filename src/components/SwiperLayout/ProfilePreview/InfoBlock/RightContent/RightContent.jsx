@@ -9,7 +9,7 @@ import { swiperStore } from '../../../store';
 import { SuperLikeBlock } from './SuperLikeBlock';
 import styles from './RightContent.module.scss';
 
-export const RightContent = observer(() => {
+export const RightContent = observer(({ profileData }) => {
   const contentRef = useRef(null);
 
   const swiper = useSwiper();
@@ -17,13 +17,13 @@ export const RightContent = observer(() => {
 
   const onInfoClick = () => {
     const execHideMoreInfo = () => {
-      swiperStore.setMoreInfoStatus(true);
+      swiperStore.updateProfileData(profileData.id, { isHideMoreProfileInfo: true });
       !isDesktop && swiper.enable();
     };
 
-    if (swiperStore.isHideMoreProfileInfo) {
-      swiperStore.setMoreInfoStatus(false);
+    if (profileData.isHideMoreProfileInfo) {
       !isDesktop && swiper.disable();
+      swiperStore.updateProfileData(profileData.id, { isHideMoreProfileInfo: false });
     } else {
       setScrollToTopProfile(contentRef.current, execHideMoreInfo);
     }
@@ -34,7 +34,7 @@ export const RightContent = observer(() => {
       <SuperLikeBlock />
       <CircleIcon
         className={cn(styles['more-info-icon'], {
-          [styles['more-info-icon--show']]: !swiperStore.isHideMoreProfileInfo,
+          [styles['more-info-icon--show']]: !profileData.isHideMoreProfileInfo,
         })}
         kind='arrowUp'
         onClick={onInfoClick}

@@ -1,6 +1,5 @@
 import React from 'react';
 import cn from 'classnames';
-import { swiperStore } from '../../store';
 import { Status } from '../../../common/Status';
 import styles from './StatusBlock.module.scss';
 
@@ -12,7 +11,7 @@ export const StatusBlock = ({ profileData }) => {
   return (
     <div
       className={cn(styles.box, {
-        [styles['box--hide']]: swiperStore.isHideMoreProfileInfo,
+        [styles['box--hide']]: profileData.isHideMoreProfileInfo,
       })}
     >
       <Status

@@ -13,7 +13,8 @@ export const TopBlock = observer(() => {
   return (
     <div
       className={cn(styles.box, {
-        [styles['box--active']]: !isDesktop && !swiperStore.isHideMoreProfileInfo,
+        [styles['box--active']]:
+          !isDesktop && !swiperStore.currentProfileData.isHideMoreProfileInfo,
       })}
     >
       <HeaderBlock />

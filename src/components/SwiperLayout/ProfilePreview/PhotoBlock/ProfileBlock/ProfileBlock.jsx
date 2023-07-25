@@ -56,7 +56,7 @@ export const ProfileBlock = observer(({ profileData }) => {
       </div>
       <div
         className={cn(styles['photo-img'], {
-          [styles['photo-img--show']]: !swiperStore.isHideMoreProfileInfo,
+          [styles['photo-img--show']]: !profileData.isHideMoreProfileInfo,
         })}
         style={{ backgroundImage: `url("${activePhotoPath}")` }}
       />
@@ -67,7 +67,7 @@ export const ProfileBlock = observer(({ profileData }) => {
             styles['background-status'],
             styles[`background-status--${profileData.statusData.design}`],
             {
-              [styles['background-status--hide']]: swiperStore.isHideMoreProfileInfo,
+              [styles['background-status--hide']]: profileData.isHideMoreProfileInfo,
             },
           )}
         />

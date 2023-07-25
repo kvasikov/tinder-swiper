@@ -13,7 +13,6 @@ configure({
 export class SwiperStore {
   profileList = [];
   currentProfileDataId = {};
-  isHideMoreProfileInfo = true;
   offsetData = {
     top: 0,
   };
@@ -40,6 +39,7 @@ export class SwiperStore {
       isStatusShow: false,
       statusData: getStatusData(profile),
       organizationData: ORGANIZATION_DATA,
+      isHideMoreProfileInfo: true,
       infoData: {
         ...profile.infoData,
         sectionDataList: getDescriptorList(profile),
@@ -52,10 +52,6 @@ export class SwiperStore {
     }
 
     this.profileList = [...toJS(this.profileList), ...dataProfileList];
-  };
-
-  setMoreInfoStatus = (status) => {
-    this.isHideMoreProfileInfo = status;
   };
 
   setOffsetData = (offsetData) => {

@@ -8,7 +8,7 @@ export const LocationBlock = () => {
       className={styles.box}
       style={{
         top:
-          swiperStore.isHideMoreProfileInfo && swiperStore.offsetData.top
+          swiperStore.currentProfileData.isHideMoreProfileInfo && swiperStore.offsetData.top
             ? swiperStore.offsetData.top
             : 0,
       }}

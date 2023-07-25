@@ -22,7 +22,9 @@ SwiperCore.use([Virtual, EffectCreative, Manipulation]);
 
 export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
   const isDesktop = useIsDesktop();
-  const [isActive] = useDelayEffect({ dependencyFlag: !swiperStore.isHideMoreProfileInfo });
+  const [isActive] = useDelayEffect({
+    dependencyFlag: !swiperStore.currentProfileData.isHideMoreProfileInfo,
+  });
 
   const prevIndex = useRef(null);
 
@@ -64,7 +66,7 @@ export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
     swiperState,
     wrapperEl: wrapperRef.current,
     activeTabValue: swiperStore.activeTabValue,
-    isHideMoreProfileInfo: swiperStore.isHideMoreProfileInfo,
+    isHideMoreProfileInfo: swiperStore.currentProfileData.isHideMoreProfileInfo,
   });
 
   return (
@@ -113,7 +115,7 @@ export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
           onSlideChange={onSliderChange}
         >
           {swiperStore.isFetchingList && swiperStore.profileList.length === 0 && (
-            <SwiperSlide className={styles.slide}>
+            <SwiperSlide>
               <Space className={styles.space} direction='vertical'>
                 <Spin tip='Loading' size='large'>
                   <div />
@@ -126,7 +128,7 @@ export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
 
             return (
               <SwiperSlide
-                className={styles.slide}
+                // className={styles.slide}
                 key={profile.id}
                 // virtualIndex={profileIndex}
                 {...dataProps}

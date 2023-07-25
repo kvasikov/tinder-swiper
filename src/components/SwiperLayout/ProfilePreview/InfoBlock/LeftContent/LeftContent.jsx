@@ -23,7 +23,7 @@ export const LeftContent = observer(({ profileData }) => {
   return (
     <div
       className={cn(styles.box, {
-        [styles['box--hide']]: swiperStore.isHideMoreProfileInfo,
+        [styles['box--hide']]: profileData.isHideMoreProfileInfo,
       })}
     >
       <PreviewMainInfo profileData={profileData} />

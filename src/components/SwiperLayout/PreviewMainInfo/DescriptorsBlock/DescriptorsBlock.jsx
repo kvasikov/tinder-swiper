@@ -18,7 +18,7 @@ export const DescriptorsBlock = ({ profileData }) => {
   const activeIndex = activePhotoIndex <= 1 ? 0 : activePhotoIndex - 1;
   let descriptorList = sectionDataList[activeIndex] || [];
 
-  if (descriptorList?.length === 0 || !swiperStore.isHideMoreProfileInfo) {
+  if (descriptorList?.length === 0 || !profileData.isHideMoreProfileInfo) {
     return null;
   }
 
@@ -26,13 +26,13 @@ export const DescriptorsBlock = ({ profileData }) => {
 
   const onInfoClick = () => {
     const execHideMoreInfo = () => {
-      swiperStore.setMoreInfoStatus(true);
+      swiperStore.updateProfileData(profileData.id, { isHideMoreProfileInfo: true });
       !isDesktop && swiper.enable();
     };
 
-    if (swiperStore.isHideMoreProfileInfo) {
-      swiperStore.setMoreInfoStatus(false);
+    if (profileData.isHideMoreProfileInfo) {
       !isDesktop && swiper.disable();
+      swiperStore.updateProfileData(profileData.id, { isHideMoreProfileInfo: false });
     } else {
       setScrollToTopProfile(contentRef.current, execHideMoreInfo);
     }

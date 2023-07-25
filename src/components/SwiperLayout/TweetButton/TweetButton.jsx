@@ -17,7 +17,10 @@ export const TweetButton = ({ swiperState, isFromMoreBlock }) => {
 
     const execTweet = () => {
       if (!isDesktop) {
-        swiperStore.setMoreInfoStatus(true);
+        // swiperStore.setMoreInfoStatus(true);
+        swiperStore.updateProfileData(swiperStore.currentProfileData.id, {
+          isHideMoreProfileInfo: true,
+        });
         swiperState.enable();
       }
 
