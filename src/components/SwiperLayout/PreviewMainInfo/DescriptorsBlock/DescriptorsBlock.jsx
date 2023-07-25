@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-// import { useSwiper } from 'swiper/react';
 import { useIsDesktop } from '../../../../hooks';
 import { setScrollToTopProfile } from '../../utils';
 import { Badge } from '../../../common/Badge';
@@ -10,8 +9,6 @@ export const DescriptorsBlock = ({ profileData }) => {
   const contentRef = useRef(null);
 
   const isDesktop = useIsDesktop();
-
-  // const swiper = useSwiper();
 
   const sectionDataList = profileData?.infoData?.sectionDataList;
   const activePhotoIndex = profileData.activePhotoIndex;

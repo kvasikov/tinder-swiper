@@ -1,5 +1,4 @@
 import React from 'react';
-// import { useSwiper } from 'swiper/react';
 import cn from 'classnames';
 import { observer } from 'mobx-react';
 import { TweetButton } from '../../TweetButton';
@@ -8,8 +7,6 @@ import { RightContent } from './RightContent';
 import styles from './InfoBlock.module.scss';
 
 export const InfoBlock = observer(({ profileData }) => {
-  // const swiper = useSwiper();
-
   return (
     <div className={styles.box}>
       <div className={styles.content}>

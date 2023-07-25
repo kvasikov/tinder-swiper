@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 import cn from 'classnames';
 import { observer } from 'mobx-react';
-// import { useSwiper } from 'swiper/react';
 import { CircleIcon } from '../../../../common/CircleIcon';
 import { setScrollToTopProfile } from '../../../utils';
 import { useIsDesktop } from '../../../../../hooks';
@@ -12,7 +11,6 @@ import styles from './RightContent.module.scss';
 export const RightContent = observer(({ profileData }) => {
   const contentRef = useRef(null);
 
-  // const swiper = useSwiper();
   const isDesktop = useIsDesktop();
 
   const onInfoClick = () => {

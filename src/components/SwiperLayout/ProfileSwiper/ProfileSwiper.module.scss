@@ -25,11 +25,6 @@
   overflow: hidden;
   position: relative;
 
-  &--active {
-    // opacity: 0;
-    // z-index: 100;
-  }
-
   @media #{$desktop-s} {
     border-radius: 16px;
   }
@@ -44,22 +39,21 @@
 }
 
 .portal {
-  position: fixed;
+  position: absolute;
+  overflow: hidden;
   z-index: -1;
-  // height: 100%;
   width: 100%;
-  // margin-top: 130px; // TODO: height TopBlock
-  // margin-bottom: 112px; // TODO: height BottomBlock
-
   bottom: 112px; // TODO: height BottomBlock
   top: 130px; // TODO: height TopBlock
   left: 0;
   right: 0;
+  opacity: 0;
 
   &--active {
     z-index: 100;
     top: 0;
     bottom: 0;
+    opacity: 1;
   }
 
   @media #{$desktop-s} {

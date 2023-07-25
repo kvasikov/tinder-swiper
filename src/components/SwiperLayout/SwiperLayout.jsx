@@ -24,8 +24,6 @@ export const SwiperLayout = observer(() => {
     }, 500);
   }, []);
 
-  // const [swiperState, setSwiperState] = useState(null);
-
   useEffect(() => {
     if (!wasInitRef.current && swiperStore.swiper?.mounted && !swiperStore.isFetchingList) {
       swiperStore.swiper.on('observerUpdate', (_swiper) => {

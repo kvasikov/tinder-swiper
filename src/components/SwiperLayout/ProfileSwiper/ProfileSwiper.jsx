@@ -7,7 +7,6 @@ import SwiperCore, { Virtual, EffectCreative } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { DATA_ATTR_PROFILE_ID } from '../../../constants/attributes';
-import { useDelayEffect, useIsDesktop } from '../../../hooks';
 import { swiperStore, getProfileIdByDataAttr } from '../store';
 import { ProfilePreview } from '../ProfilePreview';
 import { TopBlock } from './TopBlock';
@@ -25,11 +24,6 @@ SwiperCore.use([Virtual, EffectCreative]);
 const IS_VIRTUAL = false;
 
 export const ProfileSwiper = observer(() => {
-  const isDesktop = useIsDesktop();
-  const [isActive] = useDelayEffect({
-    dependencyFlag: !swiperStore.currentProfileData.isHideMoreProfileInfo,
-  });
-
   const prevIndex = useRef(null);
 
   const { fetchDataList } = useGetProfileList();
@@ -128,16 +122,11 @@ export const ProfileSwiper = observer(() => {
             [styles['portal--active']]: !swiperStore.currentProfileData.isHideMoreProfileInfo,
           })}
         >
-          <ProfilePreview profileData={swiperStore.currentProfileData} />
+          <ProfilePreview profileData={swiperStore.currentProfileData} withProfileInfo />
         </div>
       )}
       <TopBlock />
-      <div
-        className={cn(styles.wrapper, {
-          [styles['wrapper--active']]: !isDesktop && isActive,
-        })}
-        ref={wrapperRef}
-      >
+      <div className={styles.wrapper} ref={wrapperRef}>
         <Swiper
           {...virtualOptions}
           // modules={[EffectCreative]}
