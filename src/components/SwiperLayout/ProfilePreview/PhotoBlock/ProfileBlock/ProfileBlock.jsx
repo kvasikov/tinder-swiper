@@ -33,10 +33,11 @@ export const ProfileBlock = observer(({ profileData }) => {
 
   const photoIndex = profileData.activePhotoIndex;
 
+  // TODO: предзагружать предыдущи / текущий / следующий картинки профиля (может в сторе свайпере)
   useEffect(() => {
-    if (swiperStore.currentProfileDataId !== profileData.id) {
-      return;
-    }
+    // if (swiperStore.currentProfileDataId !== profileData.id) {
+    //   return;
+    // }
 
     preloadImages(photoList, () => {
       setIsImgLoading(false);
