@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import cn from 'classnames';
+import { Spin } from 'antd';
 import { observer } from 'mobx-react';
 import { swiperStore } from '../../../store';
 import { LightningBlock } from '../../LightningBlock';
@@ -7,11 +8,41 @@ import { InfoBlock } from '../../InfoBlock';
 import { TweetStatus } from '../TweetStatus';
 import styles from './ProfileBlock.module.scss';
 
+const preloadImages = (urls, allImagesLoadedCallback) => {
+  let loadedCounter = 0;
+  const toBeLoadedNumber = urls.length;
+  urls.forEach(function (url) {
+    preloadImage(url, function () {
+      loadedCounter++;
+      if (loadedCounter == toBeLoadedNumber) {
+        allImagesLoadedCallback();
+      }
+    });
+  });
+  function preloadImage(url, anImageLoadedCallback) {
+    const img = new Image();
+    img.onload = anImageLoadedCallback;
+    img.src = url;
+  }
+};
+
 export const ProfileBlock = observer(({ profileData }) => {
-  const photoList = profileData.infoData.photoList;
+  const [isImgLoading, setIsImgLoading] = useState(true);
+
+  const photoList = useMemo(() => profileData.infoData.photoList, [profileData.infoData.photoList]);
 
   const photoIndex = profileData.activePhotoIndex;
-  const activePhotoPath = photoList[photoIndex];
+
+  useEffect(() => {
+    if (swiperStore.currentProfileDataId !== profileData.id) {
+      return;
+    }
+
+    preloadImages(photoList, () => {
+      setIsImgLoading(false);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [photoList, swiperStore.currentProfileDataId, profileData.id]);
 
   const onChangePhoto = (offsetIndex) => () => {
     if (swiperStore.swiper.animating) {
@@ -51,13 +82,15 @@ export const ProfileBlock = observer(({ profileData }) => {
         </div>
         <LightningBlock />
       </div>
-      <img
-        className={cn(styles['photo-img'], {
-          [styles['photo-img--show']]: !profileData.isHideMoreProfileInfo,
-        })}
-        src={activePhotoPath}
-        alt={profileData.id}
-      />
+      {!isImgLoading && (
+        <img
+          className={cn(styles['photo-img'], {
+            [styles['photo-img--show']]: !profileData.isHideMoreProfileInfo,
+          })}
+          src={photoList[photoIndex]}
+        />
+      )}
+      {isImgLoading && <Spin className={styles['photo-spin']} />}
       <InfoBlock profileData={profileData} />
       {profileData.isStatusShow && !profileData.isOrganization && (
         <div

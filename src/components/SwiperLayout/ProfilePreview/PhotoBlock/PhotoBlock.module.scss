@@ -6,6 +6,11 @@
   transition-duration: 0.15s;
   transition-timing-function: linear;
 
+  animation-name: fadeIn;
+  animation-iteration-count: 1;
+  animation-duration: 0.15s;
+  animation-timing-function: linear;
+
   &--active {
     height: 60%;
   }
