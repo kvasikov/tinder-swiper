@@ -1,6 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import cn from 'classnames';
+import { TweetButton } from '../../TweetButton';
 import { CustomIcon } from '../../../common/CustomIcon';
 import { swiperStore } from '../../store';
 import styles from './BottomBlock.module.scss';
@@ -50,6 +51,9 @@ export const BottomBlock = observer(() => {
         [styles['box--hide']]: !swiperStore.currentProfileData.isHideMoreProfileInfo,
       })}
     >
+      <div className={styles['tweet-wrapper']}>
+        <TweetButton />
+      </div>
       <div className={styles.wrapper}>
         {MENU_ITEMS.map((item, index) => (
           <button

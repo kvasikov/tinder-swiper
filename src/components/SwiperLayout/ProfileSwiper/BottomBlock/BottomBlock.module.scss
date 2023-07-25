@@ -1,6 +1,7 @@
 @import 'src/assets/scss/utils';
 
 .box {
+  position: relative;
   z-index: 10;
   padding-top: 30px;
   padding-bottom: 34px;
@@ -44,4 +45,12 @@
   &--active {
     color: #FF00D6;
   }
+}
+
+.tweet-wrapper {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  top: -22px;
 }
