@@ -17,9 +17,9 @@ export const useWheelSwipe = ({
       }
 
       if (event.deltaY < 0) {
-        swiperState.slidePrev(400, false);
+        swiperState.slidePrev(250, false);
       } else if (event.deltaY > 0) {
-        swiperState.slideNext(400, false);
+        swiperState.slideNext(250, false);
       }
     };
 

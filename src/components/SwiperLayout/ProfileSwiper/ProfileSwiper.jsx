@@ -83,6 +83,7 @@ export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
           direction='vertical'
           style={{ height: '100%' }}
           observer
+          speed={250}
           // effect='creative'
           // creativeEffect={{
           //   limitProgress: 1,
