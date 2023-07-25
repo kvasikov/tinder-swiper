@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { toJS } from 'mobx';
 import cn from 'classnames';
 import { observer } from 'mobx-react';
-import { Spin, Space } from 'antd';
+import { Spin } from 'antd';
 import SwiperCore, { Virtual, EffectCreative, Manipulation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 // import { EffectCreative } from 'swiper';
@@ -147,15 +147,6 @@ export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
           onAfterInit={setSwiperState}
           onSlideChange={onSliderChangeActual}
         >
-          {swiperStore.isFetchingList && swiperStore.profileList.length === 0 && (
-            <SwiperSlide>
-              <Space className={styles.space} direction='vertical'>
-                <Spin tip='Loading' size='large'>
-                  <div />
-                </Spin>
-              </Space>
-            </SwiperSlide>
-          )}
           {swiperStore.profileList.map((profile, profileIndex) => {
             const dataProps = { [DATA_ATTR_PROFILE_ID]: profile.id };
 

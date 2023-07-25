@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { observer } from 'mobx-react';
 import cn from 'classnames';
-import { Spin } from 'antd';
+import { Spin, Space } from 'antd';
 import { useIsDesktop } from '../../hooks';
 import { swiperStore, getProfileIdByDataAttr } from './store';
 import { ProfileInfo } from './ProfileInfo';
@@ -45,6 +45,11 @@ export const SwiperLayout = observer(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [swiperStore.isFetchingList, swiperStore.profileList, swiperStore.setCurrentProfileId]);
 
+  const isHideMoreInfo =
+    typeof swiperStore.currentProfileData.isHideMoreProfileInfo === 'boolean'
+      ? swiperStore.currentProfileData.isHideMoreProfileInfo
+      : true;
+
   return (
     <>
       <Header />
@@ -52,21 +57,21 @@ export const SwiperLayout = observer(() => {
         <div className={styles.wrapper}>
           <div
             className={cn(styles.container, 'scrollbar', {
-              [styles['container--no-scroll']]:
-                !swiperStore.currentProfileData.isHideMoreProfileInfo,
+              [styles['container--no-scroll']]: !isHideMoreInfo,
             })}
           >
             <div className={styles.content}>
               <div
                 className={cn(styles['side-wrapper'], styles['side-wrapper--full'], 'scrollbar', {
-                  [styles['side-wrapper--hide']]:
-                    swiperStore.currentProfileData.isHideMoreProfileInfo,
+                  [styles['side-wrapper--hide']]: isHideMoreInfo,
                 })}
               >
-                {!isInit && (
-                  <div className={styles.loader}>
-                    <Spin />
-                  </div>
+                {swiperStore.isFetchingList && swiperStore.profileList.length === 0 && (
+                  <Space className={styles.space} direction='vertical'>
+                    <Spin tip='Loading' size='large'>
+                      <div />
+                    </Spin>
+                  </Space>
                 )}
                 {/* {swiperStore.activeTabValue === 'geo' && <LocationBlock />} */}
                 <ProfileSwiper swiperState={swiperState} setSwiperState={setSwiperState} />
@@ -80,8 +85,7 @@ export const SwiperLayout = observer(() => {
                       styles['side-wrapper_desktop'],
                       'scrollbar',
                       {
-                        [styles['side-wrapper_desktop--hide']]:
-                          swiperStore.currentProfileData.isHideMoreProfileInfo,
+                        [styles['side-wrapper_desktop--hide']]: isHideMoreInfo,
                       },
                     )}
                   >
