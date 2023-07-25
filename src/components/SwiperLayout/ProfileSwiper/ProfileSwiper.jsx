@@ -33,7 +33,7 @@ export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
     currentProfileDataId: swiperStore.currentProfileDataId,
   });
 
-  const onSliderChange = (swiper) => {
+  const onSliderChangeActual = (swiper) => {
     const prevProfileDataId = toJS(swiperStore.currentProfileData.id);
 
     const isPrev =
@@ -61,6 +61,38 @@ export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
       }, 250);
     }
   };
+
+  // const onSliderChangeVirtual = (swiper) => {
+  //   const prevProfileDataId = toJS(swiperStore.currentProfileData.id);
+
+  //   const isPrev =
+  //     prevIndex.current - swiper.activeIndex === 1 || prevIndex.current === swiper.activeIndex;
+
+  //   const actualIndex = swiper?.visibleSlides?.length > 1 ? swiper?.visibleSlides?.length - 1 : 0;
+  //   const currentIndex = isPrev ? 0 : actualIndex;
+
+  //   const profileId = getProfileIdByDataAttr(
+  //     swiper?.visibleSlides?.[currentIndex],
+  //     swiperStore.profileList?.[0]?.id,
+  //   );
+
+  //   swiperStore.setCurrentProfileId(profileId);
+  //   prevIndex.current = swiper.activeIndex;
+
+  //   const profileData = swiperStore.profileList.find(
+  //     (profile) => profile.id === swiperStore.currentProfileDataId,
+  //   );
+
+  //   if (profileData?.isTweet === null && !isPrev) {
+  //     setTimeout(() => {
+  //       swiperStore.updateProfileData(prevProfileDataId, { isTweet: false });
+  //     }, 500);
+  //   }
+
+  //   if (swiper.virtual.slides.length - swiper.realIndex <= 1) {
+  //     fetchDataList();
+  //   }
+  // };
 
   useWheelSwipe({
     swiperState,
@@ -108,12 +140,12 @@ export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
           simulateTouch={false}
           // virtual={{
           //   enabled: true,
-          //   addSlidesAfter: 2,
-          //   addSlidesBefore: 2,
+          //   addSlidesAfter: 20,
+          //   addSlidesBefore: 20,
           // }}
           touchStartPreventDefault={false}
           onAfterInit={setSwiperState}
-          onSlideChange={onSliderChange}
+          onSlideChange={onSliderChangeActual}
         >
           {swiperStore.isFetchingList && swiperStore.profileList.length === 0 && (
             <SwiperSlide>
