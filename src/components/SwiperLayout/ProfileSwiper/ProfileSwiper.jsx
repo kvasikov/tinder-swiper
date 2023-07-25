@@ -3,9 +3,8 @@ import { toJS } from 'mobx';
 import cn from 'classnames';
 import { observer } from 'mobx-react';
 import { Spin } from 'antd';
-import SwiperCore, { Virtual, EffectCreative, Manipulation } from 'swiper';
+import SwiperCore, { Virtual, EffectCreative } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-// import { EffectCreative } from 'swiper';
 import 'swiper/css';
 import { DATA_ATTR_PROFILE_ID } from '../../../constants/attributes';
 import { useDelayEffect, useIsDesktop } from '../../../hooks';
@@ -18,7 +17,12 @@ import { useGetOffsetTop } from './useGetOffsetTop.hook';
 import { useGetProfileList } from './useGetProfileList.hook';
 import { useWheelSwipe } from './useWheelSwipe.hook';
 
-SwiperCore.use([Virtual, EffectCreative, Manipulation]);
+SwiperCore.use([Virtual, EffectCreative]);
+
+// TODO: использовать только для разработки
+// В идеале нужно использовать виртуализацию, но используя при динамическом кол-ве слайдов
+// Анимация свайпа начинает ввести себя крайне непредсказуемо
+const IS_VIRTUAL = false;
 
 export const ProfileSwiper = observer(() => {
   const isDesktop = useIsDesktop();
@@ -62,37 +66,37 @@ export const ProfileSwiper = observer(() => {
     }
   };
 
-  // const onSliderChangeVirtual = (swiper) => {
-  //   const prevProfileDataId = toJS(swiperStore.currentProfileData.id);
+  const onSliderChangeVirtual = (swiper) => {
+    const prevProfileDataId = toJS(swiperStore.currentProfileData.id);
 
-  //   const isPrev =
-  //     prevIndex.current - swiper.activeIndex === 1 || prevIndex.current === swiper.activeIndex;
+    const isPrev =
+      prevIndex.current - swiper.activeIndex === 1 || prevIndex.current === swiper.activeIndex;
 
-  //   const actualIndex = swiper?.visibleSlides?.length > 1 ? swiper?.visibleSlides?.length - 1 : 0;
-  //   const currentIndex = isPrev ? 0 : actualIndex;
+    const actualIndex = swiper?.visibleSlides?.length > 1 ? swiper?.visibleSlides?.length - 1 : 0;
+    const currentIndex = isPrev ? 0 : actualIndex;
 
-  //   const profileId = getProfileIdByDataAttr(
-  //     swiper?.visibleSlides?.[currentIndex],
-  //     swiperStore.profileList?.[0]?.id,
-  //   );
+    const profileId = getProfileIdByDataAttr(
+      swiper?.visibleSlides?.[currentIndex],
+      swiperStore.profileList?.[0]?.id,
+    );
 
-  //   swiperStore.setCurrentProfileId(profileId);
-  //   prevIndex.current = swiper.activeIndex;
+    swiperStore.setCurrentProfileId(profileId);
+    prevIndex.current = swiper.activeIndex;
 
-  //   const profileData = swiperStore.profileList.find(
-  //     (profile) => profile.id === swiperStore.currentProfileDataId,
-  //   );
+    const profileData = swiperStore.profileList.find(
+      (profile) => profile.id === swiperStore.currentProfileDataId,
+    );
 
-  //   if (profileData?.isTweet === null && !isPrev) {
-  //     setTimeout(() => {
-  //       swiperStore.updateProfileData(prevProfileDataId, { isTweet: false });
-  //     }, 500);
-  //   }
+    if (profileData?.isTweet === null && !isPrev) {
+      setTimeout(() => {
+        swiperStore.updateProfileData(prevProfileDataId, { isTweet: false });
+      }, 500);
+    }
 
-  //   if (swiper.virtual.slides.length - swiper.realIndex <= 1) {
-  //     fetchDataList();
-  //   }
-  // };
+    if (swiper.virtual.slides.length - swiper.realIndex <= 1) {
+      fetchDataList();
+    }
+  };
 
   useWheelSwipe({
     swiperState: swiperStore.swiper,
@@ -104,6 +108,16 @@ export const ProfileSwiper = observer(() => {
   const onAfterInit = (swiper) => {
     swiperStore.setSwiperInstance(swiper);
   };
+
+  const virtualOptions = IS_VIRTUAL
+    ? {
+        virtual: {
+          enabled: true,
+          addSlidesAfter: 2,
+          addSlidesBefore: 2,
+        },
+      }
+    : {};
 
   return (
     <div className={styles.box}>
@@ -125,6 +139,7 @@ export const ProfileSwiper = observer(() => {
         ref={wrapperRef}
       >
         <Swiper
+          {...virtualOptions}
           // modules={[EffectCreative]}
           direction='vertical'
           style={{ height: '100%' }}
@@ -132,7 +147,7 @@ export const ProfileSwiper = observer(() => {
           speed={250}
           // effect='creative'
           // creativeEffect={{
-          //   limitProgress: 1,
+          //   limitProgress: 2,
           //   // progressMultiplier: 2,
           //   // perspective: false,
           //   prev: {
@@ -159,7 +174,7 @@ export const ProfileSwiper = observer(() => {
           // }}
           touchStartPreventDefault={false}
           onAfterInit={onAfterInit}
-          onSlideChange={onSliderChangeActual}
+          onSlideChange={IS_VIRTUAL ? onSliderChangeVirtual : onSliderChangeActual}
         >
           {swiperStore.profileList.map((profile, profileIndex) => {
             const dataProps = { [DATA_ATTR_PROFILE_ID]: profile.id };
