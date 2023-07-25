@@ -36,7 +36,7 @@ export const TweetButton = ({ isFromMoreBlock }) => {
     };
 
     if (isFromMoreBlock && !isDesktop) {
-      setScrollToTopProfile(buttonRef.current, execTweet, 10);
+      setScrollToTopProfile(buttonRef.current, execTweet, 350);
       return;
     }
 
