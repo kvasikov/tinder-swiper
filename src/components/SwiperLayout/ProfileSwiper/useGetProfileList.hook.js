@@ -4,6 +4,7 @@ import woman01 from '../../../assets/photos/woman-photo-01.png';
 import woman02 from '../../../assets/photos/woman-photo-02.png';
 import man01 from '../../../assets/photos/man-photo-01.png';
 import man02 from '../../../assets/photos/man-photo-02.png';
+import woman03 from '../../../assets/photos/woman.webp';
 // end
 import { useFetchReturn } from '../../../hooks';
 import { swiperStore } from '../store';
@@ -22,7 +23,18 @@ const randomIntFromInterval = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-const IMG_PHOTO_LIST = [woman01, woman02, man01, man02, woman01, woman02, man01, man02];
+const IMG_PHOTO_LIST = [
+  woman01,
+  woman02,
+  woman03,
+  man01,
+  man02,
+  woman01,
+  woman02,
+  woman03,
+  man01,
+  man02,
+];
 const NAME_LIST = ['Мария', 'Александр', 'Ибрагим', 'Ася', 'Dream', 'Толик', 'Евгения'];
 
 const getGenerateNextList = (profileList) => {
