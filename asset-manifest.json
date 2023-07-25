@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/tinder-swiper/static/css/main.6b42e75f.css",
-    "main.js": "/tinder-swiper/static/js/main.96514115.js",
+    "main.css": "/tinder-swiper/static/css/main.9c245853.css",
+    "main.js": "/tinder-swiper/static/js/main.0500c609.js",
     "static/js/787.74292e40.chunk.js": "/tinder-swiper/static/js/787.74292e40.chunk.js",
     "static/media/man-photo-01.png": "/tinder-swiper/static/media/man-photo-01.fc5eeeea6b6586512104.png",
     "static/media/man-photo-02.png": "/tinder-swiper/static/media/man-photo-02.aee0dac1774b96419870.png",
@@ -11,13 +11,14 @@
     "static/media/Raleway-ExtraBold.ttf": "/tinder-swiper/static/media/Raleway-ExtraBold.8b7015f87bd9859e1382.ttf",
     "static/media/Raleway-Bold.ttf": "/tinder-swiper/static/media/Raleway-Bold.18960343b3da49bfd353.ttf",
     "static/media/woman-photo-01.png": "/tinder-swiper/static/media/woman-photo-01.6abf1862ce58784f326b.png",
+    "static/media/background.svg": "/tinder-swiper/static/media/background.0782c7def99fa696e585bf9c23eeb9fc.svg",
     "static/media/help.svg": "/tinder-swiper/static/media/help.3718c4e57a3f1e867abb1576775bd922.svg",
     "static/media/firework.svg": "/tinder-swiper/static/media/firework.8cba89deea40387215c88895129b8e83.svg",
     "static/media/stars.svg": "/tinder-swiper/static/media/stars.ce39c1bc090ed2c29877fcc453a0f72a.svg",
     "static/media/earth.svg": "/tinder-swiper/static/media/earth.32673a32db7e962276e65cf13e0490b1.svg",
     "static/media/messages.svg": "/tinder-swiper/static/media/messages.07816a56bcb4ce35119a64d3b7ade49b.svg",
     "static/media/car.svg": "/tinder-swiper/static/media/car.2293ef9861569012251d177565ad27f8.svg",
-    "static/media/apps.svg": "/tinder-swiper/static/media/apps.ea6ec269a4613258c9231076ce9b6e09.svg",
+    "static/media/apps.svg": "/tinder-swiper/static/media/apps.41eef170699f6ba00f8c8a8311dc02b8.svg",
     "static/media/game.svg": "/tinder-swiper/static/media/game.5f309af454f7f4cbb999a58f3eba08cd.svg",
     "static/media/home.svg": "/tinder-swiper/static/media/home.b18d55554a8c97be93560d9ac724cc07.svg",
     "static/media/mentorship.svg": "/tinder-swiper/static/media/mentorship.83d07b37ca28fc58424320b8cc3a8050.svg",
@@ -29,7 +30,7 @@
     "static/media/business.svg": "/tinder-swiper/static/media/business.e5ef7bfe231d1761c889bcad617cda1d.svg",
     "static/media/height.svg": "/tinder-swiper/static/media/height.a24689e983b04ce8e66ae729740b75e6.svg",
     "static/media/filter.svg": "/tinder-swiper/static/media/filter.66e334ff0165cbc26333d2cd66ba07b1.svg",
-    "static/media/plain.svg": "/tinder-swiper/static/media/plain.481256cd1b718e06ae80bd1ae0ead133.svg",
+    "static/media/plain.svg": "/tinder-swiper/static/media/plain.641ffd09cea41edd531a3e4dfc914556.svg",
     "static/media/chat.svg": "/tinder-swiper/static/media/chat.12f242f91c66c6ed789b9e073cb5a436.svg",
     "static/media/heart-outline.svg": "/tinder-swiper/static/media/heart-outline.af67c1784c82fbe67593a8d9505ece9c.svg",
     "static/media/geo.svg": "/tinder-swiper/static/media/geo.2ad084d70f739eb63ff64e23dba2700d.svg",
@@ -46,15 +47,16 @@
     "static/media/logout.svg": "/tinder-swiper/static/media/logout.00bf09f1495a6128f1ebec4ea70ac500.svg",
     "static/media/plus-circle.svg": "/tinder-swiper/static/media/plus-circle.181303e60875a9eb4e8d36327059b2d5.svg",
     "static/media/burger.svg": "/tinder-swiper/static/media/burger.03853de4b725faa83b047d058b08e6b3.svg",
+    "static/media/arrow-drop-down.svg": "/tinder-swiper/static/media/arrow-drop-down.522e8c0c3e89f972601059e0687b9435.svg",
     "static/media/cross.svg": "/tinder-swiper/static/media/cross.881309604b7b697ff5963063cb844832.svg",
     "static/media/success.svg": "/tinder-swiper/static/media/success.4dabf533dbf36f65b07706e08d59e5d8.svg",
     "static/media/arrow-right.svg": "/tinder-swiper/static/media/arrow-right.80a024b5010d8bd0d3449585eac59c18.svg",
-    "main.6b42e75f.css.map": "/tinder-swiper/static/css/main.6b42e75f.css.map",
-    "main.96514115.js.map": "/tinder-swiper/static/js/main.96514115.js.map",
+    "main.9c245853.css.map": "/tinder-swiper/static/css/main.9c245853.css.map",
+    "main.0500c609.js.map": "/tinder-swiper/static/js/main.0500c609.js.map",
     "787.74292e40.chunk.js.map": "/tinder-swiper/static/js/787.74292e40.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6b42e75f.css",
-    "static/js/main.96514115.js"
+    "static/css/main.9c245853.css",
+    "static/js/main.0500c609.js"
   ]
 }
