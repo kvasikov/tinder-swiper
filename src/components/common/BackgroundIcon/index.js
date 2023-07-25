@@ -1,0 +1,1 @@
+export { BackgroundIcon } from './BackgroundIcon';

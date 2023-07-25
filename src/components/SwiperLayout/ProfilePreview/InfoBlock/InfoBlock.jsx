@@ -1,10 +1,9 @@
 import React from 'react';
-import { observer } from 'mobx-react';
 import { LeftContent } from './LeftContent';
 import { RightContent } from './RightContent';
 import styles from './InfoBlock.module.scss';
 
-export const InfoBlock = observer(({ profileData }) => {
+export const InfoBlock = ({ profileData }) => {
   return (
     <div className={styles.box}>
       <div className={styles.content}>
@@ -17,4 +16,4 @@ export const InfoBlock = observer(({ profileData }) => {
       </div>
     </div>
   );
-});
+};

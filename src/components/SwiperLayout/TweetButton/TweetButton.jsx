@@ -3,7 +3,7 @@ import { toJS } from 'mobx';
 import { setScrollToTopProfile } from '../utils';
 import { useIsDesktop } from '../../../hooks';
 import { swiperStore } from '../store';
-import { CustomIcon } from '../../common/CustomIcon';
+import { BackgroundIcon } from '../../common/BackgroundIcon';
 import styles from './TweetButton.module.scss';
 
 export const TweetButton = ({ isFromMoreBlock }) => {
@@ -42,8 +42,8 @@ export const TweetButton = ({ isFromMoreBlock }) => {
 
   return (
     <button className={styles.box} type='button' ref={buttonRef} onClick={onTweet}>
-      <CustomIcon kind='tweet' />
-      <span className={styles.text}>Tweet</span>
+      <BackgroundIcon iconKind='heartOutline' />
+      <span className={styles.text}>GO</span>
     </button>
   );
 };

@@ -1,10 +1,9 @@
 import React from 'react';
-import { observer } from 'mobx-react';
 import { swiperStore } from '../store';
 import { CircleIcon } from '../../common/CircleIcon';
 import styles from './ButtonBlockDesktop.module.scss';
 
-export const ButtonBlockDesktop = observer(({ profileData }) => {
+export const ButtonBlockDesktop = ({ profileData }) => {
   const onPrevProfileClick = () => {
     if (swiperStore.swiper.animating) {
       return;
@@ -33,4 +32,4 @@ export const ButtonBlockDesktop = observer(({ profileData }) => {
       <CircleIcon className={styles['icon-down']} kind='arrowUp' onClick={onNextProfileClick} />
     </div>
   );
-});
+};

@@ -35,12 +35,14 @@ import { ReactComponent as PlusCircleIcon } from '../../../assets/icons/plus-cir
 import { ReactComponent as BurgerIcon } from '../../../assets/icons/burger.svg';
 import { ReactComponent as CrossIcon } from '../../../assets/icons/cross.svg';
 import { ReactComponent as LogoutIcon } from '../../../assets/icons/logout.svg';
+import { ReactComponent as BackgroundIcon } from '../../../assets/icons/background.svg';
 
 const Empty = () => null;
 
 export const ICON_LIST = {
   undefined: Empty,
   apps: AppsIcon,
+  background: BackgroundIcon,
   calendar: CalendarIcon,
   burger: BurgerIcon,
   logout: LogoutIcon,
