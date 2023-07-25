@@ -21,7 +21,10 @@ export const ButtonBlockDesktop = ({ profileData }) => {
 
     if (profileData.isTweet === null) {
       setTimeout(() => {
-        swiperStore.updateProfileData(profileData.id, { isTweet: false });
+        swiperStore.updateProfileData(profileData.id, {
+          isTweet: false,
+          isHideMoreProfileInfo: true,
+        });
       }, 500);
     }
   };
