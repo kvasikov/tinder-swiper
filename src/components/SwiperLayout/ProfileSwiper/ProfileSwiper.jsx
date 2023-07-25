@@ -20,7 +20,7 @@ import { useWheelSwipe } from './useWheelSwipe.hook';
 
 SwiperCore.use([Virtual, EffectCreative, Manipulation]);
 
-export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
+export const ProfileSwiper = observer(() => {
   const isDesktop = useIsDesktop();
   const [isActive] = useDelayEffect({
     dependencyFlag: !swiperStore.currentProfileData.isHideMoreProfileInfo,
@@ -95,14 +95,28 @@ export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
   // };
 
   useWheelSwipe({
-    swiperState,
+    swiperState: swiperStore.swiper,
     wrapperEl: wrapperRef.current,
     activeTabValue: swiperStore.activeTabValue,
     isHideMoreProfileInfo: swiperStore.currentProfileData.isHideMoreProfileInfo,
   });
 
+  const onAfterInit = (swiper) => {
+    swiperStore.setSwiperInstance(swiper);
+  };
+
   return (
     <div className={styles.box}>
+      {Object.keys(swiperStore.currentProfileData).length !== 0 && (
+        <div
+          id='info'
+          className={cn(styles.portal, {
+            [styles['portal--active']]: !swiperStore.currentProfileData.isHideMoreProfileInfo,
+          })}
+        >
+          <ProfilePreview profileData={swiperStore.currentProfileData} />
+        </div>
+      )}
       <TopBlock />
       <div
         className={cn(styles.wrapper, {
@@ -144,7 +158,7 @@ export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
           //   addSlidesBefore: 20,
           // }}
           touchStartPreventDefault={false}
-          onAfterInit={setSwiperState}
+          onAfterInit={onAfterInit}
           onSlideChange={onSliderChangeActual}
         >
           {swiperStore.profileList.map((profile, profileIndex) => {

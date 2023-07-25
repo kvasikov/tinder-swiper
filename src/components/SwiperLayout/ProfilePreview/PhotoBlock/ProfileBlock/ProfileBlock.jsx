@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import { observer } from 'mobx-react';
-import { useSwiper } from 'swiper/react';
+// import { useSwiper } from 'swiper/react';
 import { swiperStore } from '../../../store';
 import { LightningBlock } from '../../LightningBlock';
 import { InfoBlock } from '../../InfoBlock';
@@ -9,7 +9,7 @@ import { TweetStatus } from '../TweetStatus';
 import styles from './ProfileBlock.module.scss';
 
 export const ProfileBlock = observer(({ profileData }) => {
-  const swiper = useSwiper();
+  // const swiper = useSwiper();
 
   const photoList = profileData.infoData.photoList;
 
@@ -17,7 +17,7 @@ export const ProfileBlock = observer(({ profileData }) => {
   const activePhotoPath = photoList[photoIndex];
 
   const onChangePhoto = (offsetIndex) => () => {
-    if (swiper.animating) {
+    if (swiperStore.swiper.animating) {
       return;
     }
 

@@ -14,7 +14,7 @@ const ActionButton = ({ label, onClick }) => {
   );
 };
 
-export const ActionBlock = ({ profileData, swiperState }) => {
+export const ActionBlock = ({ profileData }) => {
   const [isShowComplain, setIsShowComplain] = useState(false);
 
   const openComplainModal = () => setIsShowComplain(true);
@@ -39,7 +39,7 @@ export const ActionBlock = ({ profileData, swiperState }) => {
         <span className={styles['share-text']}>Поделиться профилем</span>
       </button>
       <div className={styles['tweet-button-wrapper']}>
-        <TweetButton swiperState={swiperState} isFromMoreBlock />
+        <TweetButton isFromMoreBlock />
       </div>
       <div className={styles['complain-wrapper']}>
         <ActionButton label='Пожаловаться' onClick={onComplainClick} />

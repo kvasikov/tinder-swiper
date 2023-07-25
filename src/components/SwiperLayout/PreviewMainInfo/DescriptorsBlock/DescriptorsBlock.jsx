@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { useSwiper } from 'swiper/react';
+// import { useSwiper } from 'swiper/react';
 import { useIsDesktop } from '../../../../hooks';
 import { setScrollToTopProfile } from '../../utils';
 import { Badge } from '../../../common/Badge';
@@ -11,7 +11,7 @@ export const DescriptorsBlock = ({ profileData }) => {
 
   const isDesktop = useIsDesktop();
 
-  const swiper = useSwiper();
+  // const swiper = useSwiper();
 
   const sectionDataList = profileData?.infoData?.sectionDataList;
   const activePhotoIndex = profileData.activePhotoIndex;
@@ -27,11 +27,11 @@ export const DescriptorsBlock = ({ profileData }) => {
   const onInfoClick = () => {
     const execHideMoreInfo = () => {
       swiperStore.updateProfileData(profileData.id, { isHideMoreProfileInfo: true });
-      !isDesktop && swiper.enable();
+      !isDesktop && swiperStore.swiper.enable();
     };
 
     if (profileData.isHideMoreProfileInfo) {
-      !isDesktop && swiper.disable();
+      !isDesktop && swiperStore.swiper.disable();
       swiperStore.updateProfileData(profileData.id, { isHideMoreProfileInfo: false });
     } else {
       setScrollToTopProfile(contentRef.current, execHideMoreInfo);

@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import { observer } from 'mobx-react';
-import { useSwiper } from 'swiper/react';
+// import { useSwiper } from 'swiper/react';
 import { useIsDesktop } from '../../../../hooks';
 import { DATA_ATTR_PHOTO_WRAPPER_ID } from '../../../../constants/attributes';
 import { swiperStore } from '../../store';
@@ -11,7 +11,7 @@ import styles from './PhotoBlock.module.scss';
 
 export const PhotoBlock = observer(({ profileData }) => {
   const isDesktop = useIsDesktop();
-  const swiper = useSwiper();
+  // const swiper = useSwiper();
 
   const attrProps = { [DATA_ATTR_PHOTO_WRAPPER_ID]: profileData.id };
 
@@ -32,7 +32,7 @@ export const PhotoBlock = observer(({ profileData }) => {
           [styles['info-wrapper--hide']]: profileData.isHideMoreProfileInfo,
         })}
       >
-        <ProfileInfo swiperState={swiper} profileData={profileData} />
+        <ProfileInfo profileData={profileData} />
       </div>
     </div>
   );

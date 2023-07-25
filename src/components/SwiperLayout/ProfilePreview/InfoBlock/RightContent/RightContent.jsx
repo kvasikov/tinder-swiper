@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import cn from 'classnames';
 import { observer } from 'mobx-react';
-import { useSwiper } from 'swiper/react';
+// import { useSwiper } from 'swiper/react';
 import { CircleIcon } from '../../../../common/CircleIcon';
 import { setScrollToTopProfile } from '../../../utils';
 import { useIsDesktop } from '../../../../../hooks';
@@ -12,17 +12,17 @@ import styles from './RightContent.module.scss';
 export const RightContent = observer(({ profileData }) => {
   const contentRef = useRef(null);
 
-  const swiper = useSwiper();
+  // const swiper = useSwiper();
   const isDesktop = useIsDesktop();
 
   const onInfoClick = () => {
     const execHideMoreInfo = () => {
       swiperStore.updateProfileData(profileData.id, { isHideMoreProfileInfo: true });
-      !isDesktop && swiper.enable();
+      !isDesktop && swiperStore.swiper.enable();
     };
 
     if (profileData.isHideMoreProfileInfo) {
-      !isDesktop && swiper.disable();
+      !isDesktop && swiperStore.swiper.disable();
       swiperStore.updateProfileData(profileData.id, { isHideMoreProfileInfo: false });
     } else {
       setScrollToTopProfile(contentRef.current, execHideMoreInfo);

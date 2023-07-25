@@ -24,11 +24,11 @@ export const SwiperLayout = observer(() => {
     }, 500);
   }, []);
 
-  const [swiperState, setSwiperState] = useState(null);
+  // const [swiperState, setSwiperState] = useState(null);
 
   useEffect(() => {
-    if (!wasInitRef.current && swiperState?.mounted && !swiperStore.isFetchingList) {
-      swiperState.on('observerUpdate', (_swiper) => {
+    if (!wasInitRef.current && swiperStore.swiper?.mounted && !swiperStore.isFetchingList) {
+      swiperStore.swiper.on('observerUpdate', (_swiper) => {
         if (wasInitRef.current) {
           return;
         }
@@ -74,8 +74,8 @@ export const SwiperLayout = observer(() => {
                   </Space>
                 )}
                 {/* {swiperStore.activeTabValue === 'geo' && <LocationBlock />} */}
-                <ProfileSwiper swiperState={swiperState} setSwiperState={setSwiperState} />
-                {isInit && <TweetButtonDesktop swiperState={swiperState} />}
+                <ProfileSwiper />
+                {isInit && <TweetButtonDesktop />}
               </div>
               {isDesktop && (
                 <>
@@ -89,10 +89,7 @@ export const SwiperLayout = observer(() => {
                       },
                     )}
                   >
-                    <ProfileInfo
-                      swiperState={swiperState}
-                      profileData={swiperStore.currentProfileData}
-                    />
+                    <ProfileInfo profileData={swiperStore.currentProfileData} />
                   </div>
                   <div
                     className={cn(styles['button-wrapper'], {
@@ -100,12 +97,7 @@ export const SwiperLayout = observer(() => {
                         swiperStore.currentProfileData.isHideMoreProfileInfo,
                     })}
                   >
-                    {isInit && (
-                      <ButtonBlockDesktop
-                        profileData={swiperStore.currentProfileData}
-                        swiperState={swiperState}
-                      />
-                    )}
+                    {isInit && <ButtonBlockDesktop profileData={swiperStore.currentProfileData} />}
                   </div>
                 </>
               )}

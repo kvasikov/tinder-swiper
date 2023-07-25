@@ -26,7 +26,8 @@
   position: relative;
 
   &--active {
-    z-index: 100;
+    // opacity: 0;
+    // z-index: 100;
   }
 
   @media #{$desktop-s} {
@@ -40,4 +41,23 @@
   width: 100%;
   z-index: 1;
   text-align: center;
+}
+
+.portal {
+  position: fixed;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin-top: 130px; // TODO: height TopBlock
+  margin-bottom: 112px; // TODO: height BottomBlock
+
+  &--active {
+    z-index: 100;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  @media #{$desktop-s} {
+    display: none;
+  }
 }

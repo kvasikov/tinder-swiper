@@ -6,12 +6,12 @@ import { swiperStore } from '../store';
 import { CustomIcon } from '../../common/CustomIcon';
 import styles from './TweetButton.module.scss';
 
-export const TweetButton = ({ swiperState, isFromMoreBlock }) => {
+export const TweetButton = ({ isFromMoreBlock }) => {
   const buttonRef = useRef(null);
   const isDesktop = useIsDesktop();
 
   const onTweet = () => {
-    if (!swiperStore.currentProfileData.id || swiperState.animating) {
+    if (!swiperStore.currentProfileData.id || swiperStore.swiper.animating) {
       return;
     }
 
@@ -21,12 +21,12 @@ export const TweetButton = ({ swiperState, isFromMoreBlock }) => {
         swiperStore.updateProfileData(swiperStore.currentProfileData.id, {
           isHideMoreProfileInfo: true,
         });
-        swiperState.enable();
+        swiperStore.swiper.enable();
       }
 
       const prevProfileDataId = toJS(swiperStore.currentProfileData.id);
 
-      swiperState.slideNext(250, false);
+      swiperStore.swiper.slideNext(250, false);
 
       setTimeout(() => {
         swiperStore.updateProfileData(prevProfileDataId, { isTweet: true });

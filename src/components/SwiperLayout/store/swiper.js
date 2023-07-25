@@ -11,6 +11,8 @@ configure({
 });
 
 export class SwiperStore {
+  swiper = null;
+
   profileList = [];
   currentProfileDataId = {};
   offsetData = {
@@ -22,6 +24,10 @@ export class SwiperStore {
   constructor() {
     makeAutoObservable(this);
   }
+
+  setSwiperInstance = (swiper) => {
+    this.swiper = swiper;
+  };
 
   setFetchingList = (isFetching) => {
     this.isFetchingList = isFetching;
