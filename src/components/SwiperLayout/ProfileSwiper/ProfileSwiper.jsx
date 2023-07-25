@@ -49,7 +49,10 @@ export const ProfileSwiper = observer(() => {
 
     if (profileData?.isTweet === null && !isPrev) {
       setTimeout(() => {
-        swiperStore.updateProfileData(prevProfileDataId, { isTweet: false });
+        swiperStore.updateProfileData(prevProfileDataId, {
+          isTweet: false,
+          isHideMoreProfileInfo: true,
+        });
       }, 500);
     }
 
@@ -83,7 +86,10 @@ export const ProfileSwiper = observer(() => {
 
     if (profileData?.isTweet === null && !isPrev) {
       setTimeout(() => {
-        swiperStore.updateProfileData(prevProfileDataId, { isTweet: false });
+        swiperStore.updateProfileData(prevProfileDataId, {
+          isTweet: false,
+          isHideMoreProfileInfo: true,
+        });
       }, 500);
     }
 

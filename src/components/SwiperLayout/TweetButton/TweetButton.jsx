@@ -28,7 +28,10 @@ export const TweetButton = ({ isFromMoreBlock }) => {
       swiperStore.swiper.slideNext(250, false);
 
       setTimeout(() => {
-        swiperStore.updateProfileData(prevProfileDataId, { isTweet: true });
+        swiperStore.updateProfileData(prevProfileDataId, {
+          isTweet: true,
+          isHideMoreProfileInfo: true,
+        });
       }, 500);
     };
 
