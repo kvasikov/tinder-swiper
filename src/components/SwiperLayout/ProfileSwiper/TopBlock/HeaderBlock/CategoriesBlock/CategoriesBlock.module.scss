@@ -7,17 +7,12 @@
   background-color: transparent;
   cursor: pointer;
   padding-right: 24px;
-
-  &::after {
-    content: '🞃';
-    position: absolute;
-    top: -3px;
-    right: 3px;
-    color: #FF00D6;
-  }
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-.plain {
+.plain, .arrow {
   color: #FF00D6;
 }
 

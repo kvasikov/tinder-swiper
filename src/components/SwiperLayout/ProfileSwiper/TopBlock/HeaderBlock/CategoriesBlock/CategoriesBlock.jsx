@@ -68,7 +68,8 @@ export const CategoriesBlock = () => {
   return (
     <>
       <button type='button' className={styles.categories} onClick={() => setIsShowModal(true)}>
-        <CustomIcon className={styles.plain} kind='plain' iconSize='16px' isNoFill />
+        <CustomIcon className={styles.plain} kind='plain' iconSize='24px' isNoFill />
+        <CustomIcon className={styles.arrow} kind='arrowDropDown' iconSize='16px' />
       </button>
       <Modal
         isOpen={isShowModal}

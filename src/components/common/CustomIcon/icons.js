@@ -36,12 +36,14 @@ import { ReactComponent as BurgerIcon } from '../../../assets/icons/burger.svg';
 import { ReactComponent as CrossIcon } from '../../../assets/icons/cross.svg';
 import { ReactComponent as LogoutIcon } from '../../../assets/icons/logout.svg';
 import { ReactComponent as BackgroundIcon } from '../../../assets/icons/background.svg';
+import { ReactComponent as ArrowDropDownIcon } from '../../../assets/icons/arrow-drop-down.svg';
 
 const Empty = () => null;
 
 export const ICON_LIST = {
   undefined: Empty,
   apps: AppsIcon,
+  arrowDropDown: ArrowDropDownIcon,
   background: BackgroundIcon,
   calendar: CalendarIcon,
   burger: BurgerIcon,
