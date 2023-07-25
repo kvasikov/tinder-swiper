@@ -31,7 +31,7 @@ export const SwiperLayout = observer(() => {
         }
 
         const profileId = getProfileIdByDataAttr(
-          _swiper.visibleSlides[_swiper.activeIndex],
+          _swiper?.visibleSlides?.[_swiper.activeIndex],
           swiperStore.profileList?.[0].id,
         );
 

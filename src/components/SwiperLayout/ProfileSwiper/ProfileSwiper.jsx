@@ -4,7 +4,7 @@ import cn from 'classnames';
 import { observer } from 'mobx-react';
 import { Spin, Space } from 'antd';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Virtual } from 'swiper/modules';
+// import { EffectCreative } from 'swiper';
 import 'swiper/css';
 import { DATA_ATTR_PROFILE_ID } from '../../../constants/attributes';
 import { useDelayEffect, useIsDesktop } from '../../../hooks';
@@ -34,12 +34,12 @@ export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
     const isPrev =
       prevIndex.current - swiper.activeIndex === 1 || prevIndex.current === swiper.activeIndex;
 
-    const actualIndex = swiper.visibleSlides.length > 1 ? swiper.visibleSlides.length - 1 : 0;
+    const actualIndex = swiper?.visibleSlides?.length > 1 ? swiper?.visibleSlides?.length - 1 : 0;
     const currentIndex = isPrev ? 0 : actualIndex;
 
     const profileId = getProfileIdByDataAttr(
       swiper?.visibleSlides?.[currentIndex],
-      swiperStore.profileList?.[0].id,
+      swiperStore.profileList?.[0]?.id,
     );
 
     swiperStore.setCurrentProfileId(profileId);
@@ -55,9 +55,9 @@ export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
       }, 500);
     }
 
-    if (swiper.virtual.slides.length - swiper.realIndex <= 1) {
-      fetchDataList();
-    }
+    // if (swiper.virtual.slides.length - swiper.realIndex <= 1) {
+    //   fetchDataList();
+    // }
   };
 
   useWheelSwipe({
@@ -77,12 +77,10 @@ export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
         ref={wrapperRef}
       >
         <Swiper
-          modules={[Virtual]}
+          // modules={[EffectCreative]}
           direction='vertical'
           style={{ height: '100%' }}
           observer
-          // mousewheel={true}
-          // speed={400}
           // effect='creative'
           // creativeEffect={{
           //   limitProgress: 1,
@@ -91,28 +89,33 @@ export const ProfileSwiper = observer(({ swiperState, setSwiperState }) => {
           //   prev: {
           //     // limitProgress: 1,
           //     // shadow: true,
-          //     translate: [0, '-105%', -1],
+          //     translate: [0, '-80%', -1],
           //     scale: 0.75,
           //     origin: 'top',
           //   },
           //   next: {
           //     // limitProgress: 1,
-          //     translate: [0, '105%', 0],
+          //     translate: [0, '80%', 0],
           //     scale: 0.75,
           //     origin: 'bottom',
           //   },
           // }}
-          // modules={[EffectFade]}
+          // spaceBetween={0}
           spaceBetween={16}
           simulateTouch={false}
-          virtual={{
-            enabled: true,
-            addSlidesAfter: 2,
-            addSlidesBefore: 2,
-          }}
+          // virtual={{
+          //   enabled: true,
+          //   addSlidesAfter: 2,
+          //   addSlidesBefore: 2,
+          // }}
           touchStartPreventDefault={false}
           onAfterInit={setSwiperState}
           onSlideChange={onSliderChange}
+          onProgress={(_, progress) => {
+            if (progress >= 0.8) {
+              fetchDataList();
+            }
+          }}
         >
           {swiperStore.isFetchingList && swiperStore.profileList.length === 0 && (
             <SwiperSlide className={styles.slide}>
