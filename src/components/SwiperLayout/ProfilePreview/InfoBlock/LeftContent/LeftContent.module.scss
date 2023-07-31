@@ -3,6 +3,7 @@
   flex-direction: column;
   opacity: 0;
   transition: opacity 0.25s;
+  margin-bottom: 26px;
 
   &--hide {
     opacity: 1;

@@ -1,9 +1,6 @@
 import React from 'react';
-import { observer } from 'mobx-react';
 import cn from 'classnames';
-import { TweetButton } from '../../TweetButton';
 import { CustomIcon } from '../../../common/CustomIcon';
-import { swiperStore } from '../../store';
 import styles from './BottomBlock.module.scss';
 
 const MENU_ITEMS = [
@@ -44,16 +41,9 @@ const MENU_ITEMS = [
   },
 ];
 
-export const BottomBlock = observer(() => {
+export const BottomBlock = () => {
   return (
-    <div
-      className={cn(styles.box, {
-        [styles['box--hide']]: !swiperStore.currentProfileData.isHideMoreProfileInfo,
-      })}
-    >
-      <div className={styles['tweet-wrapper']}>
-        <TweetButton />
-      </div>
+    <div className={styles.box}>
       <div className={styles.wrapper}>
         {MENU_ITEMS.map((item, index) => (
           <button
@@ -70,4 +60,4 @@ export const BottomBlock = observer(() => {
       </div>
     </div>
   );
-});
+};

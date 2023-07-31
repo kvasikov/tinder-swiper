@@ -114,3 +114,24 @@
     opacity: 1;
   }
 }
+
+.tweet-wrapper {
+  position: absolute;
+  z-index: 10;
+  bottom: 15px;
+  left: 50%;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 0.15s;
+  transform: translateX(-50%);
+
+  &--hide {
+    opacity: 0;
+  }
+
+  @media #{$desktop-s} {
+    display: none;
+  }
+}

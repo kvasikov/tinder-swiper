@@ -3,7 +3,7 @@
 .box {
   position: relative;
   z-index: 10;
-  padding-top: 30px;
+  padding-top: 18px;
   padding-bottom: 12px;
   background-color: white;
   transition-property: padding, height;
@@ -11,10 +11,6 @@
   transition-timing-function: linear;
   flex: 1;
   height: 100%;
-
-  &--hide {
-    
-  }
 
   @media screen and (min-height: 680px) {
     padding-bottom: 34px;
@@ -49,12 +45,4 @@
   &--active {
     color: #FF00D6;
   }
-}
-
-.tweet-wrapper {
-  position: absolute;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  top: -22px;
 }

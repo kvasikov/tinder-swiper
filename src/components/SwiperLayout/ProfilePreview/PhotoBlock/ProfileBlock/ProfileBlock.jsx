@@ -3,6 +3,7 @@ import cn from 'classnames';
 import { Spin } from 'antd';
 import { observer } from 'mobx-react';
 import { swiperStore } from '../../../store';
+import { TweetButton } from '../../../TweetButton';
 import { LightningBlock } from '../../LightningBlock';
 import { InfoBlock } from '../../InfoBlock';
 import { TweetStatus } from '../TweetStatus';
@@ -93,6 +94,13 @@ export const ProfileBlock = observer(({ profileData }) => {
       )}
       {isImgLoading && <Spin className={styles['photo-spin']} />}
       <InfoBlock profileData={profileData} />
+      <div
+        className={cn(styles['tweet-wrapper'], {
+          [styles['tweet-wrapper--hide']]: !profileData.isHideMoreProfileInfo,
+        })}
+      >
+        <TweetButton />
+      </div>
       {profileData.isStatusShow && !profileData.isOrganization && (
         <div
           className={cn(
