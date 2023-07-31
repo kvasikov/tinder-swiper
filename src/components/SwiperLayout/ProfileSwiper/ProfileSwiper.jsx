@@ -8,6 +8,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { DATA_ATTR_PROFILE_ID } from '../../../constants/attributes';
 import { swiperStore, getProfileIdByDataAttr } from '../store';
+import { LocationBlock } from '../LocationBlock';
 import { ProfilePreview } from '../ProfilePreview';
 import { TopBlock } from './TopBlock';
 import { BottomBlock } from './BottomBlock';
@@ -132,6 +133,11 @@ export const ProfileSwiper = observer(() => {
         </div>
       )}
       <TopBlock />
+      {/* TODO: пока убран данный функционал для переключения на блок с картой */}
+      {/* {swiperStore.activeTabValue === 'geo' && <LocationBlock />} */}
+      {/* {swiperStore.activeTabValue === 'profile' && (
+          
+      )} */}
       <div className={styles.wrapper} ref={wrapperRef}>
         <Swiper
           {...virtualOptions}
