@@ -18,3 +18,39 @@
   flex: 1;
   padding-right: 40px;
 }
+
+.background-status {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  right: 0;
+  bottom: -40px;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  transition: opacity 0.25s;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.50) 100%);
+
+  &--orange {
+    background: linear-gradient(180deg, rgba(255, 122, 0, 0) 0%, rgba(255, 122, 0, 0.5) 100%);
+  }
+
+  &--blue {
+    background: linear-gradient(180deg, rgba(5, 0, 255, 0) 0%, rgba(7, 1, 255, 0.5) 100%);
+  }
+
+  &--green {
+    background: linear-gradient(180deg, rgba(24, 216, 112, 0) 0%, rgba(24, 216, 112, 0.5) 100%);
+  }
+
+  &--purple {
+    background: linear-gradient(180deg, rgba(219, 0, 255, 0.00) 0%, rgba(219, 0, 255, 0.50) 100%);
+  }
+
+  &--yellow {
+    background: linear-gradient(180deg, rgba(255, 184, 0, 0.00) 0%, rgba(255, 184, 0, 0.50) 100%);
+  }
+
+  &--pink {
+    background: linear-gradient(180deg, rgba(255, 0, 214, 0.00) 0%, rgba(255, 0, 214, 0.50) 100%);
+  }
+}
