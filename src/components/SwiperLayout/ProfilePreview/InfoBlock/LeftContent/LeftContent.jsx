@@ -30,6 +30,7 @@ export const LeftContent = observer(({ profileData }) => {
       {isShowInfoItems && <InfoItemBlock color='white' profileData={profileData} />}
       {isShowDescriptors && <DescriptorsBlock profileData={profileData} />}
       {profileData.isStatusShow && <StatusBlock profileData={profileData} />}
+      {profileData.isOrganization && <div>организатор</div>}
     </div>
   );
 });

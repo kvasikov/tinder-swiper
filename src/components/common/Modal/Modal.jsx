@@ -70,6 +70,7 @@ export const Modal = ({
           centered
           footer={null}
           closable={false}
+          destroyOnClose
           onOk={onConfirm}
           onCancel={onCancel}
         >
@@ -89,6 +90,7 @@ export const Modal = ({
           placement='bottom'
           open={isOpen}
           closable={false}
+          destroyOnClose
           onClose={onCancel}
         >
           <div className={styles.header}>
