@@ -5,6 +5,7 @@ import { swiperStore } from '../../../store';
 import { PreviewMainInfo } from '../../../PreviewMainInfo';
 import { InfoItemBlock } from '../../../PreviewMainInfo/InfoItemBlock';
 import { DescriptorsBlock } from '../../../PreviewMainInfo/DescriptorsBlock';
+import { OrganizationPreview } from '../../../PreviewMainInfo/OrganizationPreview';
 import { StatusBlock } from '../../../PreviewMainInfo/StatusBlock';
 import styles from './LeftContent.module.scss';
 
@@ -30,7 +31,9 @@ export const LeftContent = observer(({ profileData }) => {
       {isShowInfoItems && <InfoItemBlock color='white' profileData={profileData} />}
       {isShowDescriptors && <DescriptorsBlock profileData={profileData} />}
       {profileData.isStatusShow && <StatusBlock profileData={profileData} />}
-      {profileData.isOrganization && <div>организатор</div>}
+      {profileData.isOrganization && (
+        <OrganizationPreview profileData={profileData} theme='dark' withMarginTop />
+      )}
     </div>
   );
 });

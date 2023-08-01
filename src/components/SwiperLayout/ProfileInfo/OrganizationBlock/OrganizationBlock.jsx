@@ -1,6 +1,7 @@
 import React from 'react';
 import { InfoItem } from '../../../common/InfoItem';
 import { Badge } from '../../../common/Badge';
+import { OrganizationPreview } from '../../PreviewMainInfo/OrganizationPreview';
 
 export const OrganizationBlock = ({ profileData }) => {
   if (!profileData?.isOrganization) {
@@ -9,8 +10,8 @@ export const OrganizationBlock = ({ profileData }) => {
 
   return (
     <div>
-      <InfoItem title='Организатор'>
-        <Badge text={profileData.infoData.name} design='transparent' />
+      <InfoItem>
+        <OrganizationPreview profileData={profileData} theme='light' />
       </InfoItem>
       {profileData.organizationData?.description && (
         <InfoItem title='Описание' text={profileData.organizationData?.description} />

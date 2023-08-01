@@ -1,0 +1,40 @@
+.box {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  appearance: none;
+  outline: none;
+
+  display: inline-flex;
+  padding: 4px 12px 4px 4px;
+  align-items: center;
+  gap: 8px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  cursor: pointer;
+  
+  &--dark {
+    background: rgba(10, 13, 39, 0.50);
+    color: white;
+  }
+
+  &--light {
+    border: 1px solid #D8D8D8;
+    color: black;
+  }
+}
+
+.avatar {
+  border-radius: 100%;
+  width: 20px;
+  height: 20px;
+  object-fit: cover;
+}
+
+.icon {
+  color: #FF00D6;
+}
