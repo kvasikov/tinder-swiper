@@ -101,17 +101,12 @@ export const ProfileBlock = observer(({ profileData }) => {
       >
         <TweetButton />
       </div>
-      {profileData.isStatusShow && !profileData.isOrganization && (
-        <div
-          className={cn(
-            styles['background-status'],
-            styles[`background-status--${profileData.statusData.design}`],
-            {
-              [styles['background-status--hide']]: profileData.isHideMoreProfileInfo,
-            },
-          )}
-        />
-      )}
+      <div
+        className={cn(styles['background-status'], {
+          [styles[`background-status--${profileData.statusData.design}`]]:
+            profileData.isStatusShow && !profileData.isOrganization,
+        })}
+      />
     </>
   );
 });
