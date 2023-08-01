@@ -3,6 +3,8 @@ import cn from 'classnames';
 import { CustomIcon } from '../../../common/CustomIcon';
 import styles from './BottomBlock.module.scss';
 
+const MESSAGE_KEY = '4';
+
 const MENU_ITEMS = [
   {
     key: '1',
@@ -26,7 +28,7 @@ const MENU_ITEMS = [
     },
   },
   {
-    key: '4',
+    key: MESSAGE_KEY,
     iconKind: 'messages',
     onClick: () => {
       console.log('messages');
@@ -55,6 +57,8 @@ export const BottomBlock = () => {
             onClick={item.onClick}
           >
             <CustomIcon kind={item.iconKind} iconSize='24px' isNoFill />
+            {/* TODO: 92 как заглушка пока нет АПИ */}
+            {item.key === MESSAGE_KEY && <span className={styles.count}>92</span>}
           </button>
         ))}
       </div>

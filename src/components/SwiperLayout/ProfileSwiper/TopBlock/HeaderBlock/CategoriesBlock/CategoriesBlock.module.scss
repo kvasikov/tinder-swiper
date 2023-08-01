@@ -1,3 +1,5 @@
+@import 'src/assets/scss/utils';
+
 .categories {
   position: relative;
   margin: 0;
@@ -6,7 +8,6 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
-  padding-right: 24px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -47,8 +48,10 @@
       margin-left: 16px;
     }
 
-    &:hover {
-      color: #FF00D6;
+    @media #{$desktop-s} {
+      &:hover {
+        color: #FF00D6;
+      }
     }
 
     &--active {
