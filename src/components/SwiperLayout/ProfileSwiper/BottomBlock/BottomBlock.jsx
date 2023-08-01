@@ -20,7 +20,7 @@ const MENU_ITEMS = [
   },
   {
     key: '3',
-    iconKind: 'tweet',
+    iconKind: 'circlePurple',
     onClick: () => {
       console.log('tweet');
     },

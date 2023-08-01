@@ -37,6 +37,7 @@ import { ReactComponent as CrossIcon } from '../../../assets/icons/cross.svg';
 import { ReactComponent as LogoutIcon } from '../../../assets/icons/logout.svg';
 import { ReactComponent as BackgroundIcon } from '../../../assets/icons/background.svg';
 import { ReactComponent as ArrowDropDownIcon } from '../../../assets/icons/arrow-drop-down.svg';
+import { ReactComponent as CirclePurpleIcon } from '../../../assets/icons/circle-purple.svg';
 
 const Empty = () => null;
 
@@ -46,6 +47,7 @@ export const ICON_LIST = {
   arrowDropDown: ArrowDropDownIcon,
   background: BackgroundIcon,
   calendar: CalendarIcon,
+  circlePurple: CirclePurpleIcon,
   burger: BurgerIcon,
   logout: LogoutIcon,
   cross: CrossIcon,
