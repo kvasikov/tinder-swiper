@@ -33,6 +33,14 @@
   transform: rotate(-90deg);
 }
 
+.chat {
+  position: absolute;
+  z-index: 10;
+  right: 16px;
+  bottom: 28px;
+}
+
 .photo-wrapper {
   height: 60%;
+  position: relative;
 }

@@ -3,6 +3,7 @@ import cn from 'classnames';
 import { observer } from 'mobx-react';
 import { usePrevious } from '../../../../hooks';
 import { ProfileInfo } from '../../ProfileInfo';
+import { LightningBlock } from '../../ProfilePreview/LightningBlock';
 import { CircleIcon } from '../../../common/CircleIcon';
 import { PhotoList } from '../../../common/PhotoList';
 import { swiperStore } from '../../store';
@@ -59,11 +60,18 @@ export const OrgProfileBlock = observer(() => {
           design='pink-transparent'
           onClick={onClose}
         />
+        <LightningBlock />
         <PhotoList
           activePhotoIndex={photoIndex}
           photoList={photoList}
           isUnBorderBottom
           onChangePhoto={onChangePhoto}
+        />
+        <CircleIcon
+          className={styles.chat}
+          kind='chat'
+          design='light'
+          onClick={() => console.log('ЧАТ')}
         />
       </div>
       <div>
