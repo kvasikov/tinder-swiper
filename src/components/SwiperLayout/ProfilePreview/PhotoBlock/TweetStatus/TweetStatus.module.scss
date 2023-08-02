@@ -12,6 +12,7 @@
   transform: rotate(-15deg);
   padding: 12px;
   border-radius: 24px;
+  z-index: 10;
   /* backdrop-filter: blur(50px); // TODO: найти альтернативу. При использовании мерцает элемент при свайпе */
   text-transform: uppercase;
 

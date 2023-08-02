@@ -1,0 +1,70 @@
+@import 'src/assets/scss/utils';
+
+.box {
+  height: 100%;
+  position: relative;
+}
+
+.top-block {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  right: 0;
+  padding: 0 16px;
+}
+
+.photo-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  border-radius: 16px;
+  transition: border-radius 0.25s;
+
+  &--un-border {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+.bullet-list-wrapper {
+  display: flex;
+
+  &--hide {
+    opacity: 0;
+  }
+}
+
+.bullet {
+  height: 2px;
+  background-color: rgba(10, 13, 39, 0.2);
+  width: 100%;
+  border-radius: 16px;
+  transition: background-color 0.1s;
+
+  &:not(:first-child) {
+    margin-left: 8px;
+  }
+
+  &--active {
+    background-color: white;
+  }
+}
+
+.handler {
+  &-wrapper {
+    position: absolute;
+    display: flex;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 128px; // TODO: считать исходя из высоты (является динамическим) контента с описанием профиля
+  }
+
+  &-photo {
+    background-color: transparent;
+    width: 50%;
+    height: 100%;
+    cursor: pointer;
+  }
+}
