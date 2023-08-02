@@ -5,6 +5,10 @@ import { swiperStore } from '../../store';
 import styles from './OrgProfileBlock.module.scss';
 
 export const OrgProfileBlock = observer(() => {
+  if (!swiperStore.currentProfileData.infoData) {
+    return null;
+  }
+
   const onClose = () => {
     swiperStore.updateProfileData(swiperStore.currentProfileData.id, { isOrgProfileShow: false });
   };
@@ -17,8 +21,14 @@ export const OrgProfileBlock = observer(() => {
         [styles['box--show']]: isShow,
       })}
     >
-      <button onClick={onClose}>close</button>
-      <div>OrgProfileBlock</div>
+      <div className={styles['photo-wrapper']}>
+        photo
+        <button onClick={onClose}>close</button>
+      </div>
+      <div className={styles['info-wrapper']}>
+        info
+        <div style={{ height: '900px' }}>content</div>
+      </div>
     </div>
   );
 });
