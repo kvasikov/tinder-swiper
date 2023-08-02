@@ -1,11 +1,12 @@
 import React from 'react';
 import cn from 'classnames';
+import { swiperStore } from '../../store';
 import { BadgeProfilePreview } from '../../../common/BadgeProfilePreview';
 import styles from './OrganizationPreview.module.scss';
 
 export const OrganizationPreview = ({ profileData, withMarginTop = false, theme = 'dark' }) => {
   const onOrgClick = () => {
-    console.log('SHOW org data', profileData.id);
+    swiperStore.updateProfileData(profileData.id, { isOrgProfileShow: true });
   };
 
   const photoSrc = profileData.infoData.photoList[0];

@@ -43,6 +43,7 @@ export class SwiperStore {
       isTweet: null, // null | boolean
       activePhotoIndex: 0,
       isStatusShow: false,
+      isOrgProfileShow: false,
       statusData: getStatusData(profile),
       organizationData: ORGANIZATION_DATA,
       isHideMoreProfileInfo: true,

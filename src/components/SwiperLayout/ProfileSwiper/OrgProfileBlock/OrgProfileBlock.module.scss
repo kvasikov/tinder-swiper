@@ -1,0 +1,17 @@
+.box {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  right: -100%;
+  opacity: 0;
+  transition-property: right, opacity;
+  transition-duration: 0.15s;
+  z-index: 20;
+  border-radius: 16px;
+
+  &--show {
+    right: 0;
+    opacity: 1;
+  }
+}

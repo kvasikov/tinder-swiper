@@ -104,6 +104,7 @@
 .content {
   height: 100%;
   position: relative;
+  overflow: hidden;
 
   @media screen and (max-width: #{$md - 1}px) {
     background-color: white;

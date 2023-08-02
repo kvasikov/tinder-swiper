@@ -12,6 +12,7 @@ import { swiperStore, getProfileIdByDataAttr } from '../store';
 import { ProfilePreview } from '../ProfilePreview';
 import { TopBlock } from './TopBlock';
 import { BottomBlock } from './BottomBlock';
+import { OrgProfileBlock } from './OrgProfileBlock';
 import styles from './ProfileSwiper.module.scss';
 import { useGetOffsetTop } from './useGetOffsetTop.hook';
 import { useGetProfileList } from './useGetProfileList.hook';
@@ -21,7 +22,7 @@ SwiperCore.use([Virtual, EffectCreative]);
 
 // TODO: использовать только для разработки
 // В идеале нужно использовать виртуализацию, но используя при динамическом кол-ве слайдов
-// Анимация свайпа начинает ввести себя крайне непредсказуемо
+// анимация свайпа начинает ввести себя крайне непредсказуемо
 const IS_VIRTUAL = false;
 
 export const ProfileSwiper = observer(() => {
@@ -133,6 +134,7 @@ export const ProfileSwiper = observer(() => {
         </div>
       )}
       <TopBlock />
+      <OrgProfileBlock />
       {/* TODO: пока убран данный функционал для переключения на блок с картой */}
       {/* {swiperStore.activeTabValue === 'geo' && <LocationBlock />} */}
       {/* {swiperStore.activeTabValue === 'profile' && (
