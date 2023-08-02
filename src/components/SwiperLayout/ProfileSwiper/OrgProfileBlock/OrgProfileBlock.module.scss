@@ -9,14 +9,14 @@
   opacity: 0;
   transition-property: right, opacity, visibility, z-index;
   transition-duration: 0.15s;
-  z-index: -1;
+  z-index: 2;
   overflow: auto;
   visibility: hidden;
 
   &--show {
     right: 0;
     opacity: 1;
-    z-index: 101;
+    z-index: 200;
     visibility: visible;
   }
 

@@ -17,6 +17,7 @@ export const InfoBlock = ({ profileData }) => {
       </div>
       <div
         className={cn(styles['background-status'], {
+          [styles['background-status--un-border']]: !profileData.isHideMoreProfileInfo,
           [styles[`background-status--${profileData.statusData.design}`]]:
             profileData.isStatusShow && !profileData.isOrganization,
         })}

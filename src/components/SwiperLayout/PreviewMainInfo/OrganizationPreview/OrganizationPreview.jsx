@@ -6,7 +6,9 @@ import styles from './OrganizationPreview.module.scss';
 
 export const OrganizationPreview = ({ profileData, withMarginTop = false, theme = 'dark' }) => {
   const onOrgClick = () => {
-    swiperStore.updateProfileData(profileData.id, { isOrgProfileShow: true });
+    swiperStore.updateProfileData(profileData.id, {
+      isOrgProfileShow: true,
+    });
   };
 
   const photoSrc = profileData.infoData.photoList[0];
