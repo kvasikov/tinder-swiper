@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import cn from 'classnames';
 import { observer } from 'mobx-react';
 import { usePrevious } from '../../../../hooks';
+import { ProfileInfo } from '../../ProfileInfo';
+import { CircleIcon } from '../../../common/CircleIcon';
 import { PhotoList } from '../../../common/PhotoList';
 import { swiperStore } from '../../store';
 import styles from './OrgProfileBlock.module.scss';
@@ -51,6 +53,12 @@ export const OrgProfileBlock = observer(() => {
       })}
     >
       <div className={styles['photo-wrapper']}>
+        <CircleIcon
+          className={styles.back}
+          kind='arrowUp'
+          design='pink-transparent'
+          onClick={onClose}
+        />
         <PhotoList
           activePhotoIndex={photoIndex}
           photoList={photoList}
@@ -58,10 +66,9 @@ export const OrgProfileBlock = observer(() => {
           onChangePhoto={onChangePhoto}
         />
       </div>
-      <div className={styles['info-wrapper']}>
-        info
-        <button onClick={onClose}>close</button>
-        <div style={{ height: '900px' }}>content</div>
+      <div>
+        {/* TODO: брать данные организатора, а не данные организации как тут сейчас */}
+        <ProfileInfo profileData={swiperStore.currentProfileData} />
       </div>
     </div>
   );

@@ -7,7 +7,7 @@
   background-color: white;
   right: -100%;
   opacity: 0;
-  transition-property: right, opacity, visibility;
+  transition-property: right, opacity, visibility, z-index;
   transition-duration: 0.15s;
   z-index: -1;
   overflow: auto;
@@ -25,10 +25,14 @@
   }
 }
 
-.photo-wrapper {
-  height: 60%;
+.back {
+  position: absolute;
+  top: 18px;
+  left: 16px;
+  z-index: 10;
+  transform: rotate(-90deg);
 }
 
-.info-wrapper {
-  background-color: yellow;
+.photo-wrapper {
+  height: 60%;
 }
