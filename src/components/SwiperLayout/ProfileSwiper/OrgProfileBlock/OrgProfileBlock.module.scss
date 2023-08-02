@@ -7,14 +7,17 @@
   background-color: white;
   right: -100%;
   opacity: 0;
-  transition-property: right, opacity;
+  transition-property: right, opacity, visibility;
   transition-duration: 0.15s;
-  z-index: 101;
+  z-index: -1;
   overflow: auto;
+  visibility: hidden;
 
   &--show {
     right: 0;
     opacity: 1;
+    z-index: 101;
+    visibility: visible;
   }
 
   @media #{$desktop-s} {

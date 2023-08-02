@@ -71,7 +71,9 @@ export const SwiperLayout = observer(() => {
                   </Space>
                 )}
                 <ProfileSwiper />
-                {isInit && <TweetButtonDesktop />}
+                {isInit && !swiperStore.currentProfileData.isOrgProfileShow && (
+                  <TweetButtonDesktop />
+                )}
               </div>
               {isDesktop && (
                 <>
@@ -93,7 +95,9 @@ export const SwiperLayout = observer(() => {
                         swiperStore.currentProfileData.isHideMoreProfileInfo,
                     })}
                   >
-                    {isInit && <ButtonBlockDesktop profileData={swiperStore.currentProfileData} />}
+                    {isInit && !swiperStore.currentProfileData.isOrgProfileShow && (
+                      <ButtonBlockDesktop profileData={swiperStore.currentProfileData} />
+                    )}
                   </div>
                 </>
               )}
